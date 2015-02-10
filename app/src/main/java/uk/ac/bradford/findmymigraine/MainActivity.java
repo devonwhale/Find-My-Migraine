@@ -11,7 +11,7 @@ import android.widget.Button;
 
 //Comment by Steve to test change/version control
 public class MainActivity extends ActionBarActivity implements LoginPopup.LoginPopupListener {
-
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

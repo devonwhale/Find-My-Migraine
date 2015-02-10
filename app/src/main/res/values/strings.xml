@@ -4,7 +4,7 @@
     <string name="app_name">Find My Migraine</string>
     <string name="hello_world">Hello world!</string>
     <string name="welcome">What do you want to do?</string>
-    <string name="record_attack">Attack record</string>
+    <string name="record_attack">Attack record - Inactive</string>
     <string name="record_activity">Daily activity record</string>
     <string name="action_settings">Setup</string>
     <string name="action_help">Help</string>

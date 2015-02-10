@@ -13,36 +13,36 @@
         android:contentDescription="Find My Migraine"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:text="@string/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="25dp"
+        android:textSize="18dp"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/record_attack"
         android:id="@+id/recAttack"
-        android:textSize="30dp"
+        android:textSize="18dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/record_activity"
         android:id="@+id/recActivity"
-        android:textSize="30dp"
+        android:textSize="18dp"
         android:layout_below="@+id/recAttack"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>

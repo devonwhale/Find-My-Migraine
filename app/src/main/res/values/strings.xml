@@ -4,13 +4,13 @@
     <string name="app_name">Find My Migraine</string>
     <string name="hello_world">Hello world!</string>
     <string name="welcome">What do you want to do?</string>
-    <string name="record_attack">Attack record - Inactive</string>
-    <string name="record_activity">Daily activity record</string>
+    <string name="record_attack">Migraine Attack Record - Currently inactive</string>
+    <string name="record_activity">Daily Activity Record</string>
     <string name="action_settings">Setup</string>
     <string name="action_help">Help</string>
     <string name="login">Login screen</string>
     <string name="okay">Okay</string>
-    <string name="title_activity_attack">Attack Record</string>
+    <string name="title_activity_attack">Migraine Attack Record</string>
     <string name="title_activity_daily">Daily Activity Record</string>
     <string name="title_activity_sleep">Daily Sleeping Activity</string>
     <string name="sleep_tt">Time to sleep</string>

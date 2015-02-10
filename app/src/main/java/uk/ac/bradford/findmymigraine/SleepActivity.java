@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,7 +68,10 @@ public class SleepActivity extends ActionBarActivity {
                 //Enter sleep record into database
                 dao.createSleepingRecord(s);
                 Log.d("Sleep ", "Sleep Record Added");
-                //Steve to add code here
+                //Toast added by Steve to give feedback on submit
+                Toast feedback = Toast.makeText(getApplicationContext(),"Details Added to Sleep Records", Toast.LENGTH_SHORT);
+                feedback.setGravity(Gravity.TOP| Gravity.CENTER, 0,0);
+                feedback.show();
             }
         });
     }

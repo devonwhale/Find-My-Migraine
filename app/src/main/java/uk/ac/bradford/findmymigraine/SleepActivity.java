@@ -60,6 +60,7 @@ public class SleepActivity extends ActionBarActivity {
                                 startHour = hourOfDay;
                                 startMinute = hour_minute;
                                 Toast.makeText(getBaseContext(), "Time set: " + startHour + ":" + startMinute, Toast.LENGTH_LONG).show();
+                                tvTimeToBed.setText(startHour + ": " + startMinute);
                             }
                         };
             }
@@ -76,7 +77,8 @@ public class SleepActivity extends ActionBarActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
                                 endHour = hourOfDay;
                                 endMinute = hour_minute;
-                                Toast.makeText(getBaseContext(), "Time set: "+endHour+":"+endMinute, Toast.LENGTH_LONG).show();
+                                Toast.makeText(getBaseContext(), "Time set: "+endHour+":"+endMinute, Toast.LENGTH_LONG).show(); //Not working !!!
+                                tvTimeUp.setText(endHour + ": " + endMinute); //Not working !!!
                             }
                         };
             }

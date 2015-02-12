@@ -48,9 +48,6 @@ public class SleepActivity extends ActionBarActivity {
         start = Calendar.getInstance();
         end = Calendar.getInstance();
 
-        tvTimeToBed.setText("Press to set Migraine start time");
-        tvTimeUp.setText("Press to set Migraine end time");
-
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

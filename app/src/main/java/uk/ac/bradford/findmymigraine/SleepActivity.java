@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -26,8 +27,8 @@ public class SleepActivity extends ActionBarActivity {
 
     TextView tvTimeToBed;
     TextView tvTimeUp;
-    EditText etSleepRating;
     Button btnSubmit;
+    RatingBar ratingBar;
 
     static final int time_dialog_id_1 = 0;
     static final int time_dialog_id_2 = 1;
@@ -39,14 +40,14 @@ public class SleepActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
-
         tvTimeToBed = (TextView) findViewById(R.id.etTTB);
         tvTimeUp = (TextView) findViewById(R.id.etTU);
-        etSleepRating = (EditText) findViewById(R.id.etSR);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         btnSubmit = (Button) findViewById(R.id.btnSub);
 
         start = Calendar.getInstance();
         end = Calendar.getInstance();
+
 
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +83,8 @@ public class SleepActivity extends ActionBarActivity {
             }
         });
 
+
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,8 +93,13 @@ public class SleepActivity extends ActionBarActivity {
                 end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
                 a = start.getTimeInMillis();
                 b = end.getTimeInMillis();
-                Sleep s = new Sleep(a, b, Integer.parseInt(etSleepRating.getText().toString()));
-              //  Sleep s = new Sleep(1,1,1);
+
+                //number of stars selected by user in sleep rating
+                int numStars = 0;
+                numStars =(int)ratingBar.getRating();
+
+                Sleep s = new Sleep(a, b, numStars);
+
                 //Create Sleep Data Access Object Instance
                 SleepDAO dao = new SleepDAO(SleepActivity.this);
                 //Enter sleep record into database

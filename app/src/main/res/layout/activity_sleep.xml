@@ -74,21 +74,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
-    <TextView
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/sleep_r"
         android:id="@+id/lbSR"
          />
-    <EditText
+    </LinearLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/etSR"
-
-        android:editable="true" />
-    </LinearLayout>
+        android:numStars="5"
+        android:stepSize="1"
+         />
 
     <Button
         android:layout_width="wrap_content"

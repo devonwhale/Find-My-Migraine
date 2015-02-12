@@ -3,6 +3,7 @@ package uk.ac.bradford.findmymigraine;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import java.lang.Override;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class SleepActivity extends ActionBarActivity {
@@ -43,8 +45,8 @@ public class SleepActivity extends ActionBarActivity {
         etSleepRating = (EditText) findViewById(R.id.etSR);
         btnSubmit = (Button) findViewById(R.id.btnSub);
 
-        start = new Calendar();
-        end = new Calendar();
+        start = Calendar.getInstance();
+        end = Calendar.getInstance();
 
         tvTimeToBed.setText("Press to set Migraine start time");
         tvTimeUp.setText("Press to set Migraine end time");
@@ -55,7 +57,7 @@ public class SleepActivity extends ActionBarActivity {
                 //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
-                private TimePickerDialog.OnTimeSetListener startTimeSetListener =
+                TimePickerDialog.OnTimeSetListener startTimeSetListener =
                         new TimePickerDialog.OnTimeSetListener() {
                             public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
                                 startHour = hourOfDay;
@@ -72,7 +74,7 @@ public class SleepActivity extends ActionBarActivity {
                 //Listener to create fragment and watch it. Captures the time in variables endHour and endMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
-                private TimePickerDialog.OnTimeSetListener endTimeSetListener =
+                TimePickerDialog.OnTimeSetListener endTimeSetListener =
                         new TimePickerDialog.OnTimeSetListener() {
                             public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
                                 endHour = hourOfDay;
@@ -87,20 +89,23 @@ public class SleepActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Long a, b;
-                start.setTime(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute);
-                end.setTime(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute);
+                start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
+                end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
                 a = start.getTimeInMillis();
                 b = end.getTimeInMillis();
                 Sleep s = new Sleep(a, b, Integer.parseInt(etSleepRating.getText().toString()));
+              //  Sleep s = new Sleep(1,1,1);
                 //Create Sleep Data Access Object Instance
                 SleepDAO dao = new SleepDAO(SleepActivity.this);
                 //Enter sleep record into database
                 dao.createSleepingRecord(s);
                 Log.d("Sleep ", "Sleep Record Added");
                 //Toast added by Steve to give feedback on submit
-                Toast feedback = Toast.makeText(getApplicationContext(),"Details Added to Sleep Records", Toast.LENGTH_SHORT);
-                feedback.setGravity(Gravity.TOP| Gravity.CENTER, 0,0);
+                Toast feedback = Toast.makeText(getApplicationContext(),"Details Added to Sleep Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER| Gravity.CENTER, 0,0);
                 feedback.show();
+                Intent mv = new Intent(getApplicationContext(), DailyActivity.class);
+                startActivity(mv);
             }
         });
     }

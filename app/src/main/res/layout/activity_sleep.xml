@@ -10,15 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/slpTitle" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="16"
-        android:id="@+id/etTTB"
-        android:layout_below="@+id/slpTitle"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,15 +33,31 @@
         android:layout_marginTop="20dp"
         android:editable="true" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/sleep_tt"
         android:id="@+id/lbTTB"
-        android:layout_alignTop="@+id/etTTB"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBaseline="@+id/etTTB"
+        android:layout_alignBottom="@+id/etTTB"
+        android:layout_toLeftOf="@+id/etTTB"
+        android:layout_toStartOf="@+id/etTTB" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="16"
+        android:text="Click here"
+        android:id="@+id/etTTB"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/slpTitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

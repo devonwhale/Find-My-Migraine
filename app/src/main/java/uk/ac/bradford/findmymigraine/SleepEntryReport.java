@@ -9,6 +9,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /*
+ THIS CLASS IS NOW REDUNDANT AND HAS BEEN REPLACED BY TOASTS IN APPROPRIATE PLACES. CLASS AND LAYOUTS CAN BE DELETED.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  When user clicks button to update SleepActivity,
  the data written to the database is reported back
  in this screen.

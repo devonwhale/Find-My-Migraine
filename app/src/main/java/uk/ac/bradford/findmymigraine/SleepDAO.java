@@ -44,7 +44,7 @@ public class SleepDAO {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_ID, sleep.getID());
+      //  values.put(MySQLiteHelper.COLUMN_ID, sleep.getID());
         values.put(MySQLiteHelper.COLUMN_TIME_TO_BED, sleep.getTimeToBed());
         values.put(MySQLiteHelper.COLUMN_TIME_UP, sleep.getTimeUp());
         values.put(MySQLiteHelper.COLUMN_SLEEP_RATING, sleep.getSleepRating());

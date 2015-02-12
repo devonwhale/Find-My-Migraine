@@ -15,9 +15,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //Sleep Table Details
     public static final String TABLE_SLEEP = "sleeping";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_TIME_TO_BED = "time to bed";
-    public static final String COLUMN_TIME_UP= "time up";
-    public static final String COLUMN_SLEEP_RATING= "sleep rating";
+    public static final String COLUMN_TIME_TO_BED = "timeToBed";
+    public static final String COLUMN_TIME_UP= "timeUp";
+    public static final String COLUMN_SLEEP_RATING= "sleepRating";
     public static final String[] COLUMNS_SlEEP = {COLUMN_ID,COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING};
 
     private static final String CREATE_SLEEPING_TABLE = "CREATE TABLE " +

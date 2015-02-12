@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.lang.Override;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class SleepActivity extends ActionBarActivity {
 
@@ -29,6 +31,7 @@ public class SleepActivity extends ActionBarActivity {
     static final int time_dialog_id_2 = 1;
     int hour,minute,startHour, startMinute, endHour,endMinute;
     int year, month,day, currentYear, currentMonth, currentDay;
+    Calendar start, end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,29 +43,55 @@ public class SleepActivity extends ActionBarActivity {
         etSleepRating = (EditText) findViewById(R.id.etSR);
         btnSubmit = (Button) findViewById(R.id.btnSub);
 
-        tvTimeToBed.setText(Calendar.HOUR_OF_DAY + ": " + Calendar.MINUTE);
-        tvTimeUp.setText(Calendar.HOUR_OF_DAY + ": " + Calendar.MINUTE);
+        start = new Calendar();
+        end = new Calendar();
+
+        tvTimeToBed.setText("Press to set Migraine start time");
+        tvTimeUp.setText("Press to set Migraine end time");
 
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
+                private TimePickerDialog.OnTimeSetListener startTimeSetListener =
+                        new TimePickerDialog.OnTimeSetListener() {
+                            public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
+                                startHour = hourOfDay;
+                                startMinute = hour_minute;
+                                Toast.makeText(getBaseContext(), "Time set: " + startHour + ":" + startMinute, Toast.LENGTH_LONG).show();
+                            }
+                        };
             }
         });
 
         tvTimeUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Listener to create fragment and watch it. Captures the time in variables endHour and endMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
+                private TimePickerDialog.OnTimeSetListener endTimeSetListener =
+                        new TimePickerDialog.OnTimeSetListener() {
+                            public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
+                                endHour = hourOfDay;
+                                endMinute = hour_minute;
+                                Toast.makeText(getBaseContext(), "Time set: "+endHour+":"+endMinute, Toast.LENGTH_LONG).show();
+                            }
+                        };
             }
         });
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Sleep s = new Sleep(Long.parseLong(tvTimeToBed.getText().toString()), Long.parseLong(tvTimeUp.getText().toString()), Integer.parseInt(etSleepRating.getText().toString()));
+                Long a, b;
+                start.setTime(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute);
+                end.setTime(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute);
+                a = start.getTimeInMillis();
+                b = end.getTimeInMillis();
+                Sleep s = new Sleep(a, b, Integer.parseInt(etSleepRating.getText().toString()));
                 //Create Sleep Data Access Object Instance
                 SleepDAO dao = new SleepDAO(SleepActivity.this);
                 //Enter sleep record into database
@@ -100,7 +129,7 @@ public class SleepActivity extends ActionBarActivity {
     }
 
     //Below are all the methods that have to do with Time Picker Dialogs
-    private TimePickerDialog.OnTimeSetListener startTimeSetListener =
+    /*private TimePickerDialog.OnTimeSetListener startTimeSetListener =
             new TimePickerDialog.OnTimeSetListener() {
                 public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
                     startHour = hourOfDay;
@@ -129,7 +158,7 @@ public class SleepActivity extends ActionBarActivity {
                         hour, minute, true);
         }
             return null;
-        }
+        }*/
 
 }
 

@@ -107,7 +107,10 @@ public class SleepActivity extends ActionBarActivity {
                 //Enter sleep record into database
                 dao.createSleepingRecord(s);
                 Log.d("Sleep ", "Sleep Record Added");
-                //Toast added by Steve to give feedback on submit
+                /*Toast added by Steve to give feedback on submit.
+                    The next three lines bring up a small 'toast' with the feedback text in the code.
+                    The following two lines then return the user to the Daily Activity screen.
+                 */
                 Toast feedback = Toast.makeText(getApplicationContext(),"Details Added to Sleep Records", Toast.LENGTH_LONG);
                 feedback.setGravity(Gravity.CENTER| Gravity.CENTER, 0,0);
                 feedback.show();

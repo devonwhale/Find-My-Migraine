@@ -17,7 +17,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.lang.Override;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,16 +29,19 @@ public class SleepActivity extends ActionBarActivity {
     Button btnSubmit;
     RatingBar ratingBar;
 
-    static final int time_dialog_id_1 = 0;
-    static final int time_dialog_id_2 = 1;
-    int hour,minute,startHour, startMinute, endHour,endMinute;
-    int year, month,day, currentYear, currentMonth, currentDay;
+    int startHour, startMinute, endHour,endMinute;
     Calendar start, end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
+        initialise();
+        setOnClickListeners();
+    }
+
+    /** Initialise components in XML layout*/
+    private void initialise(){
         tvTimeToBed = (TextView) findViewById(R.id.etTTB);
         tvTimeUp = (TextView) findViewById(R.id.etTU);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -47,8 +49,10 @@ public class SleepActivity extends ActionBarActivity {
 
         start = Calendar.getInstance();
         end = Calendar.getInstance();
+    }
 
-
+    /** Set onClickListeners for components in XML layout*/
+    private void setOnClickListeners(){
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,10 +100,10 @@ public class SleepActivity extends ActionBarActivity {
                 a = start.getTimeInMillis();
                 b = end.getTimeInMillis();
 
-                //number of stars selected by user in sleep rating
-                int numStars = 0;
-                numStars =(int)ratingBar.getRating();
+                //retrieve number of stars specifies bu user in rating bar
+                int numStars=(int)ratingBar.getRating();
 
+                //Enter sleep details into database
                 Sleep s = new Sleep(a, b, numStars);
 
                 //Create Sleep Data Access Object Instance
@@ -119,7 +123,6 @@ public class SleepActivity extends ActionBarActivity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,38 +145,5 @@ public class SleepActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    //Below are all the methods that have to do with Time Picker Dialogs
-    /*private TimePickerDialog.OnTimeSetListener startTimeSetListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
-                    startHour = hourOfDay;
-                    startMinute = hour_minute;
-                    Toast.makeText(getBaseContext(), "Time set: " + startHour + ":" + startMinute, Toast.LENGTH_LONG).show();
-                }
-            };
-
-    private TimePickerDialog.OnTimeSetListener endTimeSetListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
-                    endHour = hourOfDay;
-                    endMinute = hour_minute;
-                    Toast.makeText(getBaseContext(), "Time set: "+endHour+":"+endMinute, Toast.LENGTH_LONG).show();
-                }
-            };
-
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case time_dialog_id_1:
-                return new TimePickerDialog(this, startTimeSetListener,
-                        hour, minute, true);
-
-            case time_dialog_id_2:
-                return new TimePickerDialog(this, endTimeSetListener,
-                        hour, minute, true);
-        }
-            return null;
-        }*/
-
 }
 

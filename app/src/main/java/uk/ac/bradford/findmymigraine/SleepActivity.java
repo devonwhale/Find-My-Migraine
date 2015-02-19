@@ -1,6 +1,5 @@
 package uk.ac.bradford.findmymigraine;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -20,7 +18,6 @@ import android.widget.Toast;
 import java.lang.Override;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class SleepActivity extends ActionBarActivity {
 

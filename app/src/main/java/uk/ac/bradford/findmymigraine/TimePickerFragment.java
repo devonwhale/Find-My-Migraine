@@ -11,6 +11,9 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
+    /**
+     * Creates the time picker
+     * */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -18,9 +21,12 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
-
+    
+    /**
+     * Handles the time being entered
+     * */
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        // TODO Add code here to do a thing.
+        // TODO Add code here to deal with the time
     }
 
 }

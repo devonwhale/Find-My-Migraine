@@ -53,6 +53,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -62,7 +63,7 @@ public class SleepActivity extends ActionBarActivity {
                                 startHour = hourOfDay;
                                 startMinute = hour_minute;
                                 Toast.makeText(getBaseContext(), "Time set: " + startHour + ":" + startMinute, Toast.LENGTH_LONG).show();
-                                tvTimeToBed.setText(startHour + ": " + startMinute);
+                                ((TextView) findViewById(R.id.etTTB)).setText(startHour+":"+startMinute); //amended line still doesn't work!
                             }
                         };
             }

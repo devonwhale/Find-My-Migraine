@@ -18,7 +18,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
     public static final String COLUMN_TIME_UP= "timeUp";
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
-    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING};
+    public static final String COLUMN_SLEEP_SYNCFLAG= "syncFlag";
+    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
 
     //String containing query for building sleep table
     private static final String CREATE_SLEEPING_TABLE = "CREATE TABLE " +
@@ -26,21 +27,24 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_TIME_TO_BED + " INTEGER,"
             + COLUMN_TIME_UP + " INTEGER,"
-            + COLUMN_SLEEP_RATING + " INTEGER" + ")";
+            + COLUMN_SLEEP_RATING + " INTEGER,"
+            + COLUMN_SLEEP_SYNCFLAG + " INTEGER"+ ")";
 
     //Exercise Table Details
     public static final String TABLE_EXERCISE = "exercise";
     public static final String COLUMN_EXERCISE_ID = "_id";
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_INTENSITY= "intensity";
-    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_INTENSITY};
+    public static final String COLUMN_EXERCISE_SYNCFLAG= "syncFlag";
+    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
 
     //String containing query for building exercise table
     private static final String CREATE_EXERCISE_TABLE = "CREATE TABLE " +
             TABLE_EXERCISE + "("
             + COLUMN_EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_HOURS + " INTEGER,"
-            + COLUMN_INTENSITY+ " INTEGER"+ ")";
+            + COLUMN_INTENSITY+ " INTEGER,"
+            + COLUMN_EXERCISE_SYNCFLAG + " INTEGER"+ ")";
 
     public MySQLiteHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

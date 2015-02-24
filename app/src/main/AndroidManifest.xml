@@ -41,6 +41,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
         </activity>
+        <receiver android:name=".SleepReceiver">
+            <intent-filter>
+                <action android:name="uk.ac.bradford.findmymigraine.SleepReceiver">
+                </action>
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".SleepEntryReport"
             android:label="@string/title_activity_sleep_entry_report"

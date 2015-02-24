@@ -3,8 +3,12 @@ package uk.ac.bradford.findmymigraine;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,6 +35,7 @@ public class SleepActivity extends ActionBarActivity {
 
     int startHour, startMinute, endHour,endMinute;
     Calendar start, end;
+    boolean time; //false for time to bed, true for time up
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                time = false;
                 //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -74,6 +80,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                time = true;
                 //Listener to create fragment and watch it. Captures the time in variables endHour and endMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -144,6 +151,21 @@ public class SleepActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setTime(int hour, int min) {
+        System.err.println("Time received");
+        if(!time) {
+            startMinute = min;
+            startHour = hour;
+            tvTimeToBed.setText(hour + ": " + min);
+        }
+        else if(time) {
+            endMinute = min;
+            endHour = hour;
+            tvTimeUp.setText(hour + ": " + min);
+        }
+        Toast.makeText(getBaseContext(), "Time set: "+hour+":"+min, Toast.LENGTH_LONG).show(); //Not working !!!
     }
 }
 

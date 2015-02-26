@@ -52,8 +52,10 @@ public class ExerciseActivity extends ActionBarActivity {
 
              //Create Exercise Data Access Object Instance
              ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
+
              //Enter exercise record into database
              dao.createExerciseRecord(e);
+
              Log.d("Exercise ", "Exercise Record Added");
              //Go back to Daily Activity
              Intent intent = new Intent(getApplicationContext(), DailyActivity.class);
@@ -85,5 +87,3 @@ public class ExerciseActivity extends ActionBarActivity {
 
 
 }
-//Submitting data to database not yet working
-//Hours of exercise integer only

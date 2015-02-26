@@ -55,7 +55,7 @@ public class ExerciseDAO {
     }
 
     //Get Single Exercise Record
-    public Exercise getSleepingRecord(int id) {
+    public Exercise getExerciseRecord(int id) {
         db = dbHelper.getReadableDatabase();
 
         Cursor cursor = db.query(MySQLiteHelper.TABLE_EXERCISE, MySQLiteHelper.COLUMNS_SlEEP, " KEY_ID = ?",

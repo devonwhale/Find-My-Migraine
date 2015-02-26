@@ -53,7 +53,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
 
     //When Table Details
-    public static final String TABLE_WHEN = "when";
+    public static final String TABLE_WHEN = "attackWhen";
     public static final String COLUMN_WHEN_ID = "_id";
     public static final String COLUMN_WHEN_DATE = "date";
     public static final String COLUMN_WHEN_START_TIME = "start";
@@ -62,7 +62,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String[] COLUMNS_WHEN = {COLUMN_WHEN_ID,COLUMN_WHEN_DATE,COLUMN_WHEN_START_TIME,COLUMN_WHEN_END_TIME,COLUMN_WHEN_SYNCFLAG};
 
     //String containing query for building When table
-    private static final String CREATE_WHEN_TABLE = "CREATE TABLE" +
+    private static final String CREATE_WHEN_TABLE = "CREATE TABLE " +
             TABLE_WHEN + "("
             + COLUMN_WHEN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_WHEN_DATE + " INTEGER, "
@@ -101,9 +101,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(MySQLiteHelper.class.getName(), "Upgrading from version" + oldVersion + " to "+ newVersion+", which will destroy old data");
-        db.execSQL("DROP TABLE IF EXISTS"+ TABLE_SLEEP);
-        db.execSQL("DROP TABLE IF EXISTS"+ TABLE_EXERCISE);
-        db.execSQL("DROP TABLE IF EXISTS"+ TABLE_WHEN);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
         onCreate(db);
     }
 }

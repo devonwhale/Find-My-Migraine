@@ -38,5 +38,15 @@
         android:layout_alignRight="@+id/btnSleep"
         android:layout_alignEnd="@+id/btnSleep" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_travel"
+        android:id="@+id/btnTravel"
+        android:layout_below="@+id/btnExercise"
+        android:layout_alignRight="@+id/btnExercise"
+        android:layout_alignEnd="@+id/btnExercise" />
+
+
 
 </RelativeLayout>

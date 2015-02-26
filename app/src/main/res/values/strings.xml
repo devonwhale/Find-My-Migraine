@@ -20,6 +20,7 @@
     <string name="title_activity_sleep_entry_report">Sleep Entry Report - The following details have been added to your Daily Activity Record: </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_exercise">Daily Exercise Record</string>
+    <string name="title_activity_travel">Daily Travel Record</string>
 
 
 </resources>

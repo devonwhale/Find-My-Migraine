@@ -55,18 +55,9 @@ public class SleepActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 time = false;
-                //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
+                //Listener to create fragment.
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
-                TimePickerDialog.OnTimeSetListener startTimeSetListener =
-                        new TimePickerDialog.OnTimeSetListener() {
-                            public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
-                                startHour = hourOfDay;
-                                startMinute = hour_minute;
-                                Toast.makeText(getBaseContext(), "Time set: " + startHour + ":" + startMinute, Toast.LENGTH_LONG).show();
-                                tvTimeToBed.setText(startHour + ": " + startMinute);
-                            }
-                        };
             }
         });
 
@@ -74,18 +65,9 @@ public class SleepActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 time = true;
-                //Listener to create fragment and watch it. Captures the time in variables endHour and endMinute
+                //Listener to create fragment.
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
-                TimePickerDialog.OnTimeSetListener endTimeSetListener =
-                        new TimePickerDialog.OnTimeSetListener() {
-                            public void onTimeSet(TimePicker view, int hourOfDay, int hour_minute) {
-                                endHour = hourOfDay;
-                                endMinute = hour_minute;
-                                Toast.makeText(getBaseContext(), "Time set: "+endHour+":"+endMinute, Toast.LENGTH_LONG).show(); //Not working !!!
-                                tvTimeUp.setText(endHour + ": " + endMinute); //Not working !!!
-                            }
-                        };
             }
         });
 
@@ -94,32 +76,38 @@ public class SleepActivity extends ActionBarActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Long a, b;
-                start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
-                end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
-                a = start.getTimeInMillis();
-                b = end.getTimeInMillis();
+                if(tvTimeToBed.getText().toString().equalsIgnoreCase("Click here") || tvTimeUp.getText().toString().equalsIgnoreCase("Click here")) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please set a start and end time", Toast.LENGTH_LONG);
+                    t.show();
+                }
+                else {
+                    Long a, b;
+                    start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
+                    end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
+                    a = start.getTimeInMillis();
+                    b = end.getTimeInMillis();
 
-                //retrieve number of stars specifies by user in rating bar
-                int numStars = (int) ratingBar.getRating();
+                    //retrieve number of stars specifies by user in rating bar
+                    int numStars = (int) ratingBar.getRating();
 
-                //Enter sleep details into database
-                Sleep s = new Sleep(a, b, numStars);
+                    //Enter sleep details into database
+                    Sleep s = new Sleep(a, b, numStars);
 
-                //Create Sleep Data Access Object Instance
-                SleepDAO dao = new SleepDAO(SleepActivity.this);
-                //Enter sleep record into database
-                dao.createSleepingRecord(s);
-                Log.d("Sleep ", "Sleep Record Added");
+                    //Create Sleep Data Access Object Instance
+                    SleepDAO dao = new SleepDAO(SleepActivity.this);
+                    //Enter sleep record into database
+                    dao.createSleepingRecord(s);
+                    Log.d("Sleep ", "Sleep Record Added");
                 /*Toast added by Steve to give feedback on submit.
                     The next three lines bring up a small 'toast' with the feedback text in the code.
                     The following two lines then return the user to the Daily Activity screen.
                  */
-                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Sleep Records", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                feedback.show();
-                Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
-                startActivity(mv);
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Sleep Records", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                    Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
+                    startActivity(mv);
+                }
             }
         });
     }

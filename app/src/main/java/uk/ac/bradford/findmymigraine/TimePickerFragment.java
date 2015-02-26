@@ -30,7 +30,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
      * */
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         System.err.println("Time set");
-        ((SleepActivity)getActivity()).setTime(hourOfDay, minute);
+        //NOT WORKING!
+  //      ((SleepActivity)getActivity()).setTime(hourOfDay, minute);
         /*Intent i = new Intent("time_set");
         i.setAction("UK.AC.BRADFORD.FINDMYMIGRAINE.TIME_SET");
         i.putExtra("start", true);

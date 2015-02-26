@@ -11,7 +11,7 @@
     tools:context="com.example.migraineapp.SleepActivity"-->
 
     <TextView android:text="@string/title_activity_sleep"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/slpTitle" />
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tt"
         android:id="@+id/lbTTB"
 
@@ -56,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tu"
         android:id="@+id/lbTU"
          />
@@ -79,7 +79,7 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_r"
         android:id="@+id/lbSR"
          />
@@ -96,8 +96,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:id="@+id/btnSub"
+        android:text="@string/next"
+        android:id="@+id/btnNext"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/etSR"
         android:layout_alignEnd="@+id/etSR" />

@@ -1,6 +1,5 @@
 package uk.ac.bradford.findmymigraine;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -20,13 +18,12 @@ import android.widget.Toast;
 import java.lang.Override;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class SleepActivity extends ActionBarActivity {
 
     TextView tvTimeToBed;
     TextView tvTimeUp;
-    Button btnSubmit;
+    Button btnNext;
     RatingBar ratingBar;
 
     int startHour, startMinute, endHour,endMinute;
@@ -45,7 +42,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeToBed = (TextView) findViewById(R.id.etTTB);
         tvTimeUp = (TextView) findViewById(R.id.etTU);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        btnSubmit = (Button) findViewById(R.id.btnSub);
+        btnNext = (Button) findViewById(R.id.btnNext);
 
         start = Calendar.getInstance();
         end = Calendar.getInstance();
@@ -91,7 +88,7 @@ public class SleepActivity extends ActionBarActivity {
 
 
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Long a, b;
@@ -100,8 +97,8 @@ public class SleepActivity extends ActionBarActivity {
                 a = start.getTimeInMillis();
                 b = end.getTimeInMillis();
 
-                //retrieve number of stars specifies bu user in rating bar
-                int numStars=(int)ratingBar.getRating();
+                //retrieve number of stars specifies by user in rating bar
+                int numStars = (int) ratingBar.getRating();
 
                 //Enter sleep details into database
                 Sleep s = new Sleep(a, b, numStars);
@@ -115,10 +112,10 @@ public class SleepActivity extends ActionBarActivity {
                     The next three lines bring up a small 'toast' with the feedback text in the code.
                     The following two lines then return the user to the Daily Activity screen.
                  */
-                Toast feedback = Toast.makeText(getApplicationContext(),"Details Added to Sleep Records", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER| Gravity.CENTER, 0,0);
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Sleep Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                 feedback.show();
-                Intent mv = new Intent(getApplicationContext(), DailyActivity.class);
+                Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
                 startActivity(mv);
             }
         });

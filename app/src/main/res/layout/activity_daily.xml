@@ -29,4 +29,14 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_exercise"
+        android:id="@+id/btnExercise"
+        android:layout_below="@+id/btnSleep"
+        android:layout_alignRight="@+id/btnSleep"
+        android:layout_alignEnd="@+id/btnSleep" />
+
+
 </RelativeLayout>

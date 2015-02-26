@@ -16,8 +16,10 @@
     <string name="sleep_tt">Time to sleep</string>
     <string name="sleep_tu">Time up</string>
     <string name="sleep_r">Sleep rating (1 - Poor.. 5 - Good)</string>
-    <string name="submit">Submit</string>
+    <string name="next">Next</string>
     <string name="title_activity_sleep_entry_report">Sleep Entry Report - The following details have been added to your Daily Activity Record: </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_exercise">Daily Exercise Record</string>
+
 
 </resources>

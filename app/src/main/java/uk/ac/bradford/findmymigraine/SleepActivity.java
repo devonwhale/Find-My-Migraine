@@ -28,6 +28,7 @@ public class SleepActivity extends ActionBarActivity {
 
     int startHour, startMinute, endHour,endMinute;
     Calendar start, end;
+    boolean time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                time = false;
                 //Listener to create fragment and watch it. Captures the time in variables startHour and startMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -71,6 +73,7 @@ public class SleepActivity extends ActionBarActivity {
         tvTimeUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                time = true;
                 //Listener to create fragment and watch it. Captures the time in variables endHour and endMinute
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -142,5 +145,20 @@ public class SleepActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setTime(int hour, int min) {
+        System.err.println("Time received");
+        if(!time) {
+            startMinute = min;
+            startHour = hour;
+            tvTimeToBed.setText(hour + ": " + min);
+            }
+        else if(time) {
+            endMinute = min;
+            endHour = hour;
+            tvTimeUp.setText(hour + ": " + min);
+            }
+        Toast.makeText(getBaseContext(), "Time set: "+hour+":"+min, Toast.LENGTH_LONG).show();
+        }
 }
 

@@ -72,7 +72,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     /*
 
     //Guys I made the table for coping strategies but before I uncommented and adn actually pushed it I wanted you guys to see if this is done properly
-    //and if it is just uncomment the parts which are necessary
+    //and if it is just uncomment the parts which are necessary.
 
     //Coping Strategies Table Details
     public static final String TABLE_COPING = "coping";

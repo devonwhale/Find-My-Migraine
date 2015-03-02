@@ -28,7 +28,7 @@ public class WhenDatePicker extends DialogFragment implements DatePickerDialog.O
      * */
     public void onDateSet(DatePicker view, int year, int month, int day) {
         System.err.println("Time set");
-        ((WhenActivity)getActivity()).setDate();               //calls method in Parent Activity
+        ((WhenActivity)getActivity()).setDate(year, month, day);               //calls method in Parent Activity
 
     }
 

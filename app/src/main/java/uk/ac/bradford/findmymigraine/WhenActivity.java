@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -18,7 +19,7 @@ public class WhenActivity extends ActionBarActivity {
     Button nextButton;
     int startHour, startMinute, endHour, endMinute;
     Calendar whenDate, start, end;
-    boolean time;
+    boolean time;                               //used to differentiate between the two time pickers
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,6 @@ public class WhenActivity extends ActionBarActivity {
         attackDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                time = false;
                 //Listener to create fragment.
                 /* CODE NEEDS DatePickerFragment TO BE RESOLVED FIRST           NOT WORKING YET...NEED TO CHECK HOW TO CODE THIS!
                 DialogFragment newFragment = new DatePickerFragment();
@@ -60,7 +60,7 @@ public class WhenActivity extends ActionBarActivity {
             public void onClick(View v) {
                 time = false;
                 //Listener to create fragment.
-                DialogFragment newFragment = new TimePickerFragment();
+                DialogFragment newFragment = new WhenTimePicker();
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
@@ -69,11 +69,29 @@ public class WhenActivity extends ActionBarActivity {
             public void onClick(View v) {
                 time = false;
                 //Listener to create fragment.
-                DialogFragment newFragment = new TimePickerFragment();
+                DialogFragment newFragment = new WhenTimePicker();
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
         //more code to add
+    }
+
+    public void setDate(){
+        //code to add - method will be called by WhenDatePicker
+    }
+    public void setTime(int hour, int min) {
+        System.err.println("Time received");
+        if(!time) {
+            startMinute = min;
+            startHour = hour;
+            attackStart.setText(hour + ": " + min);
+        }
+        else if(time) {
+            endMinute = min;
+            endHour = hour;
+            attackEnd.setText(hour + ": " + min);
+        }
+        Toast.makeText(getBaseContext(), "Time set: " + hour + ":" + min, Toast.LENGTH_LONG).show();
     }
 
     @Override

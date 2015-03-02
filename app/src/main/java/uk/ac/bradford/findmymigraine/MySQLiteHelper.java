@@ -69,6 +69,37 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_START_TIME + " INTEGER, "
             + COLUMN_WHEN_END_TIME + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
+    /*
+
+    //Guys I made the table for coping strategies but before I uncommented and adn actually pushed it I wanted you guys to see if this is done properly
+    //and if it is just uncomment the parts which are necessary
+
+    //Coping Strategies Table Details
+    public static final String TABLE_COPING = "coping";
+    public static final String COLUMN_COPING_ID = "_id";
+    public static final String COLUMN_COPING_DATE = "date";
+    public static final String COLUMN_COPING_SYNCFLAG = "syncFlag";
+    public static final String COLUMN_COPING_YOGA = "yoga";
+    public static final String COLUMN_COPING_MEDICATION = "medication";
+    public static final String COLUMN_COPING_MEDITATION = "meditation";
+    public static final String COLUMN_COPING_SLEEPING = "sleeping";
+    public static final String COLUMN_COPING_OTHER = "other";
+
+    public static final String[] COLUMNS_COPING = {COLUMN_COPING_ID,COLUMN_COPING_DATE,COLUMN_COPING_SYNCFLAG,COLUMN_COPING_YOGA,COLUMN_COPING_MEDICATION, COLUMN_COPING_MEDITATION, COLUMN_COPING_SLEEPING, COLUMN_COPING_OTHER};
+
+    //String containing query for building COPING table
+    private static final String CREATE_COPING_TABLE = "CREATE TABLE " +
+            TABLE_COPING + "("
+            + COLUMN_COPING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_COPING_DATE + " INTEGER, "
+            + COLUMN_COPING_SYNCFLAG + " INTEGER, "
+            + COLUMN_COPING_YOGA + " INTEGER, "
+            + COLUMN_COPING_MEDICATION + " INTEGER, "
+            + COLUMN_COPING_MEDITATION + " INTEGER, "
+            + COLUMN_COPING_SLEEPING + " INTEGER, "
+            + COLUMN_COPING_OTHER + " VARCHAR" + ")";
+
+     */
 
     //Severity Table Details
         //Steve to code
@@ -91,6 +122,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_SLEEPING_TABLE);
         db.execSQL(CREATE_EXERCISE_TABLE);
         db.execSQL(CREATE_WHEN_TABLE);
+    //  db.excelSQL(CREATE_COPING_TABLE);
     }
 
     /*
@@ -104,6 +136,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
+    //  db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         onCreate(db);
     }
 }

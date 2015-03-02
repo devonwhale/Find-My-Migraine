@@ -69,6 +69,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
         </activity>
+        <activity
+            android:name=".WhenActivity"
+            android:label="@string/title_activity_when"
+            android:parentActivityName=".AttackActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+        </activity>
     </application>
 
 </manifest>

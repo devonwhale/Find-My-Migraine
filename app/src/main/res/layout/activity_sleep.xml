@@ -33,7 +33,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tt"
         android:id="@+id/lbTTB"
-
          />
 
         <TextView

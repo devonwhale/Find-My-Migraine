@@ -17,7 +17,7 @@ public class WhenActivity extends ActionBarActivity {
 
     TextView attackDate, attackStart, attackEnd;
     Button nextButton;
-    int startHour, startMinute, endHour, endMinute;
+    int whenYear, whenMonth, whenDay, startHour, startMinute, endHour, endMinute;
     Calendar whenDate, start, end;
     boolean time;                               //used to differentiate between the two time pickers
 
@@ -49,10 +49,10 @@ public class WhenActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //Listener to create fragment.
-                /* CODE NEEDS DatePickerFragment TO BE RESOLVED FIRST           NOT WORKING YET...NEED TO CHECK HOW TO CODE THIS!
-                DialogFragment newFragment = new DatePickerFragment();
+
+                DialogFragment newFragment = new WhenDatePicker();
                 newFragment.show(getFragmentManager(), "datePicker");
-                */
+
             }
         });
         attackStart.setOnClickListener(new View.OnClickListener() {
@@ -73,12 +73,18 @@ public class WhenActivity extends ActionBarActivity {
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
-        //more code to add
+        //more code to add for what happens when nextButton is pressed ...........
+
     }
 
-    public void setDate(){
+    public void setDate(int year, int month, int day){
         //code to add - method will be called by WhenDatePicker
+        whenYear = year;
+        whenMonth = month;
+        whenDay = day;
+        attackDate.setText(day+"/"+month+"/"+year);
     }
+
     public void setTime(int hour, int min) {
         System.err.println("Time received");
         if(!time) {

@@ -77,6 +77,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
         </activity>
+        <activity
+            android:name=".ReviewActivity"
+            android:label="@string/title_activity_review"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

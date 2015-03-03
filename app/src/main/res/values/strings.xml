@@ -28,5 +28,6 @@
     <string name="when_date">Date of migraine</string>
     <string name="when_start">Time migraine started</string>
     <string name="when_end">Time migraine ended</string>
+    <string name="title_activity_review">Review Records</string>
 
 </resources>

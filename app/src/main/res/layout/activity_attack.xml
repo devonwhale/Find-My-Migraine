@@ -8,8 +8,8 @@
 
     <TextView android:text="@string/welcome" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="259dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
     <ImageView
@@ -20,5 +20,40 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/logo_small" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_when"
+        android:id="@+id/btnWhen"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_severity"
+        android:id="@+id/btnSeverity"
+        android:layout_below="@+id/btnWhen"
+        android:layout_alignRight="@+id/btnWhen"
+        android:layout_alignEnd="@+id/btnWhen" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_coping"
+        android:id="@+id/btnCoping"
+        android:layout_below="@+id/btnSeverity"
+        android:layout_alignRight="@+id/btnSeverity"
+        android:layout_alignEnd="@+id/btnSeverity" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_causes"
+        android:id="@+id/btnCauses"
+        android:layout_below="@+id/btnCoping"
+        android:layout_alignRight="@+id/btnCoping"
+        android:layout_alignEnd="@+id/btnCoping" />
 
 </RelativeLayout>

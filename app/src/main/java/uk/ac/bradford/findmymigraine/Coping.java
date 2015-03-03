@@ -37,7 +37,9 @@ public class Coping {
     this.yoga=yoga;
     }
     // Constructors
+    /*
     public Coping(int medication){
+
         this.medication=medication;
     }
     // Constructors
@@ -52,6 +54,7 @@ public class Coping {
     public Coping(String other){
         this.other=other;
     }
+    */
 
 
     //Setters

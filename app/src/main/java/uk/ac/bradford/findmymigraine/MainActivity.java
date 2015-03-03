@@ -43,8 +43,7 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
             }
         });
 
-        //Clicking button to review records - CODE COMMENTED OUT PENDING CREATION OF ReviewActivity class
-        /*
+
         Button but_review = (Button) findViewById(R.id.reviewRecords);
         but_review.setOnClickListener(new View.OnClickListener() {
 
@@ -53,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
                 Intent mv = new Intent(getApplicationContext(), ReviewActivity.class);
                 startActivity(mv);
             }
-        }); */
+        });
     }
 
 

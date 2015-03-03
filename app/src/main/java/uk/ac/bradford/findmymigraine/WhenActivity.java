@@ -71,7 +71,7 @@ public class WhenActivity extends ActionBarActivity {
         attackEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                time = false;
+                time = true;
                 //Listener to create fragment.
                 DialogFragment newFragment = new WhenTimePicker();
                 newFragment.show(getFragmentManager(), "timePicker");
@@ -118,7 +118,7 @@ public class WhenActivity extends ActionBarActivity {
                     Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
-                    Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
+                    Intent mv = new Intent(getApplicationContext(), AttackActivity.class);
                     startActivity(mv);
                 }
             }
@@ -132,10 +132,7 @@ public class WhenActivity extends ActionBarActivity {
         whenMonth = month;
         whenDay = day;
         attackDate.setText(day+"/"+month+"/"+year);
-        /*
-        Long c;
-        whenDate.set(year, month, day);
-        c = whenDate.getTimeInMillis();*/
+        Toast.makeText(getBaseContext(), "Date set to "+day+"/"+month+"/"+year, Toast.LENGTH_LONG).show();
     }
 
     public void setTime(int hour, int min) {

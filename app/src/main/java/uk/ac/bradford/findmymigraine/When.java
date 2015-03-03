@@ -12,9 +12,10 @@ public class When {
     //Empty constructor
     public When(){}
 
-    //Constructors - should we have id here??????
-    public When(long id, long date, long start_time, long end_time){
-        this.id = id; this.date = date; this.start_time = start_time; this.end_time = end_time;
+    //Constructors - id removed from constructor
+    public When(long date, long start_time, long end_time){
+        //this.id = id;
+        this.date = date; this.start_time = start_time; this.end_time = end_time;
         syncFlag = 0;
     }
 

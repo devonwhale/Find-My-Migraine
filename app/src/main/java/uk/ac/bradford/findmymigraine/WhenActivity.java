@@ -1,8 +1,11 @@
 package uk.ac.bradford.findmymigraine;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class WhenActivity extends ActionBarActivity {
@@ -74,6 +78,51 @@ public class WhenActivity extends ActionBarActivity {
             }
         });
         //more code to add for what happens when nextButton is pressed ...........
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(attackDate.getText().toString().equalsIgnoreCase("Click here") || attackStart.getText().toString().equalsIgnoreCase("Click here") || attackEnd.getText().toString().equalsIgnoreCase("Click here")) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please set a date, start and end time", Toast.LENGTH_LONG);
+                    t.show();
+                }
+                else {
+                    // Establish variable types used by the constructor
+                    Long a, b, c;
+
+                    //Set 'Date' in Long format for passing to constructor
+                    whenDate.set(whenYear, whenMonth, whenDay);
+                    c = whenDate.getTimeInMillis();
+
+
+                    //Set times in Long format for passing to constructor
+                    start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
+                    end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
+                    a = start.getTimeInMillis();
+                    b = end.getTimeInMillis();
+
+
+                    //Call constructor - Create a new When object
+                    When w = new When(c, a, b);
+
+                    //Create 'When' Data Access Object Instance
+                    WhenDAO dao = new WhenDAO(WhenActivity.this);
+
+                    //Enter 'when' record into database
+                    dao.createWhenRecord(w);
+                    Log.d("When ", "When Record Added");
+
+                    /*Toast added by Steve to give feedback on submit.
+                    The next three lines bring up a small 'toast' with the feedback text in the code.
+                    The following two lines then return the user to the Daily Activity screen.
+                    */
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                    Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
+                    startActivity(mv);
+                }
+            }
+        });
 
     }
 
@@ -83,6 +132,10 @@ public class WhenActivity extends ActionBarActivity {
         whenMonth = month;
         whenDay = day;
         attackDate.setText(day+"/"+month+"/"+year);
+        /*
+        Long c;
+        whenDate.set(year, month, day);
+        c = whenDate.getTimeInMillis();*/
     }
 
     public void setTime(int hour, int min) {

@@ -131,8 +131,9 @@ public class WhenActivity extends ActionBarActivity {
         whenYear = year;
         whenMonth = month;
         whenDay = day;
-        attackDate.setText(day+"/"+month+"/"+year);
-        Toast.makeText(getBaseContext(), "Date set to "+day+"/"+month+"/"+year, Toast.LENGTH_LONG).show();
+        int displayMonthFigure = month + 1;
+        attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
+        Toast.makeText(getBaseContext(), "Date set to "+day+"/"+displayMonthFigure+"/"+year, Toast.LENGTH_LONG).show();
     }
 
     public void setTime(int hour, int min) {

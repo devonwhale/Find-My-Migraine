@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Sumaia on 01/02/2015.
+ * Date field added to methods by Steve 04/03/2015.
  */
 
 //The Sleep Table's Data Access Object
@@ -45,9 +46,11 @@ public class SleepDAO {
 
         ContentValues values = new ContentValues();
       //  values.put(MySQLiteHelper.COLUMN_ID, sleep.getID());
+        //values.put(MySQLiteHelper.COLUMN_SLEEP_DATE, sleep.getDate());
         values.put(MySQLiteHelper.COLUMN_TIME_TO_BED, sleep.getTimeToBed());
         values.put(MySQLiteHelper.COLUMN_TIME_UP, sleep.getTimeUp());
         values.put(MySQLiteHelper.COLUMN_SLEEP_RATING, sleep.getSleepRating());
+        values.put(MySQLiteHelper.COLUMN_SLEEP_ID, sleep.getSyncFlag());
 
         //Inserting row
         db.insert(MySQLiteHelper.TABLE_SLEEP, null, values);
@@ -55,7 +58,14 @@ public class SleepDAO {
 
     }
 
-    //Get Single Sleep Record
+    /*
+    NOTE ON METHODOLOGY:
+    Rather than return an Array of values for a row, the cursorToSleeping() method puts the
+    cursor into a Sleep object to be returned.
+     */
+
+    //Get Single Sleep Record, given the id
+
     public Sleep getSleepingRecord(int id) {
         db = dbHelper.getReadableDatabase();
 
@@ -69,6 +79,19 @@ public class SleepDAO {
         return sleeping;
 
     }
+
+    //Get Single Sleep Record, for a given date  !!! Assumes we only have one per date...to be discussed
+    /*
+    public Sleep getSleepRecordForDate(int dateRequired){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,
+                MySQLiteHelper.COLUMN_SLEEP_DATE+"="+dateRequired,null,null,null,null);
+        if (cursor != null) cursor.moveToFirst();
+        Sleep sleep = new Sleep();
+        sleep = cursorToSleeping(cursor);
+        return sleep;
+    } */
+
 
     //Get All Sleep Table Records
     public List<Sleep> getAllSleepingRecords() {
@@ -94,7 +117,8 @@ public class SleepDAO {
     protected Sleep cursorToSleeping(Cursor cursor) {
         Sleep sleeping  = new Sleep();
         sleeping.setID(Long.parseLong(cursor.getString(0)));
-        sleeping.setTimeToBed(Long.parseLong(cursor.getString(1)));
+        //sleeping.setDate(Long.parseLong(cursor.getString(1)));
+        sleeping.setTimeToBed(Long.parseLong(cursor.getString(1)));     //These int no's change by 1 if date included
         sleeping.setTimeUp(Long.parseLong(cursor.getString(2)));
         sleeping.setSleepRating(Integer.parseInt(cursor.getString(3)));
         //log

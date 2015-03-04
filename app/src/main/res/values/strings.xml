@@ -30,5 +30,6 @@
     <string name="when_end">Time migraine ended</string>
     <string name="title_activity_review">Review Records</string>
     <string name="sleep_details">Sleep Details</string>
+    <string name="sleep_date">Date (when waking)</string>
 
 </resources>

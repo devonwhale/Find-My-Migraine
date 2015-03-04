@@ -4,8 +4,8 @@ package uk.ac.bradford.findmymigraine;
  * Created by Sumaia on 28/01/2015.
  */
 public class Sleep {
-    private long id, time_to_bed, time_up;
-    private int sleep_rating;
+    private long id, time_to_bed, time_up; //private long date;       //date added by Steve (and to main constructor + setter, getter and toString
+    private int sleep_rating, syncFlag;
     public Sleep() {
         // Empty Constructor
     }
@@ -17,10 +17,14 @@ public class Sleep {
     }
 
     // Constructors
-    public Sleep(long time_to_bed, long time_up, int sleep_rating) {
+    public Sleep(
+            //long date,
+            long time_to_bed, long time_up, int sleep_rating) {
+        //this.date = date;
         this.time_to_bed = time_to_bed;
         this.time_up = time_up;
         this.sleep_rating=sleep_rating;
+        syncFlag = 0;
     }
 
     // Constructors
@@ -46,10 +50,16 @@ public class Sleep {
         this.sleep_rating = sleep_rating;
     }
 
+    /*public void setDate (long date) {this.date = date; }*/
+
     // Getters
     public long getID () {
         return id;
     }
+
+    /*public long getDate() {
+        return date;
+    }*/
 
     public long getTimeUp () {
         return time_up;
@@ -63,7 +73,13 @@ public class Sleep {
         return sleep_rating;
     }
 
+    public int getSyncFlag() {
+        return syncFlag;
+    }
+
     public String toString() {
-        return "Sleep [ID: " + id + ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + ", Sleep Rating " + sleep_rating  + "]" + "\n";
+        return "Sleep [ID: " + id +
+               // ", Date: "+date+
+                ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + ", Sleep Rating " + sleep_rating  + "]" + "\n";
     }
 }

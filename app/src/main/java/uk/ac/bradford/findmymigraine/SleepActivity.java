@@ -21,12 +21,15 @@ import java.util.Date;
 //just trying if push works --- imtanan
 public class SleepActivity extends ActionBarActivity {
 
+    //TextView dateWaking;                //added 4/3/15
     TextView tvTimeToBed;
     TextView tvTimeUp;
     Button btnNext;
     RatingBar ratingBar;
 
+    //int year, month, day;
     int startHour, startMinute, endHour,endMinute;
+    //Calendar wakeDate;
     Calendar start, end;
     boolean time;
 
@@ -40,6 +43,7 @@ public class SleepActivity extends ActionBarActivity {
 
     /** Initialise components in XML layout*/
     private void initialise(){
+        //dateWaking = (TextView)findViewById(R.id.et_sleep_date);    //added 4/3/15
         tvTimeToBed = (TextView) findViewById(R.id.etTTB);
         tvTimeUp = (TextView) findViewById(R.id.etTU);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -50,7 +54,18 @@ public class SleepActivity extends ActionBarActivity {
     }
 
     /** Set onClickListeners for components in XML layout*/
-    private void setOnClickListeners(){
+    private void setOnClickListeners() {
+        /*dateWaking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Listener to create fragment.
+                DialogFragment newFragment = new SleepDatePicker();
+                newFragment.show(getFragmentManager(), "datePicker");
+            }
+        }); */
+
+
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,22 +91,31 @@ public class SleepActivity extends ActionBarActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvTimeToBed.getText().toString().equalsIgnoreCase("Click here") || tvTimeUp.getText().toString().equalsIgnoreCase("Click here")) {
-                    Toast t = Toast.makeText(getApplicationContext(), "Please set a start and end time", Toast.LENGTH_LONG);
+                if(tvTimeToBed.getText().toString().equalsIgnoreCase("Click here") || tvTimeUp.getText().toString().equalsIgnoreCase("Click here")
+                        //|| dateWaking.getText().toString().equalsIgnoreCase("Click here")
+                        ) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please set a date, start and end time", Toast.LENGTH_LONG);
                     t.show();
                 }
                 else {
                     Long a, b;
+                    //Long c;
                     start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
                     end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
                     a = start.getTimeInMillis();
                     b = end.getTimeInMillis();
 
+                    //Set 'Date' in Long format for passing to constructor
+                    /*wakeDate.set(year, month, day);
+                    c = wakeDate.getTimeInMillis(); */
+
                     //retrieve number of stars specifies by user in rating bar
                     int numStars = (int) ratingBar.getRating();
 
                     //Enter sleep details into database
-                    Sleep s = new Sleep(a, b, numStars);
+                    Sleep s = new Sleep(
+                            //c,
+                            a, b, numStars);
 
                     //Create Sleep Data Access Object Instance
                     SleepDAO dao = new SleepDAO(SleepActivity.this);
@@ -148,5 +172,17 @@ public class SleepActivity extends ActionBarActivity {
             }
         Toast.makeText(getBaseContext(), "Time set: "+hour+":"+min, Toast.LENGTH_LONG).show();
         }
+
+    /*
+    public void setDate(int year, int month, int day){
+        //method called by SleepDatePicker
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        int displayMonthFigure = month + 1;
+        dateWaking.setText(day+"/"+displayMonthFigure+"/"+year);           //month integer increased by 1.
+        Toast.makeText(getBaseContext(), "Date set to "+day+"/"+displayMonthFigure+"/"+year, Toast.LENGTH_LONG).show();
+
+    } */
 }
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 
 public class ReviewActivity extends ActionBarActivity {
 
@@ -16,6 +18,7 @@ public class ReviewActivity extends ActionBarActivity {
     Button selectDate;
     TextView selectedDate, sleepTTB, sleepTU, sleepRating;
     int year, month, day;
+    Calendar theDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,14 @@ public class ReviewActivity extends ActionBarActivity {
         selectedDate.setText("Records for: "+day+"/"+this.month+"/"+year);  // AND HERE !!!!
 
     }
+
+    /*public void setValues(){
+        //Convert date integers to single int
+        theDate.set(year, month, day);
+        int intDate;
+        intDate = Integer.parseInt((()theDate.getTimeInMillis()));
+
+    }*/
 
 
 

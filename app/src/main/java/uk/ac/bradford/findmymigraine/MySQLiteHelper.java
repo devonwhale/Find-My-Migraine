@@ -17,22 +17,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
-    public static final String TABLE_SLEEP = "sleeping";
+    public static final String TABLE_SLEEP = "sleep_new";
     public static final String COLUMN_SLEEP_ID = "_id";
-    //public static final String COLUMN_SLEEP_DATE = "wakeDate";
+    public static final String COLUMN_SLEEP_DATE = "wakeDate";
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
     public static final String COLUMN_TIME_UP= "timeUp";
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
     public static final String COLUMN_SLEEP_SYNCFLAG= "syncFlag";
     public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,
-            //COLUMN_SLEEP_DATE,
+            COLUMN_SLEEP_DATE,
             COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
 
     //String containing query for building sleep table
     private static final String CREATE_SLEEPING_TABLE = "CREATE TABLE " +
             TABLE_SLEEP + "("
             + COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            //+ COLUMN_SLEEP_DATE + " INTEGER, "
+            + COLUMN_SLEEP_DATE + " INTEGER, "
             + COLUMN_TIME_TO_BED + " INTEGER, "
             + COLUMN_TIME_UP + " INTEGER, "
             + COLUMN_SLEEP_RATING + " INTEGER, "
@@ -41,19 +41,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //Exercise Table Details
     public static final String TABLE_EXERCISE = "exercise";
     public static final String COLUMN_EXERCISE_ID = "_id";
-    //public static final String COLUMN_EXERCISE_DATE = "date";
+    public static final String COLUMN_EXERCISE_DATE = "date";
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_INTENSITY= "intensity";
     public static final String COLUMN_EXERCISE_SYNCFLAG= "syncFlag";
     public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,
-            //COLUMN_EXERCISE_DATE,
+            COLUMN_EXERCISE_DATE,
             COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
 
     //String containing query for building exercise table
     private static final String CREATE_EXERCISE_TABLE = "CREATE TABLE " +
             TABLE_EXERCISE + "("
             + COLUMN_EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-           // + COLUMN_EXERCISE_DATE + " INTEGER,"
+            + COLUMN_EXERCISE_DATE + " INTEGER,"
             + COLUMN_HOURS + " INTEGER,"
             + COLUMN_INTENSITY+ " INTEGER,"
             + COLUMN_EXERCISE_SYNCFLAG + " INTEGER"+ ")";

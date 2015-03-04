@@ -46,7 +46,7 @@ public class SleepDAO {
 
         ContentValues values = new ContentValues();
       //  values.put(MySQLiteHelper.COLUMN_ID, sleep.getID());
-        //values.put(MySQLiteHelper.COLUMN_SLEEP_DATE, sleep.getDate());
+        values.put(MySQLiteHelper.COLUMN_SLEEP_DATE, sleep.getDate());
         values.put(MySQLiteHelper.COLUMN_TIME_TO_BED, sleep.getTimeToBed());
         values.put(MySQLiteHelper.COLUMN_TIME_UP, sleep.getTimeUp());
         values.put(MySQLiteHelper.COLUMN_SLEEP_RATING, sleep.getSleepRating());
@@ -81,7 +81,7 @@ public class SleepDAO {
     }
 
     //Get Single Sleep Record, for a given date  !!! Assumes we only have one per date...to be discussed
-    /*
+
     public Sleep getSleepRecordForDate(int dateRequired){
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,
@@ -90,7 +90,7 @@ public class SleepDAO {
         Sleep sleep = new Sleep();
         sleep = cursorToSleeping(cursor);
         return sleep;
-    } */
+    }
 
 
     //Get All Sleep Table Records

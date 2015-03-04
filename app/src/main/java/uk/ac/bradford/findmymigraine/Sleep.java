@@ -4,7 +4,8 @@ package uk.ac.bradford.findmymigraine;
  * Created by Sumaia on 28/01/2015.
  */
 public class Sleep {
-    private long id, time_to_bed, time_up; //private long date;       //date added by Steve (and to main constructor + setter, getter and toString
+    private long id, time_to_bed, time_up;
+    private long wakeDate;       //date added by Steve (and to main constructor + setter, getter and toString
     private int sleep_rating, syncFlag;
     public Sleep() {
         // Empty Constructor
@@ -18,9 +19,9 @@ public class Sleep {
 
     // Constructors
     public Sleep(
-            //long date,
+            long date,
             long time_to_bed, long time_up, int sleep_rating) {
-        //this.date = date;
+        wakeDate = date;
         this.time_to_bed = time_to_bed;
         this.time_up = time_up;
         this.sleep_rating=sleep_rating;
@@ -50,16 +51,16 @@ public class Sleep {
         this.sleep_rating = sleep_rating;
     }
 
-    /*public void setDate (long date) {this.date = date; }*/
+    public void setDate (long date) {wakeDate = date; }
 
     // Getters
     public long getID () {
         return id;
     }
 
-    /*public long getDate() {
-        return date;
-    }*/
+    public long getDate() {
+        return wakeDate;
+    }
 
     public long getTimeUp () {
         return time_up;
@@ -79,7 +80,7 @@ public class Sleep {
 
     public String toString() {
         return "Sleep [ID: " + id +
-               // ", Date: "+date+
+                ", Date: "+wakeDate+
                 ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + ", Sleep Rating " + sleep_rating  + "]" + "\n";
     }
 }

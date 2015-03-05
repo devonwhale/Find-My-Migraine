@@ -114,14 +114,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_CAUSES = "causes";
     public static final String COLUMN_CAUSES_ID = "_id";
     public static final String COLUMN_CAUSES_DATE = "date";
-    public static final String COLUMN_CAUSES_SYNCFLAG = "syncFlag";
     public static final String COLUMN_CAUSES_STRESS = "stress";
     public static final String COLUMN_CAUSES_LACK_OF_SLEEP = "lack of sleep";
     public static final String COLUMN_CAUSES_LACK_OF_FOOD = "lack of food";
     public static final String COLUMN_CAUSES_LACK_OF_WATER = "lack of water";
     public static final String COLUMN_CAUSES_DEPRESSION  = "depression";
     public static final String COLUMN_CAUSES_OTHER  = "other";
-
+    public static final String COLUMN_CAUSES_SYNCFLAG = "syncFlag";
 
   public static final String[] COLUMNS_CAUSES = {COLUMN_CAUSES_ID,COLUMN_CAUSES_DATE,COLUMN_CAUSES_SYNCFLAG,COLUMN_CAUSES_STRESS,COLUMN_CAUSES_LACK_OF_SLEEP, COLUMN_CAUSES_LACK_OF_FOOD, COLUMN_CAUSES_LACK_OF_WATER, COLUMN_CAUSES_DEPRESSION, COLUMN_CAUSES_OTHER};
 
@@ -130,13 +129,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             TABLE_CAUSES + "("
             + COLUMN_CAUSES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_CAUSES_DATE + " INTEGER, "
-            + COLUMN_CAUSES_SYNCFLAG + " INTEGER, "
             + COLUMN_CAUSES_STRESS + " INTEGER, "
             + COLUMN_CAUSES_LACK_OF_SLEEP + " INTEGER, "
             + COLUMN_CAUSES_LACK_OF_FOOD + " INTEGER, "
             + COLUMN_CAUSES_LACK_OF_WATER+ " INTEGER, "
             + COLUMN_CAUSES_DEPRESSION + " INTEGER, "
-            + COLUMN_CAUSES_OTHER + " TEXT" + ")";
+            + COLUMN_CAUSES_OTHER + " TEXT, "
+            + COLUMN_CAUSES_SYNCFLAG + " INTEGER"+ ")";
 
 
 

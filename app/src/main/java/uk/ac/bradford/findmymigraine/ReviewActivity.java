@@ -79,7 +79,8 @@ public class ReviewActivity extends ActionBarActivity {
         theDate = Calendar.getInstance();
         //Convert theDate to Long for passing to Data Access Object(s)
         theDate.set(year, month, day);
-        Long longDate = theDate.getTimeInMillis();
+        //Long longDate = theDate.getTimeInMillis();
+        Long longDate = 1426377600000L;                 //TEMP IN PLACE OF ABOVE LINE FOR TEST
 
         //Sleep Values for selected date
             //new sleep and sleepDAO objects
@@ -102,7 +103,8 @@ public class ReviewActivity extends ActionBarActivity {
                 sleepRating.setText(Integer.toString(sleep.getSleepRating()));
 
                 //TEST ONLY - TO BE REMOVED
-                selectedDate.setText("Test for: "+calTTB.get(Calendar.DAY_OF_MONTH)+"/"+calTTB.get(Calendar.MONTH)+1+"/"+calTTB.get(Calendar.YEAR));
+                int displayMonth = calTTB.get(Calendar.MONTH)+1;
+                selectedDate.setText("Test for: "+calTTB.get(Calendar.DAY_OF_MONTH)+"/"+displayMonth+"/"+calTTB.get(Calendar.YEAR));
         //Exercise Values for selected date
 
 

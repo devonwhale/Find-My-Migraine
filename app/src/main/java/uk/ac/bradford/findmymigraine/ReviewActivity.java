@@ -67,9 +67,10 @@ public class ReviewActivity extends ActionBarActivity {
     public void setDate(int year, int month, int day){
         //method called by ReviewDatePicker
         this.year = year;
-        this.month = month+1;                       // ADDED A FUDGE HERE!!!!!!
+        this.month = month;
         this.day = day;
-        selectedDate.setText("Records for: "+day+"/"+this.month+"/"+year);  // AND HERE !!!!
+        int displayMonth = month+1;
+        selectedDate.setText("Records for: "+day+"/"+displayMonth+"/"+year);
 
     }
 
@@ -86,10 +87,23 @@ public class ReviewActivity extends ActionBarActivity {
             SleepDAO sleepDAO = new SleepDAO(ReviewActivity.this);
             //get values for selected date as a sleep object
             sleep = sleepDAO.getSleepRecordForDate(longDate); //returns a sleep record
+            //sleep = sleepDAO.getSleepingRecord(1);      //TEST code INSTEAD OF LINE ABOVE
             //display returned values in Android text views (values in sleep are longs (in millisecs...need to convert to times)
-            Calendar calTTB = Calendar.getInstance();
-            calTTB.setTimeInMillis(sleep.getTimeToBed());
-            sleepTTB.setText(+calTTB.HOUR+":"+calTTB.MINUTE);
+                //Time to bed
+                Calendar calTTB = Calendar.getInstance();
+                calTTB.setTimeInMillis(sleep.getTimeToBed());
+                sleepTTB.setText(calTTB.get(Calendar.HOUR_OF_DAY)+":"+calTTB.get(Calendar.MINUTE));
+                //sleepTTB.setText(Long.toString(sleep.getTimeToBed()));  //test code
+                //Time up
+                Calendar calTU = Calendar.getInstance();
+                calTU.setTimeInMillis(sleep.getTimeUp());
+                sleepTU.setText(calTU.get(Calendar.HOUR_OF_DAY)+":"+calTU.get(Calendar.MINUTE));
+                //Sleep rating
+                sleepRating.setText(Integer.toString(sleep.getSleepRating()));
+
+                //TEST ONLY - TO BE REMOVED
+                selectedDate.setText("Test for: "+calTTB.get(Calendar.DAY_OF_MONTH)+"/"+calTTB.get(Calendar.MONTH)+1+"/"+calTTB.get(Calendar.YEAR));
+        //Exercise Values for selected date
 
 
 

@@ -29,7 +29,7 @@ public class ReviewDatePicker extends DialogFragment implements DatePickerDialog
     public void onDateSet(DatePicker view, int year, int month, int day) {
         System.err.println("Time set");
         ((ReviewActivity)getActivity()).setDate(year, month, day);               //calls method in Parent Activity
-
+        ((ReviewActivity)getActivity()).setValues();
     }
 
 }

@@ -83,13 +83,18 @@ public class SleepDAO {
     //Get Single Sleep Record, for a given date  !!! Assumes we only have one per date...to be discussed
 
     public Sleep getSleepRecordForDate(Long dateRequired){
-        db = dbHelper.getReadableDatabase();
+
+        /*db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,
                 MySQLiteHelper.COLUMN_SLEEP_DATE+"="+dateRequired,null,null,null,null);
         if (cursor != null) cursor.moveToFirst();
         Sleep sleep = new Sleep();
         sleep = cursorToSleeping(cursor);
-        return sleep;
+        return sleep; */                                                                    //The app stops working on my phone with this code but is okay with Test code below.
+                                                                                            // Steve - 5/3/2015.
+        //Test code Returning dummy sleep record
+        Sleep sleepTest = new Sleep(946598400000L, 946598460000L, 946684740000L, 9);        // (31/12/1999, 00:01, 23:59, 9)
+        return sleepTest;
     }
 
 
@@ -117,10 +122,10 @@ public class SleepDAO {
     protected Sleep cursorToSleeping(Cursor cursor) {
         Sleep sleeping  = new Sleep();
         sleeping.setID(Long.parseLong(cursor.getString(0)));
-        //sleeping.setDate(Long.parseLong(cursor.getString(1)));
-        sleeping.setTimeToBed(Long.parseLong(cursor.getString(1)));     //These int no's change by 1 if date included
-        sleeping.setTimeUp(Long.parseLong(cursor.getString(2)));
-        sleeping.setSleepRating(Integer.parseInt(cursor.getString(3)));
+        sleeping.setDate(Long.parseLong(cursor.getString(1)));
+        sleeping.setTimeToBed(Long.parseLong(cursor.getString(2)));     //These int no's change by 1 if date included
+        sleeping.setTimeUp(Long.parseLong(cursor.getString(3)));
+        sleeping.setSleepRating(Integer.parseInt(cursor.getString(4)));
         //log
         Log.d("getSleepingRecord("+sleeping.getID()+")", sleeping.toString());
         return sleeping;

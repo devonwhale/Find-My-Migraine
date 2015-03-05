@@ -77,7 +77,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_START_TIME + " INTEGER, "
             + COLUMN_WHEN_END_TIME + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
-    /*
+
 
     //Guys I made the table for coping strategies but before I uncommented and adn actually pushed it I wanted you guys to see if this is done properly
     //and if it is just uncomment the parts which are necessary.
@@ -107,8 +107,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_COPING_SLEEPING + " INTEGER, "
             + COLUMN_COPING_OTHER + " TEXT" + ")";
 
-     */
-        /*
+
+
 
         //CAUSES Strategies Table Details
     public static final String TABLE_CAUSES = "causes";
@@ -138,7 +138,7 @@ public static final String COLUMN_CAUSES_OTHER  = "other";
             + COLUMN_CAUSES_DEPRESSION + " INTEGER, "
             + COLUMN_CAUSES_OTHER + " TEXT" + ")";
 
-     */
+
 
     //Severity Table Details
         //Steve to code
@@ -161,7 +161,7 @@ public static final String COLUMN_CAUSES_OTHER  = "other";
         db.execSQL(CREATE_SLEEPING_TABLE);
         db.execSQL(CREATE_EXERCISE_TABLE);
         db.execSQL(CREATE_WHEN_TABLE);
-    //  db.excelSQL(CREATE_COPING_TABLE);
+        db.execSQL(CREATE_COPING_TABLE);
     }
 
     /*
@@ -175,7 +175,7 @@ public static final String COLUMN_CAUSES_OTHER  = "other";
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
-    //  db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         onCreate(db);
     }
 }

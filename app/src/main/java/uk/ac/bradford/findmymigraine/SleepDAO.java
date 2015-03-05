@@ -82,7 +82,7 @@ public class SleepDAO {
 
     //Get Single Sleep Record, for a given date  !!! Assumes we only have one per date...to be discussed
 
-    public Sleep getSleepRecordForDate(int dateRequired){
+    public Sleep getSleepRecordForDate(Long dateRequired){
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,
                 MySQLiteHelper.COLUMN_SLEEP_DATE+"="+dateRequired,null,null,null,null);

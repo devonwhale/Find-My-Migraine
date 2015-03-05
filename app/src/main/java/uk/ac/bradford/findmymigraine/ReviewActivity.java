@@ -1,5 +1,6 @@
 package uk.ac.bradford.findmymigraine;
 
+
 import android.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,6 +13,11 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 
+/*
+Class for Displaying Information on Screen for a given date (chosen by the user)
+ returned from the SQLite database.
+ Written by Steve 4/3/15
+ */
 public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen
@@ -67,16 +73,32 @@ public class ReviewActivity extends ActionBarActivity {
 
     }
 
-    /*public void setValues(){
-        //Convert date integers to single int
+    public void setValues(){
+        //initialise Calendar
+        theDate = Calendar.getInstance();
+        //Convert theDate to Long for passing to Data Access Object(s)
         theDate.set(year, month, day);
-        int intDate;
-        intDate = Integer.parseInt((()theDate.getTimeInMillis()));
+        Long longDate = theDate.getTimeInMillis();
 
-    }*/
+        //Sleep Values for selected date
+            //new sleep and sleepDAO objects
+            Sleep sleep = new Sleep();
+            SleepDAO sleepDAO = new SleepDAO(ReviewActivity.this);
+            //get values for selected date as a sleep object
+            sleep = sleepDAO.getSleepRecordForDate(longDate); //returns a sleep record
+            //display returned values in Android text views (values in sleep are longs (in millisecs...need to convert to times)
+            Calendar calTTB = Calendar.getInstance();
+            calTTB.setTimeInMillis(sleep.getTimeToBed());
+            sleepTTB.setText(+calTTB.HOUR+":"+calTTB.MINUTE);
 
 
 
+    }
+
+
+
+
+    //STANDARD ANDROID METHODS - NOT USED
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

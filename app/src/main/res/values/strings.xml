@@ -21,6 +21,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_exercise">Daily Exercise Record</string>
     <string name="title_activity_travel">Daily Travel Record</string>
+    <string name="title_activity_mood">Daily Mood Record</string>
 
 
 </resources>

@@ -69,10 +69,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
         </activity>
-        <activity
-            android:name=".MoodActivity"
-            android:label="@string/title_activity_mood" >
-        </activity>
     </application>
 
 </manifest>

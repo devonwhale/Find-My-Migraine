@@ -10,7 +10,7 @@ import android.text.format.DateFormat;
 import android.widget.TimePicker;
 import java.util.Calendar;
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class WhenTimePicker extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     boolean start;
 
@@ -24,20 +24,14 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
-    
+
     /**
      * Handles the time being entered
      * */
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         System.err.println("Time set");
-        ((SleepActivity)getActivity()).setTime(hourOfDay, minute);
-        /* Not used anymore
-        Intent i = new Intent("time_set");
-        i.setAction("UK.AC.BRADFORD.FINDMYMIGRAINE.TIME_SET");
-        i.putExtra("start", true);
-        i.putExtra("hourOfDay", hourOfDay);
-        i.putExtra("minute", minute);
-        LocalBroadcastManager.getInstance(this.getActivity()).sendBroadcast(i);*/
+        ((WhenActivity)getActivity()).setTime(hourOfDay, minute);               //calls method in Parent Activity
+
     }
 
 }

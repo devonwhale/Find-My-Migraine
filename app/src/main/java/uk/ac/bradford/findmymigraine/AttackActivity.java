@@ -1,13 +1,17 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class AttackActivity extends ActionBarActivity {
-
+    //Variables of type button
+    Button but_When, but_Severity, but_Coping, but_Causes;
     /**
     * Creates the view on the android device
     * */
@@ -15,6 +19,26 @@ public class AttackActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attack);
+
+        but_When = (Button) findViewById(R.id.btnWhen);
+        but_Severity = (Button) findViewById(R.id.btnSeverity);
+        but_Coping = (Button) findViewById(R.id.btnCoping);
+        but_Causes = (Button) findViewById(R.id.btnCauses);
+
+        //Moves to the When Activity
+        but_When.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), WhenActivity.class);
+                startActivity(i);
+            }
+        });
+
+        /*code to be added for remaining three buttons below
+        .................
+        .................
+         */
+
     }
 
     /**

@@ -16,12 +16,32 @@
         android:layout_height="wrap_content"
         android:id="@+id/slpTitle" />
 
+    <!-- Date entry -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/sleep_date"
+            android:id="@+id/lb_sleep_date"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="16"
+            android:layout_marginLeft="15dp"
+
+            android:text="Click here"
+            android:id="@+id/et_sleep_date"
+            />
+        </LinearLayout>
 
 
 
-
-
-
+    <!-- Time to Bed -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -33,7 +53,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tt"
         android:id="@+id/lbTTB"
-
          />
 
         <TextView
@@ -48,6 +67,8 @@
 
     </LinearLayout>
 
+
+    <!-- Time UP -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

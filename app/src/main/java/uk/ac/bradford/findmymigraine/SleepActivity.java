@@ -107,7 +107,7 @@ public class SleepActivity extends ActionBarActivity {
                     b = end.getTimeInMillis();
 
                     //Set 'Date' in Long format for passing to constructor
-                    wakeDate.set(wakeYear, wakeMonth, wakeDay);
+                    wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
                     c = wakeDate.getTimeInMillis();
 
                     //retrieve number of stars specifies by user in rating bar

@@ -4,6 +4,7 @@ package uk.ac.bradford.findmymigraine;
 import android.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,9 +79,11 @@ public class ReviewActivity extends ActionBarActivity {
         //initialise Calendar
         theDate = Calendar.getInstance();
         //Convert theDate to Long for passing to Data Access Object(s)
-        theDate.set(year, month, day);
-        //Long longDate = theDate.getTimeInMillis();
-        Long longDate = 1426377600000L;                 //TEMP IN PLACE OF ABOVE LINE FOR TEST
+        theDate.set(year, month, day,0,0,0);
+        Long longDate = (theDate.getTimeInMillis()) ;
+
+        Log.d("Date queried", longDate.toString());
+        //Long longDate = 1425897750596L;                 //TEMP IN PLACE OF ABOVE LINE FOR TEST
 
         //Sleep Values for selected date
             //new sleep and sleepDAO objects
@@ -102,9 +105,6 @@ public class ReviewActivity extends ActionBarActivity {
                 //Sleep rating
                 sleepRating.setText(Integer.toString(sleep.getSleepRating()));
 
-                //TEST ONLY - TO BE REMOVED
-                int displayMonth = calTTB.get(Calendar.MONTH)+1;
-                selectedDate.setText("Test for: "+calTTB.get(Calendar.DAY_OF_MONTH)+"/"+displayMonth+"/"+calTTB.get(Calendar.YEAR));
         //Exercise Values for selected date
 
 

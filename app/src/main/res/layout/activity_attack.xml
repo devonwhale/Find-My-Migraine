@@ -8,7 +8,7 @@
     tools:context="com.example.migraineapp.AttackActivity">
 
     <TextView android:text="@string/welcome"
-        android:textColor="@color/link_text_material_light"
+        android:textColor="@color/background_material_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -27,6 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_attack_when"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnWhen"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -35,6 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_attack_severity"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnSeverity"
         android:layout_below="@+id/btnWhen"
         android:layout_alignRight="@+id/btnWhen"
@@ -44,6 +46,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_attack_coping"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnCoping"
         android:layout_below="@+id/btnSeverity"
         android:layout_alignRight="@+id/btnSeverity"
@@ -53,6 +56,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_attack_causes"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnCauses"
         android:layout_below="@+id/btnCoping"
         android:layout_alignRight="@+id/btnCoping"

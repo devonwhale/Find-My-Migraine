@@ -8,7 +8,7 @@
     tools:context="com.example.migraineapp.DailyActivity">
 
     <TextView android:text="@string/welcome"
-        android:textColor="@color/link_text_material_light"
+        android:textColor="@color/background_material_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -27,6 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_sleep"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnSleep"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -35,6 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_exercise"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnExercise"
         android:layout_below="@+id/btnSleep"
         android:layout_alignRight="@+id/btnSleep"
@@ -44,6 +46,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_travel"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnTravel"
         android:layout_below="@+id/btnExercise"
         android:layout_alignRight="@+id/btnExercise"
@@ -53,6 +56,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Mood"
+        android:textColor="@color/background_material_light"
         android:id="@+id/btnMood"
         android:layout_below="@+id/btnTravel"
         android:layout_alignRight="@+id/btnTravel"

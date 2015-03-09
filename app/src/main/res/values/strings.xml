@@ -4,7 +4,7 @@
     <string name="app_name">Find My Migraine</string>
     <string name="hello_world">Hello world!</string>
     <string name="welcome">What do you want to do?</string>
-    <string name="record_attack">When did it happen?</string>
+    <string name="record_attack">Record a migraine attack</string>
     <string name="record_activity">Daily Events Diary</string>
     <string name="action_settings">Setup</string>
     <string name="action_help">Help</string>
@@ -21,9 +21,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_exercise">Daily Exercise Record</string>
     <string name="title_activity_travel">Daily Travel Record</string>
-
+    <string name="title_activity_mood">Mood</string>
     <string name="sleep_details">Sleep Details</string>
     <string name="sleep_date">Date Waking</string>
+    <string name="title_activity_review">Review records</string>
 
     <string name="title_attack_when">When did it happen?</string>
     <string name="title_attack_severity">How bad was it?</string>

@@ -17,22 +17,27 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
-    public static final String TABLE_SLEEP = "sleeping";
+    //Sleep Table Details
+    public static final String TABLE_SLEEP = "sleep_new";
     public static final String COLUMN_SLEEP_ID = "_id";
+    public static final String COLUMN_SLEEP_DATE = "wakeDate";
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
     public static final String COLUMN_TIME_UP= "timeUp";
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
     public static final String COLUMN_SLEEP_SYNCFLAG= "syncFlag";
-    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
+    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,
+            COLUMN_SLEEP_DATE,
+            COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
 
     //String containing query for building sleep table
     private static final String CREATE_SLEEPING_TABLE = "CREATE TABLE " +
             TABLE_SLEEP + "("
             + COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_TIME_TO_BED + " INTEGER,"
-            + COLUMN_TIME_UP + " INTEGER,"
-            + COLUMN_SLEEP_RATING + " INTEGER,"
-            + COLUMN_SLEEP_SYNCFLAG + " INTEGER"+ ")";
+            + COLUMN_SLEEP_DATE + " INTEGER, "
+            + COLUMN_TIME_TO_BED + " INTEGER, "
+            + COLUMN_TIME_UP + " INTEGER, "
+            + COLUMN_SLEEP_RATING + " INTEGER, "
+            + COLUMN_SLEEP_SYNCFLAG + " INTEGER" + ")";
 
     //Exercise Table Details
     public static final String TABLE_EXERCISE = "exercise";

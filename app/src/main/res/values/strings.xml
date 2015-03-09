@@ -22,5 +22,8 @@
     <string name="title_activity_exercise">Daily Exercise Record</string>
     <string name="title_activity_travel">Daily Travel Record</string>
 
+    <string name="sleep_details">Sleep Details</string>
+    <string name="sleep_date">Date Waking</string>
+
 
 </resources>

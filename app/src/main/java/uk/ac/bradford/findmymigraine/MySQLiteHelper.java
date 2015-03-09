@@ -70,6 +70,42 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_END_TIME + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
 
+    //Travel Table Details
+    public static final String TABLE_TRAVEL = "travel";
+    public static final String COLUMN_TRAVEL_ID = "_id";
+    public static final String COLUMN_TRAVEL_DATE = "date";
+    public static final String COLUMN_TRAVEL_HOURS = "hours";
+    public static final String COLUMN_TRAVEL_METHOD = "method";
+    public static final String COLUMN_TRAVEL_DESTINATION = "destination";
+    public static final String COLUMN_TRAVEL_SYNCFLAG = "syncFlag";
+    public static final String[] COLUMNS_TRAVEL = {COLUMN_TRAVEL_ID, COLUMN_TRAVEL_DATE, COLUMN_TRAVEL_HOURS, COLUMN_TRAVEL_METHOD, COLUMN_TRAVEL_DESTINATION, COLUMN_TRAVEL_SYNCFLAG};
+
+    //String containing query for building Travel Table
+    private static final String CREATE_TRAVEL_TABLE = "CREATE TABLE " +
+    TABLE_TRAVEL +"("
+    + COLUMN_TRAVEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+    + COLUMN_TRAVEL_DATE + " INTEGER, "
+    + COLUMN_TRAVEL_HOURS + " INTEGER, "
+    + COLUMN_TRAVEL_METHOD + " VARCHAR, "
+    + COLUMN_TRAVEL_DESTINATION + " VARCHAR, "
+    + COLUMN_TRAVEL_SYNCFLAG + " INTEGER" + ")";
+
+    //Mood Table Details
+    public static final String TABLE_MOOD = "mood";
+    public static final String COLUMN_MOOD_ID = "_id";
+    public static final String COLUMN_MOOD_DATE = "date";
+    public static final String COLUMN_MOOD_FEELING = "feeling";
+    public static final String COLUMN_MOOD_SYNCFLAG = "syncFlag";
+    public static final String[] COLUMNS_MOOD = {COLUMN_MOOD_ID, COLUMN_MOOD_DATE, COLUMN_MOOD_FEELING, COLUMN_MOOD_SYNCFLAG};
+
+            //String containing query for building Mood Table
+            private static final String CREATE_MOOD_TABLE = "CREATE TABLE " +
+            TABLE_MOOD + "("
+            + COLUMN_MOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_MOOD_DATE + " INTEGER, "
+            + COLUMN_MOOD_FEELING + " INTEGER, "
+            + COLUMN_MOOD_SYNCFLAG + " INTEGER" + ")";
+
     //Severity Table Details
         //Steve to code
 

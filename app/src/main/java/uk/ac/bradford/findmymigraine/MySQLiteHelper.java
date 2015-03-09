@@ -13,47 +13,39 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;              //Date fields added to Sleeping and Exercise
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
-    public static final String TABLE_SLEEP = "sleep_new";
+    public static final String TABLE_SLEEP = "sleeping";
     public static final String COLUMN_SLEEP_ID = "_id";
-    public static final String COLUMN_SLEEP_DATE = "wakeDate";
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
     public static final String COLUMN_TIME_UP= "timeUp";
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
     public static final String COLUMN_SLEEP_SYNCFLAG= "syncFlag";
-    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,
-            COLUMN_SLEEP_DATE,
-            COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
+    public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
 
     //String containing query for building sleep table
     private static final String CREATE_SLEEPING_TABLE = "CREATE TABLE " +
             TABLE_SLEEP + "("
             + COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_SLEEP_DATE + " INTEGER, "
-            + COLUMN_TIME_TO_BED + " INTEGER, "
-            + COLUMN_TIME_UP + " INTEGER, "
-            + COLUMN_SLEEP_RATING + " INTEGER, "
-            + COLUMN_SLEEP_SYNCFLAG + " INTEGER" + ")";
+            + COLUMN_TIME_TO_BED + " INTEGER,"
+            + COLUMN_TIME_UP + " INTEGER,"
+            + COLUMN_SLEEP_RATING + " INTEGER,"
+            + COLUMN_SLEEP_SYNCFLAG + " INTEGER"+ ")";
 
     //Exercise Table Details
     public static final String TABLE_EXERCISE = "exercise";
     public static final String COLUMN_EXERCISE_ID = "_id";
-    public static final String COLUMN_EXERCISE_DATE = "date";
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_INTENSITY= "intensity";
     public static final String COLUMN_EXERCISE_SYNCFLAG= "syncFlag";
-    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,
-            COLUMN_EXERCISE_DATE,
-            COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
+    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
 
     //String containing query for building exercise table
     private static final String CREATE_EXERCISE_TABLE = "CREATE TABLE " +
             TABLE_EXERCISE + "("
             + COLUMN_EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_EXERCISE_DATE + " INTEGER,"
             + COLUMN_HOURS + " INTEGER,"
             + COLUMN_INTENSITY+ " INTEGER,"
             + COLUMN_EXERCISE_SYNCFLAG + " INTEGER"+ ")";
@@ -78,66 +70,41 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_END_TIME + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
 
+    //Travel Table Details
+    public static final String TABLE_TRAVEL = "travel";
+    public static final String COLUMN_TRAVEL_ID = "_id";
+    public static final String COLUMN_TRAVEL_DATE = "date";
+    public static final String COLUMN_TRAVEL_HOURS = "hours";
+    public static final String COLUMN_TRAVEL_METHOD = "method";
+    public static final String COLUMN_TRAVEL_DESTINATION = "destination";
+    public static final String COLUMN_TRAVEL_SYNCFLAG = "syncFlag";
+    public static final String[] COLUMNS_TRAVEL = {COLUMN_TRAVEL_ID, COLUMN_TRAVEL_DATE, COLUMN_TRAVEL_HOURS, COLUMN_TRAVEL_METHOD, COLUMN_TRAVEL_DESTINATION, COLUMN_TRAVEL_SYNCFLAG};
 
-    //Guys I made the table for coping strategies but before I uncommented and adn actually pushed it I wanted you guys to see if this is done properly
-    //and if it is just uncomment the parts which are necessary.
+    //String containing query for building Travel Table
+    private static final String CREATE_TRAVEL_TABLE = "CREATE TABLE " +
+    TABLE_TRAVEL +"("
+    + COLUMN_TRAVEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+    + COLUMN_TRAVEL_DATE + " INTEGER, "
+    + COLUMN_TRAVEL_HOURS + " INTEGER, "
+    + COLUMN_TRAVEL_METHOD + " VARCHAR, "
+    + COLUMN_TRAVEL_DESTINATION + " VARCHAR, "
+    + COLUMN_TRAVEL_SYNCFLAG + " INTEGER" + ")";
 
-    //Coping Strategies Table Details
-    public static final String TABLE_COPING = "coping";
-    public static final String COLUMN_COPING_ID = "_id";
-    public static final String COLUMN_COPING_DATE = "date";
-    public static final String COLUMN_COPING_YOGA = "yoga";
-    public static final String COLUMN_COPING_MEDICATION = "medication";
-    public static final String COLUMN_COPING_MEDITATION = "meditation";
-    public static final String COLUMN_COPING_SLEEPING = "sleeping";
-    public static final String COLUMN_COPING_OTHER = "other";
-    public static final String COLUMN_COPING_SYNCFLAG = "syncFlag";
+    //Mood Table Details
+    public static final String TABLE_MOOD = "mood";
+    public static final String COLUMN_MOOD_ID = "_id";
+    public static final String COLUMN_MOOD_DATE = "date";
+    public static final String COLUMN_MOOD_FEELING = "feeling";
+    public static final String COLUMN_MOOD_SYNCFLAG = "syncFlag";
+    public static final String[] COLUMNS_MOOD = {COLUMN_MOOD_ID, COLUMN_MOOD_DATE, COLUMN_MOOD_FEELING, COLUMN_MOOD_SYNCFLAG};
 
-    public static final String[] COLUMNS_COPING = {COLUMN_COPING_ID,COLUMN_COPING_DATE,COLUMN_COPING_SYNCFLAG,COLUMN_COPING_YOGA,COLUMN_COPING_MEDICATION, COLUMN_COPING_MEDITATION, COLUMN_COPING_SLEEPING, COLUMN_COPING_OTHER};
-
-    //String containing query for building COPING table
-    private static final String CREATE_COPING_TABLE = "CREATE TABLE " +
-            TABLE_COPING + "("
-            + COLUMN_COPING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_COPING_DATE + " INTEGER, "
-            + COLUMN_COPING_YOGA + " INTEGER, "
-            + COLUMN_COPING_MEDICATION + " INTEGER, "
-            + COLUMN_COPING_MEDITATION + " INTEGER, "
-            + COLUMN_COPING_SLEEPING + " INTEGER, "
-            + COLUMN_COPING_OTHER + " TEXT, "
-            + COLUMN_COPING_SYNCFLAG + " INTEGER"+ ")";
-
-
-
-
-        //CAUSES Strategies Table Details
-    public static final String TABLE_CAUSES = "causes";
-    public static final String COLUMN_CAUSES_ID = "_id";
-    public static final String COLUMN_CAUSES_DATE = "date";
-    public static final String COLUMN_CAUSES_STRESS = "stress";
-    public static final String COLUMN_CAUSES_LACK_OF_SLEEP = "lack of sleep";
-    public static final String COLUMN_CAUSES_LACK_OF_FOOD = "lack of food";
-    public static final String COLUMN_CAUSES_LACK_OF_WATER = "lack of water";
-    public static final String COLUMN_CAUSES_DEPRESSION  = "depression";
-    public static final String COLUMN_CAUSES_OTHER  = "other";
-    public static final String COLUMN_CAUSES_SYNCFLAG = "syncFlag";
-
-  public static final String[] COLUMNS_CAUSES = {COLUMN_CAUSES_ID,COLUMN_CAUSES_DATE,COLUMN_CAUSES_SYNCFLAG,COLUMN_CAUSES_STRESS,COLUMN_CAUSES_LACK_OF_SLEEP, COLUMN_CAUSES_LACK_OF_FOOD, COLUMN_CAUSES_LACK_OF_WATER, COLUMN_CAUSES_DEPRESSION, COLUMN_CAUSES_OTHER};
-
-    //String containing query for building CAUSES table
-    private static final String CREATE_CAUSES_TABLE = "CREATE TABLE " +
-            TABLE_CAUSES + "("
-            + COLUMN_CAUSES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_CAUSES_DATE + " INTEGER, "
-            + COLUMN_CAUSES_STRESS + " INTEGER, "
-            + COLUMN_CAUSES_LACK_OF_SLEEP + " INTEGER, "
-            + COLUMN_CAUSES_LACK_OF_FOOD + " INTEGER, "
-            + COLUMN_CAUSES_LACK_OF_WATER+ " INTEGER, "
-            + COLUMN_CAUSES_DEPRESSION + " INTEGER, "
-            + COLUMN_CAUSES_OTHER + " TEXT, "
-            + COLUMN_CAUSES_SYNCFLAG + " INTEGER"+ ")";
-
-
+            //String containing query for building Mood Table
+            private static final String CREATE_MOOD_TABLE = "CREATE TABLE " +
+            TABLE_MOOD + "("
+            + COLUMN_MOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_MOOD_DATE + " INTEGER, "
+            + COLUMN_MOOD_FEELING + " INTEGER, "
+            + COLUMN_MOOD_SYNCFLAG + " INTEGER" + ")";
 
     //Severity Table Details
         //Steve to code
@@ -160,7 +127,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_SLEEPING_TABLE);
         db.execSQL(CREATE_EXERCISE_TABLE);
         db.execSQL(CREATE_WHEN_TABLE);
-        db.execSQL(CREATE_COPING_TABLE);
     }
 
     /*
@@ -174,7 +140,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
-        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         onCreate(db);
     }
 }

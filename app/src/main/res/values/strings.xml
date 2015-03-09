@@ -25,5 +25,10 @@
     <string name="sleep_details">Sleep Details</string>
     <string name="sleep_date">Date Waking</string>
 
+    <string name="title_attack_when">When did it happen?</string>
+    <string name="title_attack_severity">How bad was it?</string>
+    <string name="title_attack_coping">How did you deal with it?</string>
+    <string name="title_attack_causes">What might have caused it?</string>
+
 
 </resources>

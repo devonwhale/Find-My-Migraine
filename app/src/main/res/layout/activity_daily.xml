@@ -22,7 +22,7 @@
         android:src="@drawable/logo_small" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_sleep"
         android:id="@+id/btnSleep"
@@ -30,7 +30,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_exercise"
         android:id="@+id/btnExercise"
@@ -39,7 +39,7 @@
         android:layout_alignEnd="@+id/btnSleep" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_travel"
         android:id="@+id/btnTravel"
@@ -48,7 +48,7 @@
         android:layout_alignEnd="@+id/btnExercise" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Mood"
         android:id="@+id/btnMood"

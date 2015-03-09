@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/record_attack"
         android:id="@+id/recAttack"
@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/record_activity"
         android:id="@+id/recActivity"
@@ -46,7 +46,7 @@
         android:layout_marginTop="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Review Records"
         android:id="@+id/reviewRecords"

@@ -70,6 +70,32 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_END_TIME + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
 
+    //Coping Strategies Table Details
+    public static final String TABLE_COPING = "coping";
+    public static final String COLUMN_COPING_ID = "_id";
+    public static final String COLUMN_COPING_DATE = "date";
+    public static final String COLUMN_COPING_SYNCFLAG = "syncFlag";
+    public static final String COLUMN_COPING_YOGA = "yoga";
+    public static final String COLUMN_COPING_MEDICATION = "medication";
+    public static final String COLUMN_COPING_MEDITATION = "meditation";
+    public static final String COLUMN_COPING_SLEEPING = "sleeping";
+    public static final String COLUMN_COPING_OTHER = "other";
+
+    public static final String[] COLUMNS_COPING = {COLUMN_COPING_ID,COLUMN_COPING_DATE,COLUMN_COPING_SYNCFLAG,COLUMN_COPING_YOGA,COLUMN_COPING_MEDICATION, COLUMN_COPING_MEDITATION, COLUMN_COPING_SLEEPING, COLUMN_COPING_OTHER};
+
+    //String containing query for building COPING table
+    private static final String CREATE_COPING_TABLE = "CREATE TABLE " +
+            TABLE_COPING + "("
+            + COLUMN_COPING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_COPING_DATE + " INTEGER, "
+            + COLUMN_COPING_SYNCFLAG + " INTEGER, "
+            + COLUMN_COPING_YOGA + " INTEGER, "
+            + COLUMN_COPING_MEDICATION + " INTEGER, "
+            + COLUMN_COPING_MEDITATION + " INTEGER, "
+            + COLUMN_COPING_SLEEPING + " INTEGER, "
+            + COLUMN_COPING_OTHER + " TEXT" + ")";
+
+
     //Travel Table Details
     public static final String TABLE_TRAVEL = "travel";
     public static final String COLUMN_TRAVEL_ID = "_id";

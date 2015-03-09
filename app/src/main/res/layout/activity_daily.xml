@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_activity_mood"
+        android:text="Mood"
         android:id="@+id/btnMood"
         android:layout_below="@+id/btnTravel"
         android:layout_alignRight="@+id/btnTravel"

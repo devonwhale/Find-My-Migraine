@@ -48,7 +48,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_activity_review"
+        android:text="Review Records"
         android:id="@+id/reviewRecords"
         android:textSize="18dp"
         android:layout_below="@+id/recActivity"

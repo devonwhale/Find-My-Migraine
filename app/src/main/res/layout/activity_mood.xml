@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
-    <TextView android:text="@string/title_activity_mood"
+    <TextView android:text="Mood"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

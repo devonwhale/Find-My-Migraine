@@ -9,7 +9,7 @@
     tools:context="uk.ac.bradford.findmymigraine.WhenActivity">
 
     <!-- SCREEN HEADER -->
-    <TextView android:text="@string/title_activity_when"
+    <TextView android:text="When did it happen?"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/when_date"
+            android:text="Date it happened"
             android:id="@+id/labelWhenDate"
             />
         <TextView
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/when_start"
+            android:text="Time it started"
             android:id="@+id/labelWhenStart"
             />
         <TextView
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/when_end"
+            android:text="Time it ended"
             android:id="@+id/labelWhenEnd"
             />
         <TextView
@@ -89,6 +89,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="@string/next"
         android:id="@+id/btnUpdateWhen"
         android:layout_alignParentBottom="true"/>

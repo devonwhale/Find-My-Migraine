@@ -48,14 +48,7 @@
                 </action>
             </intent-filter>
         </receiver>
-        <activity
-            android:name=".WhenActivity"
-            android:label="@string/title_attack_when"
-            android:parentActivityName=".AttackActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
-        </activity>
+
         <activity
             android:name=".SleepEntryReport"
             android:label="@string/title_activity_sleep_entry_report"
@@ -77,23 +70,21 @@
                 android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
         </activity>
         <activity
-            android:name=".MoodActivity"
-            android:label="@string/title_activity_mood"
-            android:parentActivityName=".DailyActivity" >
+            android:name=".WhenActivity"
+            android:label="@string/title_activity_when"
+            android:parentActivityName=".AttackActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
         </activity>
-
         <activity
             android:name=".ReviewActivity"
             android:label="@string/title_activity_review"
-            android:parentActivityName=".DailyActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+                android:value="uk.ac.bradford.findmymigraine.MainActivity" />
         </activity>
-
     </application>
 
 </manifest>

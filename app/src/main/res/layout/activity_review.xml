@@ -7,10 +7,13 @@
     <!--Select Date Button -->
     <LinearLayout
         android:layout_width="fill_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_height="wrap_content">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:id="@+id/a_r_button_selectDate"
             android:text="Select Date"
             />
@@ -21,6 +24,18 @@
 
     </LinearLayout>
 
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp">
+
+
     <!-- Sleep Details Section -->
     <LinearLayout
         android:layout_width="fill_parent"
@@ -28,7 +43,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:text="@string/sleep_details"
             android:textAppearance="?android:textAppearanceMedium"/>
         </LinearLayout>
@@ -39,12 +54,13 @@
         android:layout_marginTop="5dp">
         <TextView
             android:layout_width="wrap_content"
+            android:minWidth="150dp"
             android:layout_height="wrap_content"
             android:text="@string/sleep_tt"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+
             android:id="@+id/ttb_details"/>
         </LinearLayout>
     <!-- Time up -->
@@ -53,12 +69,13 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
+            android:minWidth="150dp"
             android:layout_height="wrap_content"
             android:text="@string/sleep_tu"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+
             android:id="@+id/tu_details"/>
         </LinearLayout>
     <!-- Sleep rating -->
@@ -67,16 +84,144 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
+            android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/sleep_r"/>
+            android:text="Rating (1-5)"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+
             android:id="@+id/sr_details"/>
     </LinearLayout>
 
     <!-- Exercise Details Section -->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Exercise Details"
+                android:textAppearance="?android:textAppearanceMedium"/>
+        </LinearLayout>
+        <!-- Hours -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:text="Duration"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/ex_hours"/>
+        </LinearLayout>
+        <!-- Intensity -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:text="Intensity (1-5)"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/ex_intensity"/>
+        </LinearLayout>
 
 
+        <!-- Travel Details Section -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Travel Details"
+            android:textAppearance="?android:textAppearanceMedium"/>
+    </LinearLayout>
+        <!-- Duration -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="150dp"
+            android:layout_height="wrap_content"
+            android:text="Duration"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/travel_duration"/>
+    </LinearLayout>
+    <!-- Method -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="150dp"
+            android:layout_height="wrap_content"
+            android:text="Method"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/travel_method"/>
+    </LinearLayout>
+    <!-- Destination -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="150dp"
+            android:layout_height="wrap_content"
+            android:text="Destination"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/travel_destination"/>
+    </LinearLayout>
+
+        <!-- Mood Details Section -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Mood details"
+            android:textAppearance="?android:textAppearanceMedium"/>
+    </LinearLayout>
+    <!-- General mood rating -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="150dp"
+            android:layout_height="wrap_content"
+            android:text="General Mood (1-5)"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/mood_rating"/>
+    </LinearLayout>
+
+
+    </TableLayout>
+    </ScrollView>
 </LinearLayout>

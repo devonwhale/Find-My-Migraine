@@ -9,6 +9,7 @@ import android.util.Log;
 
 /**
  * Created by George on 12/03/2015.
+ * Additional methods added by Steve 12/3/15.
  */
 public class TravelDAO {
 
@@ -45,6 +46,51 @@ public class TravelDAO {
         db.close();
     }
 
+    //method added by Steve - 12/3/15
+    public Travel getTravelRecordForDate(Long dateRequired){
+
+        Long minDate = dateRequired-1000;
+        Long maxDate = dateRequired+1000;
+        db = dbHelper.getReadableDatabase();
+        Travel travel = new Travel();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_TRAVEL,
+                    MySQLiteHelper.COLUMNS_TRAVEL,
+                    MySQLiteHelper.COLUMN_TRAVEL_DATE + ">" + minDate + " AND " + MySQLiteHelper.COLUMN_TRAVEL_DATE + "<" + maxDate,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if(!cursor.isAfterLast()){
+                travel = cursorToTravel(cursor);
+
+                cursor.close();}
+
+            db.close();
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        return travel;
+    }
+
+    //method added by Steve 15/3/15
+    protected Travel cursorToTravel(Cursor cursor) {
+        Travel travel  = new Travel();
+        travel.setId(Long.parseLong(cursor.getString(0)));
+        travel.setDate(Long.parseLong(cursor.getString(1)));
+        travel.setHours(Double.parseDouble(cursor.getString(2)));
+        travel.setMethod(cursor.getString(3));
+        travel.setDest(cursor.getString(4));
+
+        //log
+        Log.d("getTravelRecord("+travel.getId()+")", travel.toString());
+        return travel;
+    }
+
+/*  method not used
     public Travel getTravelRecord(int id) {
         db = dbHelper.getReadableDatabase();
 
@@ -57,5 +103,5 @@ public class TravelDAO {
 
         return travel;
     }
-
+*/
 }

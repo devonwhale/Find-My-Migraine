@@ -2,10 +2,11 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by George on 05/03/2015.
+ * Date field added by Steve on 12/3/15.
  */
 public class Travel {
 
-    private long id;
+    private long id, date;
     private double hours;
     private String method, dest;
 
@@ -13,7 +14,8 @@ public class Travel {
 
     }
 
-    public Travel(double nHours, String nMethod, String nDest) {
+    public Travel(long date, double nHours, String nMethod, String nDest) {
+        this.date = date;
         hours = nHours;
         method = nMethod;
         dest = nDest;
@@ -21,6 +23,10 @@ public class Travel {
 
     public void setId(long nId) {
         id = nId;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 
     public void setHours(double nHours) {
@@ -39,6 +45,10 @@ public class Travel {
         return id;
     }
 
+    public long getDate() {
+        return date;
+    }
+
     public double getHours() {
         return hours;
     }
@@ -52,7 +62,7 @@ public class Travel {
     }
 
     public String toString() {
-        return "Travel [ID: " + id + ", Hours: " + hours + ", Method: " + method + ", Destination:" + dest + "]" + "\n";
+        return "Travel [ID: " + id + ", date: "+date+", Hours: " + hours + ", Method: " + method + ", Destination:" + dest + "]" + "\n";
     }
 
 }

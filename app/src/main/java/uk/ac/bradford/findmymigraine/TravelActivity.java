@@ -3,26 +3,52 @@ package uk.ac.bradford.findmymigraine;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class TravelActivity extends ActionBarActivity {
 
     Button btnNext;
+    EditText etHours, etTravelType, etDest;
+    int time;
+    String method, dest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
+
         btnNext = (Button) findViewById(R.id.btnNext);
+        etHours = (EditText) findViewById(R.id.etHours);
+        etTravelType = (EditText) findViewById(R.id.etTravelType);
+        etDest = (EditText) findViewById(R.id.etDest);
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DailyActivity.class);
+
+                time = Integer.parseInt(etHours.getText().toString());
+                method = etTravelType.toString();
+                dest = etDest.toString();
+
+                Travel t = new Travel(time, method, dest);
+                TravelDAO dao = new TravelDAO(TravelActivity.this);
+                dao.createTravelRecord(t);
+                Log.d("Travel ", "Travel Record Added");
+
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Travel Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+
+                Intent i = new Intent(getApplicationContext(), MoodActivity.class);
                 startActivity(i);
             }
         });

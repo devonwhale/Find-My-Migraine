@@ -1,5 +1,6 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,9 @@ public class MoodActivity extends ActionBarActivity {
                 Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Mood Records", Toast.LENGTH_LONG);
                 feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                 feedback.show();
+
+                Intent i = new Intent(getApplicationContext(), DailyActivity.class);
+                startActivity(i);
             }
         });
     }

@@ -2,9 +2,11 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 23/02/2015.
+ * Date field and related methods added by Steve on 12/3/15.
  */
 public class Exercise {
     private long id;
+    private long date;
     private double hours;
     private int intensity;
 
@@ -13,7 +15,8 @@ public class Exercise {
     }
 
     // Constructors
-    public Exercise( double hours, int intensity) {
+    public Exercise(long date, double hours, int intensity) {
+        this.date = date;
         this.hours = hours;
         this.intensity = intensity;
     }
@@ -34,6 +37,10 @@ public class Exercise {
         this.id = xID;
     }
 
+    public void setDate(long date) {
+        this.date = date;
+    }
+
     public void setHours (double hours) {
         this.hours = hours;
     }
@@ -48,6 +55,10 @@ public class Exercise {
         return id;
     }
 
+    public long getDate() {
+        return date;
+    }
+
     public double getHours () {
         return hours;
     }
@@ -58,6 +69,6 @@ public class Exercise {
 
 
     public String toString() {
-        return "Exercise [ID: " + id + ", Hours: " + hours + ", Intensity: " + intensity + "]" + "\n";
+        return "Exercise [ID: " + id + ", Date: "+date+", Hours: " + hours + ", Intensity: " + intensity + "]" + "\n";
     }
 }

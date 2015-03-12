@@ -54,6 +54,38 @@ public class ExerciseDAO {
 
     }
 
+    //method added by Steve - 12/3/15
+    public Exercise getExerciseRecordForDate(Long dateRequired){
+
+        Long minDate = dateRequired-1000;
+        Long maxDate = dateRequired+1000;
+        db = dbHelper.getReadableDatabase();
+        Exercise exercise = new Exercise();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_EXERCISE,
+                    MySQLiteHelper.COLUMNS_EXERCISE,
+                    MySQLiteHelper.COLUMN_EXERCISE_DATE + ">" + minDate + " AND " + MySQLiteHelper.COLUMN_EXERCISE_DATE + "<" + maxDate,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if(!cursor.isAfterLast()){
+                exercise = cursorToExercise(cursor);
+
+                cursor.close();}
+
+            db.close();
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        return exercise;
+    }
+
+/* - Following two methods not used:
+
     //Get Single Exercise Record
     public Exercise getExerciseRecord(int id) {
         db = dbHelper.getReadableDatabase();
@@ -88,13 +120,14 @@ public class ExerciseDAO {
         }
         return listExercise;
     }
-
+*/
 
     protected Exercise cursorToExercise(Cursor cursor) {
         Exercise exercise  = new Exercise();
         exercise.setID(Long.parseLong(cursor.getString(0)));
-        exercise.setHours(Double.parseDouble(cursor.getString(1)));
-        exercise.setIntensity(Integer.parseInt(cursor.getString(2)));
+        exercise.setDate(Long.parseLong(cursor.getString(1)));
+        exercise.setHours(Double.parseDouble(cursor.getString(2)));
+        exercise.setIntensity(Integer.parseInt(cursor.getString(3)));
 
         //log
         Log.d("getExerciseRecord("+exercise.getID()+")", exercise.toString());

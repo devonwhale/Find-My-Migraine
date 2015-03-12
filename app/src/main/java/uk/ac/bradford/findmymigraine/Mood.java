@@ -2,17 +2,18 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by George on 05/03/2015.
+ * Date field and related methods added by Steve 12/3/15.
  */
 public class Mood {
 
-    private long id;
+    private long id, date;
     private int mood;
 
     public Mood() {
 
     }
 
-    public Mood(int nMood) {
+    public Mood(long date,int nMood) {
         mood = nMood;
     }
 

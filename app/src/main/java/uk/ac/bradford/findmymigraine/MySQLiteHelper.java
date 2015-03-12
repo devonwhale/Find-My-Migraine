@@ -18,7 +18,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     //Sleep Table Details
     //Sleep Table Details
-    public static final String TABLE_SLEEP = "sleep_new";
+    public static final String TABLE_SLEEP = "sleep";
     public static final String COLUMN_SLEEP_ID = "_id";
     public static final String COLUMN_SLEEP_DATE = "wakeDate";
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
@@ -188,6 +188,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_SLEEPING_TABLE);
         db.execSQL(CREATE_EXERCISE_TABLE);
+        db.execSQL(CREATE_TRAVEL_TABLE);
+        db.execSQL(CREATE_MOOD_TABLE);
         db.execSQL(CREATE_WHEN_TABLE);
     }
 
@@ -201,6 +203,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(), "Upgrading from version" + oldVersion + " to "+ newVersion+", which will destroy old data");
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_TRAVEL);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_MOOD);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
         onCreate(db);
     }

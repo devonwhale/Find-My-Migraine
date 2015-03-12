@@ -76,7 +76,7 @@ public class TravelDAO {
         return travel;
     }
 
-    //method added by Steve 15/3/15
+    //method added by Steve 12/3/15
     protected Travel cursorToTravel(Cursor cursor) {
         Travel travel  = new Travel();
         travel.setId(Long.parseLong(cursor.getString(0)));

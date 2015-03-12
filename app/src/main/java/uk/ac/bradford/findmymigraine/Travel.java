@@ -2,7 +2,7 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by George on 05/03/2015.
- * Date field added by Steve on 12/3/15.
+ * Date field added by Steve on 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
  */
 public class Travel {
 

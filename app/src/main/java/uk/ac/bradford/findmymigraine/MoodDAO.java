@@ -9,6 +9,7 @@ import android.util.Log;
 
 /**
  * Created by George on 05/03/2015.
+ * Additional methods added by Steve 12/3/15.
  */
 public class MoodDAO {
 
@@ -43,6 +44,49 @@ public class MoodDAO {
         db.close();
     }
 
+    //Method added by Steve 12/3/15
+    public Mood getMoodRecordForDate(Long dateRequired){
+
+        Long minDate = dateRequired-1000;
+        Long maxDate = dateRequired+1000;
+        db = dbHelper.getReadableDatabase();
+        Mood mood = new Mood();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_MOOD,
+                    MySQLiteHelper.COLUMNS_MOOD,
+                    MySQLiteHelper.COLUMN_MOOD_DATE + ">" + minDate + " AND " + MySQLiteHelper.COLUMN_MOOD_DATE + "<" + maxDate,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            if(!cursor.isAfterLast()){
+                mood = cursorToMood(cursor);
+
+                cursor.close();}
+
+            db.close();
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        return mood;
+    }
+
+    //Method added by Steve 12/3/15
+    protected Mood cursorToMood(Cursor cursor) {
+        Mood mood  = new Mood();
+        mood.setId(Long.parseLong(cursor.getString(0)));
+        mood.setDate(Long.parseLong(cursor.getString(1)));
+        mood.setMood(Integer.parseInt(cursor.getString(2)));
+
+        //log
+        Log.d("getTravelRecord("+mood.getId()+")", mood.toString());
+        return mood;
+    }
+
+/* method not used
     public Mood getMoodRecord(int id) {
         db = dbHelper.getReadableDatabase();
 
@@ -55,5 +99,5 @@ public class MoodDAO {
 
         return mood;
     }
-
+*/
 }

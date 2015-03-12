@@ -2,7 +2,7 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by George on 05/03/2015.
- * Date field and related methods added by Steve 12/3/15.
+ * Date field and related methods added by Steve 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
  */
 public class Mood {
 
@@ -29,12 +29,20 @@ public class Mood {
         id = nId;
     }
 
+    public void setDate(long date) {
+        this.date = date;
+    }
+
     public void setMood(int nMood) {
         mood = nMood;
     }
 
+    public long getDate() {
+        return date;
+    }
+
     public String toString() {
-        return "Mood [ID: " + id + ", Mood: " + mood + "]" + "\n";
+        return "Mood [ID: " + id + ", date: "+date+", Mood: " + mood + "]" + "\n";
     }
 
 }

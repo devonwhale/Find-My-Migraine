@@ -42,15 +42,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //Exercise Table Details
     public static final String TABLE_EXERCISE = "exercise";
     public static final String COLUMN_EXERCISE_ID = "_id";
+    public static final String COLUMN_EXERCISE_DATE = "exDate";
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_INTENSITY= "intensity";
     public static final String COLUMN_EXERCISE_SYNCFLAG= "syncFlag";
-    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
+    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_EXERCISE_DATE,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
 
     //String containing query for building exercise table
     private static final String CREATE_EXERCISE_TABLE = "CREATE TABLE " +
             TABLE_EXERCISE + "("
             + COLUMN_EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_EXERCISE_DATE + " INTEGER, "
             + COLUMN_HOURS + " INTEGER,"
             + COLUMN_INTENSITY+ " INTEGER,"
             + COLUMN_EXERCISE_SYNCFLAG + " INTEGER"+ ")";

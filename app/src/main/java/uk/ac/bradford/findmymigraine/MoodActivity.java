@@ -31,18 +31,24 @@ public class MoodActivity extends ActionBarActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mood = (int) rbMood.getNumStars();
-                Mood m = new Mood(mood);
-                MoodDAO dao = new MoodDAO(MoodActivity.this);
-                dao.createMoodRecord(m);
-                Log.d("Mood ", "Mood Record Added");
+                if((int)rbMood.getRating() == 0) {
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Please enter your mood", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                } else {
+                    mood = (int) rbMood.getRating();
+                    Mood m = new Mood(mood);
+                    MoodDAO dao = new MoodDAO(MoodActivity.this);
+                    dao.createMoodRecord(m);
+                    Log.d("Mood ", "Mood Record Added");
 
-                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Mood Records", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                feedback.show();
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Mood Records", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
 
-                Intent i = new Intent(getApplicationContext(), DailyActivity.class);
-                startActivity(i);
+                    Intent i = new Intent(getApplicationContext(), DailyActivity.class);
+                    startActivity(i);
+                }
             }
         });
     }

@@ -34,22 +34,33 @@ public class TravelActivity extends ActionBarActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    if(etTravelType.getText().toString().length() < 1 || etDest.getText().toString().length() < 1) {
+                        Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a method and destination", Toast.LENGTH_LONG);
+                        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                        feedback.show();
+                    } else {
+                        time = Integer.parseInt(etHours.getText().toString());
+                        method = etTravelType.getText().toString();
+                        dest = etDest.getText().toString();
 
-                time = Integer.parseInt(etHours.getText().toString());
-                method = etTravelType.toString();
-                dest = etDest.toString();
+                        Travel t = new Travel(time, method, dest);
+                        TravelDAO dao = new TravelDAO(TravelActivity.this);
+                        dao.createTravelRecord(t);
+                        Log.d("Travel ", "Travel Record Added");
 
-                Travel t = new Travel(time, method, dest);
-                TravelDAO dao = new TravelDAO(TravelActivity.this);
-                dao.createTravelRecord(t);
-                Log.d("Travel ", "Travel Record Added");
+                        Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Travel Records", Toast.LENGTH_LONG);
+                        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                        feedback.show();
 
-                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Travel Records", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                feedback.show();
-
-                Intent i = new Intent(getApplicationContext(), MoodActivity.class);
-                startActivity(i);
+                        Intent i = new Intent(getApplicationContext(), MoodActivity.class);
+                        startActivity(i);
+                    }
+                } catch (NumberFormatException e) {
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a duration for the travel", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                }
             }
         });
     }

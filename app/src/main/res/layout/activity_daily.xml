@@ -55,7 +55,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Mood"
+        android:text="@string/title_activity_mood"
         android:textColor="@color/background_material_light"
         android:id="@+id/btnMood"
         android:layout_below="@+id/btnTravel"

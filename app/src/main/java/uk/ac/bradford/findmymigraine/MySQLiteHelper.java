@@ -120,7 +120,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     + COLUMN_TRAVEL_DATE + " INTEGER, "
     + COLUMN_TRAVEL_HOURS + " INTEGER, "
     + COLUMN_TRAVEL_METHOD + " VARCHAR, "
-    + COLUMN_TRAVEL_DESTINATION + " VARCHAR, "
+    + COLUMN_TRAVEL_DESTINATION + " TEXT, "
     + COLUMN_TRAVEL_SYNCFLAG + " INTEGER" + ")";
 
     //Mood Table Details

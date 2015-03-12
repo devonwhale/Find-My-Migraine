@@ -27,6 +27,10 @@ public class Drink {
         this.id = id;
     }
 
+    public void setDate(long date) {
+        this.date = date;
+    }
+
     public void setBeer(int beer) {
         this.beer = beer;
     }
@@ -63,6 +67,10 @@ public class Drink {
 
     public long getId() {
         return id;
+    }
+
+    public long getDate() {
+        return date;
     }
 
     public int getBeer() {

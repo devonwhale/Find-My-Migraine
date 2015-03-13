@@ -2,7 +2,7 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 23/02/2015.
- * Date field and related methods added by Steve on 12/3/15.
+ * Date field and related methods added by Steve on 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
  */
 public class Exercise {
     private long id;

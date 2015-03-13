@@ -6,19 +6,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 
 
 public class FoodDrink extends ActionBarActivity {
-    RadioButton beerRadioButton;
-    RadioButton redWineRadioButton;
-    RadioButton whiteWineRadioButton;
-    RadioButton spiritRadioButton;
-    RadioButton sodaRadioButton;
-    RadioButton coffeeRadioButton;
-    RadioButton TeaRadioButton;
-    EditText foodEditText;
+    RadioButton beerRB;
+    RadioButton redWineRB;
+    RadioButton whiteWineRB;
+    RadioButton spiritRB;
+    RadioButton sodaRB;
+    RadioButton coffeeRB;
+    RadioButton teaRB;
+    RadioButton chocolateRB;
+    RadioButton cheeseRB;
+    RadioButton nutsRB;
+    RadioButton citrusFruitsRB;
     Button nextButton;
 
     @Override
@@ -31,26 +33,87 @@ public class FoodDrink extends ActionBarActivity {
 
     /** Initialise components in XML layout*/
     private void initialise(){
-        RadioButton beerRadioButton = (RadioButton) findViewById(R.id.beerRadioButton);
-        RadioButton redWineRadioButton = (RadioButton) findViewById(R.id.redWineRadioButton);
-        RadioButton whiteWineRadioButton = (RadioButton) findViewById(R.id.whiteWineRadioButton);
-        RadioButton spiritRadioButton = (RadioButton) findViewById(R.id.spiritRadioButton);
-        RadioButton sodaRadioButton = (RadioButton) findViewById(R.id.sodaRadioButton);
-        RadioButton coffeeRadioButton = (RadioButton) findViewById(R.id.coffeeRadioButton);
-        RadioButton TeaRadioButton = (RadioButton) findViewById(R.id.TeaRadioButton);
-        EditText foodEditText = (EditText) findViewById(R.id.foodEditText);
+        RadioButton beerRB = (RadioButton) findViewById(R.id.beerRB);
+        RadioButton redWineRB = (RadioButton) findViewById(R.id.redWineRB);
+        RadioButton whiteWineRB = (RadioButton) findViewById(R.id.whiteWineRB);
+        RadioButton spiritRB = (RadioButton) findViewById(R.id.spiritRB);
+        RadioButton sodaRB = (RadioButton) findViewById(R.id.sodaRB);
+        RadioButton coffeeRB = (RadioButton) findViewById(R.id.coffeeRB);
+        RadioButton teaRB = (RadioButton) findViewById(R.id.teaRB);
+        RadioButton chocolateRB = (RadioButton) findViewById(R.id.chocolateRB);
+        RadioButton cheeseRB = (RadioButton) findViewById(R.id.cheeseRB);
+        RadioButton nutsRB = (RadioButton) findViewById(R.id.nutsRB);
+        RadioButton citrusFruitsRB = (RadioButton) findViewById(R.id.citrusFruitsRB);
         Button nextButton = (Button) findViewById(R.id.nextButton);
     }
 
     /** Set onClickListeners for components in XML layout*/
-    private void setOnClickListeners(){
+    private void setOnClickListeners() {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //check which radio buttons have been checked and input values into database.
+                //create array of integer for radio button, 0 if not checked, 1 if checked
+                int[] intArray = new int[11];
+                //initialise all elements of array to 0 (false)
+                for (int i=0; i<intArray.length;i++ ){
+                    intArray[i]= 0;
+                }
+                // Is the button now checked?
+                boolean checked = ((RadioButton) v).isChecked();
+
+                // Check which radio button was clicked
+                switch(v.getId()) {
+                    case R.id.beerRB:
+                        if (checked){
+                            intArray[0]= 0;
+                        }
+                    case R.id.redWineRB:
+                        if (checked){
+                            intArray[1]= 0;
+                        }
+                    case R.id.whiteWineRB:
+                        if (checked){
+                            intArray[2]= 0;
+                        }
+                    case R.id.spiritRB:
+                        if (checked){
+                            intArray[3]= 0;
+                        }
+                    case R.id.sodaRB:
+                        if (checked){
+                            intArray[4]= 0;
+                        }
+                    case R.id.coffeeRB:
+                        if (checked){
+                            intArray[5]= 0;
+                        }
+                    case R.id.teaRB:
+                        if (checked){
+                            intArray[6]= 0;
+                        }
+                    case R.id.chocolateRB:
+                        if (checked){
+                            intArray[7]= 0;
+                        }
+                    case R.id.cheeseRB:
+                        if (checked){
+                            intArray[8]= 0;
+                        }
+                    case R.id.nutsRB:
+                        if (checked){
+                            intArray[9]= 0;
+                        }
+                    case R.id.citrusFruitsRB:
+                        if (checked){
+                            intArray[10]= 0;
+                        }
+                }
+
+                //input intArray[0],intArray[1].... into food table, drink table
             }
         });
     }
+
 
 
     @Override

@@ -23,7 +23,7 @@ public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen
     Button selectDate;
-    TextView selectedDate, sleepTTB, sleepTU, sleepRating;
+    TextView selectedDate, sleepTTB, sleepTU, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
     int year, month, day;
     Calendar theDate;
 
@@ -50,6 +50,12 @@ public class ReviewActivity extends ActionBarActivity {
         sleepTTB = (TextView)findViewById(R.id.ttb_details);
         sleepTU = (TextView)findViewById(R.id.tu_details);
         sleepRating = (TextView)findViewById(R.id.sr_details);
+        exDuration = (TextView)findViewById(R.id.ex_hours);
+        exIntensity = (TextView)findViewById(R.id.ex_intensity);
+        travelDuration = (TextView)findViewById(R.id.travel_duration);
+        travelMethod = (TextView)findViewById(R.id.travel_method);
+        travelDest = (TextView)findViewById(R.id.travel_destination);
+        moodRating = (TextView)findViewById(R.id.mood_rating);
     }
 
     private void addButtonListener(){
@@ -75,13 +81,13 @@ public class ReviewActivity extends ActionBarActivity {
 
     }
 
+    //Method sets all the values on the screen to the selected date
     public void setValues(){
         //initialise Calendar
         theDate = Calendar.getInstance();
         //Convert theDate to Long for passing to Data Access Object(s)
         theDate.set(year, month, day,0,0,0);
-        Long longDate = (theDate.getTimeInMillis()) ;
-
+        Long longDate = (theDate.getTimeInMillis());
         Log.d("Date queried", longDate.toString());
         //Long longDate = 1425897750596L;                 //TEMP IN PLACE OF ABOVE LINE FOR TEST
 
@@ -106,8 +112,31 @@ public class ReviewActivity extends ActionBarActivity {
                 sleepRating.setText(Integer.toString(sleep.getSleepRating()));
 
         //Exercise Values for selected date
+            Exercise exercise = new Exercise();
+            ExerciseDAO exerciseDAO = new ExerciseDAO(ReviewActivity.this);
+            exercise = exerciseDAO.getExerciseRecordForDate(longDate);
+                //Duration
+                exDuration.setText(Double.toString(exercise.getHours()));
+                //Intensity
+                exIntensity.setText(Integer.toString(exercise.getIntensity()));
 
+        //Travel Values for selected date
+            Travel travel = new Travel();
+            TravelDAO travelDAO = new TravelDAO(ReviewActivity.this);
+            travel = travelDAO.getTravelRecordForDate(longDate);
+                //Duration
+                travelDuration.setText(Double.toString(travel.getHours()));
+                //Method
+                travelMethod.setText(travel.getMethod());
+                //Destination
+                travelDest.setText(travel.getDest());
 
+        //Mood value for selected date
+            Mood mood = new Mood();
+            MoodDAO moodDAO = new MoodDAO(ReviewActivity.this);
+            mood = moodDAO.getMoodRecordForDate(longDate);
+                //Mood
+                moodRating.setText(mood.getMood());                 //If this works don't need Integer.toString as above.
 
     }
 

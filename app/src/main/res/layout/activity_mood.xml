@@ -1,13 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_800">
 
     <TextView android:text="Mood"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/moodTitle" />
+        android:id="@+id/moodTitle"
+        android:textColor="@color/background_material_light"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -21,6 +23,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="General Mood (1 - Bad, 5 - Good)"
             android:id="@+id/tvMood"
+            android:textColor="@color/background_material_light"
             />
     </LinearLayout>
 
@@ -30,6 +33,7 @@
         android:layout_height="wrap_content"
         android:numStars="5"
         android:stepSize="1"
+
         />
 
     <Button

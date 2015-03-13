@@ -4,6 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/material_blue_grey_800"
     tools:context="uk.ac.bradford.findmymigraine.FoodDrink">
 
     <TextView
@@ -12,45 +13,50 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Drinks Consumed"
         android:id="@+id/textView2"
+        android:textColor="@color/background_material_light"
         android:layout_alignParentTop="true" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Beer"
-        android:id="@+id/beerRadioButton"
+        android:id="@+id/beerRB"
         android:checked="false"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
+        android:textColor="@color/background_material_light"
         android:layout_alignParentStart="true" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Red Wine"
-        android:id="@+id/redWineRadioButton"
-        android:layout_below="@+id/beerRadioButton"
-        android:layout_alignLeft="@+id/beerRadioButton"
-        android:layout_alignStart="@+id/beerRadioButton"
+        android:id="@+id/redWineRB"
+        android:layout_below="@+id/beerRB"
+        android:layout_alignLeft="@+id/beerRB"
+        android:layout_alignStart="@+id/beerRB"
+        android:textColor="@color/background_material_light"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="White Wine"
-        android:id="@+id/whiteWineRadioButton"
-        android:layout_below="@+id/redWineRadioButton"
-        android:layout_alignLeft="@+id/redWineRadioButton"
-        android:layout_alignStart="@+id/redWineRadioButton"
+        android:id="@+id/whiteWineRB"
+        android:layout_below="@+id/redWineRB"
+        android:layout_alignLeft="@+id/redWineRB"
+        android:layout_alignStart="@+id/redWineRB"
+        android:textColor="@color/background_material_light"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Spirit"
-        android:id="@+id/spiritRadioButton"
+        android:id="@+id/spiritRB"
         android:checked="false"
-        android:layout_below="@+id/whiteWineRadioButton"
+        android:layout_below="@+id/whiteWineRB"
+        android:textColor="@color/background_material_light"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -58,9 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Soda"
-        android:id="@+id/sodaRadioButton"
+        android:id="@+id/sodaRB"
         android:checked="false"
-        android:layout_above="@+id/redWineRadioButton"
+        android:textColor="@color/background_material_light"
+        android:layout_above="@+id/redWineRB"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2" />
 
@@ -68,9 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coffee"
-        android:id="@+id/coffeeRadioButton"
+        android:id="@+id/coffeeRB"
         android:checked="false"
-        android:layout_above="@+id/whiteWineRadioButton"
+        android:textColor="@color/background_material_light"
+        android:layout_above="@+id/whiteWineRB"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2" />
 
@@ -78,9 +86,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tea"
-        android:id="@+id/TeaRadioButton"
+        android:id="@+id/teaRB"
         android:checked="false"
-        android:layout_below="@+id/coffeeRadioButton"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/coffeeRB"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2" />
 
@@ -90,30 +99,63 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Food Consumed"
         android:id="@+id/textView3"
-        android:layout_below="@+id/spiritRadioButton"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/spiritRB"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="46dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/foodEditText"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/coffeeRadioButton"
-        android:layout_alignEnd="@+id/coffeeRadioButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:inputType="text" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/nextButton"
-        android:layout_below="@+id/foodEditText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate"
+        android:id="@+id/chocolateRB"
+        android:textColor="@color/background_material_light"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="52dp" />
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cheese"
+        android:id="@+id/cheeseRB"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/chocolateRB"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuts"
+        android:id="@+id/nutsRB"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/cheeseRB"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Citrus Fruits"
+        android:id="@+id/citrusFruitsRB"
+        android:layout_alignTop="@+id/chocolateRB"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:textColor="@color/background_material_light"
+        android:checked="false" />
 
 </RelativeLayout>

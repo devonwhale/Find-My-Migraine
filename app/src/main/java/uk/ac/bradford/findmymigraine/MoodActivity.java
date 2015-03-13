@@ -10,14 +10,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class MoodActivity extends ActionBarActivity {
 
     Button btnNext;
     RatingBar rbMood;
+    TextView tvTitle;
     int mood;
+    Calendar c;
+    long c2;
 
 
     @Override
@@ -27,6 +33,17 @@ public class MoodActivity extends ActionBarActivity {
 
         btnNext = (Button) findViewById(R.id.btnNext);
         rbMood = (RatingBar) findViewById(R.id.rbMood);
+        tvTitle = (TextView) findViewById(R.id.travelTitle);
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            tvTitle = (TextView) findViewById(R.id.moodTitle);
+            tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
+        }
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +54,7 @@ public class MoodActivity extends ActionBarActivity {
                     feedback.show();
                 } else {
                     mood = (int) rbMood.getRating();
-                    Mood m = new Mood(mood);
+                    Mood m = new Mood(c2, mood);
                     MoodDAO dao = new MoodDAO(MoodActivity.this);
                     dao.createMoodRecord(m);
                     Log.d("Mood ", "Mood Record Added");

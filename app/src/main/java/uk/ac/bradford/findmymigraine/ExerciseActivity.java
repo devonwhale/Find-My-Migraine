@@ -15,11 +15,17 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class ExerciseActivity extends ActionBarActivity {
     EditText hoursEditText;
     RatingBar intensityRatingBar;
     Button nextButton;
+    TextView tvTitle;
+    Calendar c;
+    long c2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,15 @@ public class ExerciseActivity extends ActionBarActivity {
         setContentView(R.layout.activity_exercise);
         initialise();
         setOnClickListeners();
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            tvTitle = (TextView) findViewById(R.id.exerciseTitle);
+            tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
+        }
     }
 
     /** Initialise components in XML layout*/
@@ -43,23 +58,28 @@ public class ExerciseActivity extends ActionBarActivity {
          @Override
          public void onClick(View v) {
              //retrieve number of stars specifies by user in rating bar
-             int numStars = (int) intensityRatingBar.getRating();
+          int numStars = (int) intensityRatingBar.getRating();
 
-            double hours = Double.parseDouble(hoursEditText.getText().toString());
+          double hours = Double.parseDouble(hoursEditText.getText().toString());
 
-             //Enter exercise details into database
-             Exercise e = new Exercise(hours,numStars);
+          /*if (c2 != null) {
 
-             //Create Exercise Data Access Object Instance
-             ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
+          }*/
 
-             //Enter exercise record into database
-             dao.createExerciseRecord(e);
+          //Enter exercise details into database
+          Exercise e = new Exercise(c2, hours,numStars);
 
-             Log.d("Exercise ", "Exercise Record Added");
-             //Go back to Daily Activity
-             Intent intent = new Intent(getApplicationContext(), DailyActivity.class);
-             startActivity(intent);
+          //Create Exercise Data Access Object Instance
+          ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
+
+          //Enter exercise record into database
+          dao.createExerciseRecord(e);
+
+          Log.d("Exercise ", "Exercise Record Added");
+          //Go back to Daily Activity
+          Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
+          intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+          startActivity(intent);
          }
      });
     }

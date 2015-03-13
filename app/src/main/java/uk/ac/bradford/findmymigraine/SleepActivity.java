@@ -130,7 +130,9 @@ public class SleepActivity extends ActionBarActivity {
                     Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Sleep Records", Toast.LENGTH_LONG);
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
+
                     Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
                     startActivity(mv);
                 }
             }

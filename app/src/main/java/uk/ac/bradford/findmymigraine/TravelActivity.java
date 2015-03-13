@@ -10,15 +10,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class TravelActivity extends ActionBarActivity {
 
     Button btnNext;
     EditText etHours, etTravelType, etDest;
+    TextView tvTitle;
     int time;
     String method, dest;
+    Calendar c;
+    long c2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,16 @@ public class TravelActivity extends ActionBarActivity {
         etHours = (EditText) findViewById(R.id.etHours);
         etTravelType = (EditText) findViewById(R.id.etTravelType);
         etDest = (EditText) findViewById(R.id.etDest);
+        tvTitle = (TextView) findViewById(R.id.travelTitle);
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            tvTitle = (TextView) findViewById(R.id.exerciseTitle);
+            tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
+        }
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +60,7 @@ public class TravelActivity extends ActionBarActivity {
                         method = etTravelType.getText().toString();
                         dest = etDest.getText().toString();
 
-                        Travel t = new Travel(time, method, dest);
+                        Travel t = new Travel(c2, time, method, dest);
                         TravelDAO dao = new TravelDAO(TravelActivity.this);
                         dao.createTravelRecord(t);
                         Log.d("Travel ", "Travel Record Added");
@@ -54,6 +70,7 @@ public class TravelActivity extends ActionBarActivity {
                         feedback.show();
 
                         Intent i = new Intent(getApplicationContext(), MoodActivity.class);
+                        i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                         startActivity(i);
                     }
                 } catch (NumberFormatException e) {

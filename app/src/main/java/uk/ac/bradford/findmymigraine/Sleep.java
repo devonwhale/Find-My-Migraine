@@ -81,6 +81,6 @@ public class Sleep {
     public String toString() {
         return "Sleep [ID: " + id +
                 ", Date: "+wakeDate+
-                ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + ", Sleep Rating " + sleep_rating  + "]" + "\n";
+                ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + ", Sleep Rating " + sleep_rating  + ", syncFlag: "+syncFlag+ "]" + "\n";
     }
 }

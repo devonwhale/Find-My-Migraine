@@ -42,6 +42,7 @@ public class ExerciseActivity extends ActionBarActivity {
             tvTitle = (TextView) findViewById(R.id.exerciseTitle);
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
         }
+
     }
 
     /** Initialise components in XML layout*/

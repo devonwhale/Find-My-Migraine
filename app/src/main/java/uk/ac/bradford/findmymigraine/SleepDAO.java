@@ -43,7 +43,7 @@ public class SleepDAO {
     //Add new Sleep Record
     public void createSleepingRecord(Sleep sleep) {
         Log.d("addSleepingRecord", sleep.toString());
-        //db = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         //values.put(dbHelper.COLUMN_SLEEP_ID, sleep.getID());

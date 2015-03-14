@@ -13,7 +13,7 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
@@ -145,9 +145,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CAUSES_DATE = "date";
     public static final String COLUMN_CAUSES_SYNCFLAG = "syncFlag";
     public static final String COLUMN_CAUSES_STRESS = "stress";
-    public static final String COLUMN_CAUSES_LACK_OF_SLEEP = "lack of sleep";
-    public static final String COLUMN_CAUSES_LACK_OF_FOOD = "lack of food";
-    public static final String COLUMN_CAUSES_LACK_OF_WATER = "lack of water";
+    public static final String COLUMN_CAUSES_LACK_OF_SLEEP = "lack_of_sleep";
+    public static final String COLUMN_CAUSES_LACK_OF_FOOD = "lack_of_food";
+    public static final String COLUMN_CAUSES_LACK_OF_WATER = "lack_of_water";
     public static final String COLUMN_CAUSES_DEPRESSION  = "depression";
     public static final String COLUMN_CAUSES_OTHER  = "other";
 
@@ -208,7 +208,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     //String containing query for building Food Table
     private static final String CREATE_FOOD_TABLE = "CREATE TABLE " +
-            TABLE_DRINK + "("
+            TABLE_FOOD + "("
             + COLUMN_FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_FOOD_DATE + " INTEGER, "
             + COLUMN_FOOD_SYNCFLAG + " INTEGER, "
@@ -242,6 +242,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_WHEN_TABLE);
         db.execSQL(CREATE_DRINK_TABLE);
         db.execSQL(CREATE_FOOD_TABLE);
+        db.execSQL(CREATE_COPING_TABLE);
+        db.execSQL(CREATE_CAUSES_TABLE);
     }
 
     /*
@@ -259,6 +261,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WHEN);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_DRINK);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_FOOD);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_CAUSES);
         onCreate(db);
     }
 }

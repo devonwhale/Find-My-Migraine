@@ -35,14 +35,14 @@ public class TravelActivity extends ActionBarActivity {
         etHours = (EditText) findViewById(R.id.etHours);
         etTravelType = (EditText) findViewById(R.id.etTravelType);
         etDest = (EditText) findViewById(R.id.etDest);
-        tvTitle = (TextView) findViewById(R.id.travelTitle);
+        //tvTitle = (TextView) findViewById(R.id.travelTitle);
 
         Bundle extra = getIntent().getExtras();
         if(extra != null) {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
-            tvTitle = (TextView) findViewById(R.id.exerciseTitle);
+            tvTitle = (TextView) findViewById(R.id.travelTitle);
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
         }
 

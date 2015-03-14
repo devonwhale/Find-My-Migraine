@@ -40,7 +40,7 @@ public class ExerciseActivity extends ActionBarActivity {
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
             tvTitle = (TextView) findViewById(R.id.exerciseTitle);
-            tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
+            tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE));
         }
 
     }

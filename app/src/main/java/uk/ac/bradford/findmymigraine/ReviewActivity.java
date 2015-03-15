@@ -136,7 +136,7 @@ public class ReviewActivity extends ActionBarActivity {
             MoodDAO moodDAO = new MoodDAO(ReviewActivity.this);
             mood = moodDAO.getMoodRecordForDate(longDate);
                 //Mood
-                moodRating.setText(mood.getMood());                 //If this works don't need Integer.toString as above.
+                moodRating.setText(Integer.toString(mood.getMood()));
 
     }
 

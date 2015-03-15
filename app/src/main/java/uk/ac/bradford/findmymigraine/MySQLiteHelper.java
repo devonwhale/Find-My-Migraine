@@ -46,7 +46,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_INTENSITY= "intensity";
     public static final String COLUMN_EXERCISE_SYNCFLAG= "syncFlag";
-    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_HOURS,COLUMN_EXERCISE_DATE,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
+    public static final String[] COLUMNS_EXERCISE = {COLUMN_EXERCISE_ID,COLUMN_EXERCISE_DATE,COLUMN_HOURS,COLUMN_INTENSITY,COLUMN_EXERCISE_SYNCFLAG};
 
     //String containing query for building exercise table
     private static final String CREATE_EXERCISE_TABLE = "CREATE TABLE " +

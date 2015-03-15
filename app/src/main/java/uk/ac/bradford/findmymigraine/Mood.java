@@ -14,7 +14,7 @@ public class Mood {
     }
 
     public Mood(long date,int nMood) {
-        mood = nMood;
+        mood = nMood; this.date=date;
     }
 
     public long getId() {

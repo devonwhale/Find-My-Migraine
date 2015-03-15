@@ -20,6 +20,7 @@ public class Drink {
         this.soda=soda;
         this.coffee=coffee;
         this.tea=tea;
+        syncFlag = 0;
     }
 
     //Setters

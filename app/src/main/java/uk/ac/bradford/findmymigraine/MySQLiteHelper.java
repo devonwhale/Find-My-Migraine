@@ -173,13 +173,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DRINK_DATE = "date";
     public static final String COLUMN_DRINK_SYNCFLAG = "syncFlag";
     public static final String COLUMN_DRINK_BEER = "beer";
-    public static final String COLUMN_DRINK_WHITEWINE = "whiteWine";
     public static final String COLUMN_DRINK_REDWINE = "redWine";
+    public static final String COLUMN_DRINK_WHITEWINE = "whiteWine";
     public static final String COLUMN_DRINK_SPIRIT = "spirit";
     public static final String COLUMN_DRINK_SODA = "soda";
     public static final String COLUMN_DRINK_COFFEE = "coffee";
     public static final String COLUMN_DRINK_TEA = "tea";
-    public static final String[] COLUMNS_DRINK = {COLUMN_DRINK_ID, COLUMN_DRINK_DATE, COLUMN_DRINK_SYNCFLAG, COLUMN_DRINK_BEER, COLUMN_DRINK_WHITEWINE, COLUMN_DRINK_REDWINE, COLUMN_DRINK_SPIRIT, COLUMN_DRINK_SODA, COLUMN_DRINK_COFFEE, COLUMN_DRINK_TEA};
+    public static final String[] COLUMNS_DRINK = {COLUMN_DRINK_ID, COLUMN_DRINK_DATE, COLUMN_DRINK_SYNCFLAG, COLUMN_DRINK_BEER, COLUMN_DRINK_REDWINE, COLUMN_DRINK_WHITEWINE, COLUMN_DRINK_SPIRIT, COLUMN_DRINK_SODA, COLUMN_DRINK_COFFEE, COLUMN_DRINK_TEA};
 
     //String containing query for building Drink Table
     private static final String CREATE_DRINK_TABLE = "CREATE TABLE " +
@@ -188,8 +188,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_DRINK_DATE + " INTEGER, "
             + COLUMN_DRINK_SYNCFLAG + " INTEGER, "
             + COLUMN_DRINK_BEER + " INTEGER, "
-            + COLUMN_DRINK_WHITEWINE + " INTEGER, "
             + COLUMN_DRINK_REDWINE+ " INTEGER, "
+            + COLUMN_DRINK_WHITEWINE + " INTEGER, "
             + COLUMN_DRINK_SPIRIT + " INTEGER, "
             + COLUMN_DRINK_SODA + " INTEGER, "
             + COLUMN_DRINK_COFFEE + " INTEGER, "

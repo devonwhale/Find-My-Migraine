@@ -71,6 +71,13 @@
             android:label="@string/title_activity_exercise" >
         </activity>
         <activity
+            android:name=".FoodDrinkActivity"
+            android:parentActivityName=".DailyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+        </activity>
+        <activity
             android:name=".TravelActivity"
             android:label="@string/title_activity_travel"
             android:parentActivityName=".DailyActivity" >

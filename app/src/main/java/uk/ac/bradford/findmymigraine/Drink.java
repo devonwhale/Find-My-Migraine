@@ -5,17 +5,17 @@ package uk.ac.bradford.findmymigraine;
  */
 public class Drink {
     private long id, date;
-    private int syncFlag, beer, whiteWine, redWine, spirit, soda, coffee, tea;
+    private int syncFlag, beer, redWine, whiteWine, spirit, soda, coffee, tea;
 
     //Constructor
     public Drink(){
     }
     //Constructor
-    public Drink(long date, int beer, int whiteWine, int redWine, int spirit, int soda, int coffee, int tea){
+    public Drink(long date, int beer, int redWine, int whiteWine, int spirit, int soda, int coffee, int tea){
         this.date=date;
         this.beer=beer;
-        this.whiteWine=whiteWine;
         this.redWine=redWine;
+        this.whiteWine=whiteWine;
         this.spirit=spirit;
         this.soda=soda;
         this.coffee=coffee;
@@ -108,6 +108,6 @@ public class Drink {
 
     @Override
     public String toString() {
-        return "Drink [ID: " + id + ", date: "+date+", beer: " + beer + ", whiteWine: " + whiteWine +", redWine: " + redWine+", spirit: "+spirit+", soda: "+soda+", coffee: " +coffee+", tea: " +tea+"]" + "\n";
+        return "Drink [ID: " + id + ", date: "+date+", beer: " + beer +  ", Red Wine: " + redWine+", White Wine"+ whiteWine+ ", spirit: "+spirit+", soda: "+soda+", coffee: " +coffee+", tea: " +tea+"]" + "\n";
     }
 }

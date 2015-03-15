@@ -78,8 +78,8 @@ public class ExerciseActivity extends ActionBarActivity {
           dao.createExerciseRecord(e);
 
           Log.d("Exercise ", "Exercise Record Added");
-          //Go back to Daily Activity
-          Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
+          //Go to Food and Drink Activity
+          Intent intent = new Intent(getApplicationContext(), FoodDrinkActivity.class);
           intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
           startActivity(intent);
          }

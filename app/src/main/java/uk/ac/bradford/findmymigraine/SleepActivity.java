@@ -110,16 +110,17 @@ public class SleepActivity extends ActionBarActivity {
                     wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
                     c = wakeDate.getTimeInMillis();
 
-                    //retrieve number of stars specifies by user in rating bar
+                    //retrieve number of stars specified by user in rating bar
                     int numStars = (int) ratingBar.getRating();
 
-                    //Enter sleep details into database
+                    //Enter sleep details into Sleep object
                     Sleep s = new Sleep(
                             c,
                             a, b, numStars);
 
                     //Create Sleep Data Access Object Instance
                     SleepDAO dao = new SleepDAO(SleepActivity.this);
+
                     //Enter sleep record into database
                     dao.createSleepingRecord(s);
                     Log.d("Sleep ", "Sleep Record Added");

@@ -38,6 +38,7 @@ public class TravelDAO {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_TRAVEL_DATE, travel.getDate());
         values.put(MySQLiteHelper.COLUMN_TRAVEL_HOURS, travel.getHours());
         values.put(MySQLiteHelper.COLUMN_TRAVEL_METHOD, travel.getMethod());
         values.put(MySQLiteHelper.COLUMN_TRAVEL_DESTINATION, travel.getDest());

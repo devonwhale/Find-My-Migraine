@@ -44,7 +44,7 @@ public class ExerciseDAO {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-
+        values.put(MySQLiteHelper.COLUMN_EXERCISE_DATE, exercise.getDate());
         values.put(MySQLiteHelper.COLUMN_HOURS, exercise.getHours());
         values.put(MySQLiteHelper.COLUMN_INTENSITY, exercise.getIntensity());
 
@@ -56,7 +56,7 @@ public class ExerciseDAO {
 
     //method added by Steve - 12/3/15
     public Exercise getExerciseRecordForDate(Long dateRequired){
-
+        Log.d("Date required received by getExerciseRecordForDate():",dateRequired.toString()); //On test, correct Long coming through
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();

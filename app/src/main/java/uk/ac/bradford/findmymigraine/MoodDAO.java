@@ -39,6 +39,7 @@ public class MoodDAO {
 
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_MOOD_FEELING, mood.getMood());
+        values.put(MySQLiteHelper.COLUMN_MOOD_DATE, mood.getDate());        //Added by Steve 15/3/15
 
         db.insert(MySQLiteHelper.TABLE_MOOD, null, values);
         db.close();

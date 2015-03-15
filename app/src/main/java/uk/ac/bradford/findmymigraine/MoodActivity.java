@@ -43,6 +43,7 @@ public class MoodActivity extends ActionBarActivity {
             tvTitle = (TextView) findViewById(R.id.moodTitle);
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
         }
+        else {Log.d("extra is null!","");}                                      //Added by Steve 15/3/15
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {

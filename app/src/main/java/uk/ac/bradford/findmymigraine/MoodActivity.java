@@ -41,7 +41,8 @@ public class MoodActivity extends ActionBarActivity {
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
             tvTitle = (TextView) findViewById(R.id.moodTitle);
-            tvTitle.setText(tvTitle.getText().toString() + " for " + c.DATE);
+            int displayMonth = c.get(Calendar.MONTH) + 1;
+            tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
         }
         else {Log.d("extra is null!","");}                                      //Added by Steve 15/3/15
 

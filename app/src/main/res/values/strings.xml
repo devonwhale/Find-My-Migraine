@@ -38,4 +38,6 @@
     <string name="title_attack_coping">How did you deal with it?</string>
     <string name="title_attack_causes">What might have caused it?</string>
 
+    <string name="title_activity_drink_food">Food and Drink Record</string>
+
 </resources>

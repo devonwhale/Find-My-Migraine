@@ -111,7 +111,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/foodDrinkNextButton" />
+        android:id="@+id/foodDrinkNextButton"
+        android:textColor="@color/background_material_light"/>
 
     <RadioButton
         android:layout_width="wrap_content"

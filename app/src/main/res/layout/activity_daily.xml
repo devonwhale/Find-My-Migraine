@@ -41,6 +41,16 @@
         android:layout_below="@+id/btnSleep"
         android:layout_alignRight="@+id/btnSleep"
         android:layout_alignEnd="@+id/btnSleep" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_drink_food"
+        android:textColor="@color/background_material_light"
+        android:id="@+id/btnFoodDrink"
+        android:layout_below="@+id/btnExercise"
+        android:layout_alignRight="@+id/btnExercise"
+        android:layout_alignEnd="@+id/btnExercise" />
+
 
     <Button
         android:layout_width="fill_parent"
@@ -48,9 +58,9 @@
         android:text="@string/title_activity_travel"
         android:textColor="@color/background_material_light"
         android:id="@+id/btnTravel"
-        android:layout_below="@+id/btnExercise"
-        android:layout_alignRight="@+id/btnExercise"
-        android:layout_alignEnd="@+id/btnExercise" />
+        android:layout_below="@+id/btnFoodDrink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="fill_parent"
@@ -58,10 +68,10 @@
         android:text="@string/title_activity_mood"
         android:textColor="@color/background_material_light"
         android:id="@+id/btnMood"
-        android:layout_below="@+id/btnTravel"
-        android:layout_alignRight="@+id/btnTravel"
-        android:layout_alignEnd="@+id/btnTravel" />
-
+        android:layout_below="@+id/btnFoodDrink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="48dp" />
 
 
 </RelativeLayout>

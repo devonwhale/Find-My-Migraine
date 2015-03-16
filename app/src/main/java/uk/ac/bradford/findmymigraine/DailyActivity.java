@@ -10,7 +10,7 @@ import android.widget.Button;
 
 
 public class DailyActivity extends ActionBarActivity {
-    Button but_Sleep, but_Exercise, but_Travel, but_Mood;
+    Button but_Sleep, but_Exercise, but_Travel, but_Mood, but_FoodDrink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class DailyActivity extends ActionBarActivity {
 
         but_Sleep = (Button) findViewById(R.id.btnSleep);
         but_Exercise = (Button) findViewById(R.id.btnExercise);
+        but_FoodDrink = (Button) findViewById(R.id.btnFoodDrink);
         but_Travel = (Button) findViewById(R.id.btnTravel);
         but_Mood = (Button) findViewById(R.id. btnMood);
         
@@ -40,6 +41,13 @@ public class DailyActivity extends ActionBarActivity {
             }
         });
 
+        but_FoodDrink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FoodDrinkActivity.class);
+                startActivity(i);
+            }
+        });
         but_Travel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

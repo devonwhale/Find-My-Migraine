@@ -145,7 +145,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
                 ddao.createDrinkRecord(drink);
                 Log.d("Drink ", "Drink Record Added");
                 fdao.createFoodRecord(food);
-                //TEST NOT WORKING??
+               //TEST
               //  fdao.createFoodRecord(new Food(c2, 1,1,1,1));
                 Log.d("Food ", "Food Record Added");
 

@@ -6,14 +6,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="uk.ac.bradford.findmymigraine.WhenActivity">
+    tools:context="uk.ac.bradford.findmymigraine.WhenActivity"
+    android:background="@color/material_blue_grey_800">
 
     <!-- SCREEN HEADER -->
     <TextView android:text="When did it happen?"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/whenTitle" />
+        android:id="@+id/whenTitle"
+        android:textColor="@color/background_material_light"/>
 
     <!-- DATE ENTRY -->
     <LinearLayout
@@ -27,6 +29,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Date it happened"
             android:id="@+id/labelWhenDate"
+            android:textColor="@color/background_material_light"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -35,6 +38,7 @@
             android:layout_marginLeft="15dp"
             android:text="Click here"
             android:id="@+id/pickWhenDate"
+            android:textColor="@color/background_material_light"
             />
     </LinearLayout>
 
@@ -50,6 +54,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Time it started"
             android:id="@+id/labelWhenStart"
+            android:textColor="@color/background_material_light"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -59,6 +64,7 @@
 
             android:text="Click here"
             android:id="@+id/pickWhenStart"
+            android:textColor="@color/background_material_light"
             />
     </LinearLayout>
 
@@ -74,6 +80,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Time it ended"
             android:id="@+id/labelWhenEnd"
+            android:textColor="@color/background_material_light"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -82,6 +89,7 @@
             android:layout_marginLeft="15dp"
             android:text="Click here"
             android:id="@+id/pickWhenEnd"
+            android:textColor="@color/background_material_light"
             />
     </LinearLayout>
 
@@ -92,7 +100,8 @@
         android:layout_marginTop="15dp"
         android:text="@string/next"
         android:id="@+id/btnUpdateWhen"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/background_material_light"/>
 
 
 

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/material_blue_grey_800">
     <!--android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -14,7 +15,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/slpTitle" />
+        android:id="@+id/slpTitle"
+        android:textColor="@color/background_material_light"/>
 
     <!-- Date entry -->
     <LinearLayout
@@ -26,6 +28,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/sleep_date"
             android:id="@+id/lb_sleep_date"
+            android:textColor="@color/background_material_light"
             />
 
         <TextView
@@ -36,6 +39,7 @@
 
             android:text="Click here"
             android:id="@+id/et_sleep_date"
+            android:textColor="@color/background_material_light"
             />
         </LinearLayout>
 
@@ -53,6 +57,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tt"
         android:id="@+id/lbTTB"
+        android:textColor="@color/background_material_light"
          />
 
         <TextView
@@ -63,6 +68,7 @@
 
         android:text="Click here"
         android:id="@+id/etTTB"
+        android:textColor="@color/background_material_light"
          />
 
     </LinearLayout>
@@ -73,13 +79,15 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:textColor="@color/background_material_light">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_tu"
         android:id="@+id/lbTU"
+        android:textColor="@color/background_material_light"
          />
     <TextView
         android:layout_width="wrap_content"
@@ -88,6 +96,7 @@
         android:layout_marginLeft="15dp"
         android:text="Click here"
         android:id="@+id/etTU"
+        android:textColor="@color/background_material_light"
         />
     </LinearLayout>
 
@@ -103,6 +112,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sleep_r"
         android:id="@+id/lbSR"
+        android:textColor="@color/background_material_light"
          />
     </LinearLayout>
 
@@ -121,6 +131,7 @@
         android:id="@+id/btnNext"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/etSR"
-        android:layout_alignEnd="@+id/etSR" />
+        android:layout_alignEnd="@+id/etSR"
+        android:textColor="@color/background_material_light"/>
 
 </LinearLayout>

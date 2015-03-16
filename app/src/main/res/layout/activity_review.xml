@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_800"
     android:orientation="vertical"
 
     >
@@ -14,13 +15,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/a_r_button_selectDate"
             android:text="Select Date"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/background_material_light"
             android:id="@+id/selected_date"/>
 
     </LinearLayout>
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/sleep_details"
+            android:textColor="@color/background_material_light"
             android:textAppearance="?android:textAppearanceMedium"/>
         </LinearLayout>
     <!-- Time to bed -->
@@ -57,11 +60,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/sleep_tt"/>
+            android:text="@string/sleep_tt"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/ttb_details"/>
         </LinearLayout>
     <!-- Time up -->
@@ -72,11 +76,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/sleep_tu"/>
+            android:text="@string/sleep_tu"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/tu_details"/>
         </LinearLayout>
     <!-- Sleep rating -->
@@ -87,11 +92,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="Rating (1-5)"/>
+            android:text="Rating (1-5)"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/sr_details"/>
     </LinearLayout>
 
@@ -104,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Exercise Details"
+            android:textColor="@color/background_material_light"
                 android:textAppearance="?android:textAppearanceMedium"/>
         </LinearLayout>
         <!-- Hours -->
@@ -114,10 +121,12 @@
                 android:layout_width="wrap_content"
                 android:minWidth="150dp"
                 android:layout_height="wrap_content"
-                android:text="Duration"/>
+                android:text="Duration"
+                android:textColor="@color/background_material_light"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/background_material_light"
 
                 android:id="@+id/ex_hours"/>
         </LinearLayout>
@@ -129,11 +138,12 @@
                 android:layout_width="wrap_content"
                 android:minWidth="150dp"
                 android:layout_height="wrap_content"
-                android:text="Intensity (1-5)"/>
+                android:text="Intensity (1-5)"
+                android:textColor="@color/background_material_light"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/background_material_light"
                 android:id="@+id/ex_intensity"/>
         </LinearLayout>
 
@@ -147,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Travel Details"
+            android:textColor="@color/background_material_light"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
         <!-- Duration -->
@@ -157,11 +168,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="Duration"/>
+            android:text="Duration"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/travel_duration"/>
     </LinearLayout>
     <!-- Method -->
@@ -172,11 +184,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="Method"/>
+            android:text="Method"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/travel_method"/>
     </LinearLayout>
     <!-- Destination -->
@@ -187,11 +200,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="Destination"/>
+            android:text="Destination"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/travel_destination"/>
     </LinearLayout>
 
@@ -204,6 +218,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Mood details"
+            android:textColor="@color/background_material_light"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
     <!-- General mood rating -->
@@ -214,11 +229,12 @@
             android:layout_width="wrap_content"
             android:minWidth="150dp"
             android:layout_height="wrap_content"
-            android:text="General Mood (1-5)"/>
+            android:text="General Mood (1-5)"
+            android:textColor="@color/background_material_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/background_material_light"
             android:id="@+id/mood_rating"/>
     </LinearLayout>
 

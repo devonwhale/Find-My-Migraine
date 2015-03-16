@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_800">
 
     <TextView android:text="@string/title_activity_exercise"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/background_material_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/exerciseTitle" />
@@ -21,6 +23,7 @@
               android:layout_height="wrap_content"
               android:textAppearance="?android:attr/textAppearanceLarge"
               android:text="Exercise duration in hours"
+             android:textColor="@color/background_material_light"
               android:id="@+id/hoursTextView" />
 
         <EditText
@@ -29,6 +32,7 @@
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/hoursEditText"
+            android:textColor="@color/background_material_light"
             android:layout_weight="1" /><![CDATA[
 
         />
@@ -39,6 +43,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/background_material_light"
         android:layout_marginTop="10dp">
 
         <TextView
@@ -46,6 +51,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Intensity rating (1 - Easy.. 5 - Hard)"
+            android:textColor="@color/background_material_light"
         android:id="@+id/intensityTextView" />
 
     />
@@ -60,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
+        android:textColor="@color/background_material_light"
         android:id="@+id/nextButton"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/intensityRatingBar"

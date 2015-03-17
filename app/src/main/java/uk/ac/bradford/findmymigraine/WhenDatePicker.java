@@ -10,7 +10,7 @@ import java.util.Calendar;
 public class WhenDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
      /**
-     * Creates the date picker
+     * Creates the date picker - standard code apart from last statement
      * */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker

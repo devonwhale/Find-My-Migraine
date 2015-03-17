@@ -10,7 +10,8 @@ import java.util.Calendar;
 public class ReviewDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     /**
-     * Creates the date picker
+     * Creates the date picker - all code is standard apart from the last
+     * two statements in the onDateSet() method.
      * */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
@@ -29,7 +30,7 @@ public class ReviewDatePicker extends DialogFragment implements DatePickerDialog
     public void onDateSet(DatePicker view, int year, int month, int day) {
         System.err.println("Time set");
         ((ReviewActivity)getActivity()).setDate(year, month, day);               //calls method in Parent Activity
-        ((ReviewActivity)getActivity()).setValues();
+        ((ReviewActivity)getActivity()).setValues();                             //calls method in Parent Activity
     }
 
 }

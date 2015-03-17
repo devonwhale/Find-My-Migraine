@@ -4,6 +4,7 @@ package uk.ac.bradford.findmymigraine;
  * Created by Steve on 24/02/2015.
  * This class allows creation of a 'When' object (for recording when a migraine occurs)
  * The object can be used by the WhenDOA class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class When {
     private long id, date, start_time, end_time;
@@ -16,6 +17,7 @@ public class When {
     public When(long date, long start_time, long end_time){
         //this.id = id;
         this.date = date; this.start_time = start_time; this.end_time = end_time;
+        //constructor, so SyncFlag will always be 0 for a new record.
         syncFlag = 0;
     }
 

@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 
 
+/*
+Created by Steve
+This is the "Migraine Attack Record" menu screen.
+It only consists of 4 buttons which link to other screens.
+Only the 'When' button is currently linked
+ */
+
 public class AttackActivity extends ActionBarActivity {
     //Variables of type button
     Button but_When, but_Severity, but_Coping, but_Causes;
@@ -20,12 +27,13 @@ public class AttackActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attack);
 
+        //Link the variables created at the beginning of the Class to the xml objects
         but_When = (Button) findViewById(R.id.btnWhen);
         but_Severity = (Button) findViewById(R.id.btnSeverity);
         but_Coping = (Button) findViewById(R.id.btnCoping);
         but_Causes = (Button) findViewById(R.id.btnCauses);
 
-        //Moves to the When Activity
+        //Moves to the When Activity when pressed.
         but_When.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

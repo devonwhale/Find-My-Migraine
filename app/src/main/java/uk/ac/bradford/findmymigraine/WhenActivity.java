@@ -17,6 +17,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 
+/*
+This Class creates the 'When did it happen?' record entry screen,
+to record date, start time and end time. Then create a new database record.
+ */
+
 public class WhenActivity extends ActionBarActivity {
 
     TextView attackDate, attackStart, attackEnd;
@@ -126,6 +131,10 @@ public class WhenActivity extends ActionBarActivity {
 
     }
 
+    /*
+    The following two methods are called by the WhenDatePicker and WhenTimePicker
+      (fragment) classes. They set the variables above to the selected date/time(s).
+     */
     public void setDate(int year, int month, int day){
         //code to add - method will be called by WhenDatePicker
         whenYear = year;

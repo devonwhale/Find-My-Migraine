@@ -15,7 +15,7 @@ public class WhenTimePicker extends DialogFragment implements TimePickerDialog.O
     boolean start;
 
     /**
-     * Creates the time picker
+     * Creates the time picker -standard code apart from last statement
      * */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();

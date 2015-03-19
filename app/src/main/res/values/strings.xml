@@ -24,7 +24,7 @@
     <string name="title_activity_travel">Daily Travel Record</string>
     <string name="title_activity_when">When did it happen?</string>
     <string name="title_activity_severity">How bad was it? - Inactive</string>
-    <string name="title_activity_coping">How did you cope? - Inactive</string>
+    <string name="title_activity_coping">Migraine Attack Coping Strategy</string>
     <string name="title_activity_causes">What might have caused it? - Inactive</string>
     <string name="when_date">Date of migraine</string>
     <string name="when_start">Time migraine started</string>
@@ -32,6 +32,7 @@
     <string name="title_activity_review">Review Records</string>
     <string name="sleep_details">Sleep Details</string>
     <string name="sleep_date">Date (when waking)</string>
+    <string name="title_activity_activity_coping">Migraine Attack Coping Strategy</string>
 
     <string name="title_attack_when">When did it happen?</string>
     <string name="title_attack_severity">How bad was it?</string>

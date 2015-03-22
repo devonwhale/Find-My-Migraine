@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -15,17 +16,17 @@ import java.util.Calendar;
 
 
 public class FoodDrinkActivity extends ActionBarActivity {
-    RadioButton beerRB;
-    RadioButton redWineRB;
-    RadioButton whiteWineRB;
-    RadioButton spiritRB;
-    RadioButton sodaRB;
-    RadioButton coffeeRB;
-    RadioButton teaRB;
-    RadioButton chocolateRB;
-    RadioButton cheeseRB;
-    RadioButton nutsRB;
-    RadioButton citrusFruitsRB;
+    CheckBox beerCB;
+    CheckBox redWineCB;
+    CheckBox whiteWineCB;
+    CheckBox spiritCB;
+    CheckBox sodaCB;
+    CheckBox coffeeCB;
+    CheckBox teaCB;
+    CheckBox chocolateCB;
+    CheckBox cheeseCB;
+    CheckBox nutsCB;
+    CheckBox citrusFruitsCB;
     Button nextButton;
     Calendar c;
     long c2;
@@ -51,17 +52,17 @@ public class FoodDrinkActivity extends ActionBarActivity {
 
     /** Initialise components in XML layout*/
     private void initialise(){
-         beerRB = (RadioButton) findViewById(R.id.beerRB);
-         redWineRB = (RadioButton) findViewById(R.id.redWineRB);
-         whiteWineRB = (RadioButton) findViewById(R.id.whiteWineRB);
-         spiritRB = (RadioButton) findViewById(R.id.spiritRB);
-         sodaRB = (RadioButton) findViewById(R.id.sodaRB);
-         coffeeRB = (RadioButton) findViewById(R.id.coffeeRB);
-         teaRB = (RadioButton) findViewById(R.id.teaRB);
-         chocolateRB = (RadioButton) findViewById(R.id.chocolateRB);
-         cheeseRB = (RadioButton) findViewById(R.id.cheeseRB);
-         nutsRB = (RadioButton) findViewById(R.id.nutsRB);
-         citrusFruitsRB = (RadioButton) findViewById(R.id.citrusFruitsRB);
+         beerCB = (CheckBox) findViewById(R.id.beerCB);
+         redWineCB = (CheckBox) findViewById(R.id.redWineCB);
+         whiteWineCB = (CheckBox) findViewById(R.id.whiteWineCB);
+         spiritCB = (CheckBox) findViewById(R.id.spiritCB);
+         sodaCB = (CheckBox) findViewById(R.id.sodaCB);
+         coffeeCB = (CheckBox) findViewById(R.id.coffeeCB);
+         teaCB = (CheckBox) findViewById(R.id.teaCB);
+         chocolateCB = (CheckBox) findViewById(R.id.chocolateCB);
+         cheeseCB = (CheckBox) findViewById(R.id.cheeseCB);
+         nutsCB = (CheckBox) findViewById(R.id.nutsCB);
+         citrusFruitsCB = (CheckBox) findViewById(R.id.citrusFruitsCB);
          nextButton = (Button) findViewById(R.id.foodDrinkNextButton);
     }
 
@@ -79,59 +80,60 @@ public class FoodDrinkActivity extends ActionBarActivity {
                     intArray[i]= 0;
                 }
 
+              /*  CODE FOR CHECKBOXES - NOT YET FUNCTIONING CORRECTLY
                 // Is the button now checked?
-              //  boolean checked = ((RadioButton) v).isChecked();
-              //java.lang.ClassCastException: android.widget.Button cannot be cast to android.widget.RadioButton??
+             //    boolean checked = ((CheckBox) v).isChecked();
+                //java.lang.ClassCastException: android.widget.Button cannot be cast to android.widget.CheckBox??
 
                 //isSelected() or isChecked() ??
                 // Check which radio button was clicked
                 switch(v.getId()) {
-                    case R.id.beerRB:
-                        if (beerRB.isSelected()){
+                    case R.id.beerCB:
+                        if (beerCB.isChecked()){
                             intArray[0]= 1;
                         }
-                    case R.id.redWineRB:
-                        if (redWineRB.isSelected()){
+                    case R.id.redWineCB:
+                        if (checked){
                             intArray[1]= 1;
                         }
-                    case R.id.whiteWineRB:
-                        if (whiteWineRB.isSelected()){
+                    case R.id.whiteWineCB:
+                        if (checked){
                             intArray[2]= 1;
                         }
-                    case R.id.spiritRB:
-                        if (spiritRB.isSelected()){
+                    case R.id.spiritCB:
+                        if (checked){
 
                             intArray[3]= 1;
                         }
-                    case R.id.sodaRB:
-                        if (sodaRB.isSelected()){
+                    case R.id.sodaCB:
+                        if (checked){
                             intArray[4]= 1;
                         }
-                    case R.id.coffeeRB:
-                        if (coffeeRB.isSelected()){
+                    case R.id.coffeeCB:
+                        if (checked){
                             intArray[5]= 1;
                         }
-                    case R.id.teaRB:
-                        if (teaRB.isSelected()){
+                    case R.id.teaCB:
+                        if (checked){
                             intArray[6]= 1;
                         }
-                    case R.id.chocolateRB:
-                        if (chocolateRB.isSelected()){
+                    case R.id.chocolateCB:
+                        if (checked){
                             intArray[7]= 1;
                         }
-                    case R.id.cheeseRB:
-                        if (cheeseRB.isSelected()){
+                    case R.id.cheeseCB:
+                        if (checked){
                             intArray[8]= 1;
                         }
-                    case R.id.nutsRB:
-                        if (nutsRB.isSelected()){
+                    case R.id.nutsCB:
+                        if (checked){
                             intArray[9]= 1;
                         }
-                    case R.id.citrusFruitsRB:
-                        if (citrusFruitsRB.isSelected()){
+                    case R.id.citrusFruitsCB:
+                        if (checked){
                             intArray[10]= 1;
                         }
-                }
+                }*/
 
                 //Create Drink and Food objects
                 Drink drink = new Drink(c2,intArray[0],intArray[1],intArray[2],intArray[3],intArray[4],intArray[5],intArray[6]);

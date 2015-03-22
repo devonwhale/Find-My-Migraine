@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -72,68 +73,52 @@ public class FoodDrinkActivity extends ActionBarActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //create array of integer for radio button, 0 if not checked, 1 if checked
                 int[] intArray = new int[11];
 
                 //initialise all elements of array to 0 (false)
-                for (int i=0; i<intArray.length;i++ ){
-                    intArray[i]= 0;
+                for (int i = 0; i < intArray.length; i++) {
+                    intArray[i] = 0;
                 }
 
-              /*  CODE FOR CHECKBOXES - NOT YET FUNCTIONING CORRECTLY
-                // Is the button now checked?
-             //    boolean checked = ((CheckBox) v).isChecked();
-                //java.lang.ClassCastException: android.widget.Button cannot be cast to android.widget.CheckBox??
+                // Check if radio button was clicked
 
-                //isSelected() or isChecked() ??
-                // Check which radio button was clicked
-                switch(v.getId()) {
-                    case R.id.beerCB:
-                        if (beerCB.isChecked()){
-                            intArray[0]= 1;
-                        }
-                    case R.id.redWineCB:
-                        if (checked){
-                            intArray[1]= 1;
-                        }
-                    case R.id.whiteWineCB:
-                        if (checked){
-                            intArray[2]= 1;
-                        }
-                    case R.id.spiritCB:
-                        if (checked){
+                if (beerCB.isChecked()) {
+                    intArray[0] = 1;
+                }
 
-                            intArray[3]= 1;
-                        }
-                    case R.id.sodaCB:
-                        if (checked){
-                            intArray[4]= 1;
-                        }
-                    case R.id.coffeeCB:
-                        if (checked){
-                            intArray[5]= 1;
-                        }
-                    case R.id.teaCB:
-                        if (checked){
-                            intArray[6]= 1;
-                        }
-                    case R.id.chocolateCB:
-                        if (checked){
-                            intArray[7]= 1;
-                        }
-                    case R.id.cheeseCB:
-                        if (checked){
-                            intArray[8]= 1;
-                        }
-                    case R.id.nutsCB:
-                        if (checked){
-                            intArray[9]= 1;
-                        }
-                    case R.id.citrusFruitsCB:
-                        if (checked){
-                            intArray[10]= 1;
-                        }
-                }*/
+                if (redWineCB.isChecked()) {
+                    intArray[1] = 1;
+                }
+                if (whiteWineCB.isChecked()) {
+                    intArray[2] = 1;
+                }
+                if (spiritCB.isChecked()) {
+                    intArray[3] = 1;
+                }
+                if (sodaCB.isChecked()) {
+                    intArray[4] = 1;
+                }
+                if (coffeeCB.isChecked()) {
+                    intArray[5] = 1;
+                }
+                if (teaCB.isChecked()) {
+                    intArray[6] = 1;
+                }
+                if (chocolateCB.isChecked()) {
+                    intArray[7] = 1;
+                }
+                if (cheeseCB.isChecked()) {
+                    intArray[8] = 1;
+                }
+                if (nutsCB.isChecked()) {
+                    intArray[9] = 1;
+                }
+                if (citrusFruitsCB.isChecked()) {
+                    intArray[10] = 1;
+                }
+
 
                 //Create Drink and Food objects
                 Drink drink = new Drink(c2,intArray[0],intArray[1],intArray[2],intArray[3],intArray[4],intArray[5],intArray[6]);

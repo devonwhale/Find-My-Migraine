@@ -62,6 +62,9 @@
             android:label="@string/title_activity_exercise" >
         </activity>
         <activity
+            android:name=".FoodDrinkActivity" >
+        </activity>
+        <activity
             android:name=".TravelActivity"
             android:label="@string/title_activity_travel"
             android:parentActivityName=".DailyActivity" >

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Drinks Consumed"
-        android:id="@+id/textView2"
+        android:id="@+id/headerCoping"
         android:textColor="@color/background_material_light"
         android:layout_alignParentTop="true" />
 
@@ -22,7 +22,7 @@
         android:text="Beer"
         android:id="@+id/beerCB"
         android:checked="false"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/headerCoping"
         android:layout_alignParentLeft="true"
         android:textColor="@color/background_material_light"
         android:layout_alignParentStart="true" />
@@ -68,8 +68,8 @@
         android:checked="false"
         android:textColor="@color/background_material_light"
         android:layout_above="@+id/redWineCB"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toRightOf="@+id/headerCoping"
+        android:layout_toEndOf="@+id/headerCoping" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -79,8 +79,8 @@
         android:checked="false"
         android:textColor="@color/background_material_light"
         android:layout_above="@+id/whiteWineCB"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toRightOf="@+id/headerCoping"
+        android:layout_toEndOf="@+id/headerCoping" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -90,8 +90,8 @@
         android:checked="false"
         android:textColor="@color/background_material_light"
         android:layout_below="@+id/coffeeCB"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toRightOf="@+id/headerCoping"
+        android:layout_toEndOf="@+id/headerCoping" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -153,8 +153,8 @@
         android:text="Citrus Fruits"
         android:id="@+id/citrusFruitsCB"
         android:layout_alignTop="@+id/chocolateCB"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
+        android:layout_toRightOf="@+id/headerCoping"
+        android:layout_toEndOf="@+id/headerCoping"
         android:textColor="@color/background_material_light"
         android:checked="false" />
 

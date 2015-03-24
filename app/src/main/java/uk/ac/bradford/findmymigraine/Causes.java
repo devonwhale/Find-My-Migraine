@@ -10,6 +10,17 @@ public class Causes {
 
     public Causes(){}
 
+    public Causes(long date, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression){
+
+        this.date=date;
+        this.stress=stress;
+        this.lack_of_sleep=lack_of_sleep;
+        this.lack_of_food=lack_of_food;
+        this.lack_of_water=lack_of_water;
+        this.depression=depression;
+        this.syncFlag=0;
+    }
+
     public Causes(long date, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression, String other){
 
         this.date=date;

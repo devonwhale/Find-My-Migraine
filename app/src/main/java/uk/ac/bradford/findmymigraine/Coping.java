@@ -1,5 +1,7 @@
 package uk.ac.bradford.findmymigraine;
 
+import java.security.PublicKey;
+
 /**
  * Created by Imtanan on 02/03/2015.
  *
@@ -21,15 +23,25 @@ public class Coping {
         syncFlag=0;
     }
 
-    // Constructors
-    public Coping(long id, long date, int syncFlag, int medication, int meditation, int sleep, String other) {
-        this.id=id;
+    public Coping(long date, int medication, int meditation, int sleep, int yoga){
         this.date=date;
-        this.syncFlag=syncFlag;
+        this.medication=medication;
+        this.meditation=meditation;
+        this.sleep=sleep;
+        this.yoga=yoga;
+        syncFlag=0;
+    }
+
+    // Constructors
+    public Coping(long date,int medication, int meditation, int sleep, String other) {
+       // this.id=id;
+        this.date=date;
+       // this.syncFlag=syncFlag;
         this.medication=medication;
         this.meditation=meditation;
         this.sleep=sleep;
         this.other=other;
+        syncFlag=0;
     }
 
     // Constructors

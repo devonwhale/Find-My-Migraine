@@ -1,18 +1,112 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+
+import java.util.Calendar;
 
 
 public class CausesActivity extends ActionBarActivity {
+
+    CheckBox  stress;
+    CheckBox lack_of_sleep;
+    CheckBox lack_of_food;
+    CheckBox lack_of_water;
+    CheckBox depression;
+    //String other;
+    //EditText CauseOther;
+    Button btnNext;
+    Calendar c;
+    long c2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_causes);
+        initialise();
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+
+        }
+
+        setOnClickListeners();
     }
+
+    private void initialise(){
+        stress= (CheckBox) findViewById(R.id.CauseStress);
+        lack_of_food= (CheckBox) findViewById(R.id.CauseLackFood);
+        lack_of_sleep= (CheckBox) findViewById(R.id.CauseLackSleep);
+        lack_of_water= (CheckBox) findViewById(R.id.CauseLackWater);
+        depression= (CheckBox) findViewById(R.id.CauseDepression);
+        btnNext = (Button) findViewById(R.id.BtnNext);
+    }
+
+    private void setOnClickListeners() {
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //create array of integer for radio button, 0 if not checked, 1 if checked
+                int[] intArray = new int[4];
+
+                //initialise all elements of array to 0 (false)
+                for (int i = 0; i < intArray.length; i++) {
+                    intArray[i] = 0;
+                }
+
+                // Check if Checkbox was ticked
+
+                if (stress.isChecked()) {
+                    intArray[0] = 1;
+                }
+
+                if (lack_of_food.isChecked()) {
+                    intArray[1] = 1;
+                }
+                if (lack_of_water.isChecked()) {
+                    intArray[2] = 1;
+                }
+                if (lack_of_sleep.isChecked()) {
+                    intArray[3] = 1;
+                }
+                if (depression.isChecked()){
+                    intArray[4]= 1;
+                }
+
+
+                //Create Coping objects
+                Causes causes = new Causes(c2,intArray[0],intArray[1],intArray[2], intArray[3], intArray[4]);
+
+
+                //Create Coping data access objects
+                CausesDAO Caudao = new CausesDAO(CausesActivity.this);
+
+
+                //Enter Drink and Food objects into database
+                Caudao.createCausesRecord(causes);
+                Log.d("causes ", "Causes Record Added");
+
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                startActivity(intent);
+            }
+        });
+    }
+
 
 
     @Override

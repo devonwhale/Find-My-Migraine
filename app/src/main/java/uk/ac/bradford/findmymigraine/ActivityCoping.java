@@ -1,11 +1,16 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -16,17 +21,92 @@ public class ActivityCoping extends ActionBarActivity {
     CheckBox CMedication;
     CheckBox CYoga;
     CheckBox CSleep;
-    Button nxtButton;
-    String COther;
+    EditText CoOther;
+    String other;
+    Button btnNext;
     Calendar c; //calendar is used to get the date
-
-
+    long c2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_coping);
+        initialise();
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+
+        }
+
+        setOnClickListeners();
     }
+
+    private void initialise(){
+        CMeditation = (CheckBox) findViewById(R.id.CopingMeditation);
+        CMedication = (CheckBox) findViewById(R.id.CopingMedication);
+        CYoga = (CheckBox) findViewById(R.id.CopingYoga);
+        CSleep = (CheckBox) findViewById(R.id.CopingSleep);
+        //CoOther = (EditText) findViewById(R.id.CoOther);
+        btnNext = (Button) findViewById(R.id.BtnNext);
+    }
+
+    private void setOnClickListeners() {
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //create array of integer for radio button, 0 if not checked, 1 if checked
+                int[] intArray = new int[4];
+
+                //initialise all elements of array to 0 (false)
+                for (int i = 0; i < intArray.length; i++) {
+                    intArray[i] = 0;
+                }
+
+                // Check if Checkbox was ticked
+
+                if (CMedication.isChecked()) {
+                    intArray[0] = 1;
+                }
+
+                if (CMeditation.isChecked()) {
+                    intArray[1] = 1;
+                }
+                if (CSleep.isChecked()) {
+                    intArray[2] = 1;
+                }
+                if (CYoga.isChecked()) {
+                    intArray[3] = 1;
+                }
+
+
+                //Create Coping objects
+                Coping coping = new Coping(c2,intArray[0],intArray[1],intArray[2], intArray[3]);
+
+
+                //Create Coping data access objects
+                CopingDAO Cdao = new CopingDAO(ActivityCoping.this);
+
+
+                //Enter Drink and Food objects into database
+                Cdao.createCopingRecord(coping);
+                Log.d("Coping ", "Coping Record Added");
+
+
+                Intent intent = new Intent(getApplicationContext(), CausesActivity.class);
+                intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
+
 
 
     @Override

@@ -82,7 +82,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
                     intArray[i] = 0;
                 }
 
-                // Check if radio button was clicked
+                // Check if checkbox was ticked
 
                 if (beerCB.isChecked()) {
                     intArray[0] = 1;

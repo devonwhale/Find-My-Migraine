@@ -6,7 +6,7 @@ package uk.ac.bradford.findmymigraine;
 public class Sleep {
     private long id, time_to_bed, time_up;
     private long wakeDate;       //date added by Steve (and to main constructor + setter, getter and toString
-    private int sleep_rating, syncFlag;
+    private int sleep_rating, hours, syncFlag;
     public Sleep() {
         // Empty Constructor
     }
@@ -19,9 +19,10 @@ public class Sleep {
 
     // Constructors
     public Sleep(
-            long date,
+            long date, int hours,
             long time_to_bed, long time_up, int sleep_rating) {
         wakeDate = date;
+        this.hours = hours;
         this.time_to_bed = time_to_bed;
         this.time_up = time_up;
         this.sleep_rating=sleep_rating;

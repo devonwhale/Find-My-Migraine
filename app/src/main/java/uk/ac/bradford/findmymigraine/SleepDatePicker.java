@@ -12,8 +12,6 @@ public class SleepDatePicker extends DialogFragment implements DatePickerDialog.
     /**
      * Creates the date picker
      * */
-
-
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
@@ -28,11 +26,9 @@ public class SleepDatePicker extends DialogFragment implements DatePickerDialog.
     /**
      * Handles the time being entered
      * */
-
-
      public void onDateSet(DatePicker view, int year, int month, int day) {
         System.err.println("Time set");
-        ((SleepActivity)getActivity()).setDate(year, month, day);               //calls method in Parent Activity
+        ((MainActivity)getActivity()).setWakeDate(year, month, day);               //calls method in Parent Activity
 
     }
 

@@ -65,7 +65,8 @@ public class MoodActivity extends ActionBarActivity {
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
 
-                    Intent i = new Intent(getApplicationContext(), DailyActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SleepActivity.class);
+                    i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                     startActivity(i);
                 }
             }

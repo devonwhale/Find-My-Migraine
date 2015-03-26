@@ -39,7 +39,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
+        android:text="Save and return to Daily Diary"
         android:id="@+id/btnNext"
         android:textColor="@color/background_material_light"/>
 

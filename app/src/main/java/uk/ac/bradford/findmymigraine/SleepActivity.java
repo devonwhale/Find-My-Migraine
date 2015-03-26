@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -19,19 +20,29 @@ import java.lang.Override;
 import java.util.Calendar;
 import java.util.Date;
 //just trying if push works --- imtanan
+/*
+Although called "SleepActivity", this class is really now the "Daily Diary"
+ Only one Sleep record is alowed for a given date, but multiple travel,
+ exercise, food/drink and other records can be added.
+ Sleep still appears as the main activity on this screen.
+ */
+
 public class SleepActivity extends ActionBarActivity {
 
     TextView dateWaking;                //added 4/3/15
     TextView tvTimeToBed;
     TextView tvTimeUp;
-    Button btnNext;
-    RatingBar ratingBar;
+    Button btnNext, addTravel, addExercise, addFoodDrink, addMenstrual, addWork, addMood;
+    RatingBar ratingBarSleep, ratingBarMood;
+    RadioButton rb12, rb35, rb68, rbOver8;
 
     int wakeYear, wakeMonth, wakeDay;
-    int startHour, startMinute, endHour,endMinute;
+    int startHour, startMinute, endHour,endMinute, numStars;
     Calendar wakeDate;
     Calendar start, end;
     boolean time;
+    Calendar c;
+    Long c2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +50,42 @@ public class SleepActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sleep);
         initialise();
         setOnClickListeners();
+
+        //NEW CODE 26/3/15
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            numStars = extra.getInt("uk.ac.bradford.findmymigraine.stars");
+            ratingBarSleep.setNumStars(numStars);
+            dateWaking = (TextView) findViewById(R.id.wakeDate);
+            int displayMonth = c.get(Calendar.MONTH) + 1;
+            dateWaking.setText("Date waking : "+c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
+        }
     }
 
     /** Initialise components in XML layout*/
     private void initialise(){
-        dateWaking = (TextView)findViewById(R.id.et_sleep_date);    //added 4/3/15
-        tvTimeToBed = (TextView) findViewById(R.id.etTTB);
-        tvTimeUp = (TextView) findViewById(R.id.etTU);
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        //dateWaking = (TextView)findViewById(R.id.et_sleep_date);    //added 4/3/15  //text view removed from xml 26/3/15
+        //tvTimeToBed = (TextView) findViewById(R.id.etTTB);                    //text view removed from xml 26/3/15
+        //tvTimeUp = (TextView) findViewById(R.id.etTU);                        //text view removed from xml 26/3/15
+
+        //radio buttons added 26/3/15:
+        rb12 = (RadioButton)findViewById(R.id.hours12);
+        rb35 = (RadioButton)findViewById(R.id.hours35);
+        rb68 = (RadioButton)findViewById(R.id.hours68);
+        rbOver8 = (RadioButton)findViewById(R.id.hoursOver8);
+
+        ratingBarSleep = (RatingBar) findViewById(R.id.ratingBarSleep);
+        //ratingBarMood = (RatingBar)findViewById(R.id.ratingBarMood);
         btnNext = (Button) findViewById(R.id.btnNext);
+        addTravel = (Button)findViewById(R.id.btnTravel);
+        addExercise = (Button)findViewById(R.id.btnExercise);
+        addFoodDrink = (Button)findViewById(R.id.btnFoodDrink);
+        addMenstrual = (Button)findViewById(R.id.btnMenstrual);
+        addWork = (Button)findViewById(R.id.btnWork);
+        addMood = (Button)findViewById(R.id.btnMood);
 
         wakeDate = Calendar.getInstance();
         start = Calendar.getInstance();
@@ -56,17 +94,19 @@ public class SleepActivity extends ActionBarActivity {
 
     /** Set onClickListeners for components in XML layout*/
     private void setOnClickListeners() {
+        /*  Removed from xml 26/3/15
         dateWaking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Listener to create fragment.
+                //Listener to create fragment. - Moved to Daily Diary button on MainActivity
                 DialogFragment newFragment = new SleepDatePicker();
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
+        */
 
-
+        /* TEXT VIEWS FOR TIME TO BED AND TIME UP REMOVED 26/3/15
         tvTimeToBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,36 +126,123 @@ public class SleepActivity extends ActionBarActivity {
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
+        */
 
+        addTravel.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent mv = new Intent(getApplicationContext(), TravelActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
 
+        addExercise.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
+
+        addFoodDrink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent mv = new Intent(getApplicationContext(), FoodDrinkActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
+
+        addMenstrual.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast feedback = Toast.makeText(getApplicationContext(), "Menstrual Cycle Screen Under Development", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+                Intent mv = new Intent(getApplicationContext(), SleepActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
+
+        addWork.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast feedback = Toast.makeText(getApplicationContext(), "Work Screen Under Development", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+                Intent mv = new Intent(getApplicationContext(), SleepActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
+
+        addMood.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent mv = new Intent(getApplicationContext(), MoodActivity.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                numStars = (int) ratingBarSleep.getRating();
+                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                startActivity(mv);
+            }
+        });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //This all needs removing or changing !!!!!
+                /* IF NOT REQUIRED
                 if(tvTimeToBed.getText().toString().equalsIgnoreCase("Click here") || tvTimeUp.getText().toString().equalsIgnoreCase("Click here")
                         //|| dateWaking.getText().toString().equalsIgnoreCase("Click here")
                         ) {
                     Toast t = Toast.makeText(getApplicationContext(), "Please set a date, start and end time", Toast.LENGTH_LONG);
                     t.show();
                 }
-                else {
+                else { */
+
+
                     Long a, b;
                     Long c;
+                    int hours;
+
+                    hours = 0;          //TEMPORARY VALUE UNTIL RADIO BUTTONS WORKING
+                    a = 0L; b = 0L;     //tttb and time up no longer used
+                    /*
                     start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
                     end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
                     a = start.getTimeInMillis();
                     b = end.getTimeInMillis();
-
+                    */
                     //Set 'Date' in Long format for passing to constructor
                     wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
                     c = wakeDate.getTimeInMillis();
 
                     //retrieve number of stars specified by user in rating bar
-                    int numStars = (int) ratingBar.getRating();
+                    numStars = (int) ratingBarSleep.getRating();
 
                     //Enter sleep details into Sleep object
                     Sleep s = new Sleep(
-                            c,
+                            c, hours,
                             a, b, numStars);
 
                     //Create Sleep Data Access Object Instance
@@ -132,10 +259,11 @@ public class SleepActivity extends ActionBarActivity {
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
 
-                    Intent mv = new Intent(getApplicationContext(), ExerciseActivity.class);
-                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
+                    Intent mv = new Intent(getApplicationContext(), MainActivity.class);
+                    //mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
+
                     startActivity(mv);
-                }
+                //}   //END ELSE
             }
         });
     }

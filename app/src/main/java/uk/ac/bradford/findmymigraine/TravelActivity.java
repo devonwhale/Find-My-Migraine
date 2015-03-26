@@ -21,7 +21,7 @@ public class TravelActivity extends ActionBarActivity {
     Button btnNext;
     EditText etHours, etTravelType, etDest;
     TextView tvTitle;
-    int time;
+    int time, numStars;
     String method, dest;
     Calendar c;
     long c2;
@@ -42,6 +42,7 @@ public class TravelActivity extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
+            numStars = extra.getInt("uk.ac.bradford.findmymigraine.stars");
             tvTitle = (TextView) findViewById(R.id.travelTitle);
             int displayMonth = c.get(Calendar.MONTH) + 1;
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -70,8 +71,9 @@ public class TravelActivity extends ActionBarActivity {
                         feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                         feedback.show();
 
-                        Intent i = new Intent(getApplicationContext(), MoodActivity.class);
+                        Intent i = new Intent(getApplicationContext(), SleepActivity.class);
                         i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                        i.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
                         startActivity(i);
                     }
                 } catch (NumberFormatException e) {

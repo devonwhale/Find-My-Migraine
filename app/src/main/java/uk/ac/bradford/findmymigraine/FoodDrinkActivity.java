@@ -136,7 +136,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
               //  fdao.createFoodRecord(new Food(c2, 1,1,1,1));
                 Log.d("Food ", "Food Record Added");
 
-                Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
                 intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                 startActivity(intent);
             }

@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.util.Calendar;
 //Comment by Steve to test change/version control
 public class MainActivity extends ActionBarActivity implements LoginPopup.LoginPopupListener {
     //
-    int whenYear, whenMonth, whenDay;
+    int whenYear, whenMonth, whenDay, wakeYear, wakeMonth, wakeDay;
     Calendar attackDate, wakeDate;
 
 
@@ -25,6 +26,7 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         attackDate = Calendar.getInstance(); //added code 26/3/15 to initialise attackDate
+        wakeDate = Calendar.getInstance(); //added code 26/3/15 to initialise wakeDate (otherwise null and null pointer exception thrown by setWaKeDate() method!
 
         Button but_attack = (Button) findViewById(R.id.recAttack);
         but_attack.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +53,13 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
              */
             @Override
             public void onClick(View v) {
-                Intent mv_daily = new Intent(getApplicationContext(), DailyActivity.class);
-                startActivity(mv_daily);
+
+                //added code (26/3/15)
+                DialogFragment newFragment = new SleepDatePicker();
+                newFragment.show(getFragmentManager(), "datePicker");
+
+                //Intent mv_daily = new Intent(getApplicationContext(), DailyActivity.class);
+                //startActivity(mv_daily);
             }
         });
 
@@ -68,6 +75,33 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         });
     }
 
+    public void setWakeDate(int year, int month, int day){
+        //code to add - method will be called by WhenDatePicker
+        wakeYear = year;
+        wakeMonth = month;
+        wakeDay = day;
+        int displayMonthFigure = month + 1;
+        //attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
+        //attackDate.setTextColor(5);
+        //nextButton.setTextColor(0);
+        Toast.makeText(getBaseContext(), "Date set to " + day + "/" + displayMonthFigure + "/" + year, Toast.LENGTH_LONG).show();
+
+        //new code:
+        Long c;
+        Log.d("About to set wakeDate: ", wakeYear+"/"+wakeMonth+"/"+wakeDay);
+
+        try {
+            wakeDate.set(wakeYear, wakeMonth, wakeDay);
+        } catch(Exception e) {
+            Log.d("Exception", e.toString());
+            Log.d("Wake date set: ",  wakeDate.toString()); }
+        c = wakeDate.getTimeInMillis();
+
+
+        Intent mv_dd = new Intent(getApplicationContext(), SleepActivity.class);
+        mv_dd.putExtra("uk.ac.bradford.findmymigraine.date", c);
+        startActivity(mv_dd);
+    }
 
     //set date code required...
     public void setAttackDate(int year, int month, int day){
@@ -91,6 +125,8 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         mv_att.putExtra("uk.ac.bradford.findmymigraine.date", c);
         startActivity(mv_att);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

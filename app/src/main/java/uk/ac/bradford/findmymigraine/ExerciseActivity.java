@@ -79,7 +79,7 @@ public class ExerciseActivity extends ActionBarActivity {
 
           Log.d("Exercise ", "Exercise Record Added");
           //Go to Food and Drink Activity
-          Intent intent = new Intent(getApplicationContext(), FoodDrinkActivity.class);
+          Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
           intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
           startActivity(intent);
          }

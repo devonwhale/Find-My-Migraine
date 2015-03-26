@@ -21,6 +21,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_SLEEP = "sleep";
     public static final String COLUMN_SLEEP_ID = "_id";
     public static final String COLUMN_SLEEP_DATE = "wakeDate";
+    public static final String COLUMN_SLEEP_HOURS = "hours";
     public static final String COLUMN_TIME_TO_BED = "timeToBed";
     public static final String COLUMN_TIME_UP= "timeUp";
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
@@ -34,6 +35,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             TABLE_SLEEP + "("
             + COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_SLEEP_DATE + " INTEGER, "
+            + COLUMN_SLEEP_HOURS + " INTEGER, "
             + COLUMN_TIME_TO_BED + " INTEGER, "
             + COLUMN_TIME_UP + " INTEGER, "
             + COLUMN_SLEEP_RATING + " INTEGER, "

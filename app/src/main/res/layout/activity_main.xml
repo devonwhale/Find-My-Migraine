@@ -30,24 +30,24 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/record_attack"
-        android:id="@+id/recAttack"
+        android:text="Add Daily Diary Record"
+        android:id="@+id/recActivity"
         android:textSize="18dp"
         android:textColor="@color/background_material_light"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="15dp" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/record_activity"
-        android:id="@+id/recActivity"
+        android:text="Add Migraine Attack Record"
+        android:id="@+id/recAttack"
         android:textSize="18dp"
         android:textColor="@color/background_material_light"
-        android:layout_below="@+id/recAttack"
+        android:layout_below="@+id/recActivity"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="2dp" />
 
     <Button
         android:layout_width="fill_parent"
@@ -56,8 +56,21 @@
         android:id="@+id/reviewRecords"
         android:textSize="18dp"
         android:textColor="@color/background_material_light"
-        android:layout_below="@+id/recActivity"
+        android:layout_below="@+id/recAttack"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="2dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="User Information"
+        android:id="@+id/userInfo"
+        android:textSize="18dp"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/reviewRecords"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp" />
+
+
 
 </RelativeLayout>

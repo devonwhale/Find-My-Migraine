@@ -143,8 +143,8 @@ public class WhenActivity extends ActionBarActivity {
                     Intent mv = new Intent(getApplicationContext(), AttackActivity.class);
                     startActivity(mv); */
 
-                    //new code added 26/3/15 to move to [ Causes ] screen (needs changing to Intensity when ready!
-                    Intent mv = new Intent(getApplicationContext(), CausesActivity.class);
+                    //new code added 26/3/15 to move to [ Coping ] screen (needs changing to Intensity when ready!
+                    Intent mv = new Intent(getApplicationContext(), ActivityCoping.class);
                     mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
                     startActivity(mv);
                 }

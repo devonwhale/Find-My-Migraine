@@ -10,8 +10,8 @@
     android:background="@color/material_blue_grey_800">
 
     <!-- SCREEN HEADER -->
-    <TextView android:text="When did it happen?"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+    <TextView android:text="Add start and end time below"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/whenTitle"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Date it happened"
+            android:text="Date: "
             android:id="@+id/labelWhenDate"
             android:textColor="@color/background_material_light"
             />
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:ems="16"
             android:layout_marginLeft="15dp"
-            android:text="Click here"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/pickWhenDate"
             android:textColor="@color/background_material_light"
             />

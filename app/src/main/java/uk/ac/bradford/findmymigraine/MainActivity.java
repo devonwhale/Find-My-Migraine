@@ -8,14 +8,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 //Comment by Steve to test change/version control
 public class MainActivity extends ActionBarActivity implements LoginPopup.LoginPopupListener {
     //
+    int whenYear, whenMonth, whenDay;
+    Calendar attackDate, wakeDate;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        attackDate = Calendar.getInstance(); //added code 26/3/15 to initialise attackDate
 
         Button but_attack = (Button) findViewById(R.id.recAttack);
         but_attack.setOnClickListener(new View.OnClickListener() {
@@ -25,8 +34,12 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
              */
             @Override
             public void onClick(View v) {
-                Intent mv_att = new Intent(getApplicationContext(), AttackActivity.class);
-                startActivity(mv_att);
+                //added code:
+                DialogFragment newFragment = new WhenDatePicker();
+                newFragment.show(getFragmentManager(), "datePicker");
+
+                //Intent mv_att = new Intent(getApplicationContext(), WhenActivity.class);
+                //startActivity(mv_att);
             }
         });
 
@@ -55,6 +68,29 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         });
     }
 
+
+    //set date code required...
+    public void setAttackDate(int year, int month, int day){
+        //code to add - method will be called by WhenDatePicker
+        whenYear = year;
+        whenMonth = month;
+        whenDay = day;
+        int displayMonthFigure = month + 1;
+        //attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
+        //attackDate.setTextColor(5);
+        //nextButton.setTextColor(0);
+        Toast.makeText(getBaseContext(), "Date set to " + day + "/" + displayMonthFigure + "/" + year, Toast.LENGTH_LONG).show();
+
+        //new code:
+        Long c;
+        attackDate.set(whenYear, whenMonth, whenDay,0,0,0);
+        c = attackDate.getTimeInMillis();
+
+
+        Intent mv_att = new Intent(getApplicationContext(), WhenActivity.class);
+        mv_att.putExtra("uk.ac.bradford.findmymigraine.date", c);
+        startActivity(mv_att);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -29,6 +29,10 @@ public class WhenActivity extends ActionBarActivity {
     int whenYear, whenMonth, whenDay, startHour, startMinute, endHour, endMinute;
     Calendar whenDate, start, end;
     boolean time;                               //used to differentiate between the two time pickers
+    //new variables for date extra -- added 26/3/15
+    Calendar c;
+    long c2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,17 @@ public class WhenActivity extends ActionBarActivity {
         setContentView(R.layout.activity_when);
         initialise();
         setOnClickListeners();
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            attackDate = (TextView) findViewById(R.id.pickWhenDate);
+            int displayMonth = c.get(Calendar.MONTH) + 1;
+            attackDate.setText(c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
+        }
+
     }
 
     // Assign xml objects to the variables specified at the start of this Class.
@@ -123,7 +138,14 @@ public class WhenActivity extends ActionBarActivity {
                     Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
+                    //old code to return to menu screen
+                    /*
                     Intent mv = new Intent(getApplicationContext(), AttackActivity.class);
+                    startActivity(mv); */
+
+                    //new code added 26/3/15 to move to [ Causes ] screen (needs changing to Intensity when ready!
+                    Intent mv = new Intent(getApplicationContext(), CausesActivity.class);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
                     startActivity(mv);
                 }
             }
@@ -143,7 +165,7 @@ public class WhenActivity extends ActionBarActivity {
         int displayMonthFigure = month + 1;
         attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
         attackDate.setTextColor(5);
-        nextButton.setTextColor(0);
+        //nextButton.setTextColor(0);
         Toast.makeText(getBaseContext(), "Date set to "+day+"/"+displayMonthFigure+"/"+year, Toast.LENGTH_LONG).show();
     }
 

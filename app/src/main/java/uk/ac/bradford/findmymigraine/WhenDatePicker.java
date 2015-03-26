@@ -3,6 +3,7 @@ package uk.ac.bradford.findmymigraine;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.DatePicker;
 import java.util.Calendar;
@@ -28,8 +29,10 @@ public class WhenDatePicker extends DialogFragment implements DatePickerDialog.O
      * */
     public void onDateSet(DatePicker view, int year, int month, int day) {
         System.err.println("Time set");
-        ((WhenActivity)getActivity()).setDate(year, month, day);               //calls method in Parent Activity
-
+        ((MainActivity)getActivity()).setAttackDate(year, month, day);               //calls method in Parent Activity
+        //new code:
+        //Intent mv_att = new Intent(getApplicationContext(), WhenActivity.class);
+        //startActivity(mv_att);
     }
 
 }

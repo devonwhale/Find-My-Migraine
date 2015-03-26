@@ -108,6 +108,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
         </activity>
+        <activity
+            android:name=".ActivityCoping"
+            android:label="@string/title_activity_intensity"
+            android:parentActivityName=".AttackActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+        </activity>
+        <activity
+            android:name=".CausesActivity"
+            android:label="@string/title_activity_intensity"
+            android:parentActivityName=".AttackActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+        </activity>
+
     </application>
 
 </manifest>

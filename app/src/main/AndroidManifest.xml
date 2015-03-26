@@ -34,60 +34,75 @@
                 android:value="uk.ac.bradford.findmymigraine.MainActivity" />
         </activity>
         <activity
-            android:name=".SleepActivity"
-            android:label="@string/title_activity_sleep"
-            android:parentActivityName=".DailyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
-        </activity>
+                    android:name=".ReviewActivity"
+                    android:label="@string/title_activity_review"
+                   android:parentActivityName=".MainActivity" >
+                    <meta-data
+                        android:name="android.support.PARENT_ACTIVITY"
+                        android:value="uk.ac.bradford.findmymigraine.MainActivity" />
+                </activity>
 
-        <receiver android:name=".SleepReceiver" >
-            <intent-filter>
-                <action android:name="uk.ac.bradford.findmymigraine.SleepReceiver" >
-                </action>
-            </intent-filter>
-        </receiver>
+            <activity
+    android:name=".SleepActivity"
+    android:label="@string/title_activity_sleep"
+    android:parentActivityName=".DailyActivity" >
+    <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+</activity>
 
-        <activity
-            android:name=".SleepEntryReport"
-            android:label="@string/title_activity_sleep_entry_report"
-            android:parentActivityName=".SleepActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.SleepActivity" />
-        </activity>
-        <activity
-            android:name=".ExerciseActivity"
-            android:label="@string/title_activity_exercise" >
-        </activity>
-        <activity
-            android:name=".FoodDrinkActivity" >
-        </activity>
-        <activity
-            android:name=".TravelActivity"
-            android:label="@string/title_activity_travel"
-            android:parentActivityName=".DailyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
-        </activity>
-        <activity
-            android:name=".WhenActivity"
-            android:label="@string/title_activity_when"
-            android:parentActivityName=".AttackActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
-        </activity>
-        <activity
-            android:name=".ReviewActivity"
-            android:label="@string/title_activity_review"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.MainActivity" />
-        </activity>
+    <receiver android:name=".SleepReceiver" >
+        <intent-filter>
+            <action android:name="uk.ac.bradford.findmymigraine.SleepReceiver" >
+            </action>
+        </intent-filter>
+    </receiver>
+
+    <activity
+        android:name=".SleepEntryReport"
+        android:label="@string/title_activity_sleep_entry_report"
+        android:parentActivityName=".SleepActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="uk.ac.bradford.findmymigraine.SleepActivity" />
+    </activity>
+    <activity
+        android:name=".ExerciseActivity"
+        android:label="@string/title_activity_exercise" >
+    </activity>
+    <activity
+                android:name=".FoodDrinkActivity"
+                android:parentActivityName=".DailyActivity" >
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+            </activity>
+            <activity
+android:name=".TravelActivity"
+android:label="@string/title_activity_travel"
+android:parentActivityName=".DailyActivity" >
+<meta-data
+    android:name="android.support.PARENT_ACTIVITY"
+    android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+</activity>
+<activity
+                android:name=".MoodActivity"
+                android:label="@string/title_activity_mood"
+                android:parentActivityName=".DailyActivity" >
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="uk.ac.bradford.findmymigraine.DailyActivity" />
+            </activity>
+            <activity
+android:name=".WhenActivity"
+android:label="@string/title_activity_when"
+android:parentActivityName=".AttackActivity" >
+<meta-data
+    android:name="android.support.PARENT_ACTIVITY"
+    android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+</activity>
+
+
     </application>
 
-</manifest>
+    </manifest>

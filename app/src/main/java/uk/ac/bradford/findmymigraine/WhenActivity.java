@@ -142,6 +142,8 @@ public class WhenActivity extends ActionBarActivity {
         whenDay = day;
         int displayMonthFigure = month + 1;
         attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
+        attackDate.setTextColor(5);
+        nextButton.setTextColor(0);
         Toast.makeText(getBaseContext(), "Date set to "+day+"/"+displayMonthFigure+"/"+year, Toast.LENGTH_LONG).show();
     }
 

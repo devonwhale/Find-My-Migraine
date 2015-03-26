@@ -60,7 +60,7 @@ public class CausesActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 //create array of integer for radio button, 0 if not checked, 1 if checked
-                int[] intArray = new int[4];
+                int[] intArray = new int[5];                                                //changed to length 5 by Steve 26/3/15
 
                 //initialise all elements of array to 0 (false)
                 for (int i = 0; i < intArray.length; i++) {

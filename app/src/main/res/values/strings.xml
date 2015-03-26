@@ -40,5 +40,6 @@
     <string name="title_attack_causes">What might have caused it?</string>
 
     <string name="title_activity_drink_food">Food and Drink Record</string>
+    <string name="title_activity_intensity">Intensity Record</string>
 
 </resources>

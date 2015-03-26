@@ -110,7 +110,7 @@
         </activity>
         <activity
             android:name=".ActivityCoping"
-            android:label="@string/title_activity_intensity"
+            android:label="@string/title_activity_coping"
             android:parentActivityName=".AttackActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -118,7 +118,7 @@
         </activity>
         <activity
             android:name=".CausesActivity"
-            android:label="@string/title_activity_intensity"
+            android:label="@string/title_activity_causes"
             android:parentActivityName=".AttackActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

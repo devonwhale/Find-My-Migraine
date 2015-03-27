@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/CausesOther"
-        android:text="Input Here" />
+        android:hint="Enter text" />
 
     <Button
         android:layout_width="364dp"

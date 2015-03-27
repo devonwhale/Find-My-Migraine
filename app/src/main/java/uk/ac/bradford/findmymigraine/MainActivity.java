@@ -91,7 +91,7 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         Log.d("About to set wakeDate: ", wakeYear+"/"+wakeMonth+"/"+wakeDay);
 
         try {
-            wakeDate.set(wakeYear, wakeMonth, wakeDay);
+            wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
         } catch(Exception e) {
             Log.d("Exception", e.toString());
             Log.d("Wake date set: ",  wakeDate.toString()); }

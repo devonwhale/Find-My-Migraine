@@ -222,7 +222,7 @@ public class SleepActivity extends ActionBarActivity {
 
 
                     Long a, b;
-                    Long c;
+                    //Long c;
                     int hours;
 
                     hours = 0;          //TEMPORARY VALUE UNTIL RADIO BUTTONS WORKING
@@ -234,15 +234,15 @@ public class SleepActivity extends ActionBarActivity {
                     b = end.getTimeInMillis();
                     */
                     //Set 'Date' in Long format for passing to constructor
-                    wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
-                    c = wakeDate.getTimeInMillis();
+                    //wakeDate.set(wakeYear, wakeMonth, wakeDay,0,0,0);
+                    //c = wakeDate.getTimeInMillis();
 
                     //retrieve number of stars specified by user in rating bar
                     numStars = (int) ratingBarSleep.getRating();
 
                     //Enter sleep details into Sleep object
                     Sleep s = new Sleep(
-                            c, hours,
+                            c2, hours,
                             a, b, numStars);
 
                     //Create Sleep Data Access Object Instance

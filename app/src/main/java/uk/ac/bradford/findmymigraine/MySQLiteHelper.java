@@ -13,10 +13,9 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "migraine.db";
 
-    //Sleep Table Details
     //Sleep Table Details
     public static final String TABLE_SLEEP = "sleep";
     public static final String COLUMN_SLEEP_ID = "_id";

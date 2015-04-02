@@ -74,7 +74,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                //create array of integer for checkboxes button, 0 if not checked, 1 if checked
+                //create array of integer for checkboxes, 0 if not checked, 1 if checked
                 int[] intArray = new int[11];
 
                 //initialise all elements of array to 0 (false)
@@ -120,7 +120,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
                 }
 
 
-                //Create Drink and Food objects
+                //Create Drink and Food instances
                 Drink drink = new Drink(c2,intArray[0],intArray[1],intArray[2],intArray[3],intArray[4],intArray[5],intArray[6]);
                 Food food = new Food(c2,intArray[7],intArray[8],intArray[9],intArray[10]);
 

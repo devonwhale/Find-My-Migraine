@@ -229,7 +229,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_MENSTRUAL_CYCLE_COMINGSOON = "comingSoon";
     public static final String[] COLUMNS_MENSTRUAL_CYCLE = {COLUMN_MENSTRUAL_CYCLE_ID, COLUMN_MENSTRUAL_CYCLE_DATE, COLUMN_MENSTRUAL_CYCLE_SYNCFLAG, COLUMN_MENSTRUAL_CYCLE_YES, COLUMN_MENSTRUAL_CYCLE_NO, COLUMN_MENSTRUAL_CYCLE_COMINGSOON};
 
-    //String containing query for building Food Table
+    //String containing query for building Menstrual Cycle Table
     private static final String CREATE_MENSTRUAL_CYCLE_TABLE = "CREATE TABLE " +
             TABLE_MENSTRUAL_CYCLE + "("
             + COLUMN_MENSTRUAL_CYCLE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

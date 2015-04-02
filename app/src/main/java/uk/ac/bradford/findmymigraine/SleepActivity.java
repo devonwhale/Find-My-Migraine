@@ -167,10 +167,7 @@ public class SleepActivity extends ActionBarActivity {
         addMenstrual.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast feedback = Toast.makeText(getApplicationContext(), "Menstrual Cycle Screen Under Development", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                feedback.show();
-                Intent mv = new Intent(getApplicationContext(), SleepActivity.class);
+                Intent mv = new Intent(getApplicationContext(), MenstrualCycleActivity.class);
                 mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();

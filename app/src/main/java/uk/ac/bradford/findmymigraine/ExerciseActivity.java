@@ -25,6 +25,7 @@ public class ExerciseActivity extends ActionBarActivity {
     Button nextButton;
     TextView tvTitle;
     Calendar c;
+    int sleepRating; double sleepHours;
     long c2;
 
     @Override
@@ -39,6 +40,8 @@ public class ExerciseActivity extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
+            sleepRating = extra.getInt("uk.ac.bradford.findmymigraine.stars"); //added 3/4/15 by Steve.
+            sleepHours = extra.getDouble("uk.ac.bradford.findmymigraine.sleepHours");
             tvTitle = (TextView) findViewById(R.id.exerciseTitle);
             int displayMonth = c.get(Calendar.MONTH) + 1;
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -81,6 +84,8 @@ public class ExerciseActivity extends ActionBarActivity {
           //Go to Food and Drink Activity
           Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
           intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+          intent.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+          intent.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
           startActivity(intent);
          }
      });

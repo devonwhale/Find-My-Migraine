@@ -61,7 +61,14 @@ public class SleepActivity extends ActionBarActivity {
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
             numStars = extra.getInt("uk.ac.bradford.findmymigraine.stars");
-            ratingBarSleep.setNumStars(numStars);
+            ratingBarSleep = (RatingBar) findViewById(R.id.ratingBarSleep);
+            ratingBarSleep.setRating(numStars);
+            sleepHours = extra.getDouble("uk.ac.bradford.findmymigraine.sleepHours");
+            hoursSlept = (RadioGroup)findViewById(R.id.hoursSlept);
+                if (sleepHours == 1.5){hoursSlept.check(R.id.hours12);}
+                if (sleepHours == 4.0){hoursSlept.check(R.id.hours35);}
+                if (sleepHours == 7.0){hoursSlept.check(R.id.hours68);}
+                if (sleepHours == 9.0){hoursSlept.check(R.id.hoursOver8);}
             dateWaking = (TextView) findViewById(R.id.wakeDate);
             int displayMonth = c.get(Calendar.MONTH) + 1;
             dateWaking.setText("Date waking : "+c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -100,13 +107,13 @@ public class SleepActivity extends ActionBarActivity {
         //tvTimeUp = (TextView) findViewById(R.id.etTU);                        //text view removed from xml 26/3/15
 
         //radio buttons added 26/3/15:
-        hoursSlept = (RadioGroup)findViewById(R.id.hoursSlept);
+        //hoursSlept = (RadioGroup)findViewById(R.id.hoursSlept); Amended 3/4/15 - now initialised with Bundle extras
         //rb12 = (RadioButton)findViewById(R.id.hours12);
         //rb35 = (RadioButton)findViewById(R.id.hours35);
         //rb68 = (RadioButton)findViewById(R.id.hours68);
         //rbOver8 = (RadioButton)findViewById(R.id.hoursOver8);
 
-        ratingBarSleep = (RatingBar) findViewById(R.id.ratingBarSleep);
+        //ratingBarSleep = (RatingBar) findViewById(R.id.ratingBarSleep); Amended 3/4/15 - now initialised with Bundle extras
         //ratingBarMood = (RatingBar)findViewById(R.id.ratingBarMood);
         btnNext = (Button) findViewById(R.id.btnNext);
         addTravel = (Button)findViewById(R.id.btnTravel);
@@ -165,6 +172,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });
@@ -177,6 +185,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });
@@ -189,6 +198,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });
@@ -201,6 +211,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });
@@ -216,6 +227,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });
@@ -228,6 +240,7 @@ public class SleepActivity extends ActionBarActivity {
                 //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
                 numStars = (int) ratingBarSleep.getRating();
                 mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(mv);
             }
         });

@@ -30,7 +30,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
     CheckBox citrusFruitsCB;
     Button nextButton;
     Calendar c;
-    long c2;
+    long c2; int sleepRating; double sleepHours; //pass throughs from sleep
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,8 @@ public class FoodDrinkActivity extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
+            sleepRating = extra.getInt("uk.ac.bradford.findmymigraine.stars"); //added 3/4/15 by Steve.
+            sleepHours = extra.getDouble("uk.ac.bradford.findmymigraine.sleepHours");
            // tvTitle = (TextView) findViewById(R.id.foodDrinkTitle);
           //  int displayMonth = c.get(Calendar.MONTH) + 1;
           //  tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -138,6 +140,8 @@ public class FoodDrinkActivity extends ActionBarActivity {
 
                 Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
                 intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                intent.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                intent.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                 startActivity(intent);
             }
         });

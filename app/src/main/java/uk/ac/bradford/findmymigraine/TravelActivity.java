@@ -21,10 +21,10 @@ public class TravelActivity extends ActionBarActivity {
     Button btnNext;
     EditText etHours, etTravelType, etDest;
     TextView tvTitle;
-    int time, numStars;
+    int time;
     String method, dest;
     Calendar c;
-    long c2;
+    long c2; int sleepRating; double sleepHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,8 @@ public class TravelActivity extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
-            numStars = extra.getInt("uk.ac.bradford.findmymigraine.stars");
+            sleepRating = extra.getInt("uk.ac.bradford.findmymigraine.stars"); //added 3/4/15 by Steve.
+            sleepHours = extra.getDouble("uk.ac.bradford.findmymigraine.sleepHours");
             tvTitle = (TextView) findViewById(R.id.travelTitle);
             int displayMonth = c.get(Calendar.MONTH) + 1;
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -73,7 +74,8 @@ public class TravelActivity extends ActionBarActivity {
 
                         Intent i = new Intent(getApplicationContext(), SleepActivity.class);
                         i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
-                        i.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                        i.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                        i.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                         startActivity(i);
                     }
                 } catch (NumberFormatException e) {

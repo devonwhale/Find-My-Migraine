@@ -79,6 +79,6 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Drink [ID: " + id + ", date: "+date+", Chocolate: " + chocolate + ", Cheese: " + cheese +", Nuts: " + nuts+", Citrus Fruits: "+citrusFruits+"]" + "\n";
+        return "Food [ID: " + id + ", date: "+date+", Chocolate: " + chocolate + ", Cheese: " + cheese +", Nuts: " + nuts+", Citrus Fruits: "+citrusFruits+"]" + "\n";
     }
 }

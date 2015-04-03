@@ -124,7 +124,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
         </activity>
-
+        <activity
+            android:name=".MenstrualCycleActivity"
+            android:label="@string/title_activity_menstrual_cycle" >
+        </activity>
     </application>
 
 </manifest>

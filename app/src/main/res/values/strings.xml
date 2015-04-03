@@ -42,4 +42,7 @@
     <string name="title_activity_drink_food">Food and Drink Record</string>
     <string name="title_activity_intensity">Intensity Record</string>
 
+    <string name="title_activity_menstrual_cycle">Menstrual Cycle</string>
+    <string name="menstrual_cycle_question">Were you having your menstrual cycle?</string>
+
 </resources>

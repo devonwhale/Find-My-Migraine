@@ -50,6 +50,7 @@ public class SleepDAO {
         values.put(MySQLiteHelper.COLUMN_SLEEP_DATE, sleep.getDate());
         values.put(MySQLiteHelper.COLUMN_TIME_TO_BED, sleep.getTimeToBed());
         values.put(MySQLiteHelper.COLUMN_TIME_UP, sleep.getTimeUp());
+        values.put(MySQLiteHelper.COLUMN_SLEEP_HOURS, sleep.getSleepHours());
         values.put(MySQLiteHelper.COLUMN_SLEEP_RATING, sleep.getSleepRating());
         values.put(MySQLiteHelper.COLUMN_SLEEP_SYNCFLAG, sleep.getSyncFlag());
 

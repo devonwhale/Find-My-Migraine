@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,7 +85,6 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
         //attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
         //attackDate.setTextColor(5);
         //nextButton.setTextColor(0);
-        Toast.makeText(getBaseContext(), "Date set to " + day + "/" + displayMonthFigure + "/" + year, Toast.LENGTH_LONG).show();
 
         //new code:
         Long c;
@@ -97,10 +97,32 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
             Log.d("Wake date set: ",  wakeDate.toString()); }
         c = wakeDate.getTimeInMillis();
 
+        //check if record already exists for wakeDate
+        Sleep sleep = new Sleep();
+        SleepDAO sleepDAO = new SleepDAO(MainActivity.this);
+        //get values for selected date as a sleep object
+        sleep = sleepDAO.getSleepRecordForDate(c); //returns a sleep record
 
-        Intent mv_dd = new Intent(getApplicationContext(), SleepActivity.class);
-        mv_dd.putExtra("uk.ac.bradford.findmymigraine.date", c);
-        startActivity(mv_dd);
+        //if yes: Toast & return to main activity
+        if (sleep.getDate() != 946598400000L) //records exists on database
+        {
+            Toast feedback = Toast.makeText(getApplicationContext(), "Daily Diary Record already exists for this date!", Toast.LENGTH_LONG);
+            feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+            feedback.show();
+
+            Intent mv_dd = new Intent(getApplicationContext(), MainActivity.class);
+            mv_dd.putExtra("uk.ac.bradford.findmymigraine.date", c);
+            startActivity(mv_dd);
+
+        }
+        //else: launch SleepActivity
+        else {
+            Toast.makeText(getBaseContext(), "Date set to " + day + "/" + displayMonthFigure + "/" + year, Toast.LENGTH_LONG).show();
+
+            Intent mv_dd = new Intent(getApplicationContext(), SleepActivity.class);
+            mv_dd.putExtra("uk.ac.bradford.findmymigraine.date", c);
+            startActivity(mv_dd);
+        }
     }
 
     //set date code required...

@@ -49,48 +49,46 @@
         android:textColor="@color/background_material_light"
         android:layout_alignParentTop="true" />
 
+
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:id="@+id/hoursSlept"
         android:textColor="@color/background_material_light">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/background_material_light">
         <RadioButton
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/hours12"
-            android:text="1-2 hours"
-            android:textColor="@color/background_material_light"/>
+            android:text="1-2"
+            android:textColor="@color/background_material_light"
+            android:onClick="onRadioButtonClicked"/>
         <RadioButton
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/hours35"
-            android:text="3-5 hours"
-            android:layout_toRightOf="@+id/hours12"
-            android:layout_gravity="right"
-            android:textColor="@color/background_material_light"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:text="3-5"
+            android:textColor="@color/background_material_light"
+            android:onClick="onRadioButtonClicked"/>
         <RadioButton
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/hours68"
-            android:text="6-8 hours"
-            android:layout_gravity="right"
-            android:textColor="@color/background_material_light"/>
+            android:text="6-8"
+
+            android:textColor="@color/background_material_light"
+            android:onClick="onRadioButtonClicked"/>
         <RadioButton
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/hoursOver8"
-            android:text="over 8 hours"
-            android:textColor="@color/background_material_light"/>
-        </LinearLayout>
+            android:text="over 8"
+
+            android:textColor="@color/background_material_light"
+            android:onClick="onRadioButtonClicked"/>
+
         </RadioGroup>
+
 
 
     <!-- Time to Bed

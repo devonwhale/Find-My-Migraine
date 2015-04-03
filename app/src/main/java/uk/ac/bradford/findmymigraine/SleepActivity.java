@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -34,10 +35,12 @@ public class SleepActivity extends ActionBarActivity {
     TextView tvTimeUp;
     Button btnNext, addTravel, addExercise, addFoodDrink, addMenstrual, addWork, addMood;
     RatingBar ratingBarSleep, ratingBarMood;
-    RadioButton rb12, rb35, rb68, rbOver8;
+    RadioGroup hoursSlept;
+    RadioButton chosenHours; //rb12, rb35, rb68, rbOver8;
 
     int wakeYear, wakeMonth, wakeDay;
     int startHour, startMinute, endHour,endMinute, numStars;
+    double sleepHours;
     Calendar wakeDate;
     Calendar start, end;
     boolean time;
@@ -65,6 +68,31 @@ public class SleepActivity extends ActionBarActivity {
         }
     }
 
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.hours12:
+                if (checked)
+                {sleepHours = 1.5;
+                    break;}
+            case R.id.hours35:
+                if (checked)
+                {sleepHours = 4.0;
+                    break;}
+            case R.id.hours68:
+                if (checked)
+                {sleepHours = 7.0;
+                    break;}
+            case R.id.hoursOver8:
+                if (checked)
+                {sleepHours = 9.0;
+                    break;}
+        }
+    }
     /** Initialise components in XML layout*/
     private void initialise(){
         //dateWaking = (TextView)findViewById(R.id.et_sleep_date);    //added 4/3/15  //text view removed from xml 26/3/15
@@ -72,10 +100,11 @@ public class SleepActivity extends ActionBarActivity {
         //tvTimeUp = (TextView) findViewById(R.id.etTU);                        //text view removed from xml 26/3/15
 
         //radio buttons added 26/3/15:
-        rb12 = (RadioButton)findViewById(R.id.hours12);
-        rb35 = (RadioButton)findViewById(R.id.hours35);
-        rb68 = (RadioButton)findViewById(R.id.hours68);
-        rbOver8 = (RadioButton)findViewById(R.id.hoursOver8);
+        hoursSlept = (RadioGroup)findViewById(R.id.hoursSlept);
+        //rb12 = (RadioButton)findViewById(R.id.hours12);
+        //rb35 = (RadioButton)findViewById(R.id.hours35);
+        //rb68 = (RadioButton)findViewById(R.id.hours68);
+        //rbOver8 = (RadioButton)findViewById(R.id.hoursOver8);
 
         ratingBarSleep = (RatingBar) findViewById(R.id.ratingBarSleep);
         //ratingBarMood = (RatingBar)findViewById(R.id.ratingBarMood);
@@ -206,6 +235,8 @@ public class SleepActivity extends ActionBarActivity {
             }
         });
 
+
+        //when clicked, create new sleep object with required data
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,12 +251,16 @@ public class SleepActivity extends ActionBarActivity {
                 }
                 else { */
 
+                //code added 27/3/15 - but buttons are not acting correctly at moment...all selectable and none can be deselected.
+                int selectedRadio = hoursSlept.getCheckedRadioButtonId();
+                chosenHours = (RadioButton)findViewById(selectedRadio);
+
 
                     Long a, b;
                     //Long c;
-                    int hours;
+                    double hours;
 
-                    hours = 0;          //TEMPORARY VALUE UNTIL RADIO BUTTONS WORKING
+                    hours = sleepHours;          //TEMPORARY VALUE UNTIL RADIO BUTTONS WORKING
                     a = 0L; b = 0L;     //tttb and time up no longer used
                     /*
                     start.setTime(new Date(start.get(start.YEAR) - 1900, start.get(start.MONTH), start.get(start.DAY_OF_WEEK), startHour, startMinute));
@@ -255,7 +290,7 @@ public class SleepActivity extends ActionBarActivity {
                     The next three lines bring up a small 'toast' with the feedback text in the code.
                     The following two lines then return the user to the Daily Activity screen.
                  */
-                    Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Sleep Records", Toast.LENGTH_LONG);
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Daily Diary Records", Toast.LENGTH_LONG);
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
 

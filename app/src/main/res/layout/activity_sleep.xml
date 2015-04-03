@@ -30,7 +30,7 @@
 
         </LinearLayout>
 
-
+    <!--
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp">
-
+    -->
 
     <TextView
         android:layout_width="wrap_content"
@@ -235,8 +235,8 @@
         android:layout_alignRight="@+id/etSR"
         android:layout_alignEnd="@+id/etSR"
         android:textColor="@color/background_material_light"/>
-
+    <!--
     </TableLayout>
     </ScrollView>
-
+    -->
 </LinearLayout>

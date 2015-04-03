@@ -23,7 +23,7 @@ public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen
     Button selectDate;
-    TextView selectedDate, sleepTTB, sleepTU, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
+    TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
     int year, month, day;
     Calendar theDate;
 
@@ -47,8 +47,9 @@ public class ReviewActivity extends ActionBarActivity {
     private void initialise(){
         selectDate = (Button)findViewById(R.id.a_r_button_selectDate);
         selectedDate = (TextView)findViewById(R.id.selected_date);
-        sleepTTB = (TextView)findViewById(R.id.ttb_details);
-        sleepTU = (TextView)findViewById(R.id.tu_details);
+        //sleepTTB = (TextView)findViewById(R.id.ttb_details);
+        //sleepTU = (TextView)findViewById(R.id.tu_details);
+        hoursSlept = (TextView)findViewById(R.id.hoursSlept_details);
         sleepRating = (TextView)findViewById(R.id.sr_details);
         exDuration = (TextView)findViewById(R.id.ex_hours);
         exIntensity = (TextView)findViewById(R.id.ex_intensity);
@@ -99,6 +100,8 @@ public class ReviewActivity extends ActionBarActivity {
             sleep = sleepDAO.getSleepRecordForDate(longDate); //returns a sleep record
             //sleep = sleepDAO.getSleepingRecord(1);      //TEST code INSTEAD OF LINE ABOVE
             //display returned values in Android text views (values in sleep are longs (in millisecs...need to convert to times)
+
+                /*
                 //Time to bed
                 Calendar calTTB = Calendar.getInstance();
                 calTTB.setTimeInMillis(sleep.getTimeToBed());
@@ -108,6 +111,23 @@ public class ReviewActivity extends ActionBarActivity {
                 Calendar calTU = Calendar.getInstance();
                 calTU.setTimeInMillis(sleep.getTimeUp());
                 sleepTU.setText(calTU.get(Calendar.HOUR_OF_DAY)+":"+calTU.get(Calendar.MINUTE));
+                */
+
+                //hours slept
+                String displayHours = "not entered";
+                if(sleep.getSleepHours() == 1.5){
+                    displayHours = "1-2 hours";
+                }
+                if(sleep.getSleepHours() == 4.0){
+                    displayHours = "3-5 hours";
+                }
+                if(sleep.getSleepHours() == 7.0){
+                    displayHours = "6-8 hours";
+                }
+                if(sleep.getSleepHours() == 9.0){
+                    displayHours = "over 8 hours";
+                }
+                hoursSlept.setText(displayHours);
                 //Sleep rating
                 sleepRating.setText(Integer.toString(sleep.getSleepRating()));
 

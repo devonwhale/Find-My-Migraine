@@ -51,7 +51,7 @@ public class Sleep {
         this.time_to_bed = time_to_bed;
     }
 
-    public void setSleepHours(int hours) {
+    public void setSleepHours(double hours) {
         this.hours = hours;
     }
 
@@ -90,7 +90,7 @@ public class Sleep {
 
     public String toString() {
         return "Sleep [ID: " + id +
-                ", Date: "+wakeDate+
-                ", Time to bed: " + time_to_bed + ", Time Up: " + time_up + "Hours: "+ hours +", Sleep Rating " + sleep_rating  + ", syncFlag: "+syncFlag+ "]" + "\n";
+                ", Date: "+wakeDate+ ", Hours: "+ hours+
+                ", Time to bed: " + time_to_bed + ", Time Up: " + time_up  +", Sleep Rating " + sleep_rating  + ", syncFlag: "+syncFlag+ "]" + "\n";
     }
 }

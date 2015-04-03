@@ -48,9 +48,10 @@ public class SleepDAO {
         ContentValues values = new ContentValues();
         //values.put(dbHelper.COLUMN_SLEEP_ID, sleep.getID());
         values.put(MySQLiteHelper.COLUMN_SLEEP_DATE, sleep.getDate());
+        values.put(MySQLiteHelper.COLUMN_SLEEP_HOURS, sleep.getSleepHours());
         values.put(MySQLiteHelper.COLUMN_TIME_TO_BED, sleep.getTimeToBed());
         values.put(MySQLiteHelper.COLUMN_TIME_UP, sleep.getTimeUp());
-        values.put(MySQLiteHelper.COLUMN_SLEEP_HOURS, sleep.getSleepHours());
+
         values.put(MySQLiteHelper.COLUMN_SLEEP_RATING, sleep.getSleepRating());
         values.put(MySQLiteHelper.COLUMN_SLEEP_SYNCFLAG, sleep.getSyncFlag());
 
@@ -150,9 +151,10 @@ public class SleepDAO {
         sleeping.setDate(Long.parseLong(cursor.getString(1)));
         //sleeping.setDate(dateR);                                        //for test - This is still returning 1/1/70, whatever is passed to getSleepRecordForDate()
         //sleeping.setDate(1426377600000L);                                   //more testing...
-        sleeping.setTimeToBed(cursor.getLong(2));     //These int no's change by 1 if date included - DONE
-        sleeping.setTimeUp(Long.parseLong(cursor.getString(3)));
-        sleeping.setSleepRating(Integer.parseInt(cursor.getString(4)));
+        sleeping.setTimeToBed(cursor.getLong(3));     //These int no's change by 1 if date included - DONE
+        sleeping.setTimeUp(Long.parseLong(cursor.getString(4)));
+        sleeping.setSleepHours(Double.parseDouble(cursor.getString(2)));
+        sleeping.setSleepRating(Integer.parseInt(cursor.getString(5)));
         //log
         Log.d("getSleepingRecord("+sleeping.getID()+")", sleeping.toString());
         return sleeping;

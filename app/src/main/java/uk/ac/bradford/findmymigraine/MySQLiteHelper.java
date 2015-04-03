@@ -26,7 +26,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SLEEP_RATING= "sleepRating";
     public static final String COLUMN_SLEEP_SYNCFLAG= "syncFlag";
     public static final String[] COLUMNS_SlEEP = {COLUMN_SLEEP_ID,
-            COLUMN_SLEEP_DATE,
+            COLUMN_SLEEP_DATE, COLUMN_SLEEP_HOURS,
             COLUMN_TIME_TO_BED,COLUMN_TIME_UP,COLUMN_SLEEP_RATING,COLUMN_SLEEP_SYNCFLAG};
 
     //String containing query for building sleep table

@@ -48,12 +48,13 @@ public class TravelDAO {
     }
 
     //method added by Steve - 12/3/15
-    public Travel getTravelRecordForDate(Long dateRequired){
+    //Amended 3/4/15 to return array of records
+    public Travel[] getTravelRecordsForDate(Long dateRequired){
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Travel travel = new Travel();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Travel[] travel;// = new Travel();             initialise in try block
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_TRAVEL,
@@ -62,18 +63,24 @@ public class TravelDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
+            //How many records?
+            int noOfRows = cursor.getCount();
+            travel = new Travel[noOfRows];
+            for (int i=0; i<noOfRows; i++){
             if(!cursor.isAfterLast()){
-                travel = cursorToTravel(cursor);
-
-                cursor.close();}
-
+                travel[i] = cursorToTravel(cursor);
+                cursor.moveToNext();
+            }}
+            cursor.close();
             db.close();
+            return travel;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
         //db.close();
+        travel = new Travel[0]; //if try block fails, return empty array
         return travel;
     }
 

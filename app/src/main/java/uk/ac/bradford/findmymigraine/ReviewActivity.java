@@ -28,7 +28,7 @@ public class ReviewActivity extends ActionBarActivity {
     TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
     int year, month, day;
     Calendar theDate;
-    TableLayout exerciseTable;
+    TableLayout exerciseTable, travelTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +56,12 @@ public class ReviewActivity extends ActionBarActivity {
         sleepRating = (TextView)findViewById(R.id.sr_details);
         //exDuration = (TextView)findViewById(R.id.ex_hours);
         //exIntensity = (TextView)findViewById(R.id.ex_intensity);
-        travelDuration = (TextView)findViewById(R.id.travel_duration);
-        travelMethod = (TextView)findViewById(R.id.travel_method);
-        travelDest = (TextView)findViewById(R.id.travel_destination);
+        //travelDuration = (TextView)findViewById(R.id.travel_duration);
+        //travelMethod = (TextView)findViewById(R.id.travel_method);
+        //travelDest = (TextView)findViewById(R.id.travel_destination);
         moodRating = (TextView)findViewById(R.id.mood_rating);
         exerciseTable = (TableLayout)findViewById(R.id.exercise_table);
+        travelTable = (TableLayout)findViewById(R.id.travel_table);
     }
 
     private void addButtonListener(){
@@ -105,7 +106,7 @@ public class ReviewActivity extends ActionBarActivity {
             //sleep = sleepDAO.getSleepingRecord(1);      //TEST code INSTEAD OF LINE ABOVE
             //display returned values in Android text views (values in sleep are longs (in millisecs...need to convert to times)
 
-                /*
+                /* OLD CODE - spec changed to use radio button group rather than time picker.
                 //Time to bed
                 Calendar calTTB = Calendar.getInstance();
                 calTTB.setTimeInMillis(sleep.getTimeToBed());
@@ -117,7 +118,7 @@ public class ReviewActivity extends ActionBarActivity {
                 sleepTU.setText(calTU.get(Calendar.HOUR_OF_DAY)+":"+calTU.get(Calendar.MINUTE));
                 */
 
-                //hours slept
+                //hours slept (Can't do this in switch block as doesn't accept a 'long'!
                 String displayHours = "not entered";
                 if(sleep.getSleepHours() == 1.5){
                     displayHours = "1-2 hours";
@@ -158,7 +159,26 @@ public class ReviewActivity extends ActionBarActivity {
                 //exIntensity.setText(Integer.toString(exercise.getIntensity()));
 
         //Travel Values for selected date
-            Travel travel = new Travel();
+        while (travelTable.getChildCount()>1){travelTable.removeViewAt(1);} //This line just clears the table down when the selected date is changed.
+        TravelDAO travelDAO = new TravelDAO(ReviewActivity.this);
+        Travel[] travel = new Travel[travelDAO.getTravelRecordsForDate(longDate).length];
+        travel = travelDAO.getTravelRecordsForDate(longDate);
+
+        for (int i=0; i<travel.length; i++){
+            TableRow tr = new TableRow(this);
+            Travel row = travel[i];
+            travelDuration = new TextView(this);
+            travelDuration.setText(Double.toString(row.getHours()));
+            tr.addView(travelDuration);
+            travelMethod = new TextView(this);
+            travelMethod.setText(row.getMethod());
+            tr.addView(travelMethod);
+            travelDest = new TextView(this);
+            travelDest.setText(row.getDest());
+            tr.addView(travelDest);
+            travelTable.addView(tr);
+        }
+/*        Travel travel = new Travel();
             TravelDAO travelDAO = new TravelDAO(ReviewActivity.this);
             travel = travelDAO.getTravelRecordForDate(longDate);
                 //Duration
@@ -167,7 +187,7 @@ public class ReviewActivity extends ActionBarActivity {
                 travelMethod.setText(travel.getMethod());
                 //Destination
                 travelDest.setText(travel.getDest());
-
+*/
         //Mood value for selected date
             Mood mood = new Mood();
             MoodDAO moodDAO = new MoodDAO(ReviewActivity.this);

@@ -22,7 +22,7 @@ import java.util.Date;
 public class ExerciseActivity extends ActionBarActivity {
     EditText hoursEditText;
     RatingBar intensityRatingBar;
-    Button nextButton;
+    Button nextButton, anotherButton;
     TextView tvTitle;
     Calendar c;
     int sleepRating; double sleepHours;
@@ -54,6 +54,7 @@ public class ExerciseActivity extends ActionBarActivity {
         hoursEditText = (EditText) findViewById(R.id.hoursEditText);
         intensityRatingBar = (RatingBar) findViewById(R.id.intensityRatingBar);
         nextButton = (Button) findViewById(R.id.nextButton);
+        anotherButton = (Button)findViewById(R.id.anotherButton);
     }
 
     /** Set onClickListeners for components in XML layout*/
@@ -62,25 +63,7 @@ public class ExerciseActivity extends ActionBarActivity {
      nextButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-             //retrieve number of stars specifies by user in rating bar
-          int numStars = (int) intensityRatingBar.getRating();
-
-          double hours = Double.parseDouble(hoursEditText.getText().toString());
-
-          /*if (c2 != null) {
-
-          }*/
-
-          //Enter exercise details into database
-          Exercise e = new Exercise(c2, hours,numStars);
-
-          //Create Exercise Data Access Object Instance
-          ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
-
-          //Enter exercise record into database
-          dao.createExerciseRecord(e);
-
-          Log.d("Exercise ", "Exercise Record Added");
+          updateExerciseRecords();
           //Go to Food and Drink Activity
           Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
           intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
@@ -89,7 +72,40 @@ public class ExerciseActivity extends ActionBarActivity {
           startActivity(intent);
          }
      });
+
+        anotherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateExerciseRecords();
+                //Go to Food and Drink Activity
+                Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                intent.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                intent.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                startActivity(intent);
+            }
+        });
     }
+
+    private void updateExerciseRecords(){
+        //retrieve number of stars specifies by user in rating bar
+        int numStars = (int) intensityRatingBar.getRating();
+
+        double hours = Double.parseDouble(hoursEditText.getText().toString());
+          /*if (c2 != null) {
+          }*/
+        //Enter exercise details into database
+        Exercise e = new Exercise(c2, hours,numStars);
+
+        //Create Exercise Data Access Object Instance
+        ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
+
+        //Enter exercise record into database
+        dao.createExerciseRecord(e);
+
+        Log.d("Exercise ", "Exercise Record Added");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

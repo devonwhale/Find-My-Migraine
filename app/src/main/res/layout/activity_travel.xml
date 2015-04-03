@@ -84,6 +84,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Save and add another Record"
+        android:textColor="@color/background_material_light"
+        android:id="@+id/btnAnother" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Save and return to Daily Diary"
         android:textColor="@color/background_material_light"
         android:id="@+id/btnNext" />

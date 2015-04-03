@@ -104,15 +104,30 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save and add another Record"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/foodDrinkAnotherButton"
+        android:textColor="@color/background_material_light"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save and return to Daily Diary"
-        android:layout_alignParentBottom="true"
+
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/foodDrinkNextButton"
         android:textColor="@color/background_material_light"/>
+    </LinearLayout>
 
     <CheckBox
         android:layout_width="wrap_content"

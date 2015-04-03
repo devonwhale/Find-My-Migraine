@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 public class TravelActivity extends ActionBarActivity {
 
-    Button btnNext;
+    Button btnNext, btnAnother;
     EditText etHours, etTravelType, etDest;
     TextView tvTitle;
     int time;
@@ -32,6 +32,7 @@ public class TravelActivity extends ActionBarActivity {
         setContentView(R.layout.activity_travel);
 
         btnNext = (Button) findViewById(R.id.btnNext);
+        btnAnother = (Button)findViewById(R.id.btnAnother);
         etHours = (EditText) findViewById(R.id.etHours);
         etTravelType = (EditText) findViewById(R.id.etTravelType);
         etDest = (EditText) findViewById(R.id.etDest);
@@ -49,43 +50,61 @@ public class TravelActivity extends ActionBarActivity {
             tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
         }
 
+        btnAnother.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTravelRecord();
+
+                Intent i = new Intent(getApplicationContext(), TravelActivity.class);
+                i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                i.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                i.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                startActivity(i);
+            }});
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    if(etTravelType.getText().toString().length() < 1 || etDest.getText().toString().length() < 1) {
-                        Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a method and destination", Toast.LENGTH_LONG);
-                        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                        feedback.show();
-                    } else {
-                        time = Integer.parseInt(etHours.getText().toString());
-                        method = etTravelType.getText().toString();
-                        dest = etDest.getText().toString();
+                addTravelRecord();
 
-                        Travel t = new Travel(c2, time, method, dest);
-                        TravelDAO dao = new TravelDAO(TravelActivity.this);
-                        dao.createTravelRecord(t);
-                        Log.d("Travel ", "Travel Record Added");
-
-                        Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Travel Records", Toast.LENGTH_LONG);
-                        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                        feedback.show();
-
-                        Intent i = new Intent(getApplicationContext(), SleepActivity.class);
-                        i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
-                        i.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
-                        i.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
-                        startActivity(i);
-                    }
-                } catch (NumberFormatException e) {
-                    Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a duration for the travel", Toast.LENGTH_LONG);
-                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                    feedback.show();
-                }
-            }
-        });
+                Intent i = new Intent(getApplicationContext(), SleepActivity.class);
+                i.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                i.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                i.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                startActivity(i);
+            }});
     }
+
+    private void addTravelRecord(){
+        try {
+            if(etTravelType.getText().toString().length() < 1 || etDest.getText().toString().length() < 1) {
+                Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a method and destination", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+            } else {
+                time = Integer.parseInt(etHours.getText().toString());
+                method = etTravelType.getText().toString();
+                dest = etDest.getText().toString();
+
+                Travel t = new Travel(c2, time, method, dest);
+                TravelDAO dao = new TravelDAO(TravelActivity.this);
+                dao.createTravelRecord(t);
+                Log.d("Travel ", "Travel Record Added");
+
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Travel Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+
+
+            }
+        } catch (NumberFormatException e) {
+            Toast feedback = Toast.makeText(getApplicationContext(), "Please enter a duration for the travel", Toast.LENGTH_LONG);
+            feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+            feedback.show();
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

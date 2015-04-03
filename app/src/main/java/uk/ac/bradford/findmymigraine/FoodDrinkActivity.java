@@ -28,7 +28,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
     CheckBox cheeseCB;
     CheckBox nutsCB;
     CheckBox citrusFruitsCB;
-    Button nextButton;
+    Button nextButton, anotherButton;
     Calendar c;
     long c2; int sleepRating; double sleepHours; //pass throughs from sleep
 
@@ -67,6 +67,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
          nutsCB = (CheckBox) findViewById(R.id.nutsCB);
          citrusFruitsCB = (CheckBox) findViewById(R.id.citrusFruitsCB);
          nextButton = (Button) findViewById(R.id.foodDrinkNextButton);
+         anotherButton = (Button)findViewById(R.id.foodDrinkAnotherButton);
     }
 
     /** Set onClickListeners for components in XML layout*/
@@ -76,67 +77,7 @@ public class FoodDrinkActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                //create array of integer for checkboxes, 0 if not checked, 1 if checked
-                int[] intArray = new int[11];
-
-                //initialise all elements of array to 0 (false)
-                for (int i = 0; i < intArray.length; i++) {
-                    intArray[i] = 0;
-                }
-
-                // Check if checkbox was ticked
-
-                if (beerCB.isChecked()) {
-                    intArray[0] = 1;
-                }
-
-                if (redWineCB.isChecked()) {
-                    intArray[1] = 1;
-                }
-                if (whiteWineCB.isChecked()) {
-                    intArray[2] = 1;
-                }
-                if (spiritCB.isChecked()) {
-                    intArray[3] = 1;
-                }
-                if (sodaCB.isChecked()) {
-                    intArray[4] = 1;
-                }
-                if (coffeeCB.isChecked()) {
-                    intArray[5] = 1;
-                }
-                if (teaCB.isChecked()) {
-                    intArray[6] = 1;
-                }
-                if (chocolateCB.isChecked()) {
-                    intArray[7] = 1;
-                }
-                if (cheeseCB.isChecked()) {
-                    intArray[8] = 1;
-                }
-                if (nutsCB.isChecked()) {
-                    intArray[9] = 1;
-                }
-                if (citrusFruitsCB.isChecked()) {
-                    intArray[10] = 1;
-                }
-
-
-                //Create Drink and Food instances
-                Drink drink = new Drink(c2,intArray[0],intArray[1],intArray[2],intArray[3],intArray[4],intArray[5],intArray[6]);
-                Food food = new Food(c2,intArray[7],intArray[8],intArray[9],intArray[10]);
-
-                //Create Drink and Food data access objects
-                DrinkDAO ddao = new DrinkDAO(FoodDrinkActivity.this);
-                FoodDAO fdao = new FoodDAO(FoodDrinkActivity.this);
-
-                //Enter Drink and Food objects into database
-                ddao.createDrinkRecord(drink);
-                Log.d("Drink ", "Drink Record Added");
-                fdao.createFoodRecord(food);
-               //TEST
-              //  fdao.createFoodRecord(new Food(c2, 1,1,1,1));
-                Log.d("Food ", "Food Record Added");
+                addFoodDrinkRecord();
 
                 Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
                 intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
@@ -145,9 +86,85 @@ public class FoodDrinkActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        anotherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                addFoodDrinkRecord();
+
+                Intent intent = new Intent(getApplicationContext(), FoodDrinkActivity.class);
+                intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                intent.putExtra("uk.ac.bradford.findmymigraine.stars", sleepRating);
+                intent.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                startActivity(intent);
+            }
+        });
     }
 
+    private void addFoodDrinkRecord(){
+        //create array of integer for checkboxes, 0 if not checked, 1 if checked
+        int[] intArray = new int[11];
 
+        //initialise all elements of array to 0 (false)
+        for (int i = 0; i < intArray.length; i++) {
+            intArray[i] = 0;
+        }
+
+        // Check if checkbox was ticked
+
+        if (beerCB.isChecked()) {
+            intArray[0] = 1;
+        }
+
+        if (redWineCB.isChecked()) {
+            intArray[1] = 1;
+        }
+        if (whiteWineCB.isChecked()) {
+            intArray[2] = 1;
+        }
+        if (spiritCB.isChecked()) {
+            intArray[3] = 1;
+        }
+        if (sodaCB.isChecked()) {
+            intArray[4] = 1;
+        }
+        if (coffeeCB.isChecked()) {
+            intArray[5] = 1;
+        }
+        if (teaCB.isChecked()) {
+            intArray[6] = 1;
+        }
+        if (chocolateCB.isChecked()) {
+            intArray[7] = 1;
+        }
+        if (cheeseCB.isChecked()) {
+            intArray[8] = 1;
+        }
+        if (nutsCB.isChecked()) {
+            intArray[9] = 1;
+        }
+        if (citrusFruitsCB.isChecked()) {
+            intArray[10] = 1;
+        }
+
+
+        //Create Drink and Food instances
+        Drink drink = new Drink(c2,intArray[0],intArray[1],intArray[2],intArray[3],intArray[4],intArray[5],intArray[6]);
+        Food food = new Food(c2,intArray[7],intArray[8],intArray[9],intArray[10]);
+
+        //Create Drink and Food data access objects
+        DrinkDAO ddao = new DrinkDAO(FoodDrinkActivity.this);
+        FoodDAO fdao = new FoodDAO(FoodDrinkActivity.this);
+
+        //Enter Drink and Food objects into database
+        ddao.createDrinkRecord(drink);
+        Log.d("Drink ", "Drink Record Added");
+        fdao.createFoodRecord(food);
+        //TEST
+        //  fdao.createFoodRecord(new Food(c2, 1,1,1,1));
+        Log.d("Food ", "Food Record Added");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

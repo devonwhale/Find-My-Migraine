@@ -206,13 +206,25 @@ public class SleepActivity extends ActionBarActivity {
         addMenstrual.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent mv = new Intent(getApplicationContext(), MenstrualCycleActivity.class);
-                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
-                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
-                numStars = (int) ratingBarSleep.getRating();
-                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
-                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
-                startActivity(mv);
+                //check to see if record exists for date
+                MenstrualCycle ms = new MenstrualCycle();
+                MenstrualCycleDAO msDAO = new MenstrualCycleDAO(SleepActivity.this);
+                ms = msDAO.getMenstrualCycleRecordForDate(c2);
+                if(ms.getDate()>(c2-1000)){   //record already exists
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Menstrual Cycle record already added!", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                }
+
+                else {
+                    Intent mv = new Intent(getApplicationContext(), MenstrualCycleActivity.class);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                    //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                    numStars = (int) ratingBarSleep.getRating();
+                    mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                    startActivity(mv);
+                }
             }
         });
 
@@ -235,13 +247,24 @@ public class SleepActivity extends ActionBarActivity {
         addMood.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent mv = new Intent(getApplicationContext(), MoodActivity.class);
-                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
-                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
-                numStars = (int) ratingBarSleep.getRating();
-                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
-                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
-                startActivity(mv);
+                //check to see if record exists for date
+                Mood mood = new Mood();
+                MoodDAO moodDAO = new MoodDAO(SleepActivity.this);
+                mood = moodDAO.getMoodRecordForDate(c2);
+                if(mood.getDate()>(c2-1000)){   //record already exists
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Mood record already added!", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                }
+                else {
+                    Intent mv = new Intent(getApplicationContext(), MoodActivity.class);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                    //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                    numStars = (int) ratingBarSleep.getRating();
+                    mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                    startActivity(mv);
+                }
             }
         });
 

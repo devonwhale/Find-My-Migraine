@@ -65,11 +65,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Save and add another Exercise"
+        android:textColor="@color/background_material_light"
+        android:id="@+id/anotherButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/intensityRatingBar"
+        android:layout_alignEnd="@+id/intensityRatingBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Save and return to Daily Diary"
         android:textColor="@color/background_material_light"
         android:id="@+id/nextButton"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/intensityRatingBar"
         android:layout_alignEnd="@+id/intensityRatingBar" />
+
+
 
 </LinearLayout>

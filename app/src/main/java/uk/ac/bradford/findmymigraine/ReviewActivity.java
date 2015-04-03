@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -26,6 +28,7 @@ public class ReviewActivity extends ActionBarActivity {
     TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
     int year, month, day;
     Calendar theDate;
+    TableLayout exerciseTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +54,13 @@ public class ReviewActivity extends ActionBarActivity {
         //sleepTU = (TextView)findViewById(R.id.tu_details);
         hoursSlept = (TextView)findViewById(R.id.hoursSlept_details);
         sleepRating = (TextView)findViewById(R.id.sr_details);
-        exDuration = (TextView)findViewById(R.id.ex_hours);
-        exIntensity = (TextView)findViewById(R.id.ex_intensity);
+        //exDuration = (TextView)findViewById(R.id.ex_hours);
+        //exIntensity = (TextView)findViewById(R.id.ex_intensity);
         travelDuration = (TextView)findViewById(R.id.travel_duration);
         travelMethod = (TextView)findViewById(R.id.travel_method);
         travelDest = (TextView)findViewById(R.id.travel_destination);
         moodRating = (TextView)findViewById(R.id.mood_rating);
+        exerciseTable = (TableLayout)findViewById(R.id.exercise_table);
     }
 
     private void addButtonListener(){
@@ -132,13 +136,26 @@ public class ReviewActivity extends ActionBarActivity {
                 sleepRating.setText(Integer.toString(sleep.getSleepRating()));
 
         //Exercise Values for selected date
-            Exercise exercise = new Exercise();
+            while (exerciseTable.getChildCount()>1){exerciseTable.removeViewAt(1);} //This line just clears the table down when the selected date is changed.
             ExerciseDAO exerciseDAO = new ExerciseDAO(ReviewActivity.this);
-            exercise = exerciseDAO.getExerciseRecordForDate(longDate);
+            Exercise[] exercise = new Exercise[exerciseDAO.getExerciseRecordsForDate(longDate).length];
+            exercise = exerciseDAO.getExerciseRecordsForDate(longDate);
+
+            for (int i=0; i<exercise.length; i++){
+                TableRow tr = new TableRow(this);
+                Exercise row = exercise[i];
+                exDuration = new TextView(this);
+                exDuration.setText(Double.toString(row.getHours()));
+                tr.addView(exDuration);
+                exIntensity = new TextView(this);
+                exIntensity.setText(Integer.toString(row.getIntensity()));
+                tr.addView(exIntensity);
+                exerciseTable.addView(tr);
+            }
                 //Duration
-                exDuration.setText(Double.toString(exercise.getHours()));
+                //exDuration.setText(Double.toString(exercise.getHours()));
                 //Intensity
-                exIntensity.setText(Integer.toString(exercise.getIntensity()));
+                //exIntensity.setText(Integer.toString(exercise.getIntensity()));
 
         //Travel Values for selected date
             Travel travel = new Travel();

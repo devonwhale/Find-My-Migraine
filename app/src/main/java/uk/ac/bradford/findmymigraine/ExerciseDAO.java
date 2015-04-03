@@ -55,12 +55,13 @@ public class ExerciseDAO {
     }
 
     //method added by Steve - 12/3/15
-    public Exercise getExerciseRecordForDate(Long dateRequired){
+    //AMENDED 3/4/15 to return array of exercise records
+    public Exercise[] getExerciseRecordsForDate(Long dateRequired){
         Log.d("Date required received by getExerciseRecordForDate():",dateRequired.toString()); //On test, correct Long coming through
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Exercise exercise = new Exercise();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Exercise[] exercise;// = new Exercise[array initialised in try block];                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_EXERCISE,
@@ -69,18 +70,26 @@ public class ExerciseDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
-            if(!cursor.isAfterLast()){
-                exercise = cursorToExercise(cursor);
+            //How many records?
+            int noOfRows = cursor.getCount();
+            exercise = new Exercise[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+            if(!cursor.isAfterLast()) {
 
-                cursor.close();}
-
-            db.close();
+                exercise[i] = cursorToExercise(cursor);
+                cursor.moveToNext();
+            }
+            }
+                cursor.close();
+                db.close();
+            return exercise;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
-        //db.close();
+        //if no records found:
+        exercise = new Exercise[0];
         return exercise;
     }
 

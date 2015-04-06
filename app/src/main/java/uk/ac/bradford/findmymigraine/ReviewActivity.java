@@ -25,7 +25,7 @@ public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen
     Button selectDate;
-    TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
+    TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, menstrualStatus, moodRating;
     int year, month, day;
     Calendar theDate;
     TableLayout exerciseTable, travelTable, foodDrinkTable;
@@ -60,6 +60,7 @@ public class ReviewActivity extends ActionBarActivity {
         //travelMethod = (TextView)findViewById(R.id.travel_method);
         //travelDest = (TextView)findViewById(R.id.travel_destination);
         moodRating = (TextView)findViewById(R.id.mood_rating);
+        menstrualStatus = (TextView)findViewById(R.id.menstrual_details);
         exerciseTable = (TableLayout)findViewById(R.id.exercise_table);
         travelTable = (TableLayout)findViewById(R.id.travel_table);
         foodDrinkTable = (TableLayout)findViewById(R.id.food_drink_table);
@@ -228,6 +229,14 @@ public class ReviewActivity extends ActionBarActivity {
                 //Destination
                 travelDest.setText(travel.getDest());
 */
+        //Menstrual cycle for selected date
+        MenstrualCycle mc = new MenstrualCycle();
+        MenstrualCycleDAO mcDAO = new MenstrualCycleDAO(ReviewActivity.this);
+        mc = mcDAO.getMenstrualCycleRecordForDate(longDate);
+
+            menstrualStatus.setText(mc.menstrualStatus());
+
+
         //Mood value for selected date
             Mood mood = new Mood();
             MoodDAO moodDAO = new MoodDAO(ReviewActivity.this);

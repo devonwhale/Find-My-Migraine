@@ -74,4 +74,13 @@ public class MenstrualCycle {
     public String toString() {
         return "Menstrual Cycle [ID: " + id + ", date: "+date+", Yes: " + yes + ", No: " + no +", Coming Soon: " + comingSoon+"]" + "\n";
     }
+
+    public String menstrualStatus(){
+        String status = "no details";
+        if (yes == 1) {status = "Currently on menstrual cycle";}
+        if (no == 1) {status = "Not currently on menstrual cycle";}
+        if (comingSoon == 1) {status = "Menstrual cycle coming soon";}
+
+        return status;
+    }
 }

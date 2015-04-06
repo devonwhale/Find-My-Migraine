@@ -336,7 +336,35 @@
             android:id="@+id/travel_destination"/>
     </LinearLayout>
     -->
-        <!-- Mood Details Section -->
+        <!-- Menstrual Details Section -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Menstrual Cycle"
+                android:textColor="@color/background_material_light"
+                android:textAppearance="?android:textAppearanceMedium"/>
+        </LinearLayout>
+
+        <!-- General mood rating -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/background_material_light"
+                android:text="n/a"
+                android:id="@+id/menstrual_details"/>
+        </LinearLayout>
+
+
+
+    <!-- Mood Details Section -->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -348,6 +376,7 @@
             android:textColor="@color/background_material_light"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
+
     <!-- General mood rating -->
     <LinearLayout
         android:layout_width="fill_parent"

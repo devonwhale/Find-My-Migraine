@@ -89,9 +89,9 @@ public class MenstrualCycleDAO {
         MenstrualCycle mc  = new MenstrualCycle();
         mc.setId(cursor.getLong(0));
         mc.setDate(Long.parseLong(cursor.getString(1)));
-        mc.setYes(Integer.parseInt(cursor.getString(2)));
-        mc.setNo(Integer.parseInt(cursor.getString(3)));
-        mc.setComingSoon(Integer.parseInt(cursor.getString(4)));
+        mc.setYes(Integer.parseInt(cursor.getString(3)));
+        mc.setNo(Integer.parseInt(cursor.getString(4)));
+        mc.setComingSoon(Integer.parseInt(cursor.getString(5)));
 
         //log
         Log.d("getMenstrualCycleRecord("+mc.getId()+")", mc.toString());

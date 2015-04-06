@@ -56,12 +56,12 @@ public class DrinkDAO {
 
     //Get Single Drink Record, for a given date
 
-    public Drink getDrinkRecordForDate(Long dateRequired){
+    public Drink[] getDrinkRecordsForDate(Long dateRequired){
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Drink drink = new Drink();
+        Drink[] drink;// = new Drink();
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_DRINK,
@@ -70,20 +70,31 @@ public class DrinkDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
-            if(!cursor.isAfterLast()){
-                drink = cursorToDrink(cursor);
+            //How many records?
+            int noOfRows = cursor.getCount();
+            drink = new Drink[noOfRows];
 
-                cursor.close();}
-            else
-                Log.d("getDrinkRecordForDate","No Drink record found with this date" );
+            if(!cursor.isAfterLast()) {
+                for(int i=0; i<drink.length; i++){
+                drink[i] = cursorToDrink(cursor);
+                cursor.moveToNext();
+            }
 
-            db.close();
+                cursor.close();
+                db.close();
+                return drink;
+            }
+
+            else{
+                Log.d("getDrinkRecordForDate","No Drink record found with this date" );}
+
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
         //db.close();
+        drink = new Drink[0];
         return drink;
     }
 
@@ -93,13 +104,13 @@ public class DrinkDAO {
         Drink drink  = new Drink();
         drink.setId(cursor.getLong(0));
         drink.setDate(Long.parseLong(cursor.getString(1)));
-        drink.setBeer(Integer.parseInt(cursor.getString(2)));
-        drink.setWhiteWine(Integer.parseInt(cursor.getString(3)));
+        drink.setBeer(Integer.parseInt(cursor.getString(3)));       //changed to match COLUMNS_DRINK by Steve 6/4/15
+        drink.setWhiteWine(Integer.parseInt(cursor.getString(5)));
         drink.setRedWine(Integer.parseInt(cursor.getString(4)));
-        drink.setSpirit(Integer.parseInt(cursor.getString(5)));
-        drink.setSoda(Integer.parseInt(cursor.getString(6)));
-        drink.setCoffee(Integer.parseInt(cursor.getString(7)));
-        drink.setTea(Integer.parseInt(cursor.getString(8)));
+        drink.setSpirit(Integer.parseInt(cursor.getString(6)));
+        drink.setSoda(Integer.parseInt(cursor.getString(7)));
+        drink.setCoffee(Integer.parseInt(cursor.getString(8)));
+        drink.setTea(Integer.parseInt(cursor.getString(9)));
 
         //log
         Log.d("getDrinkRecord("+drink.getId()+")", drink.toString());

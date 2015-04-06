@@ -110,4 +110,16 @@ public class Drink {
     public String toString() {
         return "Drink [ID: " + id + ", date: "+date+", beer: " + beer +  ", Red Wine: " + redWine+", White Wine"+ whiteWine+ ", spirit: "+spirit+", soda: "+soda+", coffee: " +coffee+", tea: " +tea+"]" + "\n";
     }
+
+    public String drinkList(){
+        String drinks = "DRINK";
+        if (beer == 1) drinks += " * Beer";
+        if (redWine == 1) drinks += " * Red Wine";
+        if (whiteWine == 1) drinks += " * White Wine";
+        if (spirit == 1) drinks += " * Spirit";
+        if (soda == 1) drinks += " * Soda";
+        if (coffee == 1) drinks += " * Coffee";
+        if (tea == 1) drinks += " * Tea";
+        return drinks;
+    }
 }

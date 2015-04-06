@@ -52,12 +52,12 @@ public class FoodDAO {
 
 
     //Get Single Food Record, for a given date
-    public Food getFoodRecordForDate(Long dateRequired){
+    public Food[] getFoodRecordsForDate(Long dateRequired){
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Food food = new Food();
+        Food[] food;// = new Food();
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_FOOD,
@@ -66,20 +66,26 @@ public class FoodDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
-            if(!cursor.isAfterLast()){
-                food = cursorToFood(cursor);
+            //How many records?
+            int noOfRows = cursor.getCount();
+            food = new Food[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+            if(!cursor.isAfterLast()) {
+                food[i] = cursorToFood(cursor);
+                cursor.moveToNext();
+            }else
+                Log.d("getFoodRecordForDate","No Food record found with this date" );}
 
-                cursor.close();}
-            else
-                Log.d("getFoodRecordForDate","No Food record found with this date" );
-
+            cursor.close();
             db.close();
+            return food;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
         //db.close();
+        food = new Food[0];
         return food;
     }
 
@@ -89,10 +95,10 @@ public class FoodDAO {
         Food food  = new Food();
         food.setId(cursor.getLong(0));
         food.setDate(Long.parseLong(cursor.getString(1)));
-        food.setChocolate(Integer.parseInt(cursor.getString(2)));
-        food.setCheese(Integer.parseInt(cursor.getString(3)));
-        food.setNuts(Integer.parseInt(cursor.getString(4)));
-        food.setCitrusFruits(Integer.parseInt(cursor.getString(5)));
+        food.setChocolate(Integer.parseInt(cursor.getString(3)));       //numbers altered 6/4/15 by Steve (SyncFlag is 2)
+        food.setCheese(Integer.parseInt(cursor.getString(4)));
+        food.setNuts(Integer.parseInt(cursor.getString(5)));
+        food.setCitrusFruits(Integer.parseInt(cursor.getString(6)));
 
         //log
         Log.d("getFoodRecord("+food.getId()+")", food.toString());

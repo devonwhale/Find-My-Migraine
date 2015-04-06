@@ -28,7 +28,7 @@ public class ReviewActivity extends ActionBarActivity {
     TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, moodRating;
     int year, month, day;
     Calendar theDate;
-    TableLayout exerciseTable, travelTable;
+    TableLayout exerciseTable, travelTable, foodDrinkTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,7 @@ public class ReviewActivity extends ActionBarActivity {
         moodRating = (TextView)findViewById(R.id.mood_rating);
         exerciseTable = (TableLayout)findViewById(R.id.exercise_table);
         travelTable = (TableLayout)findViewById(R.id.travel_table);
+        foodDrinkTable = (TableLayout)findViewById(R.id.food_drink_table);
     }
 
     private void addButtonListener(){
@@ -178,6 +179,45 @@ public class ReviewActivity extends ActionBarActivity {
             tr.addView(travelDest);
             travelTable.addView(tr);
         }
+
+        //Food and Drink Values for selected date
+        while (foodDrinkTable.getChildCount()>1){foodDrinkTable.removeViewAt(1);} //clear all but ViewAt(0) before rebuilding table rows
+        FoodDAO foodDAO = new FoodDAO(ReviewActivity.this);
+        Food[] food = new Food[foodDAO.getFoodRecordsForDate(longDate).length];
+        food = foodDAO.getFoodRecordsForDate(longDate);
+        DrinkDAO drinkDAO = new DrinkDAO(ReviewActivity.this);
+        Drink[] drink = new Drink[drinkDAO.getDrinkRecordsForDate(longDate).length];
+        drink = drinkDAO.getDrinkRecordsForDate(longDate);
+
+        int i;
+        for (i=0; i<food.length; i++){
+            TableRow tr = new TableRow(this);
+            Food row = food[i];
+            TextView item = new TextView(this);
+            item.setText(Integer.toString(i+1));
+            tr.addView(item);
+            TextView consumed = new TextView(this);
+            consumed.setText(food[i].foodList());
+            tr.addView(consumed);
+            foodDrinkTable.addView(tr);
+        }
+
+        for(i=food.length; i<(food.length+drink.length); i++){
+            TableRow tr = new TableRow(this);
+            Drink row = drink[i-food.length];
+            TextView item = new TextView(this);
+            item.setText(Integer.toString(i+1));
+            tr.addView(item);
+            TextView consumed = new TextView(this);
+            consumed.setText(drink[i-food.length].drinkList());
+            tr.addView(consumed);
+            foodDrinkTable.addView(tr);
+        }
+
+
+
+
+
 /*        Travel travel = new Travel();
             TravelDAO travelDAO = new TravelDAO(ReviewActivity.this);
             travel = travelDAO.getTravelRecordForDate(longDate);

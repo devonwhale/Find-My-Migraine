@@ -81,4 +81,14 @@ public class Food {
     public String toString() {
         return "Food [ID: " + id + ", date: "+date+", Chocolate: " + chocolate + ", Cheese: " + cheese +", Nuts: " + nuts+", Citrus Fruits: "+citrusFruits+"]" + "\n";
     }
+
+    //Get a single string listing all foods in the object
+    public String foodList(){
+        String foods = "FOOD";
+        if (chocolate == 1) foods += " * Chocolate";
+        if (cheese == 1) foods += " * Cheese";
+        if (nuts == 1) foods += " * Nuts";
+        if (citrusFruits == 1) foods += " * Citrus Fruits";
+        return foods;
+    }
 }

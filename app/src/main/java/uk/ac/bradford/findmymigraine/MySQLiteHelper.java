@@ -180,7 +180,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DRINK_SODA = "soda";
     public static final String COLUMN_DRINK_COFFEE = "coffee";
     public static final String COLUMN_DRINK_TEA = "tea";
-    public static final String[] COLUMNS_DRINK = {COLUMN_DRINK_ID, COLUMN_DRINK_DATE, COLUMN_DRINK_SYNCFLAG, COLUMN_DRINK_BEER, COLUMN_DRINK_REDWINE, COLUMN_DRINK_WHITEWINE, COLUMN_DRINK_SPIRIT, COLUMN_DRINK_SODA, COLUMN_DRINK_COFFEE, COLUMN_DRINK_TEA};
+    public static final String[] COLUMNS_DRINK = {COLUMN_DRINK_ID, COLUMN_DRINK_DATE, COLUMN_DRINK_SYNCFLAG,
+            COLUMN_DRINK_BEER, COLUMN_DRINK_REDWINE, COLUMN_DRINK_WHITEWINE, COLUMN_DRINK_SPIRIT,
+            COLUMN_DRINK_SODA, COLUMN_DRINK_COFFEE, COLUMN_DRINK_TEA};
 
     //String containing query for building Drink Table
     private static final String CREATE_DRINK_TABLE = "CREATE TABLE " +
@@ -205,7 +207,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_FOOD_CHEESE = "cheese";
     public static final String COLUMN_FOOD_NUTS = "nuts";
     public static final String COLUMN_FOOD_CITRUSFRUITS = "citrusFruits";
-    public static final String[] COLUMNS_FOOD = {COLUMN_FOOD_ID, COLUMN_FOOD_DATE, COLUMN_FOOD_SYNCFLAG, COLUMN_FOOD_CHOCOLATE, COLUMN_FOOD_CHEESE, COLUMN_FOOD_NUTS, COLUMN_FOOD_CITRUSFRUITS};
+    public static final String[] COLUMNS_FOOD = {COLUMN_FOOD_ID, COLUMN_FOOD_DATE,
+            COLUMN_FOOD_SYNCFLAG, COLUMN_FOOD_CHOCOLATE, COLUMN_FOOD_CHEESE, COLUMN_FOOD_NUTS, COLUMN_FOOD_CITRUSFRUITS};
 
     //String containing query for building Food Table
     private static final String CREATE_FOOD_TABLE = "CREATE TABLE " +

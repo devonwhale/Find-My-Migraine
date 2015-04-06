@@ -107,11 +107,12 @@ public class WhenActivity extends ActionBarActivity {
                 }
                 else {
                     // Establish variable types used by the constructor
-                    Long a, b, c;
+                    Long a, b;
+                    //, c;
 
                     //Set 'Date' in Long format for passing to constructor
-                    whenDate.set(whenYear, whenMonth, whenDay);
-                    c = whenDate.getTimeInMillis();
+                    //whenDate.set(whenYear, whenMonth, whenDay);
+                    //c = whenDate.getTimeInMillis();
 
 
                     //Set times in Long format for passing to constructor
@@ -122,14 +123,14 @@ public class WhenActivity extends ActionBarActivity {
 
 
                     //Call constructor - Create a new When object
-                    When w = new When(c, a, b);
+                    When w = new When(c2, a, b);
 
                     //Create 'When' Data Access Object Instance
                     WhenDAO dao = new WhenDAO(WhenActivity.this);
 
                     //Enter 'when' record into database
                     dao.createWhenRecord(w);
-                    Log.d("When ", "When Record Added");
+                    Log.d("When ", "When Object created:"+" dateLong: "+c2+", Start time (log): "+a+", End Time (long): "+b);
 
                     /*Toast added by Steve to give feedback on submit.
                     The next three lines bring up a small 'toast' with the feedback text in the code.
@@ -145,7 +146,8 @@ public class WhenActivity extends ActionBarActivity {
 
                     //new code added 26/3/15 to move to [ Coping ] screen (needs changing to Intensity when ready!
                     Intent mv = new Intent(getApplicationContext(), ActivityCoping.class);
-                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.start", a);
                     startActivity(mv);
                 }
             }
@@ -164,24 +166,37 @@ public class WhenActivity extends ActionBarActivity {
         whenDay = day;
         int displayMonthFigure = month + 1;
         attackDate.setText(day+"/"+displayMonthFigure+"/"+year);
-        attackDate.setTextColor(5);
+        //attackDate.setTextColor(5);
         //nextButton.setTextColor(0);
         Toast.makeText(getBaseContext(), "Date set to "+day+"/"+displayMonthFigure+"/"+year, Toast.LENGTH_LONG).show();
     }
 
     public void setTime(int hour, int min) {
         System.err.println("Time received");
+        String displayMinutes = Integer.toString(min);
+        switch(min){
+            case 0: displayMinutes = "00";break;
+            case 1: displayMinutes = "01";break;
+            case 2: displayMinutes = "02";break;
+            case 3: displayMinutes = "03";break;
+            case 4: displayMinutes = "04";break;
+            case 5: displayMinutes = "05";break;
+            case 6: displayMinutes = "06";break;
+            case 7: displayMinutes = "07";break;
+            case 8: displayMinutes = "08";break;
+            case 9: displayMinutes = "09";break;
+        }
         if(!time) {
             startMinute = min;
             startHour = hour;
-            attackStart.setText(hour + ": " + min);
+            attackStart.setText(hour + ": " + displayMinutes);
         }
         else if(time) {
             endMinute = min;
             endHour = hour;
-            attackEnd.setText(hour + ": " + min);
+            attackEnd.setText(hour + ": " + displayMinutes);
         }
-        Toast.makeText(getBaseContext(), "Time set: " + hour + ":" + min, Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Time set: " + hour + ":" + displayMinutes, Toast.LENGTH_LONG).show();
     }
 
     @Override

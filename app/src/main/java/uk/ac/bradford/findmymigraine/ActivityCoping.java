@@ -25,7 +25,7 @@ public class ActivityCoping extends ActionBarActivity {
     String other;
     Button btnNext;
     Calendar c; //calendar is used to get the date
-    long c2;
+    long c2, a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class ActivityCoping extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
+            a = extra.getLong("uk.ac.bradford.findmymigraine.start");
 
         }
 
@@ -49,7 +50,7 @@ public class ActivityCoping extends ActionBarActivity {
         CMedication = (CheckBox) findViewById(R.id.CopingMedication);
         CYoga = (CheckBox) findViewById(R.id.CopingYoga);
         CSleep = (CheckBox) findViewById(R.id.CopingSleep);
-        //CoOther = (EditText) findViewById(R.id.CoOther);
+        CoOther = (EditText) findViewById(R.id.CopingOther);
         btnNext = (Button) findViewById(R.id.BtnNext);
     }
 
@@ -85,7 +86,7 @@ public class ActivityCoping extends ActionBarActivity {
 
 
                 //Create Coping objects
-                Coping coping = new Coping(c2,intArray[0],intArray[1],intArray[2], intArray[3]);
+                Coping coping = new Coping(c2,a,intArray[0],intArray[1],intArray[2], intArray[3], CoOther.getText().toString());
 
 
                 //Create Coping data access objects
@@ -99,6 +100,7 @@ public class ActivityCoping extends ActionBarActivity {
 
                 Intent intent = new Intent(getApplicationContext(), CausesActivity.class);
                 intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                intent.putExtra("uk.ac.bradford.findmymigraine.start", a);
                 startActivity(intent);
             }
         });

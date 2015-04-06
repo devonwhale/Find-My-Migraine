@@ -4,15 +4,16 @@ package uk.ac.bradford.findmymigraine;
  * Created by Imtanan on 03/03/2015.
  */
 public class Causes {
-    private long id, date;
+    private long id, date, startTime;
     private int syncFlag, stress, lack_of_sleep, lack_of_food, lack_of_water, depression;
     private String other;
 
     public Causes(){}
 
-    public Causes(long date, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression){
+    public Causes(long date, long startTime, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression){
 
         this.date=date;
+        this.startTime = startTime;
         this.stress=stress;
         this.lack_of_sleep=lack_of_sleep;
         this.lack_of_food=lack_of_food;
@@ -21,9 +22,10 @@ public class Causes {
         this.syncFlag=0;
     }
 
-    public Causes(long date, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression, String other){
+    public Causes(long date, long startTime, int stress, int lack_of_sleep, int lack_of_food, int lack_of_water, int depression, String other){
 
         this.date=date;
+        this.startTime=startTime;
         this.stress=stress;
         this.lack_of_sleep=lack_of_sleep;
         this.lack_of_food=lack_of_food;
@@ -40,6 +42,10 @@ public class Causes {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
     public void setSyncFlag(int syncFlag) {
@@ -82,6 +88,10 @@ public class Causes {
         return date;
     }
 
+    public long getStartTime() {
+        return startTime;
+    }
+
     public int getSyncFlag() {
         return syncFlag;
     }
@@ -112,6 +122,17 @@ public class Causes {
 
     @Override
     public String toString() {
-        return "Causes [ID: "+id+ ", Date: " +date+", Stress: " +stress+", Lack of water: "+ lack_of_sleep + ", Lack of water: "+lack_of_food+", Lack of water: "+lack_of_water+", Depression: "+depression+", Other: "+other+ "]" + "\n";
+        return "Causes [ID: "+id+ ", Date: " +date+", Start Time: "+startTime+", Stress: " +stress+", Lack of sleep: "+ lack_of_sleep + ", Lack of food: "+lack_of_food+", Lack of water: "+lack_of_water+", Depression: "+depression+", Other: "+other+ "]" + "\n";
+    }
+
+    public String causesList(){
+        String causes = "";
+        if (stress == 1) causes += " * Stress";
+        if (lack_of_sleep == 1) causes += " * Lack of Sleep";
+        if (lack_of_food == 1) causes += " * Lack of Food";
+        if (lack_of_water == 1) causes += " * Lack of Water";
+        if (depression == 1) causes += " * Depression";
+        if (other != null) causes += " * "+other;
+        return causes;
     }
 }

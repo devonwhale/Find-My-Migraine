@@ -36,7 +36,7 @@ public class CopingDAO {
         }
     }
 
-    //Add new When Record
+    //Add new Coping Record
     public void createCopingRecord(Coping coping) {
         Log.d("addCopingRecord", coping.toString());
         db = dbHelper.getWritableDatabase();
@@ -44,6 +44,7 @@ public class CopingDAO {
         ContentValues values = new ContentValues();
 
         values.put(MySQLiteHelper.COLUMN_COPING_DATE, coping.getDate());
+        values.put(MySQLiteHelper.COLUMN_COPING_START, coping.getStartTime());
         values.put(MySQLiteHelper.COLUMN_COPING_YOGA, coping.getYoga());
         values.put(MySQLiteHelper.COLUMN_COPING_SLEEPING, coping.getSleep());
         values.put(MySQLiteHelper.COLUMN_COPING_MEDICATION, coping.getMedication());
@@ -57,11 +58,13 @@ public class CopingDAO {
 
     }
     //Get Single Coping Record
-    public Coping getCopingRecord(int id) {
+    public Coping getCopingRecord(Long startTime) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(MySQLiteHelper.TABLE_COPING, MySQLiteHelper.COLUMNS_COPING, " KEY_ID = ?",
-                new String[] { String.valueOf(id) }, null, null, null);
+        Cursor cursor = db.query(MySQLiteHelper.TABLE_COPING,
+                MySQLiteHelper.COLUMNS_COPING,
+                MySQLiteHelper.COLUMN_COPING_START+"="+startTime,
+                null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -95,12 +98,13 @@ public class CopingDAO {
         Coping coping  = new Coping();
         coping.setId(Long.parseLong(cursor.getString(0)));
         coping.setDate(Long.parseLong(cursor.getString(1)));
-        coping.setYoga(Integer.parseInt(cursor.getString(2)));
-        coping.setMedication(Integer.parseInt(cursor.getString(3)));
-        coping.setMeditation(Integer.parseInt(cursor.getString(4)));
-        coping.setSleep(Integer.parseInt(cursor.getString(5)));
-        //coping.setOther(String.format(cursor.getString(6))); //Not to sure about this
-        coping.setSyncFlag(Integer.parseInt(cursor.getString(7)));
+        coping.setStartTime(Long.parseLong(cursor.getString(2)));
+        coping.setYoga(Integer.parseInt(cursor.getString(4)));
+        coping.setMedication(Integer.parseInt(cursor.getString(5)));
+        coping.setMeditation(Integer.parseInt(cursor.getString(6)));
+        coping.setSleep(Integer.parseInt(cursor.getString(7)));
+        coping.setOther(cursor.getString(8)); //Not to sure about this
+        coping.setSyncFlag(Integer.parseInt(cursor.getString(3)));
 
 
         //log

@@ -8,7 +8,7 @@ import java.security.PublicKey;
  * Needs Checking
  */
 public class Coping {
-    private long id, date;
+    private long id, date, startTime;
     private int syncFlag, yoga, medication, meditation, sleep;
     private String other;
 
@@ -23,8 +23,9 @@ public class Coping {
         syncFlag=0;
     }
 
-    public Coping(long date, int medication, int meditation, int sleep, int yoga){
+    public Coping(long date, long startTime, int medication, int meditation, int sleep, int yoga){
         this.date=date;
+        this.startTime = startTime;
         this.medication=medication;
         this.meditation=meditation;
         this.sleep=sleep;
@@ -33,10 +34,12 @@ public class Coping {
     }
 
     // Constructors
-    public Coping(long date,int medication, int meditation, int sleep, String other) {
+    public Coping(long date,long startTime, int yoga, int medication, int meditation, int sleep, String other) {
        // this.id=id;
         this.date=date;
+        this.startTime = startTime;
        // this.syncFlag=syncFlag;
+        this.yoga = yoga;
         this.medication=medication;
         this.meditation=meditation;
         this.sleep=sleep;
@@ -78,6 +81,10 @@ public class Coping {
         this.date=xDate;
     }
 
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
     public void setSyncFlag(int xsyncFlag) {
         this.syncFlag = xsyncFlag;
     }
@@ -112,6 +119,10 @@ public class Coping {
         return date;
     }
 
+    public long getStartTime() {
+        return startTime;
+    }
+
     public int getSyncFlag() {
         return syncFlag;
     }
@@ -138,7 +149,16 @@ public class Coping {
 
     @Override
     public String toString() {
-        return "Coping [ID: "+id+ ", Date: " +date+ ", Yoga: "+ yoga + ", Medication: "+medication+", Meditation: "+meditation+", Sleep: "+sleep+", Other: "+other+ "]" + "\n";
+        return "Coping [ID: "+id+ ", Date: " +date+", Start Time: "+startTime+ ", Yoga: "+ yoga + ", Medication: "+medication+", Meditation: "+meditation+", Sleep: "+sleep+", Other: "+other+ "]" + "\n";
     }
 
+    public String copingList(){
+        String coping = "";
+        if (yoga == 1) coping += " * Yoga";
+        if (medication == 1) coping += " * Medication";
+        if (meditation == 1) coping += " * Meditation";
+        if (sleep == 1) coping += " * Sleep";
+        if (other != "") coping += " * "+other;
+        return coping;
+    }
 }

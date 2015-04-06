@@ -43,6 +43,7 @@ public class CausesDAO {
         ContentValues values = new ContentValues();
 
         values.put(MySQLiteHelper.COLUMN_CAUSES_DATE, causes.getDate());
+        values.put(MySQLiteHelper.COLUMN_CAUSES_START, causes.getStartTime());
         values.put(MySQLiteHelper.COLUMN_CAUSES_STRESS, causes.getStress());
         values.put(MySQLiteHelper.COLUMN_CAUSES_LACK_OF_SLEEP, causes.getLack_of_sleep());
         values.put(MySQLiteHelper.COLUMN_CAUSES_LACK_OF_FOOD, causes.getLack_of_food());
@@ -58,11 +59,11 @@ public class CausesDAO {
     }
 
     //Get Single Causes Record
-    public Causes getCausesRecord(int id) {
+    public Causes getCausesRecord(Long startTime) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(MySQLiteHelper.TABLE_CAUSES, MySQLiteHelper.COLUMNS_CAUSES, " KEY_ID = ?",
-                new String[] { String.valueOf(id) }, null, null, null);
+        Cursor cursor = db.query(MySQLiteHelper.TABLE_CAUSES, MySQLiteHelper.COLUMNS_CAUSES,
+                MySQLiteHelper.COLUMN_CAUSES_START+"="+startTime, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -97,13 +98,14 @@ public class CausesDAO {
         Causes causes  = new Causes();
         causes.setId(Long.parseLong(cursor.getString(0)));
         causes.setDate(Long.parseLong(cursor.getString(1)));
-        causes.setStress(Integer.parseInt(cursor.getString(2)));
-        causes.setLack_of_sleep(Integer.parseInt(cursor.getString(3)));
-        causes.setLack_of_food(Integer.parseInt(cursor.getString(4)));
-        causes.setLack_of_water(Integer.parseInt(cursor.getString(5)));
-        causes.setDepression(Integer.parseInt(cursor.getString(6)));
-        //causes.setOther(String.format(cursor.getString(7))); //Not to sure about this
-        causes.setSyncFlag(Integer.parseInt(cursor.getString(8)));
+        causes.setStartTime(Long.parseLong(cursor.getString(2)));
+        causes.setStress(Integer.parseInt(cursor.getString(4)));
+        causes.setLack_of_sleep(Integer.parseInt(cursor.getString(5)));
+        causes.setLack_of_food(Integer.parseInt(cursor.getString(6)));
+        causes.setLack_of_water(Integer.parseInt(cursor.getString(7)));
+        causes.setDepression(Integer.parseInt(cursor.getString(8)));
+        causes.setOther(cursor.getString(9)); //Not to sure about this
+        causes.setSyncFlag(Integer.parseInt(cursor.getString(3)));
 
         //log
         Log.d("getCausesRecord("+causes.getId()+")", causes.toString());

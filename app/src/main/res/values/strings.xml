@@ -33,16 +33,15 @@
     <string name="sleep_details">Sleep Details</string>
     <string name="sleep_date">Date (when waking)</string>
     <string name="title_activity_activity_coping">Migraine Attack Coping Strategy</string>
-
     <string name="title_attack_when">When did it happen?</string>
     <string name="title_attack_severity">How bad was it?</string>
     <string name="title_attack_coping">How did you deal with it?</string>
     <string name="title_attack_causes">What might have caused it?</string>
-
     <string name="title_activity_drink_food">Food and Drink Record</string>
     <string name="title_activity_intensity">Intensity Record</string>
-
     <string name="title_activity_menstrual_cycle">Menstrual Cycle</string>
     <string name="menstrual_cycle_question">Were you having your menstrual cycle?</string>
+    <string name="title_activity_review_attacks">ReviewAttacks</string>
+    <string name="title_activity_review_attack_record">ReviewAttackRecord</string>
 
 </resources>

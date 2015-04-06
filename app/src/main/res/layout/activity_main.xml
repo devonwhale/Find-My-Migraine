@@ -52,7 +52,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Review Records"
+        android:text="Review Diary"
         android:id="@+id/reviewRecords"
         android:textSize="18dp"
         android:textColor="@color/background_material_light"
@@ -63,11 +63,22 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="Review Migraines"
+        android:id="@+id/reviewAttacks"
+        android:textSize="18dp"
+        android:textColor="@color/background_material_light"
+        android:layout_below="@+id/reviewRecords"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="User Information"
         android:id="@+id/userInfo"
         android:textSize="18dp"
         android:textColor="@color/background_material_light"
-        android:layout_below="@+id/reviewRecords"
+        android:layout_below="@+id/reviewAttacks"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp" />
 

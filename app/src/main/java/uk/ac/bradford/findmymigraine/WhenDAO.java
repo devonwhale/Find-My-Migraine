@@ -55,11 +55,13 @@ public class WhenDAO {
     }
 
     //Get Single When Record
-    public When getWhenRecord(int id) {
+    public When getWhenRecord(Long id) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(MySQLiteHelper.TABLE_WHEN, MySQLiteHelper.COLUMNS_WHEN, " KEY_ID = ?",
-                new String[] { String.valueOf(id) }, null, null, null);
+        Cursor cursor = db.query(MySQLiteHelper.TABLE_WHEN,
+                MySQLiteHelper.COLUMNS_WHEN,
+                MySQLiteHelper.COLUMN_WHEN_ID + "=" + id,
+                null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -69,25 +71,33 @@ public class WhenDAO {
 
     }
 
-    //Get All Exercise Table Records
-    public List<When> getAllWhenRecords() {
-        List<When> listWhen = new ArrayList<When>();
+    //Get All When Table Records
+    public When[] getAllWhenRecords() {
+        db = dbHelper.getReadableDatabase();
+        When[] records;
 
         Cursor cursor = db.query(MySQLiteHelper.TABLE_WHEN, MySQLiteHelper.COLUMNS_WHEN,
                 null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                When when = cursorToWhen(cursor);
-                listWhen.add(when);
-                cursor.moveToNext();
-            }
-
-
+            //How many records?
+            int noOfRows = cursor.getCount();
+            records = new When[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()){
+                    records[i] = cursorToWhen(cursor);
+                    cursor.moveToNext();
+                }}
             cursor.close();
+            db.close();
+            return records;
+
         }
-        return listWhen;
+        records = new When[0];
+        return records;
     }
+
+    //public When[] getAllWhenRecords
 
 
     protected When cursorToWhen(Cursor cursor) {
@@ -99,7 +109,7 @@ public class WhenDAO {
         when.setSyncFlag(Integer.parseInt(cursor.getString(4)));
 
         //log
-        Log.d("getExerciseRecord("+when.getId()+")", when.toString());
+        Log.d("When Record extracted from cursor("+when.getId()+")", when.toString());
         return when;
     }
 

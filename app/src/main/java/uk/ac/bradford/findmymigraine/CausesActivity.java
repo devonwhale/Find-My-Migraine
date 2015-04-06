@@ -22,10 +22,10 @@ public class CausesActivity extends ActionBarActivity {
     CheckBox lack_of_water;
     CheckBox depression;
     //String other;
-    //EditText CauseOther;
+    EditText causeOther;
     Button btnNext;
     Calendar c;
-    long c2;
+    long c2, a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class CausesActivity extends ActionBarActivity {
             c = Calendar.getInstance();
             c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
             c.setTimeInMillis(c2);
+            a = extra.getLong("uk.ac.bradford.findmymigraine.start");
 
         }
 
@@ -50,6 +51,7 @@ public class CausesActivity extends ActionBarActivity {
         lack_of_sleep= (CheckBox) findViewById(R.id.CauseLackSleep);
         lack_of_water= (CheckBox) findViewById(R.id.CauseLackWater);
         depression= (CheckBox) findViewById(R.id.CauseDepression);
+        causeOther = (EditText)findViewById(R.id.CausesOther);
         btnNext = (Button) findViewById(R.id.BtnNext);
     }
 
@@ -74,13 +76,13 @@ public class CausesActivity extends ActionBarActivity {
                 }
 
                 if (lack_of_food.isChecked()) {
-                    intArray[1] = 1;
-                }
-                if (lack_of_water.isChecked()) {
                     intArray[2] = 1;
                 }
-                if (lack_of_sleep.isChecked()) {
+                if (lack_of_water.isChecked()) {
                     intArray[3] = 1;
+                }
+                if (lack_of_sleep.isChecked()) {
+                    intArray[1] = 1;
                 }
                 if (depression.isChecked()){
                     intArray[4]= 1;
@@ -88,15 +90,15 @@ public class CausesActivity extends ActionBarActivity {
 
 
                 //Create Coping objects
-                Causes causes = new Causes(c2,intArray[0],intArray[1],intArray[2], intArray[3], intArray[4]);
+                Causes causes = new Causes(c2,a,intArray[0],intArray[1],intArray[2], intArray[3], intArray[4], causeOther.getText().toString());
 
 
                 //Create Coping data access objects
-                CausesDAO Caudao = new CausesDAO(CausesActivity.this);
+                CausesDAO causesDAO = new CausesDAO(CausesActivity.this);
 
 
                 //Enter Drink and Food objects into database
-                Caudao.createCausesRecord(causes);
+                causesDAO.createCausesRecord(causes);
                 Log.d("causes ", "Causes Record Added");
 
 

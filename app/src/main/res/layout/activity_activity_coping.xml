@@ -4,6 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/material_blue_grey_800"
     tools:context="uk.ac.bradford.findmymigraine.ActivityCoping"
     android:weightSum="1"
     android:orientation="vertical">
@@ -13,6 +14,7 @@
         android:layout_height="39dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Coping strategy for migraine"
+        android:textColor="@color/background_material_light"
         android:id="@+id/headerCoping"
         android:layout_column="0" />
 
@@ -20,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Yoga"
+        android:textColor="@color/background_material_light"
         android:id="@+id/CopingYoga"
         android:checked="false" />
 
@@ -27,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Medication"
+        android:textColor="@color/background_material_light"
         android:id="@+id/CopingMedication"
         android:checked="false" />
 
@@ -34,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Meditation"
+        android:textColor="@color/background_material_light"
         android:id="@+id/CopingMeditation"
         android:checked="false" />
 
@@ -41,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sleep"
+        android:textColor="@color/background_material_light"
         android:id="@+id/CopingSleep"
         android:checked="false" />
 
@@ -49,17 +55,20 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Other"
+        android:textColor="@color/background_material_light"
         android:id="@+id/OtherTextView" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/CopingOther"
+        android:textColor="@color/background_material_light"
         android:hint="Enter text" />
 
     <Button
         android:layout_width="346dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/background_material_light"
         android:text="Next"
         android:id="@+id/BtnNext"
         android:layout_gravity="center_horizontal" />

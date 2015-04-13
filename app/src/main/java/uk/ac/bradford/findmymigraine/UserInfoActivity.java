@@ -1,12 +1,21 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 
 public class UserInfoActivity extends ActionBarActivity {
@@ -72,15 +81,33 @@ public class UserInfoActivity extends ActionBarActivity {
         UserInfoDAO newInfoDAO = new UserInfoDAO(UserInfoActivity.this);
         newInfoDAO.updateUserInfo(newInfo);
         //Toast to report
-
+        Toast feedback = Toast.makeText(getApplicationContext(), "User record updated", Toast.LENGTH_LONG);
+        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+        feedback.show();
+        //Return to main activity screen
+        Intent mv = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mv);
     }
 
     private void writeToFile(){
         //code to get data
-
+        String fileString = "Write this message to file";
+        String filename = "Text.txt";
+        FileOutputStream outputStream;
         //code to write to file
-
+        try{
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(fileString.getBytes());
+            outputStream.close();
+        }
+        catch(Exception e){e.printStackTrace();}
         //toast to report
+        Toast feedback = Toast.makeText(getApplicationContext(), "Data written to "+filename, Toast.LENGTH_LONG);
+        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+        feedback.show();
+        //return to main menu
+        Intent mv = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mv);
     }
 
     @Override

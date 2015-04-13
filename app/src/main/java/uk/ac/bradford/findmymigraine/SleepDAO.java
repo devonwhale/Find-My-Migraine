@@ -127,24 +127,30 @@ public class SleepDAO {
 
 
     //Get All Sleep Table Records
-    /*public List<Sleep> getAllSleepingRecords() {
-        List<Sleep> listSleeping = new ArrayList<Sleep>();
+    public Sleep[] getAllSleepRecords() {
+        Sleep[] sleepRecords;
 
         Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,
                 null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                Sleep sleeping = cursorToSleeping(cursor);
-                listSleeping.add(sleeping);
-                cursor.moveToNext();
-            }
 
-
+            int noOfRows = cursor.getCount();
+            sleepRecords = new Sleep[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()){
+                    sleepRecords[i] = cursorToSleeping(cursor);
+                    cursor.moveToNext();
+                }}
             cursor.close();
+            db.close();
+            return sleepRecords;
+
+
         }
-        return listSleeping;
-    }*/
+        sleepRecords = new Sleep[0];
+        return sleepRecords;
+    }
 
     //Temp amend for test - pass dateRequired as second parameter
     protected Sleep cursorToSleeping(Cursor cursor) {

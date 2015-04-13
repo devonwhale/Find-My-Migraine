@@ -91,12 +91,34 @@ public class UserInfoActivity extends ActionBarActivity {
 
     private void writeToFile(){
         //code to get data
-        String fileString = "Write this message to file";
-        String filename = "Text.txt";
+
+        /*Data required for
+         UserInfo;
+         Sleep, Travel, Exercise, Food, Drink, Work, Menstrual Cycle, Mood;
+         When, Coping, Intensity, Causes;                                       13 TABLES TO DO - 1 DONE - TIME EST FOR REMAINING 12 = 6 HOURS (i.e 10 mins per method)
+                                                                                ATTACHING FILES TO EMAIL NEEDS SOME INVESTIGATION. (External Storage, Manifest alteration, special methods for mail services????)
+         */
+
+        //Sleep records ..... !!!Depends upon methods setting up: Sleep.toStringArray() and SleepDAO.getAllSleepRecords()
+        SleepDAO sleepRecords = new SleepDAO(UserInfoActivity.this);
+        Sleep[] allSleepRecords = sleepRecords.getAllSleepRecords();
+        String sleepRecordsCSV = "id, syncFlag, wakeDate, hours, rating\n";
+        for (int i=0; i<allSleepRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<4; j++){
+                sleepRecordsCSV += allSleepRecords[i].toStringArray()[j];
+                sleepRecordsCSV += ",";
+            }
+            sleepRecordsCSV += allSleepRecords[i].toStringArray()[4];
+            sleepRecordsCSV += "\n";
+        }
+
+        String fileString = sleepRecordsCSV;   //to be replaced by all records
+        String filename = "SleepRecords.csv";       //BUT WHERE IS THIS WRITTEN TO???????
         FileOutputStream outputStream;
         //code to write to file
         try{
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream = openFileOutput(filename, Context.MODE_WORLD_READABLE);      //was Context.MODE_PRIVATE
             outputStream.write(fileString.getBytes());
             outputStream.close();
         }

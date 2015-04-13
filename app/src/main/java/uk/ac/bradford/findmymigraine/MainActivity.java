@@ -84,6 +84,16 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
                 startActivity(mv);
             }
         });
+
+        Button but_userInfo = (Button) findViewById(R.id.userInfo);
+        but_userInfo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent mv = new Intent(getApplicationContext(), UserInfoActivity.class);
+                startActivity(mv);
+            }
+        });
     }
 
     public void setWakeDate(int year, int month, int day){

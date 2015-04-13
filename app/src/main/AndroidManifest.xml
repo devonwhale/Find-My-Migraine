@@ -144,6 +144,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.bradford.findmymigraine.ReviewAttacks" />
         </activity>
+        <activity
+            android:name=".UserInfoActivity"
+            android:label="User Information"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.bradford.findmymigraine.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

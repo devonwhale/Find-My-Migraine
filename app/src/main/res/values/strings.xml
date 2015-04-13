@@ -43,5 +43,6 @@
     <string name="menstrual_cycle_question">Were you having your menstrual cycle?</string>
     <string name="title_activity_review_attacks">ReviewAttacks</string>
     <string name="title_activity_review_attack_record">ReviewAttackRecord</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
 
 </resources>

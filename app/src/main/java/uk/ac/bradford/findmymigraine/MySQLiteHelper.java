@@ -253,6 +253,30 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_MENSTRUAL_CYCLE_NO + " INTEGER, "
             + COLUMN_MENSTRUAL_CYCLE_COMINGSOON+ " INTEGER" + ")";
 
+    //User Info table details
+    public static final String TABLE_USER_INFO = "userInfo";
+    public static final String COLUMN_USER_ID = "_id";
+    public static final String COLUMN_USER_SYNCFLAG = "syncFlag";
+    public static final String COLUMN_USER_FIRST_NAME = "first_name";
+    public static final String COLUMN_USER_SURNAME = "surname";
+    public static final String COLUMN_USER_EMAIL = "email";
+    public static final String COLUMN_USER_GP_NAME = "gpname";
+    public static final String COLUMN_USER_GP_EMAIL = "gp_email";
+    public final static String[] COLUMNS_USER_INFO = {COLUMN_USER_ID, COLUMN_USER_SYNCFLAG,
+            COLUMN_USER_FIRST_NAME, COLUMN_USER_SURNAME, COLUMN_USER_EMAIL,
+            COLUMN_USER_GP_NAME, COLUMN_USER_GP_EMAIL};
+
+    //String containing query for building User Info table
+    private static final String CREATE_USER_INFO_TABLE = "CREATE TABLE " +
+            TABLE_USER_INFO + "("
+            + COLUMN_USER_ID + " INTEGER, "
+            + COLUMN_USER_SYNCFLAG + " INTEGER, "
+            + COLUMN_USER_FIRST_NAME + " TEXT, "
+            + COLUMN_USER_SURNAME + " TEXT, "
+            + COLUMN_USER_EMAIL + " TEXT, "
+            + COLUMN_USER_GP_NAME + " TEXT, "
+            + COLUMN_USER_GP_EMAIL + " TEXT)";
+
     //Severity Table Details
         //Steve to code
 
@@ -281,6 +305,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_MENSTRUAL_CYCLE_TABLE);
         db.execSQL(CREATE_COPING_TABLE);
         db.execSQL(CREATE_CAUSES_TABLE);
+        db.execSQL(CREATE_USER_INFO_TABLE);
     }
 
     /*
@@ -301,6 +326,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_MENSTRUAL_CYCLE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_CAUSES);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USER_INFO);
         onCreate(db);
     }
 }

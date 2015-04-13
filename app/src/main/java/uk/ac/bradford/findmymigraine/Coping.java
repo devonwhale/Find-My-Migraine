@@ -34,7 +34,7 @@ public class Coping {
     }
 
     // Constructors
-    public Coping(long date,long startTime, int yoga, int medication, int meditation, int sleep, String other) {
+    public Coping(long date,long startTime,  int medication, int meditation, int sleep, int yoga, String other) {   //amended 13/4/15 by Steve to put yoga to sixth parameter instead of third.
        // this.id=id;
         this.date=date;
         this.startTime = startTime;

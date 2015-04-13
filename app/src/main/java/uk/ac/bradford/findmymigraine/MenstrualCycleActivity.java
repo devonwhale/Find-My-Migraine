@@ -79,7 +79,7 @@ public class MenstrualCycleActivity extends ActionBarActivity {
                     intArray[0]=1;
                 }
                 //Check if id of selected radiobutton matches id of noRB, and if so, turn corresponding array value to 1
-                else if (menstrualCycleRadioButton.getId()== yesRB.getId()){
+                else if (menstrualCycleRadioButton.getId()== noRB.getId()){    //was yesRB 13/4 - changed to noRB by Steve
                     intArray[1]=1;
                 }
                 //Check if id of selected radiobutton matches id of comingSoonRB, and if so, turn corresponding array value to 1

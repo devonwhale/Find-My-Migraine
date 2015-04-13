@@ -44,11 +44,33 @@ public class UserInfoActivity extends ActionBarActivity {
         gpEmail = (EditText)findViewById(R.id.gp_email);
         update = (Button)findViewById(R.id.user_update);
         writeData = (Button)findViewById(R.id.data_to_file);
+
+        //get existing values for user info
+        setValues();
+    }
+
+    private void setValues(){
+        UserInfoDAO userInfoDAO = new UserInfoDAO(UserInfoActivity.this);
+        String[] userInfo = userInfoDAO.getUserInfo();
+        firstName.setText(userInfo[2]);
+        surname.setText(userInfo[3]);
+        email.setText(userInfo[4]);
+        gpName.setText(userInfo[5]);
+        gpEmail.setText(userInfo[6]);
     }
 
     private void updateUserInfo(){
+        String[] newInfo = new String[7];
+        newInfo[0] = "1"; //id of row in database
+        newInfo[1] = "2"; //syncFlag for updated record
+        newInfo[2] = firstName.getText().toString();
+        newInfo[3] = surname.getText().toString();
+        newInfo[4] = email.getText().toString();
+        newInfo[5] = gpName.getText().toString();
+        newInfo[6] = gpEmail.getText().toString();
         //code to update user tables
-
+        UserInfoDAO newInfoDAO = new UserInfoDAO(UserInfoActivity.this);
+        newInfoDAO.updateUserInfo(newInfo);
         //Toast to report
 
     }

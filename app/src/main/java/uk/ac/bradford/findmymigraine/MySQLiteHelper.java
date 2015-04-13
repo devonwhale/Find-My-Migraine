@@ -1,5 +1,6 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -13,7 +14,7 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
@@ -277,6 +278,21 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_USER_GP_NAME + " TEXT, "
             + COLUMN_USER_GP_EMAIL + " TEXT)";
 
+    //Method to Create empty user record
+    private void createEmptyUserRecord(){
+        ContentValues values = new ContentValues();
+        values.put(this.COLUMN_USER_ID, 1);
+        values.put(this.COLUMN_USER_SYNCFLAG, 0);
+        values.put(this.COLUMN_USER_FIRST_NAME, "");
+        values.put(this.COLUMN_USER_SURNAME, "");
+        values.put(this.COLUMN_USER_EMAIL, "");
+        values.put(this.COLUMN_USER_GP_NAME, "");
+        values.put(this.COLUMN_USER_GP_EMAIL, "");
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(this.TABLE_USER_INFO, null, values);
+    }
+
     //Severity Table Details
         //Steve to code
 
@@ -306,6 +322,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_COPING_TABLE);
         db.execSQL(CREATE_CAUSES_TABLE);
         db.execSQL(CREATE_USER_INFO_TABLE);
+        createEmptyUserRecord();
     }
 
     /*
@@ -316,7 +333,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(MySQLiteHelper.class.getName(), "Upgrading from version" + oldVersion + " to "+ newVersion+", which will destroy old data");
-        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_SLEEP);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_TRAVEL);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_MOOD);

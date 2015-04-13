@@ -4,19 +4,36 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 
 public class UserInfoActivity extends ActionBarActivity {
 
+    //Variables for xml components
     EditText firstName, surname, email, gpName, gpEmail;
     Button update, writeData;
+    //Variables for info to be saved to database
+    String userFirstName, userSurname, userEmail, userGPName, userGPEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+        initialise();
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUserInfo();
+            }
+        });
+        writeData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                writeToFile();
+            }
+        });
     }
 
     protected void initialise(){
@@ -27,6 +44,21 @@ public class UserInfoActivity extends ActionBarActivity {
         gpEmail = (EditText)findViewById(R.id.gp_email);
         update = (Button)findViewById(R.id.user_update);
         writeData = (Button)findViewById(R.id.data_to_file);
+    }
+
+    private void updateUserInfo(){
+        //code to update user tables
+
+        //Toast to report
+
+    }
+
+    private void writeToFile(){
+        //code to get data
+
+        //code to write to file
+
+        //toast to report
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -63,7 +65,8 @@ public class ExerciseActivity extends ActionBarActivity {
      nextButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-          updateExerciseRecords();
+
+             updateExerciseRecords();
           //Go to Food and Drink Activity
           Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
           intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);
@@ -87,23 +90,33 @@ public class ExerciseActivity extends ActionBarActivity {
         });
     }
 
-    private void updateExerciseRecords(){
-        //retrieve number of stars specifies by user in rating bar
-        int numStars = (int) intensityRatingBar.getRating();
+    private void updateExerciseRecords() {
 
-        double hours = Double.parseDouble(hoursEditText.getText().toString());
+        if (hoursEditText.getText().toString().length() <1 || intensityRatingBar.getRating() <1) {
+
+
+        Toast feedback = Toast.makeText(getApplicationContext(), "Exercise details not completed. No record added.", Toast.LENGTH_LONG);
+        feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+        feedback.show();
+        }
+        else {
+            //retrieve number of stars specifies by user in rating bar
+            int numStars = (int) intensityRatingBar.getRating();
+
+            double hours = Double.parseDouble(hoursEditText.getText().toString());
           /*if (c2 != null) {
           }*/
-        //Enter exercise details into database
-        Exercise e = new Exercise(c2, hours,numStars);
+            //Enter exercise details into database
+            Exercise e = new Exercise(c2, hours, numStars);
 
-        //Create Exercise Data Access Object Instance
-        ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
+            //Create Exercise Data Access Object Instance
+            ExerciseDAO dao = new ExerciseDAO(ExerciseActivity.this);
 
-        //Enter exercise record into database
-        dao.createExerciseRecord(e);
+            //Enter exercise record into database
+            dao.createExerciseRecord(e);
 
-        Log.d("Exercise ", "Exercise Record Added");
+            Log.d("Exercise ", "Exercise Record Added");
+        }
     }
 
     @Override

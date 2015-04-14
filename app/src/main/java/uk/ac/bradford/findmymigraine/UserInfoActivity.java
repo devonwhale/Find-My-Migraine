@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -123,10 +124,23 @@ public class UserInfoActivity extends ActionBarActivity {
             outputStream.close();
         }
         catch(Exception e){e.printStackTrace();}
+
+        //Code to create email
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, email.getText());
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Migraine file");
+        intent.putExtra(Intent.EXTRA_TEXT, "Attached is a csv file with information from the migraine records");
+        //attach file code to add
+
+        //start email
+        this.startActivity(Intent.createChooser(intent, "Sending email...."));
+
         //toast to report
         Toast feedback = Toast.makeText(getApplicationContext(), "Data written to "+filename, Toast.LENGTH_LONG);
         feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
         feedback.show();
+        Log.d("CSV File text: ",sleepRecordsCSV);
         //return to main menu
         Intent mv = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mv);

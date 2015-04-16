@@ -98,6 +98,46 @@ public class DrinkDAO {
         return drink;
     }
 
+    public Drink[] getAllDrinkRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        Drink[] drink;// = new Drink();
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_DRINK,
+                    MySQLiteHelper.COLUMNS_DRINK,
+                    null,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            //How many records?
+            int noOfRows = cursor.getCount();
+            drink = new Drink[noOfRows];
+
+            if(!cursor.isAfterLast()) {
+                for(int i=0; i<drink.length; i++){
+                    drink[i] = cursorToDrink(cursor);
+                    cursor.moveToNext();
+                }
+
+                cursor.close();
+                db.close();
+                return drink;
+            }
+
+            else{
+                Log.d("getDrinkRecordForDate","No Drink record found with this date" );}
+
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        drink = new Drink[0];
+        return drink;
+    }
+
 
     //Method to return Drink object from cursor in database
     protected Drink cursorToDrink(Cursor cursor) {

@@ -83,6 +83,40 @@ public class MenstrualCycleDAO {
         return mc;
     }
 
+    public MenstrualCycle[] getAllMenstrualCycleRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        MenstrualCycle[] mc;
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_MENSTRUAL_CYCLE,
+                    MySQLiteHelper.COLUMNS_MENSTRUAL_CYCLE,
+                    null,null, null, null, null);
+
+            cursor.moveToFirst();
+            int noOfRows = cursor.getCount();
+            mc = new MenstrualCycle[noOfRows];
+            if(!cursor.isAfterLast()){
+                for(int i=0; i<mc.length; i++){
+                    mc[i] = cursorToMenstrualCycle(cursor);
+                    cursor.moveToNext();
+                }
+
+                cursor.close();}
+            else
+                Log.d("getMenstrualCycleRecordForDate","No MenstrualCycle record found for this date");
+
+            db.close();
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        mc = new MenstrualCycle[0];
+        return mc;
+    }
+
 
     //Method to return Menstrual Cycle object from cursor in database
     protected MenstrualCycle cursorToMenstrualCycle(Cursor cursor) {

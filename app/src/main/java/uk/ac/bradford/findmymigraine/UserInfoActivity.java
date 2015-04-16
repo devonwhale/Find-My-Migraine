@@ -160,9 +160,53 @@ public class UserInfoActivity extends ActionBarActivity {
             foodRecordsCSV += "\n";
         }
 
+        //Create CSV String for Drink records
+        DrinkDAO drinkRecords = new DrinkDAO(UserInfoActivity.this);
+        Drink[] allDrinkRecords = drinkRecords.getAllDrinkRecords();
+        String drinkRecordsCSV = "id, syncFlag, date, beer, red wine, white wine, spirit, soda, coffee, tea\n";
+        for (int i=0; i<allDrinkRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<9; j++){
+                drinkRecordsCSV += allDrinkRecords[i].toStringArray()[j];
+                foodRecordsCSV += ",";
+            }
+            drinkRecordsCSV += allDrinkRecords[i].toStringArray()[9];
+            drinkRecordsCSV += "\n";
+        }
 
+        //Create CSV String for Work records
+        String workRecordsCSV = "id, syncFlag, date, hours, stress level\n";
+        //rest outstanding until Sumaia completes code
 
-        String fileString = sleepRecordsCSV+"\n"+travelRecordsCSV+"\n"+exerciseRecordsCSV+"\n"+foodRecordsCSV;   //Assemble string for each database table
+        //Create CSV String for Menstrual Cycle Records
+        MenstrualCycleDAO menstrualCycleRecords = new MenstrualCycleDAO(UserInfoActivity.this);
+        MenstrualCycle[] allMenstrualCycleRecords = menstrualCycleRecords.getAllMenstrualCycleRecords();
+        String menstrualCycleRecordsCSV = "id, syncFlag, date, currently on, not on, coming soon\n";
+        for (int i=0; i<allMenstrualCycleRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<5; j++){
+                menstrualCycleRecordsCSV += allMenstrualCycleRecords[i].toStringArray()[j];
+                menstrualCycleRecordsCSV += ",";
+            }
+            menstrualCycleRecordsCSV += allMenstrualCycleRecords[i].toStringArray()[5];
+            menstrualCycleRecordsCSV += "\n";
+        }
+
+        //Create CSV String for Mood records
+        MoodDAO moodRecords = new MoodDAO(UserInfoActivity.this);
+        Mood[] allMoodRecords = moodRecords.getAllMoodRecords();
+        String moodRecordsCSV = "id, syncFlag, date, mood rating\n";
+        for (int i=0; i<allMoodRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<3; j++){
+                moodRecordsCSV += allMoodRecords[i].toStringArray()[j];
+                moodRecordsCSV += ",";
+            }
+            moodRecordsCSV += allMoodRecords[i].toStringArray()[3];
+            moodRecordsCSV += "\n";
+        }
+
+        String fileString = sleepRecordsCSV+"\n"+travelRecordsCSV+"\n"+exerciseRecordsCSV+"\n"+foodRecordsCSV+"\n"+drinkRecordsCSV+"\n"+workRecordsCSV+"\n"+menstrualCycleRecordsCSV+"\n"+moodRecordsCSV;   //Assemble string for each database table
         String filename = "MigraineRecords.csv";
         File file = null;
         File root = Environment.getExternalStorageDirectory();

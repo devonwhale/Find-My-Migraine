@@ -7,7 +7,7 @@ package uk.ac.bradford.findmymigraine;
 public class Mood {
 
     private long id, date;
-    private int mood;
+    private int mood, syncFlag;
 
     public Mood() {
 
@@ -45,4 +45,13 @@ public class Mood {
         return "Mood [ID: " + id + ", date: "+date+", Mood: " + mood + "]" + "\n";
     }
 
+    public String[] toStringArray() {
+        String[] record = new String[4];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Long.toString(date);
+        record[3] = Integer.toString(mood);
+
+        return record;
+    }
 }

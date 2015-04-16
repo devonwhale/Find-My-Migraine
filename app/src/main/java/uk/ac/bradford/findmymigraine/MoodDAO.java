@@ -75,6 +75,39 @@ public class MoodDAO {
         return mood;
     }
 
+    public Mood[] getAllMoodRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        Mood[] mood;                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_MOOD,
+                    MySQLiteHelper.COLUMNS_MOOD,
+                    null,null, null, null, null);
+
+            cursor.moveToFirst();
+            int noOfRows = cursor.getCount();
+            mood = new Mood[noOfRows];
+
+            if(!cursor.isAfterLast()){
+                for(int i=0; i<mood.length; i++){
+                    mood[i] = cursorToMood(cursor);
+                    cursor.moveToNext();
+                }
+
+                cursor.close();}
+
+            db.close();
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        mood = new Mood[0];
+        return mood;
+    }
+
     //Method added by Steve 12/3/15
     protected Mood cursorToMood(Cursor cursor) {
         Mood mood  = new Mood();

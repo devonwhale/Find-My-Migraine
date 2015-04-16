@@ -122,4 +122,19 @@ public class Drink {
         if (tea == 1) drinks += " * Tea";
         return drinks;
     }
+
+    public String[] toStringArray(){
+        String[] record = new String[10];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Long.toString(date);
+        record[3] = Integer.toString(beer);
+        record[4] = Integer.toString(redWine);
+        record[5] = Integer.toString(whiteWine);
+        record[6] = Integer.toString(spirit);
+        record[7] = Integer.toString(soda);
+        record[8] = Integer.toString(coffee);
+        record[9] = Integer.toString(tea);
+        return record;
+    }
 }

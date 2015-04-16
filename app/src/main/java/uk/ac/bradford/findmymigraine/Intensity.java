@@ -6,6 +6,8 @@ package uk.ac.bradford.findmymigraine;
 public class Intensity {
     private long id;
     private String intensity;
+    private long date;
+    private int syncFlag;
 
     public Intensity() {
 
@@ -17,6 +19,11 @@ public class Intensity {
      */
     public Intensity(String nIntensity) {
         intensity = nIntensity;
+    }
+
+    public Intensity(String nIntensity, long nDate) {
+        intensity = nIntensity;
+        date = nDate;
     }
 
     public long getId() {
@@ -33,6 +40,22 @@ public class Intensity {
 
     public void setIntensity(String intensity) {
         this.intensity = intensity;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
+
+    public int getSyncFlag() {
+        return syncFlag;
+    }
+
+    public void setSyncFlag(int syncFlag) {
+        this.syncFlag = syncFlag;
     }
 
     public String toString() {

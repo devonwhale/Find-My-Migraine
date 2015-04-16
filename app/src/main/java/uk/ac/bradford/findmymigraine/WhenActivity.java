@@ -145,7 +145,7 @@ public class WhenActivity extends ActionBarActivity {
                     startActivity(mv); */
 
                     //new code added 26/3/15 to move to [ Coping ] screen (needs changing to Intensity when ready!
-                    Intent mv = new Intent(getApplicationContext(), ActivityCoping.class);
+                    Intent mv = new Intent(getApplicationContext(), IntensityActivity.class);
                     mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                     mv.putExtra("uk.ac.bradford.findmymigraine.start", a);
                     startActivity(mv);

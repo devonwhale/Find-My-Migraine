@@ -1,22 +1,43 @@
 package uk.ac.bradford.findmymigraine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class IntensityActivity extends ActionBarActivity {
 
-    ImageView[] ivHead;
-    boolean[] locations;
+    private ImageView[] ivHead;
+    private boolean[] locations;
+    private Button butNext;
+    private int whenYear, whenMonth, whenDay, startHour, startMinute, endHour, endMinute;
+    private Calendar c;
+    private long c2, a;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intensity);
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null) {
+            c = Calendar.getInstance();
+            c2 = extra.getLong("uk.ac.bradford.findmymigraine.date");
+            c.setTimeInMillis(c2);
+            a = extra.getLong("uk.ac.bradford.findmymigraine.start");
+        }
 
         ivHead = new ImageView[16];
         ivHead[0] = (ImageView) findViewById(R.id.head00);
@@ -55,6 +76,8 @@ public class IntensityActivity extends ActionBarActivity {
         locations[14] = false;
         locations[15] = false;
 
+        butNext = (Button) findViewById(R.id.intensityNext);
+
         ivHead[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +94,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[1]) {
+                if (!locations[1]) {
                     ivHead[1].setImageResource(R.drawable.red_01);
                     locations[1] = true;
                 } else {
@@ -84,7 +107,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[2]) {
+                if (!locations[2]) {
                     ivHead[2].setImageResource(R.drawable.red_02);
                     locations[2] = true;
                 } else {
@@ -97,7 +120,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[3]) {
+                if (!locations[3]) {
                     ivHead[3].setImageResource(R.drawable.red_03);
                     locations[3] = true;
                 } else {
@@ -110,7 +133,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[4]) {
+                if (!locations[4]) {
                     ivHead[4].setImageResource(R.drawable.red_04);
                     locations[4] = true;
                 } else {
@@ -123,7 +146,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[5].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[5]) {
+                if (!locations[5]) {
                     ivHead[5].setImageResource(R.drawable.red_05);
                     locations[5] = true;
                 } else {
@@ -136,7 +159,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[6]) {
+                if (!locations[6]) {
                     ivHead[6].setImageResource(R.drawable.red_06);
                     locations[6] = true;
                 } else {
@@ -149,7 +172,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[7].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[7]) {
+                if (!locations[7]) {
                     ivHead[7].setImageResource(R.drawable.red_07);
                     locations[7] = true;
                 } else {
@@ -162,7 +185,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[8].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[8]) {
+                if (!locations[8]) {
                     ivHead[8].setImageResource(R.drawable.red_08);
                     locations[8] = true;
                 } else {
@@ -175,7 +198,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[9].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[9]) {
+                if (!locations[9]) {
                     ivHead[9].setImageResource(R.drawable.red_09);
                     locations[9] = true;
                 } else {
@@ -188,7 +211,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[10].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[10]) {
+                if (!locations[10]) {
                     ivHead[10].setImageResource(R.drawable.red_10);
                     locations[10] = true;
                 } else {
@@ -201,7 +224,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[11].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[11]) {
+                if (!locations[11]) {
                     ivHead[11].setImageResource(R.drawable.red_11);
                     locations[11] = true;
                 } else {
@@ -214,7 +237,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[12].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[12]) {
+                if (!locations[12]) {
                     ivHead[12].setImageResource(R.drawable.red_12);
                     locations[12] = true;
                 } else {
@@ -227,7 +250,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[13].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[13]) {
+                if (!locations[13]) {
                     ivHead[13].setImageResource(R.drawable.red_13);
                     locations[13] = true;
                 } else {
@@ -240,7 +263,7 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[14].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[14]) {
+                if (!locations[14]) {
                     ivHead[14].setImageResource(R.drawable.red_14);
                     locations[14] = true;
                 } else {
@@ -253,13 +276,45 @@ public class IntensityActivity extends ActionBarActivity {
         ivHead[15].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!locations[15]) {
+                if (!locations[15]) {
                     ivHead[15].setImageResource(R.drawable.red_15);
                     locations[15] = true;
                 } else {
                     ivHead[15].setImageResource(R.drawable.nor_15);
                     locations[15] = false;
                 }
+            }
+        });
+
+        butNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String intensity;
+                if(locations[0])
+                    intensity = "1";
+                else
+                    intensity = "0";
+                for(int i = 1; i < locations.length; i++) {
+                    if(locations[i])
+                        intensity = intensity + "1";
+                    else
+                        intensity = intensity + "0";
+                }
+
+                Intensity i = new Intensity(intensity, c2);
+                IntensityDAO dao = new IntensityDAO(IntensityActivity.this);
+
+                dao.createIntensityRecord(i);
+                Log.d("Intensity ", "Intensity Object created:" + " dateLong: " + c2 + ", Intensity (String): " + i );
+
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
+
+                Intent mv = new Intent(getApplicationContext(), ActivityCoping.class);
+                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                mv.putExtra("uk.ac.bradford.findmymigraine.start", a);
+                startActivity(mv);
             }
         });
     }

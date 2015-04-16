@@ -37,7 +37,10 @@ public class IntensityDAO {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_COPING_DATE, intensity.getDate());
         values.put(MySQLiteHelper.COLUMN_INTENSITY_INTENSITY, intensity.getIntensity());
+        values.put(MySQLiteHelper.COLUMN_COPING_SYNCFLAG, intensity.getSyncFlag());
+
 
         //Inserting row
         db.insert(MySQLiteHelper.TABLE_INTENSITY, null, values);

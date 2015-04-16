@@ -4,7 +4,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="uk.ac.bradford.findmymigraine.IntensityActivity">
+    tools:context="uk.ac.bradford.findmymigraine.IntensityActivity"
+    android:background="@color/material_blue_grey_800">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intensityTitle"
+        android:text="Please select the area where the pain is located."
+        android:textColor="@color/background_material_light"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -13,9 +22,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="55dp"
         android:clickable="true"
-        android:src="@drawable/nor_00"/>
+        android:src="@drawable/nor_00"
+        android:layout_below="@+id/intensityTitle"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -163,6 +173,16 @@
         android:layout_alignTop="@+id/head14"
         android:layout_toRightOf="@+id/head14"
         android:layout_toEndOf="@+id/head14" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/intensityNext"
+        android:layout_below="@+id/head12"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/background_material_light"/>
 
 
 </RelativeLayout>

@@ -278,6 +278,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_USER_GP_NAME + " TEXT, "
             + COLUMN_USER_GP_EMAIL + " TEXT)";
 
+    //Attack Intensity table details
+    public static final String TABLE_INTENSITY = "intensity";
+    public static final String COLUMN_INTENSITY_ID = "_id";
+    public static final String COLUMN_INTENSITY_DATE = "date";
+    public static final String COLUMN_INTENSITY_SYNCFLAG = "syncFlag";
+    public static final String COLUMN_INTENSITY_INTENSITY = "intensity";
+    public static final String[] COLUMNS_INTENSITY = {COLUMN_INTENSITY_ID, COLUMN_INTENSITY_DATE,
+            COLUMN_INTENSITY_SYNCFLAG, COLUMN_INTENSITY_INTENSITY};
+
+
+    //String containing query for building Intensity table
+    private static final String CREATE_INTENSITY_TABLE = "CREATE TABLE " +
+            TABLE_INTENSITY + "("
+            + COLUMN_INTENSITY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_INTENSITY_DATE + " INTEGER, "
+            + COLUMN_INTENSITY_SYNCFLAG + " INTEGER, "
+            + COLUMN_INTENSITY_INTENSITY + " TEXT)";
 
 
     //Severity Table Details
@@ -309,6 +326,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_COPING_TABLE);
         db.execSQL(CREATE_CAUSES_TABLE);
         db.execSQL(CREATE_USER_INFO_TABLE);
+        db.execSQL(CREATE_INTENSITY_TABLE);
 
     }
 
@@ -331,6 +349,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_CAUSES);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USER_INFO);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_INTENSITY);
         onCreate(db);
     }
 }

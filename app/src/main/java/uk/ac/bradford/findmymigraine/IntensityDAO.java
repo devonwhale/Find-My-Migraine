@@ -37,9 +37,9 @@ public class IntensityDAO {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_COPING_DATE, intensity.getDate());
+        values.put(MySQLiteHelper.COLUMN_INTENSITY_DATE, intensity.getDate());              //was coping - amended Steve 16/4
         values.put(MySQLiteHelper.COLUMN_INTENSITY_INTENSITY, intensity.getIntensity());
-        values.put(MySQLiteHelper.COLUMN_COPING_SYNCFLAG, intensity.getSyncFlag());
+        values.put(MySQLiteHelper.COLUMN_INTENSITY_SYNCFLAG, intensity.getSyncFlag());      //was coping - amended Steve 16/4
 
 
         //Inserting row
@@ -51,9 +51,9 @@ public class IntensityDAO {
     public Intensity getIntensityRecord(Long id) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(MySQLiteHelper.TABLE_WHEN,
-                MySQLiteHelper.COLUMNS_WHEN,
-                MySQLiteHelper.COLUMN_WHEN_ID + "=" + id,
+        Cursor cursor = db.query(MySQLiteHelper.TABLE_INTENSITY,
+                MySQLiteHelper.COLUMNS_INTENSITY,
+                MySQLiteHelper.COLUMN_INTENSITY_ID + "=" + id,
                 null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -74,7 +74,7 @@ public class IntensityDAO {
         try {
             cursor = db.query(MySQLiteHelper.TABLE_INTENSITY,
                     MySQLiteHelper.COLUMNS_INTENSITY,
-                    MySQLiteHelper.COLUMN_INTENSITY_DATE + ">" + minDate + " AND " + MySQLiteHelper.COLUMN_EXERCISE_DATE + "<" + maxDate,
+                    MySQLiteHelper.COLUMN_INTENSITY_DATE + ">" + minDate + " AND " + MySQLiteHelper.COLUMN_INTENSITY_DATE + "<" + maxDate,
                     null, null, null, null);
 
             cursor.moveToFirst();
@@ -101,10 +101,13 @@ public class IntensityDAO {
         return intensity;
     }
 
+    //amended by Steve 16/4/15 to match INTENSITY_COLUMNS
     protected Intensity cursorToIntensity(Cursor cursor) {
         Intensity intensity  = new Intensity();
         intensity.setId(Long.parseLong(cursor.getString(0)));
-        intensity.setIntensity(cursor.getString(1));
+        intensity.setDate(Long.parseLong(cursor.getString(1)));
+        intensity.setSyncFlag(Integer.parseInt(cursor.getString(2)));
+        intensity.setIntensity(cursor.getString(3));
 
         //log
         Log.d("When Record extracted from cursor("+intensity.getId()+")", intensity.toString());

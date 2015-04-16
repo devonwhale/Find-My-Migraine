@@ -88,7 +88,7 @@ public class MenstrualCycle {
         String[] record = new String[6];
         record[0] = Long.toString(id);
         record[1] = Integer.toString(syncFlag);
-        record[2] = Long.toString(date);
+        record[2] = Converter.getDisplayDate(date);
         record[3] = Integer.toString(yes);
         record[4] = Integer.toString(no);
         record[5] = Integer.toString(comingSoon);

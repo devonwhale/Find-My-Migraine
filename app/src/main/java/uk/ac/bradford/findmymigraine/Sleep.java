@@ -98,7 +98,7 @@ public class Sleep {
         String[] sleeping = new String[5];
         sleeping[0] = Long.toString(id);
         sleeping[1] = Integer.toString(syncFlag);
-        sleeping[2] = Long.toString(wakeDate);
+        sleeping[2] = Converter.getDisplayDate(wakeDate);
         sleeping[3] = Double.toString(hours);
         sleeping[4] = Integer.toString(sleep_rating);
         return sleeping;

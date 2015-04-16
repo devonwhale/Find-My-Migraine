@@ -82,7 +82,7 @@ public class Exercise {
         String[] exercise = new String[5];
         exercise[0] = Long.toString(id);
         exercise[1] = Integer.toString(syncFlag);
-        exercise[2] = Long.toString(date);
+        exercise[2] = Converter.getDisplayDate(date);
         exercise[3] = Double.toString(hours);
         exercise[4] = Integer.toString(intensity);
         return exercise;

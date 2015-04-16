@@ -14,7 +14,7 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
@@ -338,6 +338,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(MySQLiteHelper.class.getName(), "Upgrading from version" + oldVersion + " to "+ newVersion+", which will destroy old data");
+        /*
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SLEEP);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_EXERCISE);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_TRAVEL);
@@ -351,5 +352,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USER_INFO);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_INTENSITY);
         onCreate(db);
+        */
+        db.execSQL(CREATE_INTENSITY_TABLE); //on upgrade from v7 to v8 (but what if user is not on db v7?
     }
 }

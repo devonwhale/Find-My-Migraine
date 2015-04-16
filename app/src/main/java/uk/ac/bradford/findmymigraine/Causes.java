@@ -135,4 +135,19 @@ public class Causes {
         if (other != null) causes += " * "+other;
         return causes;
     }
+
+    public String[] toStringArray(){
+        String[] record = new String[9];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Converter.getDisplayDate(date);
+        record[3] = Integer.toString(stress);
+        record[4] = Integer.toString(lack_of_sleep);
+        record[5] = Integer.toString(lack_of_food);
+        record[6] = Integer.toString(lack_of_water);
+        record[7] = Integer.toString(depression);
+        record[8] = other;
+
+        return record;
+    }
 }

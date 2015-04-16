@@ -61,4 +61,26 @@ public class Intensity {
     public String toString() {
         return "Intensity [ID: " + id + ", Intensity: " + intensity + "]" + "\n";
     }
+
+
+
+
+
+
+
+
+
+
+    public String[] toStringArray() {
+        String[] record = new String[4];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Converter.getDisplayDate(date);
+        record[3] = intensity;
+
+        return record;
+    }
+
+
 }
+

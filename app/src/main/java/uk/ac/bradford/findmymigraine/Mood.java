@@ -49,7 +49,7 @@ public class Mood {
         String[] record = new String[4];
         record[0] = Long.toString(id);
         record[1] = Integer.toString(syncFlag);
-        record[2] = Long.toString(date);
+        record[2] = Converter.getDisplayDate(date);
         record[3] = Integer.toString(mood);
 
         return record;

@@ -102,7 +102,10 @@ public class MenstrualCycleDAO {
                     cursor.moveToNext();
                 }
 
-                cursor.close();}
+                cursor.close();
+                db.close();
+                return mc;
+            }
             else
                 Log.d("getMenstrualCycleRecordForDate","No MenstrualCycle record found for this date");
 

@@ -73,24 +73,27 @@ public class CausesDAO {
 
     }
 
-    //Get All Exercise Table Records
-    public List<Causes> getAllCausesRecords() {
-        List<Causes> listCauses = new ArrayList<Causes>();
+    //Get All Causes Table Records
+    public Causes[] getAllCausesRecords() {
 
+        db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(MySQLiteHelper.TABLE_CAUSES, MySQLiteHelper.COLUMNS_CAUSES,
                 null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                Causes causes = cursorToCauses(cursor);
-                listCauses.add(causes);
-                cursor.moveToNext();
-            }
-
-
-            cursor.close();
-        }
-        return listCauses;
+            int noOfRows = cursor.getCount();
+            Causes[] causes = new Causes[noOfRows];
+            if(!cursor.isAfterLast()) {
+                for(int i=0; i<causes.length; i++){
+                    causes[i] = cursorToCauses(cursor);
+                    cursor.moveToNext();
+                }
+                cursor.close();
+                db.close();
+                return causes;
+            }}
+        Causes[] causes = new Causes[0];
+        return causes;
     }
 
 

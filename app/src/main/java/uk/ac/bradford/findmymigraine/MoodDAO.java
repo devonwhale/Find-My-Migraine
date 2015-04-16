@@ -98,6 +98,7 @@ public class MoodDAO {
                 cursor.close();}
 
             db.close();
+            return mood;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());

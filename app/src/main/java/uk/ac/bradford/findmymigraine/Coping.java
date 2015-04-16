@@ -161,4 +161,18 @@ public class Coping {
         if (other != "") coping += " * "+other;
         return coping;
     }
+
+    public String[] toStringArray(){
+        String[] record = new String[8];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Converter.getDisplayDate(date);
+        record[3] = Integer.toString(yoga);
+        record[4] = Integer.toString(medication);
+        record[5] = Integer.toString(meditation);
+        record[6] = Integer.toString(sleep);
+        record[7] = other;
+
+        return record;
+    }
 }

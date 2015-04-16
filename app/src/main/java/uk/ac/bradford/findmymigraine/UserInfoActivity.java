@@ -100,14 +100,14 @@ public class UserInfoActivity extends ActionBarActivity {
         /*Data required for
          UserInfo;
          Sleep, Travel, Exercise, Food, Drink, Work, Menstrual Cycle, Mood;
-         When, Coping, Intensity, Causes;                                       13 TABLES TO DO - 1 DONE - TIME EST FOR REMAINING 12 = 6 HOURS (i.e 10 mins per method)
+         When, Intensity, Coping, Causes;                                       13 TABLES TO DO - 1 DONE - TIME EST FOR REMAINING 12 = 6 HOURS (i.e 10 mins per method)
                                                                                 ATTACHING FILES TO EMAIL NEEDS SOME INVESTIGATION. (External Storage, Manifest alteration, special methods for mail services????)
          */
 
         //Sleep records ..... !!!Depends upon methods setting up: Sleep.toStringArray() and SleepDAO.getAllSleepRecords()
         SleepDAO sleepRecords = new SleepDAO(UserInfoActivity.this);
         Sleep[] allSleepRecords = sleepRecords.getAllSleepRecords();
-        String sleepRecordsCSV = "id, syncFlag, wakeDate, hours, rating\n"; //Header for CSV records
+        String sleepRecordsCSV = "SLEEP RECORDS\nid, syncFlag, wakeDate, hours, rating\n"; //Header for CSV records
         for (int i=0; i<allSleepRecords.length; i++){                       //Disassemble Array of Sleep records
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<4; j++){                                        //Disassemble String Array for each Sleep Record
@@ -121,7 +121,7 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for Travel Records
         TravelDAO travelRecords = new TravelDAO(UserInfoActivity.this);
         Travel[] allTravelRecords = travelRecords.getAllTravelRecords();
-        String travelRecordsCSV = "id, syncFlag, date, hours, method, destination\n";
+        String travelRecordsCSV = "TRAVEL RECORDS\nid, syncFlag, date, hours, method, destination\n";
         for (int i=0; i<allTravelRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<5; j++){
@@ -135,7 +135,7 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for Exercise records
         ExerciseDAO exerciseRecords = new ExerciseDAO(UserInfoActivity.this);
         Exercise[] allExerciseRecords = exerciseRecords.getAllExerciseRecords();
-        String exerciseRecordsCSV = "id, syncFlag, date, hours, intensity\n";
+        String exerciseRecordsCSV = "EXERCISE RECORDS\nid, syncFlag, date, hours, intensity\n";
         for (int i=0; i<allExerciseRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<4; j++){
@@ -149,7 +149,7 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for Food records
         FoodDAO foodRecords = new FoodDAO(UserInfoActivity.this);
         Food[] allFoodRecords = foodRecords.getAllFoodRecords();
-        String foodRecordsCSV = "id, syncFlag, date, chocolate, cheese, nuts, citrus fruits\n";
+        String foodRecordsCSV = "FOOD RECORDS\nid, syncFlag, date, chocolate, cheese, nuts, citrus fruits\n";
         for (int i=0; i<allFoodRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<6; j++){
@@ -163,25 +163,25 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for Drink records
         DrinkDAO drinkRecords = new DrinkDAO(UserInfoActivity.this);
         Drink[] allDrinkRecords = drinkRecords.getAllDrinkRecords();
-        String drinkRecordsCSV = "id, syncFlag, date, beer, red wine, white wine, spirit, soda, coffee, tea\n";
+        String drinkRecordsCSV = "DRINK RECORDS\nid, syncFlag, date, beer, red wine, white wine, spirit, soda, coffee, tea\n";
         for (int i=0; i<allDrinkRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<9; j++){
                 drinkRecordsCSV += allDrinkRecords[i].toStringArray()[j];
-                foodRecordsCSV += ",";
+                drinkRecordsCSV += ",";
             }
             drinkRecordsCSV += allDrinkRecords[i].toStringArray()[9];
             drinkRecordsCSV += "\n";
         }
 
         //Create CSV String for Work records
-        String workRecordsCSV = "id, syncFlag, date, hours, stress level\n";
+        String workRecordsCSV = "WORK RECORDS\nid, syncFlag, date, hours, stress level\n";
         //rest outstanding until Sumaia completes code
 
         //Create CSV String for Menstrual Cycle Records
         MenstrualCycleDAO menstrualCycleRecords = new MenstrualCycleDAO(UserInfoActivity.this);
         MenstrualCycle[] allMenstrualCycleRecords = menstrualCycleRecords.getAllMenstrualCycleRecords();
-        String menstrualCycleRecordsCSV = "id, syncFlag, date, currently on, not on, coming soon\n";
+        String menstrualCycleRecordsCSV = "MENSTRUAL CYCLE RECORDS\nid, syncFlag, date, currently on, not on, coming soon\n";
         for (int i=0; i<allMenstrualCycleRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<5; j++){
@@ -195,7 +195,7 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for Mood records
         MoodDAO moodRecords = new MoodDAO(UserInfoActivity.this);
         Mood[] allMoodRecords = moodRecords.getAllMoodRecords();
-        String moodRecordsCSV = "id, syncFlag, date, mood rating\n";
+        String moodRecordsCSV = "MOOD RECORDS\nid, syncFlag, date, mood rating\n";
         for (int i=0; i<allMoodRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
             for (int j=0; j<3; j++){
@@ -206,7 +206,77 @@ public class UserInfoActivity extends ActionBarActivity {
             moodRecordsCSV += "\n";
         }
 
-        String fileString = sleepRecordsCSV+"\n"+travelRecordsCSV+"\n"+exerciseRecordsCSV+"\n"+foodRecordsCSV+"\n"+drinkRecordsCSV+"\n"+workRecordsCSV+"\n"+menstrualCycleRecordsCSV+"\n"+moodRecordsCSV;   //Assemble string for each database table
+        //Create CSV String for When records
+        WhenDAO whenRecords = new WhenDAO(UserInfoActivity.this);
+        When[] allWhenRecords = whenRecords.getAllWhenRecords();
+        String whenRecordsCSV = "TIME OF ATTACK RECORDS\nid, syncFlag, date, start time, end time\n";
+        for (int i=0; i<allWhenRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<4; j++){
+                whenRecordsCSV += allWhenRecords[i].toStringArray()[j];
+                whenRecordsCSV += ",";
+            }
+            whenRecordsCSV += allWhenRecords[i].toStringArray()[4];
+            whenRecordsCSV += "\n";
+        }
+
+        //Create CSV String for Intensity records
+        IntensityDAO intensityRecords = new IntensityDAO(UserInfoActivity.this);
+        Intensity[] allIntensityRecords = intensityRecords.getAllIntensityRecords();
+        String intensityRecordsCSV = "LOCATION OF PAIN RECORDS\nid, syncFlag, date, code for pain locations\n";
+        for (int i=0; i<allIntensityRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<3; j++){
+                intensityRecordsCSV += allIntensityRecords[i].toStringArray()[j];
+                intensityRecordsCSV += ",";
+            }
+            intensityRecordsCSV += "'";
+            intensityRecordsCSV += allIntensityRecords[i].toStringArray()[3];
+            intensityRecordsCSV += "'\n";
+        }
+
+        //Create CSV String for Coping records
+        CopingDAO copingRecords = new CopingDAO(UserInfoActivity.this);
+        Coping[] allCopingRecords = copingRecords.getAllCopingRecords();
+        String copingRecordsCSV = "ATTACK COPING STRATEGY RECORDS\nid, syncFlag, date, yoga, medication, meditation, sleep, other\n";
+        for (int i=0; i<allCopingRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<7; j++){
+                copingRecordsCSV += allCopingRecords[i].toStringArray()[j];
+                copingRecordsCSV += ",";
+            }
+            copingRecordsCSV += allCopingRecords[i].toStringArray()[7];
+            copingRecordsCSV += "\n";
+        }
+
+        //Create CSV String for Causes records
+        CausesDAO causesRecords = new CausesDAO(UserInfoActivity.this);
+        Causes[] allCausesRecords = causesRecords.getAllCausesRecords();
+        String causesRecordsCSV = "POSSIBLE CAUSES OF ATTACK RECORDS\nid, syncFlag, date, stress, lack of sleep, lack of food, lack of water, depression, other\n";
+        for (int i=0; i<allCausesRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<8; j++){
+                causesRecordsCSV += allCausesRecords[i].toStringArray()[j];
+                causesRecordsCSV += ",";
+            }
+            causesRecordsCSV += allCausesRecords[i].toStringArray()[8];
+            causesRecordsCSV += "\n";
+        }
+
+        //Create CSV String for UserInfo records
+        UserInfoDAO userInfoRecord = new UserInfoDAO(UserInfoActivity.this);
+        String userInfoRecordCSV = "USER INFO RECORD\nid, syncFlag, first name, surname, email, GP name, GP email\n";
+            for (int j=0; j<6; j++){
+                userInfoRecordCSV += userInfoRecord.getUserInfo()[j];
+                userInfoRecordCSV += ",";
+            }
+            userInfoRecordCSV += userInfoRecord.getUserInfo()[6];
+            userInfoRecordCSV += "\n";
+
+        //SINGLE STRING FOR ALL TABLE INFORMATION - ready to pass to file
+        String fileString = userInfoRecordCSV+"\n"+sleepRecordsCSV+"\n"+travelRecordsCSV+"\n"+exerciseRecordsCSV+"\n"+foodRecordsCSV+"\n"+drinkRecordsCSV+"\n"+workRecordsCSV+"\n"+menstrualCycleRecordsCSV+"\n"+moodRecordsCSV+"\n"+whenRecordsCSV+"\n"+intensityRecordsCSV+"\n" +copingRecordsCSV+"\n"+causesRecordsCSV;   //Assemble string for each database table
+
+        //Create File
         String filename = "MigraineRecords.csv";
         File file = null;
         File root = Environment.getExternalStorageDirectory();
@@ -225,17 +295,9 @@ public class UserInfoActivity extends ActionBarActivity {
                 out.close();
             } catch (IOException ioe2){ioe2.printStackTrace();}
         }
-        //FileOutputStream outputStream;
-        //code to write to file
-        /*
-        try{
-            outputStream = openFileOutput(filename, Context.MODE_WORLD_READABLE);      //was Context.MODE_PRIVATE
-            outputStream.write(fileString.getBytes());
-            outputStream.close();
-        }
-        catch(Exception e){e.printStackTrace();}*/
 
-        //Code to create email
+
+        //Code to create email and attach file
         Uri uri = null;
         uri = Uri.fromFile(file);
 

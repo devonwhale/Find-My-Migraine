@@ -75,7 +75,7 @@ public class Travel {
         String[] travel = new String[6];
         travel[0] = Long.toString(id);
         travel[1] = Long.toString(syncFlag);
-        travel[2] = Long.toString(date);
+        travel[2] = Converter.getDisplayDate(date);
         travel[3] = Double.toString(hours);
         travel[4] = method;
         travel[5] = dest;

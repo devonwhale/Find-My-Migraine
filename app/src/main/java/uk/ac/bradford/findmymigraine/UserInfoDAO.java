@@ -41,6 +41,7 @@ public class UserInfoDAO {
 
         db = dbHelper.getWritableDatabase();
         db.insert(MySQLiteHelper.TABLE_USER_INFO, null, values);
+        db.close();
     }
 
     //method to get existing record
@@ -68,6 +69,7 @@ public class UserInfoDAO {
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return userInfo;
     }
 
@@ -82,5 +84,6 @@ public class UserInfoDAO {
         values.put(MySQLiteHelper.COLUMN_USER_GP_NAME, updateDetails[5]);
         values.put(MySQLiteHelper.COLUMN_USER_GP_EMAIL, updateDetails[6]);
         db.update(MySQLiteHelper.TABLE_USER_INFO, values, MySQLiteHelper.COLUMN_USER_ID + "= 1", null);
+        db.close();
     }
 }

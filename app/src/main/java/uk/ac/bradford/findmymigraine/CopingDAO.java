@@ -75,23 +75,27 @@ public class CopingDAO {
     }
 
     //Get All Coping Table Records
-    public List<Coping> getAllCopingRecords() {
-        List<Coping> listCoping = new ArrayList<Coping>();
+    public Coping[] getAllCopingRecords() {
+
+        db = dbHelper.getReadableDatabase();
 
         Cursor cursor = db.query(MySQLiteHelper.TABLE_COPING, MySQLiteHelper.COLUMNS_COPING,
                 null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                Coping coping = cursorToCoping(cursor);
-                listCoping.add(coping);
-                cursor.moveToNext();
-            }
-
-
-            cursor.close();
-        }
-        return listCoping;
+            int noOfRows = cursor.getCount();
+            Coping[] coping = new Coping[noOfRows];
+            if(!cursor.isAfterLast()) {
+                for(int i=0; i<coping.length; i++){
+                    coping[i] = cursorToCoping(cursor);
+                    cursor.moveToNext();
+                }
+           cursor.close();
+           db.close();
+           return coping;
+        }}
+        Coping[] coping = new Coping[0];
+            return coping;
     }
     //The order is the way the columns have been inserted in the SQLite database
     protected Coping cursorToCoping(Cursor cursor) {

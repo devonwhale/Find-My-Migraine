@@ -72,6 +72,16 @@ public class When {
         return "When [ID: " + id + ", Date: " + date + ", Start time: " + start_time + ", End time " + end_time  + "]" + "\n";
     }
 
+    public String[] toStringArray(){
+        String[] record = new String[5];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Converter.getDisplayDate(date);
+        record[3] = Converter.getDisplayHoursMinutes(start_time);
+        record[4] = Converter.getDisplayHoursMinutes(end_time);
+        return record;
+    }
+
     public String getDisplayDate(){
         String displayDate = "";
         //code to turn long date to DD/MM/YYYY

@@ -84,6 +84,39 @@ public class TravelDAO {
         return travel;
     }
 
+    public Travel[] getAllTravelRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        Travel[] travel;// = new Travel();             initialise in try block
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_TRAVEL,
+                    MySQLiteHelper.COLUMNS_TRAVEL,
+                    null,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            //How many records?
+            int noOfRows = cursor.getCount();
+            travel = new Travel[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()){
+                    travel[i] = cursorToTravel(cursor);
+                    cursor.moveToNext();
+                }}
+            cursor.close();
+            db.close();
+            return travel;
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        travel = new Travel[0]; //if try block fails, return empty array
+        return travel;
+    }
+
     //method added by Steve 12/3/15
     protected Travel cursorToTravel(Cursor cursor) {
         Travel travel  = new Travel();

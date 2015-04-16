@@ -8,7 +8,7 @@ public class Exercise {
     private long id;
     private long date;
     private double hours;
-    private int intensity;
+    private int intensity, syncFlag;
 
     public Exercise() {
         // Empty Constructor
@@ -49,6 +49,9 @@ public class Exercise {
         this.intensity = intensity;
     }
 
+    public void setSyncFlag(int syncFlag) {
+        this.syncFlag = syncFlag;
+    }
 
     // Getters
     public long getID () {
@@ -67,8 +70,21 @@ public class Exercise {
         return intensity;
     }
 
+    public int getSyncFlag() {
+        return syncFlag;
+    }
 
     public String toString() {
         return "Exercise [ID: " + id + ", Date: "+date+", Hours: " + hours + ", Intensity: " + intensity + "]" + "\n";
+    }
+
+    public String[] toStringArray(){
+        String[] exercise = new String[5];
+        exercise[0] = Long.toString(id);
+        exercise[1] = Integer.toString(syncFlag);
+        exercise[2] = Long.toString(date);
+        exercise[3] = Double.toString(hours);
+        exercise[4] = Integer.toString(intensity);
+        return exercise;
     }
 }

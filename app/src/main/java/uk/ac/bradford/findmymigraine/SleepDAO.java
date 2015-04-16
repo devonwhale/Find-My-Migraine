@@ -128,6 +128,8 @@ public class SleepDAO {
 
     //Get All Sleep Table Records
     public Sleep[] getAllSleepRecords() {
+
+        db = dbHelper.getReadableDatabase();
         Sleep[] sleepRecords;
 
         Cursor cursor = db.query(MySQLiteHelper.TABLE_SLEEP, MySQLiteHelper.COLUMNS_SlEEP,

@@ -91,4 +91,16 @@ public class Food {
         if (citrusFruits == 1) foods += " * Citrus Fruits";
         return foods;
     }
+
+    public String[] toStringArray(){
+        String[] record = new String[7];
+        record[0] = Long.toString(id);
+        record[1] = Integer.toString(syncFlag);
+        record[2] = Long.toString(date);
+        record[3] = Integer.toString(chocolate);
+        record[4] = Integer.toString(cheese);
+        record[5] = Integer.toString(nuts);
+        record[6] = Integer.toString(citrusFruits);
+        return record;
+    }
 }

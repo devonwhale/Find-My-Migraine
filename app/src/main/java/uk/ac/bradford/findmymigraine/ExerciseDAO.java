@@ -93,6 +93,40 @@ public class ExerciseDAO {
         return exercise;
     }
 
+    public Exercise[] getAllExerciseRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        Exercise[] exercise;// = new Exercise[array initialised in try block];                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_EXERCISE,
+                    MySQLiteHelper.COLUMNS_EXERCISE,
+                    null,null, null, null, null);
+
+            cursor.moveToFirst();
+            //How many records?
+            int noOfRows = cursor.getCount();
+            exercise = new Exercise[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()) {
+
+                    exercise[i] = cursorToExercise(cursor);
+                    cursor.moveToNext();
+                }
+            }
+            cursor.close();
+            db.close();
+            return exercise;
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //if no records found:
+        exercise = new Exercise[0];
+        return exercise;
+    }
+
 /* - Following two methods not used:
 
     //Get Single Exercise Record

@@ -6,7 +6,7 @@ package uk.ac.bradford.findmymigraine;
  */
 public class Travel {
 
-    private long id, date;
+    private long id, syncFlag, date;
     private double hours;
     private String method, dest;
 
@@ -41,6 +41,10 @@ public class Travel {
         dest = nDest;
     }
 
+    public void setSyncFlag(long syncFlag) {
+        this.syncFlag = syncFlag;
+    }
+
     public long getId() {
         return id;
     }
@@ -61,8 +65,21 @@ public class Travel {
         return dest;
     }
 
+    public long getSyncFlag(){return syncFlag;}
+
     public String toString() {
         return "Travel [ID: " + id + ", date: "+date+", Hours: " + hours + ", Method: " + method + ", Destination:" + dest + "]" + "\n";
+    }
+
+    public String[] toStringArray(){
+        String[] travel = new String[6];
+        travel[0] = Long.toString(id);
+        travel[1] = Long.toString(syncFlag);
+        travel[2] = Long.toString(date);
+        travel[3] = Double.toString(hours);
+        travel[4] = method;
+        travel[5] = dest;
+        return travel;
     }
 
 }

@@ -107,19 +107,63 @@ public class UserInfoActivity extends ActionBarActivity {
         //Sleep records ..... !!!Depends upon methods setting up: Sleep.toStringArray() and SleepDAO.getAllSleepRecords()
         SleepDAO sleepRecords = new SleepDAO(UserInfoActivity.this);
         Sleep[] allSleepRecords = sleepRecords.getAllSleepRecords();
-        String sleepRecordsCSV = "id, syncFlag, wakeDate, hours, rating\n";
-        for (int i=0; i<allSleepRecords.length; i++){
+        String sleepRecordsCSV = "id, syncFlag, wakeDate, hours, rating\n"; //Header for CSV records
+        for (int i=0; i<allSleepRecords.length; i++){                       //Disassemble Array of Sleep records
             //String[] singleRecordStringArray = new String[5];
-            for (int j=0; j<4; j++){
+            for (int j=0; j<4; j++){                                        //Disassemble String Array for each Sleep Record
                 sleepRecordsCSV += allSleepRecords[i].toStringArray()[j];
                 sleepRecordsCSV += ",";
             }
-            sleepRecordsCSV += allSleepRecords[i].toStringArray()[4];
+            sleepRecordsCSV += allSleepRecords[i].toStringArray()[4];       //last column followed by new line rather than comma
             sleepRecordsCSV += "\n";
         }
 
-        String fileString = sleepRecordsCSV;   //to be replaced by all records
-        String filename = "SleepRecords.csv";       //BUT WHERE IS THIS WRITTEN TO???????
+        //Create CSV String for Travel Records
+        TravelDAO travelRecords = new TravelDAO(UserInfoActivity.this);
+        Travel[] allTravelRecords = travelRecords.getAllTravelRecords();
+        String travelRecordsCSV = "id, syncFlag, date, hours, method, destination\n";
+        for (int i=0; i<allTravelRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<5; j++){
+                travelRecordsCSV += allTravelRecords[i].toStringArray()[j];
+                travelRecordsCSV += ",";
+            }
+            travelRecordsCSV += allTravelRecords[i].toStringArray()[5];
+            travelRecordsCSV += "\n";
+        }
+
+        //Create CSV String for Exercise records
+        ExerciseDAO exerciseRecords = new ExerciseDAO(UserInfoActivity.this);
+        Exercise[] allExerciseRecords = exerciseRecords.getAllExerciseRecords();
+        String exerciseRecordsCSV = "id, syncFlag, date, hours, intensity\n";
+        for (int i=0; i<allExerciseRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<4; j++){
+                exerciseRecordsCSV += allExerciseRecords[i].toStringArray()[j];
+                exerciseRecordsCSV += ",";
+            }
+            exerciseRecordsCSV += allExerciseRecords[i].toStringArray()[4];
+            exerciseRecordsCSV += "\n";
+        }
+
+        //Create CSV String for Food records
+        FoodDAO foodRecords = new FoodDAO(UserInfoActivity.this);
+        Food[] allFoodRecords = foodRecords.getAllFoodRecords();
+        String foodRecordsCSV = "id, syncFlag, date, chocolate, cheese, nuts, citrus fruits\n";
+        for (int i=0; i<allFoodRecords.length; i++){
+            //String[] singleRecordStringArray = new String[5];
+            for (int j=0; j<6; j++){
+                foodRecordsCSV += allFoodRecords[i].toStringArray()[j];
+                foodRecordsCSV += ",";
+            }
+            foodRecordsCSV += allFoodRecords[i].toStringArray()[6];
+            foodRecordsCSV += "\n";
+        }
+
+
+
+        String fileString = sleepRecordsCSV+"\n"+travelRecordsCSV+"\n"+exerciseRecordsCSV+"\n"+foodRecordsCSV;   //Assemble string for each database table
+        String filename = "MigraineRecords.csv";
         File file = null;
         File root = Environment.getExternalStorageDirectory();
         if (root.canWrite()){
@@ -154,7 +198,7 @@ public class UserInfoActivity extends ActionBarActivity {
         try {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
-            intent.putExtra(Intent.EXTRA_EMAIL, email.getText());
+            intent.putExtra(Intent.EXTRA_EMAIL, email.getText().toString());
             intent.putExtra(Intent.EXTRA_SUBJECT, "Migraine file");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
             intent.putExtra(Intent.EXTRA_TEXT, "Attached is a csv file with information from the migraine records");

@@ -89,6 +89,41 @@ public class FoodDAO {
         return food;
     }
 
+    public Food[] getAllFoodRecords(){
+
+        db = dbHelper.getReadableDatabase();
+        Food[] food;// = new Food();
+        Cursor cursor;
+        try {
+            cursor = db.query(MySQLiteHelper.TABLE_FOOD,
+                    MySQLiteHelper.COLUMNS_FOOD,
+                    null,
+                    null, null, null, null);
+
+            cursor.moveToFirst();
+            //How many records?
+            int noOfRows = cursor.getCount();
+            food = new Food[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()) {
+                    food[i] = cursorToFood(cursor);
+                    cursor.moveToNext();
+                }else
+                    Log.d("getFoodRecordForDate","No Food record found with this date" );}
+
+            cursor.close();
+            db.close();
+            return food;
+        }
+        catch (SQLException e){
+            Log.e("Get row error", e.toString());
+            e.printStackTrace();
+        }
+        //db.close();
+        food = new Food[0];
+        return food;
+    }
+
 
     //Method to return Food object from cursor in database
     protected Food cursorToFood(Cursor cursor) {

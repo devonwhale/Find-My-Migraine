@@ -2,6 +2,8 @@ package uk.ac.bradford.findmymigraine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +17,9 @@ import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 
@@ -116,26 +120,53 @@ public class UserInfoActivity extends ActionBarActivity {
 
         String fileString = sleepRecordsCSV;   //to be replaced by all records
         String filename = "SleepRecords.csv";       //BUT WHERE IS THIS WRITTEN TO???????
-        FileOutputStream outputStream;
+        File file = null;
+        File root = Environment.getExternalStorageDirectory();
+        if (root.canWrite()){
+            File dir = new File(root.getAbsolutePath()+ "/migraineData");
+            dir.mkdirs();
+            file = new File(dir, filename);
+            FileOutputStream out = null;
+            try{
+                out = new FileOutputStream(file);
+            } catch (FileNotFoundException fnf){fnf.printStackTrace();}
+            try{
+                out.write(fileString.getBytes());
+            } catch (IOException ioe){ioe.printStackTrace();}
+            try{
+                out.close();
+            } catch (IOException ioe2){ioe2.printStackTrace();}
+        }
+        //FileOutputStream outputStream;
         //code to write to file
+        /*
         try{
             outputStream = openFileOutput(filename, Context.MODE_WORLD_READABLE);      //was Context.MODE_PRIVATE
             outputStream.write(fileString.getBytes());
             outputStream.close();
         }
-        catch(Exception e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}*/
 
         //Code to create email
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_EMAIL, email.getText());
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Migraine file");
-        intent.putExtra(Intent.EXTRA_TEXT, "Attached is a csv file with information from the migraine records");
-        //attach file code to add
+        Uri uri = null;
+        uri = Uri.fromFile(file);
 
-        //start email
-        this.startActivity(Intent.createChooser(intent, "Sending email...."));
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_EMAIL, email.getText());
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Migraine file");
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            intent.putExtra(Intent.EXTRA_TEXT, "Attached is a csv file with information from the migraine records");
+            Log.d("intent code executed..", "App thinks email done..");
+            //attach file code to add
 
+            //start email
+            this.startActivity(Intent.createChooser(intent, "Sending email...."));
+        } catch (Exception e){
+            Log.d("Email failed ", e.toString());
+
+        }
         //toast to report
         Toast feedback = Toast.makeText(getApplicationContext(), "Data written to "+filename, Toast.LENGTH_LONG);
         feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);

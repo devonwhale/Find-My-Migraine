@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/background_material_light"
             android:id="@+id/data_to_file"
-            android:text="Write Data to File"
+            android:text="Send Migraine Report via Email"
             />
     </LinearLayout>
 

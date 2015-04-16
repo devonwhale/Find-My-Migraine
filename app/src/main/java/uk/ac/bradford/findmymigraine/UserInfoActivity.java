@@ -153,7 +153,7 @@ public class UserInfoActivity extends ActionBarActivity {
 
         try {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
+            intent.setType("text/html");
             intent.putExtra(Intent.EXTRA_EMAIL, email.getText());
             intent.putExtra(Intent.EXTRA_SUBJECT, "Migraine file");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
@@ -162,11 +162,12 @@ public class UserInfoActivity extends ActionBarActivity {
             //attach file code to add
 
             //start email
-            this.startActivity(Intent.createChooser(intent, "Sending email...."));
+            startActivity(Intent.createChooser(intent, "Sending email...."));
         } catch (Exception e){
             Log.d("Email failed ", e.toString());
 
         }
+       /* Running this intent disabled to allow email intent to launch
         //toast to report
         Toast feedback = Toast.makeText(getApplicationContext(), "Data written to "+filename, Toast.LENGTH_LONG);
         feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
@@ -174,7 +175,7 @@ public class UserInfoActivity extends ActionBarActivity {
         Log.d("CSV File text: ",sleepRecordsCSV);
         //return to main menu
         Intent mv = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(mv);
+        startActivity(mv);*/
     }
 
     @Override

@@ -5,14 +5,15 @@ package uk.ac.bradford.findmymigraine;
  */
 public class Work {
     private long id, date;
-    private int syncFlag, hours, stress;
+    private int syncFlag, stress;
+    private double hours;
 
     //Empty Constructor
     public Work(){
 
     }
     //Constructor
-    public Work(long date, int hours, int stress){
+    public Work(long date, double hours, int stress){
         this.date=date;
         this.hours=hours;
         this.stress=stress;
@@ -32,7 +33,7 @@ public class Work {
         this.syncFlag = syncFlag;
     }
 
-    public void setHours(int hours) {
+    public void setHours(double hours) {
         this.hours = hours;
     }
 
@@ -54,7 +55,7 @@ public class Work {
         return syncFlag;
     }
 
-    public int getHours() {
+    public double getHours() {
         return hours;
     }
 
@@ -72,7 +73,7 @@ public class Work {
         work[0] = Long.toString(id);
         work[1] = Integer.toString(syncFlag);
         work[2] = Converter.getDisplayDate(date);
-        work[3] = Integer.toString(hours);
+        work[3] = Double.toString(hours);
         work[4] = Integer.toString(stress);
         return work;
     }

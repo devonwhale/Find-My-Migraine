@@ -297,6 +297,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_INTENSITY_INTENSITY + " TEXT)";
 
 
+    //Work Table Details
+    public static final String TABLE_WORK = "work";
+    public static final String COLUMN_WORK_ID = "_id";
+    public static final String COLUMN_WORK_HOURS = "hours";
+    public static final String COLUMN_WORK_STRESS = "stress";
+    public static final String COLUMN_WORK_SYNCFLAG = "syncFlag";
+    public static final String[] COLUMNS_WORK = {COLUMN_WORK_ID, COLUMN_WORK_HOURS, COLUMN_WORK_STRESS, COLUMN_WORK_SYNCFLAG};
+
+    //String containing query for building Work Table
+    private static final String CREATE_WORK_TABLE = "CREATE TABLE " +
+            TABLE_WORK + "("
+            + COLUMN_WORK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_WORK_HOURS + " INTEGER, "
+            + COLUMN_WORK_STRESS + " INTEGER, "
+            + COLUMN_MOOD_SYNCFLAG + " INTEGER" + ")";
+
+
     //Severity Table Details
         //Steve to code
 
@@ -323,6 +340,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_DRINK_TABLE);
         db.execSQL(CREATE_FOOD_TABLE);
         db.execSQL(CREATE_MENSTRUAL_CYCLE_TABLE);
+        db.execSQL(CREATE_WORK_TABLE);
         db.execSQL(CREATE_COPING_TABLE);
         db.execSQL(CREATE_CAUSES_TABLE);
         db.execSQL(CREATE_USER_INFO_TABLE);
@@ -347,6 +365,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_DRINK);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_FOOD);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_MENSTRUAL_CYCLE);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_WORK);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_COPING);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_CAUSES);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USER_INFO);
@@ -354,5 +373,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
         */
         db.execSQL(CREATE_INTENSITY_TABLE); //on upgrade from v7 to v8 (but what if user is not on db v7?
+        db.execSQL(CREATE_WORK_TABLE); //??? Check if this works
     }
 }

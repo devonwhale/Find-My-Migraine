@@ -54,7 +54,7 @@
         android:text="No"
         android:id="@+id/noRB"
         android:checked="false"
-        android:layout_below="@+id/radioButton"
+        android:layout_below="@+id/radioButton12"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@color/background_material_light"/>

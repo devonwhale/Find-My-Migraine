@@ -1,0 +1,96 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/material_blue_grey_800">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="How many hours did you work?"
+        android:id="@+id/textView5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/background_material_light"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/hoursWorked"
+        android:textColor="@color/background_material_light">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1-2"
+        android:id="@+id/radioButton12"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textColor="@color/background_material_light"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3-5"
+        android:id="@+id/radioButton2"
+        android:layout_below="@+id/textView5"
+        android:layout_toRightOf="@+id/radioButton12"
+        android:layout_toEndOf="@+id/radioButton12"
+        android:checked="false"
+        android:textColor="@color/background_material_light"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6-8"
+        android:id="@+id/radioButton68"
+        android:layout_below="@+id/textView5"
+        android:layout_toRightOf="@+id/radioButton2"
+        android:layout_toEndOf="@+id/radioButton2"
+        android:checked="false"
+        android:textColor="@color/background_material_light"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="over 8"
+        android:id="@+id/radioButtonOver8"
+        android:layout_below="@+id/textView5"
+        android:layout_toRightOf="@+id/radioButton68"
+        android:layout_toEndOf="@+id/radioButton68"
+        android:checked="false"
+        android:textColor="@color/background_material_light"/>
+    </RadioGroup>
+</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="How stressful was your work?"
+        android:id="@+id/textView6"
+        android:textColor="@color/background_material_light"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save and return to Daily Diary"
+        android:id="@+id/saveButton"
+        android:textColor="@color/background_material_light"/>
+</LinearLayout>

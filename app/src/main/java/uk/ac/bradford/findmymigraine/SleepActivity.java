@@ -231,16 +231,25 @@ public class SleepActivity extends ActionBarActivity {
         addWork.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast feedback = Toast.makeText(getApplicationContext(), "Work Screen Under Development", Toast.LENGTH_LONG);
-                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                feedback.show();
-                Intent mv = new Intent(getApplicationContext(), SleepActivity.class);
-                mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
-                //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
-                numStars = (int) ratingBarSleep.getRating();
-                mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
-                mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
-                startActivity(mv);
+                //check to see if record exists for date
+                Work work = new Work();
+                WorkDAO workDAO = new WorkDAO(SleepActivity.this);
+                work = workDAO.getWorkRecordForDate(c2);
+                if(work.getDate()>(c2-1000)){   //record already exists
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Work record already added!", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                }
+
+                else {
+                    Intent mv = new Intent(getApplicationContext(), WorkActivity.class);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
+                    //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
+                    numStars = (int) ratingBarSleep.getRating();
+                    mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
+                    mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
+                    startActivity(mv);
+                }
             }
         });
 

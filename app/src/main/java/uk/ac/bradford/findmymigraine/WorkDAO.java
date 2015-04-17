@@ -46,13 +46,13 @@ public class WorkDAO {
         db.close();
     }
 
-    //Methos to return array of work records
-    public Work[] getWorkRecordsForDate(Long dateRequired){
+    //Method to return single work record for particular date
+    public Work getWorkRecordForDate(Long dateRequired){
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Work[] work;// = new Work();             initialise in try block
+        Work work = new Work();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_WORK,
@@ -61,24 +61,18 @@ public class WorkDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
-            //How many records?
-            int noOfRows = cursor.getCount();
-            work = new Work[noOfRows];
-            for (int i=0; i<noOfRows; i++){
-                if(!cursor.isAfterLast()){
-                    work[i] = cursorToWork(cursor);
-                    cursor.moveToNext();
-                }}
-            cursor.close();
+            if(!cursor.isAfterLast()){
+                work = cursorToWork(cursor);
+
+                cursor.close();}
+
             db.close();
-            return work;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
         //db.close();
-        work = new Work[0]; //if try block fails, return empty array
         return work;
     }
 

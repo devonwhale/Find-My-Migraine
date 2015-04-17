@@ -69,7 +69,8 @@
             android:id="@+id/hours35"
             android:text="3-5"
             android:textColor="@color/background_material_light"
-            android:onClick="onRadioButtonClicked"/>
+            android:onClick="onRadioButtonClicked"
+            android:checked="false" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

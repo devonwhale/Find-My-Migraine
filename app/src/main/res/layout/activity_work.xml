@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/hoursWorked"
+        android:id="@+id/hoursWorkedRadioGroup"
         android:textColor="@color/background_material_light">
     <RadioButton
         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3-5"
-        android:id="@+id/radioButton2"
+        android:id="@+id/radioButton35"
         android:layout_below="@+id/textView5"
         android:layout_toRightOf="@+id/radioButton12"
         android:layout_toEndOf="@+id/radioButton12"
@@ -56,8 +56,8 @@
         android:text="6-8"
         android:id="@+id/radioButton68"
         android:layout_below="@+id/textView5"
-        android:layout_toRightOf="@+id/radioButton2"
-        android:layout_toEndOf="@+id/radioButton2"
+        android:layout_toRightOf="@+id/radioButton35"
+        android:layout_toEndOf="@+id/radioButton35"
         android:checked="false"
         android:textColor="@color/background_material_light"/>
 
@@ -85,7 +85,7 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar" />
+        android:id="@+id/ratingBarStress" />
 
     <Button
         android:layout_width="wrap_content"

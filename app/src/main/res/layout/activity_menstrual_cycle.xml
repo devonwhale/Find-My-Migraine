@@ -65,7 +65,7 @@
         android:text="No, but coming soon"
         android:id="@+id/comingSoonRB"
         android:checked="false"
-        android:layout_below="@+id/radioButton2"
+        android:layout_below="@+id/radioButton35"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2"
         android:textColor="@color/background_material_light"/>

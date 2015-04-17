@@ -300,18 +300,20 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //Work Table Details
     public static final String TABLE_WORK = "work";
     public static final String COLUMN_WORK_ID = "_id";
+    public static final String COLUMN_WORK_DATE = "date";
+    public static final String COLUMN_WORK_SYNCFLAG = "syncFlag";
     public static final String COLUMN_WORK_HOURS = "hours";
     public static final String COLUMN_WORK_STRESS = "stress";
-    public static final String COLUMN_WORK_SYNCFLAG = "syncFlag";
-    public static final String[] COLUMNS_WORK = {COLUMN_WORK_ID, COLUMN_WORK_HOURS, COLUMN_WORK_STRESS, COLUMN_WORK_SYNCFLAG};
+    public static final String[] COLUMNS_WORK = {COLUMN_WORK_ID,COLUMN_WORK_DATE,COLUMN_WORK_SYNCFLAG, COLUMN_WORK_HOURS, COLUMN_WORK_STRESS};
 
     //String containing query for building Work Table
     private static final String CREATE_WORK_TABLE = "CREATE TABLE " +
             TABLE_WORK + "("
             + COLUMN_WORK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_WORK_DATE + " INTEGER, "
+            + COLUMN_WORK_SYNCFLAG + " INTEGER, "
             + COLUMN_WORK_HOURS + " INTEGER, "
-            + COLUMN_WORK_STRESS + " INTEGER, "
-            + COLUMN_MOOD_SYNCFLAG + " INTEGER" + ")";
+            + COLUMN_WORK_STRESS + " INTEGER" + ")";
 
 
     //Severity Table Details

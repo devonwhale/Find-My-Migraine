@@ -232,16 +232,17 @@ public class SleepActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //check to see if record exists for date
+                /*
                 Work work = new Work();
                 WorkDAO workDAO = new WorkDAO(SleepActivity.this);
-                work = workDAO.getWorkRecordForDate(c2);
+                work = workDAO.getWorkRecordsForDate(c2);
                 if(work.getDate()>(c2-1000)){   //record already exists
                     Toast feedback = Toast.makeText(getApplicationContext(), "Work record already added!", Toast.LENGTH_LONG);
                     feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                     feedback.show();
                 }
 
-                else {
+                else {*/
                     Intent mv = new Intent(getApplicationContext(), WorkActivity.class);
                     mv.putExtra("uk.ac.bradford.findmymigraine.date", c2);
                     //extras for hours slept & sleep rating to be passed ... and then passed back/reset???
@@ -249,7 +250,7 @@ public class SleepActivity extends ActionBarActivity {
                     mv.putExtra("uk.ac.bradford.findmymigraine.stars", numStars);
                     mv.putExtra("uk.ac.bradford.findmymigraine.sleepHours", sleepHours);
                     startActivity(mv);
-                }
+                //}
             }
         });
 

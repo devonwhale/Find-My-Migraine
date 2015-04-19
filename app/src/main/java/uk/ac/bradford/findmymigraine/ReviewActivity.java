@@ -25,10 +25,10 @@ public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen
     Button selectDate;
-    TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity, travelDuration, travelMethod, travelDest, menstrualStatus, moodRating;
+    TextView selectedDate, sleepTTB, sleepTU, hoursSlept, sleepRating, exDuration, exIntensity,workDuration, workStress, travelDuration, travelMethod, travelDest, menstrualStatus, moodRating;
     int year, month, day;
     Calendar theDate;
-    TableLayout exerciseTable, travelTable, foodDrinkTable;
+    TableLayout exerciseTable, travelTable, foodDrinkTable, workTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,7 @@ public class ReviewActivity extends ActionBarActivity {
         moodRating = (TextView)findViewById(R.id.mood_rating);
         menstrualStatus = (TextView)findViewById(R.id.menstrual_details);
         exerciseTable = (TableLayout)findViewById(R.id.exercise_table);
+        workTable = (TableLayout)findViewById(R.id.work_table);
         travelTable = (TableLayout)findViewById(R.id.travel_table);
         foodDrinkTable = (TableLayout)findViewById(R.id.food_drink_table);
     }
@@ -159,6 +160,25 @@ public class ReviewActivity extends ActionBarActivity {
                 //exDuration.setText(Double.toString(exercise.getHours()));
                 //Intensity
                 //exIntensity.setText(Integer.toString(exercise.getIntensity()));
+
+        //Work Values for selected date
+        while (workTable.getChildCount()>1){workTable.removeViewAt(1);} //This line just clears the table down when the selected date is changed.
+        WorkDAO workDAO = new WorkDAO(ReviewActivity.this);
+        Work[] work = new Work[workDAO.getWorkRecordsForDate(longDate).length];
+        work = workDAO.getWorkRecordsForDate(longDate);
+
+        for (int i=0; i<work.length; i++){
+            TableRow tr = new TableRow(this);
+            Work row = work[i];
+            workDuration = new TextView(this);
+            workDuration.setText(row.getDisplayHours());
+            tr.addView(workDuration);
+            workStress = new TextView(this);
+            workStress.setText(Integer.toString(row.getStress()));
+            tr.addView(workStress);
+            workTable.addView(tr);
+        }
+
 
         //Travel Values for selected date
         while (travelTable.getChildCount()>1){travelTable.removeViewAt(1);} //This line just clears the table down when the selected date is changed.

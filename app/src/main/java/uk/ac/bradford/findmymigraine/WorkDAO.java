@@ -46,13 +46,13 @@ public class WorkDAO {
         db.close();
     }
 
-    //Method to return single work record for particular date
-    public Work getWorkRecordForDate(Long dateRequired){
+    //Method to return all work records for particular date  - amended by Steve 19/4 from method to return a single work record.
+    public Work[] getWorkRecordsForDate(Long dateRequired){
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
         db = dbHelper.getReadableDatabase();
-        Work work = new Work();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
+        Work[] work;// = new Work();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
         Cursor cursor;
         try {
             cursor = db.query(MySQLiteHelper.TABLE_WORK,
@@ -61,18 +61,26 @@ public class WorkDAO {
                     null, null, null, null);
 
             cursor.moveToFirst();
-            if(!cursor.isAfterLast()){
-                work = cursorToWork(cursor);
+            //How many records?
+            int noOfRows = cursor.getCount();
+            work = new Work[noOfRows];
+            for (int i=0; i<noOfRows; i++){
+                if(!cursor.isAfterLast()) {
 
-                cursor.close();}
-
+                    work[i] = cursorToWork(cursor);
+                    cursor.moveToNext();
+                }
+            }
+            cursor.close();
             db.close();
+            return work;
         }
         catch (SQLException e){
             Log.e("Get row error", e.toString());
             e.printStackTrace();
         }
         //db.close();
+        work = new Work[0];
         return work;
     }
 
@@ -114,8 +122,9 @@ public class WorkDAO {
         Work work  = new Work();
         work.setId(Long.parseLong(cursor.getString(0)));
         work.setDate(Long.parseLong(cursor.getString(1)));
-        work.setHours(Integer.parseInt(cursor.getString(2)));
-        work.setStress(Integer.parseInt(cursor.getString(3)));
+        work.setSyncFlag(Integer.parseInt(cursor.getString(2))); //added by Steve 19/4 - int increased by 1 on next two
+        work.setHours(Double.parseDouble(cursor.getString(3)));
+        work.setStress(Integer.parseInt(cursor.getString(4)));
 
         //log
         Log.d("getWorkRecord("+work.getId()+")", work.toString());

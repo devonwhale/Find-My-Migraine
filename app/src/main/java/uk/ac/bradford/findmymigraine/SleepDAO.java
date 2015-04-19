@@ -89,7 +89,7 @@ public class SleepDAO {
 
         Long minDate = dateRequired-1000;
         Long maxDate = dateRequired+1000;
-        db = dbHelper.getReadableDatabase();
+        db = dbHelper.getWritableDatabase();        //amended to writable 19/4 by Steve to allow onUpgrade to run
         Sleep sleep = new Sleep();                                              //Looks to be returning this EMPTY sleep record - Steve. 5/3/15 21:38
         Cursor cursor;
         try {

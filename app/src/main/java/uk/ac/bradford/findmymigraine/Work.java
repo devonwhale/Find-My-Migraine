@@ -59,6 +59,14 @@ public class Work {
         return hours;
     }
 
+    public String getDisplayHours(){
+        if (hours == 1.5) return "1-2";
+        else if (hours == 4.0) return "3-5";
+        else if (hours == 7.0) return "6-8";
+        else if (hours == 9.0) return "over 8";
+        else return "none";
+    }
+
     public int getStress() {
         return stress;
     }

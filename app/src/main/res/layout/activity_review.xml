@@ -285,57 +285,92 @@
 
         </TableLayout>
 
+    <!-- Work details section -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Work Details"
+                android:textColor="@color/background_material_light"
+                android:textAppearance="?android:textAppearanceMedium"/>
+        </LinearLayout>
+        <TableLayout
+            android:id="@+id/work_table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#444444">
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="75dp"
+                    android:textColor="@color/background_material_light"/>
+                <TextView
+                    android:text="Stress level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColor="@color/background_material_light"/>
+            </TableRow>
+
+        </TableLayout>
 
 
-    <!-- OLD    Duration
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:minWidth="150dp"
-            android:layout_height="wrap_content"
-            android:text="Duration"
-            android:textColor="@color/background_material_light"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/background_material_light"
-            android:id="@+id/travel_duration"/>
-    </LinearLayout>
-     Method
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:minWidth="150dp"
-            android:layout_height="wrap_content"
-            android:text="Method"
-            android:textColor="@color/background_material_light"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/background_material_light"
-            android:id="@+id/travel_method"/>
-    </LinearLayout>
-     Destination
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:minWidth="150dp"
-            android:layout_height="wrap_content"
-            android:text="Destination"
-            android:textColor="@color/background_material_light"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/background_material_light"
-            android:id="@+id/travel_destination"/>
-    </LinearLayout>
-    -->
+        <!-- OLD    Duration
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:textColor="@color/background_material_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/background_material_light"
+                android:id="@+id/travel_duration"/>
+        </LinearLayout>
+         Method
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:text="Method"
+                android:textColor="@color/background_material_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/background_material_light"
+                android:id="@+id/travel_method"/>
+        </LinearLayout>
+         Destination
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:text="Destination"
+                android:textColor="@color/background_material_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/background_material_light"
+                android:id="@+id/travel_destination"/>
+        </LinearLayout>
+        -->
         <!-- Menstrual Details Section -->
         <LinearLayout
             android:layout_width="fill_parent"

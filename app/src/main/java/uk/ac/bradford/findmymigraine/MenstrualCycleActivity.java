@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -102,6 +104,9 @@ public class MenstrualCycleActivity extends ActionBarActivity {
                 //Enter MenstrualCycle instance into database
                 mcdao.createMenstrualCycleRecord(mc);
                 Log.d("MenstrualCycle ", "MenstrualCycle Record Added");
+                Toast feedback = Toast.makeText(getApplicationContext(), "Menstrual Cycle Record Added", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
 
                 Intent intent = new Intent(getApplicationContext(), SleepActivity.class);
                 intent.putExtra("uk.ac.bradford.findmymigraine.date", c2);

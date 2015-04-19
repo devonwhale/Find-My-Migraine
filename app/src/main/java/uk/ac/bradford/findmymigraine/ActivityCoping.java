@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -96,6 +97,9 @@ public class ActivityCoping extends ActionBarActivity {
                 //Enter Drink and Food objects into database
                 Cdao.createCopingRecord(coping);
                 Log.d("Coping ", "Coping Record Added");
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
 
 
                 Intent intent = new Intent(getApplicationContext(), CausesActivity.class);

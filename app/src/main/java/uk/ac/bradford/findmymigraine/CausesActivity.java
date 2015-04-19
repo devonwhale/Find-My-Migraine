@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -100,6 +102,9 @@ public class CausesActivity extends ActionBarActivity {
                 //Enter Drink and Food objects into database
                 causesDAO.createCausesRecord(causes);
                 Log.d("causes ", "Causes Record Added");
+                Toast feedback = Toast.makeText(getApplicationContext(), "Details Added to Migraine Records", Toast.LENGTH_LONG);
+                feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                feedback.show();
 
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

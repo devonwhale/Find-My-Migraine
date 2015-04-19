@@ -115,6 +115,10 @@ public class ExerciseActivity extends ActionBarActivity {
             //Enter exercise record into database
             dao.createExerciseRecord(e);
 
+            Toast feedback = Toast.makeText(getApplicationContext(), "Exercise Record Added", Toast.LENGTH_LONG);
+            feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+            feedback.show();
+
             Log.d("Exercise ", "Exercise Record Added");
         }
     }

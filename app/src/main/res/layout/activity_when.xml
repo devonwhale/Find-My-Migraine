@@ -93,6 +93,32 @@
             />
     </LinearLayout>
 
+    <!-- INTENSITY RATING -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="How bad was it? (1 - Not bad...5 - Very bad)"
+            android:id="@+id/lb_how_bad"
+            android:textColor="@color/background_material_light"
+            />
+    </LinearLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBarIntensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        />
+
+
     <!-- UPDATE BUTTON -->
     <Button
         android:layout_width="wrap_content"

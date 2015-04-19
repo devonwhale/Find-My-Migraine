@@ -14,7 +14,7 @@ import android.util.Log;
  *  - SYNCFLAG for synchronisation status with external database
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details
@@ -68,8 +68,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WHEN_START_TIME = "start";
     public static final String COLUMN_WHEN_END_TIME = "end";
     public static final String COLUMN_WHEN_SYNCFLAG = "syncFlag";
+    public static final String COLUMN_WHEN_INTENSITY = "intensity";
     public static final String[] COLUMNS_WHEN = {COLUMN_WHEN_ID,COLUMN_WHEN_DATE,
-            COLUMN_WHEN_START_TIME,COLUMN_WHEN_END_TIME,COLUMN_WHEN_SYNCFLAG};
+            COLUMN_WHEN_START_TIME,COLUMN_WHEN_END_TIME,COLUMN_WHEN_SYNCFLAG, COLUMN_WHEN_INTENSITY};
 
     //String containing query for building When table
     private static final String CREATE_WHEN_TABLE = "CREATE TABLE " +
@@ -78,6 +79,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WHEN_DATE + " INTEGER, "
             + COLUMN_WHEN_START_TIME + " INTEGER, "
             + COLUMN_WHEN_END_TIME + " INTEGER, "
+            + COLUMN_WHEN_INTENSITY + " INTEGER, "
             + COLUMN_WHEN_SYNCFLAG + " INTEGER" + ")";
 
     //Coping Strategies Table Details

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +26,9 @@ to record date, start time and end time. Then create a new database record.
 public class WhenActivity extends ActionBarActivity {
 
     TextView attackDate, attackStart, attackEnd;
+    RatingBar howBad;
     Button nextButton;
-    int whenYear, whenMonth, whenDay, startHour, startMinute, endHour, endMinute;
+    int whenYear, whenMonth, whenDay, startHour, startMinute, endHour, endMinute, intensity;
     Calendar whenDate, start, end;
     boolean time;                               //used to differentiate between the two time pickers
     //new variables for date extra -- added 26/3/15
@@ -59,6 +61,7 @@ public class WhenActivity extends ActionBarActivity {
         attackDate = (TextView)findViewById(R.id.pickWhenDate);
         attackStart = (TextView)findViewById(R.id.pickWhenStart);
         attackEnd = (TextView)findViewById(R.id.pickWhenEnd);
+        howBad = (RatingBar)findViewById(R.id.ratingBarIntensity);
         nextButton = (Button)findViewById(R.id.btnUpdateWhen);
 
         whenDate = Calendar.getInstance();
@@ -120,17 +123,18 @@ public class WhenActivity extends ActionBarActivity {
                     end.setTime(new Date(end.get(end.YEAR) - 1900, end.get(end.MONTH), end.get(end.DAY_OF_WEEK), endHour, endMinute));
                     a = start.getTimeInMillis();
                     b = end.getTimeInMillis();
+                    intensity = (int)howBad.getRating();
 
 
                     //Call constructor - Create a new When object
-                    When w = new When(c2, a, b);
+                    When w = new When(c2, a, b, intensity);
 
                     //Create 'When' Data Access Object Instance
                     WhenDAO dao = new WhenDAO(WhenActivity.this);
 
                     //Enter 'when' record into database
                     dao.createWhenRecord(w);
-                    Log.d("When ", "When Object created:"+" dateLong: "+c2+", Start time (log): "+a+", End Time (long): "+b);
+                    Log.d("When ", "When Object created:"+" dateLong: "+c2+", Start time (log): "+a+", End Time (long): "+b+", Intensity: "+intensity);
 
                     /*Toast added by Steve to give feedback on submit.
                     The next three lines bring up a small 'toast' with the feedback text in the code.

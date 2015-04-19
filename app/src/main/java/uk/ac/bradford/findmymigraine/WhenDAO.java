@@ -47,6 +47,7 @@ public class WhenDAO {
         values.put(MySQLiteHelper.COLUMN_WHEN_START_TIME, when.getStart_time());
         values.put(MySQLiteHelper.COLUMN_WHEN_END_TIME, when.getEnd_time());
         values.put(MySQLiteHelper.COLUMN_WHEN_SYNCFLAG, when.getSyncFlag());
+        values.put(MySQLiteHelper.COLUMN_WHEN_INTENSITY, when.getIntensity());
 
         //Inserting row
         db.insert(MySQLiteHelper.TABLE_WHEN, null, values);
@@ -107,6 +108,7 @@ public class WhenDAO {
         when.setStart_time(Long.parseLong(cursor.getString(2)));
         when.setEnd_time(Long.parseLong(cursor.getString(3)));
         when.setSyncFlag(Integer.parseInt(cursor.getString(4)));
+        when.setIntensity(Integer.parseInt(cursor.getString(5)));
 
         //log
         Log.d("When Record extracted from cursor("+when.getId()+")", when.toString());

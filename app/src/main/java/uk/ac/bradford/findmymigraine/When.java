@@ -10,15 +10,16 @@ import java.util.Calendar;
  */
 public class When {
     private long id, date, start_time, end_time;
-    private int syncFlag;
+    private int intensity, syncFlag;
 
     //Empty constructor
     public When(){}
 
     //Constructors - id removed from constructor
-    public When(long date, long start_time, long end_time){
+    public When(long date, long start_time, long end_time, int intensity){
         //this.id = id;
         this.date = date; this.start_time = start_time; this.end_time = end_time;
+        this.intensity = intensity;
         //constructor, so SyncFlag will always be 0 for a new record.
         syncFlag = 0;
     }
@@ -39,6 +40,10 @@ public class When {
 
     public void setEnd_time(long end_time) {
         this.end_time = end_time;
+    }
+
+    public void setIntensity(int intensity) {
+        this.intensity = intensity;
     }
 
     public void setSyncFlag(int syncFlag) {
@@ -63,6 +68,10 @@ public class When {
         return end_time;
     }
 
+    public int getIntensity() {
+        return intensity;
+    }
+
     public int getSyncFlag() {
         return syncFlag;
     }
@@ -73,12 +82,13 @@ public class When {
     }
 
     public String[] toStringArray(){
-        String[] record = new String[5];
+        String[] record = new String[6];
         record[0] = Long.toString(id);
         record[1] = Integer.toString(syncFlag);
         record[2] = Converter.getDisplayDate(date);
         record[3] = Converter.getDisplayHoursMinutes(start_time);
         record[4] = Converter.getDisplayHoursMinutes(end_time);
+        record[5] = Integer.toString(intensity);
         return record;
     }
 

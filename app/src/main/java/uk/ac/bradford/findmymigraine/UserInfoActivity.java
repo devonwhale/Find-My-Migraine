@@ -217,14 +217,14 @@ public class UserInfoActivity extends ActionBarActivity {
         //Create CSV String for When records
         WhenDAO whenRecords = new WhenDAO(UserInfoActivity.this);
         When[] allWhenRecords = whenRecords.getAllWhenRecords();
-        String whenRecordsCSV = "TIME OF ATTACK RECORDS\nid, syncFlag, date, start time, end time\n";
+        String whenRecordsCSV = "TIME OF ATTACK RECORDS\nid, syncFlag, date, start time, end time, intensity\n";
         for (int i=0; i<allWhenRecords.length; i++){
             //String[] singleRecordStringArray = new String[5];
-            for (int j=0; j<4; j++){
+            for (int j=0; j<5; j++){
                 whenRecordsCSV += allWhenRecords[i].toStringArray()[j];
                 whenRecordsCSV += ",";
             }
-            whenRecordsCSV += allWhenRecords[i].toStringArray()[4];
+            whenRecordsCSV += allWhenRecords[i].toStringArray()[5];
             whenRecordsCSV += "\n";
         }
 

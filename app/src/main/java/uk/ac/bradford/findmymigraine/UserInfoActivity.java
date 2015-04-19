@@ -175,8 +175,16 @@ public class UserInfoActivity extends ActionBarActivity {
         }
 
         //Create CSV String for Work records
+        WorkDAO workRecords = new WorkDAO(UserInfoActivity.this);
+        Work[] allWorkRecords = workRecords.getAllWorkRecords();
         String workRecordsCSV = "WORK RECORDS\nid, syncFlag, date, hours, stress level\n";
-        //rest outstanding until Sumaia completes code
+        //rest outstanding until Sumaia completes code - NOW DONE 19/4
+        for (int i=0; i<allWorkRecords.length; i++){
+            for (int j=0; j<4; j++){
+                workRecordsCSV += allWorkRecords[i].toStringArray()[j]+",";
+            }
+            workRecordsCSV += allWorkRecords[i].toStringArray()[4]+"\n";
+        }
 
         //Create CSV String for Menstrual Cycle Records
         MenstrualCycleDAO menstrualCycleRecords = new MenstrualCycleDAO(UserInfoActivity.this);

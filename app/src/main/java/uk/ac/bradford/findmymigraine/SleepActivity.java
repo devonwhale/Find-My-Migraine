@@ -284,6 +284,7 @@ public class SleepActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+
                 //This all needs removing or changing !!!!!
                 /* IF NOT REQUIRED
                 if(tvTimeToBed.getText().toString().equalsIgnoreCase("Click here") || tvTimeUp.getText().toString().equalsIgnoreCase("Click here")
@@ -318,6 +319,12 @@ public class SleepActivity extends ActionBarActivity {
                     //retrieve number of stars specified by user in rating bar
                     numStars = (int) ratingBarSleep.getRating();
 
+                if(sleepHours<1 || numStars<1){
+                    Toast feedback = Toast.makeText(getApplicationContext(), "Enter hours slept and rating!", Toast.LENGTH_LONG);
+                    feedback.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                    feedback.show();
+                }
+                else{
                     //Enter sleep details into Sleep object
                     Sleep s = new Sleep(
                             c2, hours,
@@ -342,7 +349,7 @@ public class SleepActivity extends ActionBarActivity {
 
                     startActivity(mv);
                 //}   //END ELSE
-            }
+            }}
         });
     }
 

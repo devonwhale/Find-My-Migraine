@@ -6,6 +6,9 @@
 
     >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TableLayout
         android:id="@+id/review_attacks_table"
         android:layout_width="fill_parent"
@@ -47,6 +50,7 @@
         </TableRow>
 
     </TableLayout>
+    </ScrollView>
 
 
 </LinearLayout>

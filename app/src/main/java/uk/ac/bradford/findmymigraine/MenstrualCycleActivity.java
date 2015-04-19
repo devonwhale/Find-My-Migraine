@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -21,6 +22,7 @@ public class MenstrualCycleActivity extends ActionBarActivity {
     RadioButton noRB;
     RadioButton comingSoonRB;
     Button saveButton;
+    TextView header; //added by Steve 19/4
     Calendar c;
     long c2; int sleepRating; double sleepHours;
 
@@ -37,6 +39,7 @@ public class MenstrualCycleActivity extends ActionBarActivity {
             c.setTimeInMillis(c2);
             sleepRating = extra.getInt("uk.ac.bradford.findmymigraine.stars"); //added 3/4/15 by Steve.
             sleepHours = extra.getDouble("uk.ac.bradford.findmymigraine.sleepHours");
+            header.setText(header.getText().toString()+" for "+Converter.getDisplayDate(c2));
             // tvTitle = (TextView) findViewById(R.id.foodDrinkTitle);
             //  int displayMonth = c.get(Calendar.MONTH) + 1;
             //  tvTitle.setText(tvTitle.getText().toString() + " for " + c.get(Calendar.DATE)+"/"+displayMonth+"/"+c.get(Calendar.YEAR));
@@ -47,6 +50,7 @@ public class MenstrualCycleActivity extends ActionBarActivity {
 
     /** Initialise components in XML layout*/
     private void initialise(){
+        header = (TextView)findViewById(R.id.textView2);
         menstrualCycleRadioGroup=(RadioGroup)findViewById(R.id.menstrualCycleRadioGroup);
         yesRB=(RadioButton)findViewById(R.id.yesRB);
         noRB=(RadioButton)findViewById(R.id.noRB);

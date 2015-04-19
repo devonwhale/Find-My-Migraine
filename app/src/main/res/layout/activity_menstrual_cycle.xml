@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/title_activity_menstrual_cycle"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
@@ -78,6 +78,7 @@
         android:text="Save and return to Daily Diary"
         android:textColor="@color/background_material_light"
         android:id="@+id/saveButton"
+        android:layout_below="@+id/menstrualCycleRadioGroup"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

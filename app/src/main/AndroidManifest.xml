@@ -40,7 +40,7 @@
         </activity>
         <activity
             android:name=".ReviewActivity"
-            android:label="@string/title_activity_review"
+            android:label="Review Diary"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -50,9 +50,7 @@
             android:name=".SleepActivity"
             android:label="Daily Diary"
             android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.MainActivity" />
+
         </activity>
 
         <receiver android:name=".SleepReceiver" >
@@ -72,30 +70,25 @@
         </activity>
         <activity
             android:name=".ExerciseActivity"
-            android:label="@string/title_activity_exercise" >
+            android:label="Add exercise record" >
         </activity>
         <activity
             android:name=".FoodDrinkActivity"
-            android:parentActivityName=".SleepActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.SleepActivity" />
+            android:parentActivityName=".SleepActivity"
+            android:label="Food and Drink">
+
         </activity>
         <activity
             android:name=".TravelActivity"
-            android:label="@string/title_activity_travel"
+            android:label="Add travel record"
             android:parentActivityName=".SleepActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.SleepActivity" />
+
         </activity>
         <activity
             android:name=".MoodActivity"
-            android:label="@string/title_activity_mood"
+            android:label="Mood Record"
             android:parentActivityName=".SleepActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.SleepActivity" />
+
         </activity>
         <activity
             android:name=".WhenActivity"
@@ -107,27 +100,21 @@
         </activity>
         <activity
             android:name=".IntensityActivity"
-            android:label="@string/title_activity_intensity"
+            android:label="Location of Pain"
             android:parentActivityName=".AttackActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+
         </activity>
         <activity
             android:name=".ActivityCoping"
             android:label="@string/title_activity_coping"
             android:parentActivityName=".AttackActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+
         </activity>
         <activity
             android:name=".CausesActivity"
-            android:label="@string/title_activity_causes"
+            android:label="What might have caused it?"
             android:parentActivityName=".AttackActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.bradford.findmymigraine.AttackActivity" />
+
         </activity>
         <activity
             android:name=".MenstrualCycleActivity"
@@ -135,7 +122,7 @@
         </activity>
         <activity
             android:name=".ReviewAttacks"
-            android:label="@string/title_activity_review_attacks"
+            android:label="Migraine Attacks"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -143,7 +130,7 @@
         </activity>
         <activity
             android:name=".ReviewAttackRecord"
-            android:label="@string/title_activity_review_attack_record"
+            android:label="Migraine Attack Record"
             android:parentActivityName=".ReviewAttacks" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -159,7 +146,7 @@
         </activity>
         <activity
             android:name=".WorkActivity"
-            android:label="@string/title_activity_work" >
+            android:label="Add Work Record" >
         </activity>
     </application>
 

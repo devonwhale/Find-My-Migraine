@@ -22,7 +22,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-
+/*
+Class launches the User Info Screen.
+Records user's name email and GP details and allows this to be changed (updated).
+ - Interaction with the database is through the UserInfoDAO class.
+Also contains a button for creating a CSV file with all data - writeToFile() method below.
+ */
 public class UserInfoActivity extends ActionBarActivity {
 
     //Variables for xml components

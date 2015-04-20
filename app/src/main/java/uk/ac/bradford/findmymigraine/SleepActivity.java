@@ -23,8 +23,8 @@ import java.util.Date;
 //just trying if push works --- imtanan
 /*
 Although called "SleepActivity", this class is really now the "Daily Diary"
- Only one Sleep record is alowed for a given date, but multiple travel,
- exercise, food/drink and other records can be added.
+ Only one Sleep record is allowed for a given date, but multiple travel,
+ exercise, food/drink and work records can be added.
  Sleep still appears as the main activity on this screen.
  */
 

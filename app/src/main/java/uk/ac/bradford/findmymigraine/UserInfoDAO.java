@@ -9,6 +9,9 @@ import android.util.Log;
 
 /**
  * Created by Steve on 13/04/2015.
+ * Methods to access the USER table in the database to get record and update record
+ * n.b. Only 1 user record is allowed. Therefore an empty record is created id=1 and this
+ *      is the record which is retrieved or updated.
  */
 public class UserInfoDAO {
     private SQLiteDatabase db;

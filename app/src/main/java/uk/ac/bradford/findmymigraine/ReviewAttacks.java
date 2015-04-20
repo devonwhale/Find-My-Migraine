@@ -12,7 +12,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-
+/*
+This class builds a table of all Migraine attacks recorded on the database (on row per attack)
+Each row contains a button for getting detailed records for that attack.
+ */
 public class ReviewAttacks extends ActionBarActivity {
     TableLayout attackList;
     TextView id, date, time, details;

@@ -28,6 +28,7 @@ public class UserInfoActivity extends ActionBarActivity {
     //Variables for xml components
     EditText firstName, surname, email, gpName, gpEmail;
     Button update, writeData;
+    int syncFlag;
     //Variables for info to be saved to database
     String userFirstName, userSurname, userEmail, userGPName, userGPEmail;
 
@@ -66,6 +67,7 @@ public class UserInfoActivity extends ActionBarActivity {
     private void setValues(){
         UserInfoDAO userInfoDAO = new UserInfoDAO(UserInfoActivity.this);
         String[] userInfo = userInfoDAO.getUserInfo();
+        syncFlag = Integer.parseInt(userInfo[1]);
         firstName.setText(userInfo[2]);
         surname.setText(userInfo[3]);
         email.setText(userInfo[4]);
@@ -76,7 +78,9 @@ public class UserInfoActivity extends ActionBarActivity {
     private void updateUserInfo(){
         String[] newInfo = new String[7];
         newInfo[0] = "1"; //id of row in database
-        newInfo[1] = "2"; //syncFlag for updated record
+        if(syncFlag == 1 || syncFlag == 2){
+        newInfo[1] = "2";} //syncFlag for updated record
+        else{newInfo[1] = "0";}
         newInfo[2] = firstName.getText().toString();
         newInfo[3] = surname.getText().toString();
         newInfo[4] = email.getText().toString();

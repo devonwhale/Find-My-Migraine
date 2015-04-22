@@ -62,6 +62,7 @@ public class WorkActivity extends ActionBarActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // get selected radio button from radioGroup
                 int selectedId = 0;
                 selectedId = hoursWorkedRadioGroup.getCheckedRadioButtonId();
@@ -70,23 +71,26 @@ public class WorkActivity extends ActionBarActivity {
                 chosenHours = (RadioButton) findViewById(selectedId);
 
                 double hoursWorked=0;
-                //Check if id of selected radiobutton matches id of yesRB, and if so, turn corresponding array value to 1
-                if (chosenHours.getId()== radioButton12.getId()){
-                    hoursWorked = 1.5;
+                try {
+                    //Check if id of selected radiobutton matches id of yesRB, and if so, turn corresponding array value to 1
+                    if (chosenHours.getId() == radioButton12.getId()) {
+                        hoursWorked = 1.5;
+                    } else if (chosenHours.getId() == radioButton35.getId()) {
+                        hoursWorked = 4;
+                    } else if (chosenHours.getId() == radioButton68.getId()) {
+                        hoursWorked = 7;
+                    } else // over 8
+                    {
+                        hoursWorked = 9;
+                    }
                 }
-                else if (chosenHours.getId()==radioButton35.getId()){
-                    hoursWorked = 4;
-                }
-                else if (chosenHours.getId()==radioButton68.getId()){
-                    hoursWorked = 7;
-                }
-                else // over 8
-                {
-                    hoursWorked = 9;
-                }
+                //no radio button was chosen
+                catch(NullPointerException e){
 
+                }
                 //retrieve number of stars specified by user in rating bar
                 int numStars = (int) ratingBarStress.getRating();
+
 
                 //Enter work details into Sleep object
                 Work work = new Work(c2, hoursWorked, numStars);

@@ -193,16 +193,10 @@ public class MainActivity extends ActionBarActivity implements LoginPopup.LoginP
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast credit = Toast.makeText(getApplicationContext(), "Head image licensed under CC0 1.0 Universal and is available at https://openclipart.org/detail/122107/default-profile-picture", Toast.LENGTH_LONG);
+            credit.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+            credit.show();
             return true;
-        }
-
-        if (id == R.id.action_login) {
-            DialogFragment d = new LoginPopup();
-            d.show(getFragmentManager(), "LoginPopup");
-        }
-
-        if (id == R.id.action_help) {
-            //Display Help fragment
         }
 
         return super.onOptionsItemSelected(item);

@@ -74,7 +74,13 @@ public class UserInfoActivity extends ActionBarActivity {
     private void setValues(){
         UserInfoDAO userInfoDAO = new UserInfoDAO(UserInfoActivity.this);
         String[] userInfo = userInfoDAO.getUserInfo();
-        syncFlag = Integer.parseInt(userInfo[1]);
+        if (userInfo[1] == null){
+            syncFlag = 0;
+        }
+        else {
+            syncFlag = Integer.parseInt(userInfo[1]);
+        }
+
         firstName.setText(userInfo[2]);
         surname.setText(userInfo[3]);
         email.setText(userInfo[4]);

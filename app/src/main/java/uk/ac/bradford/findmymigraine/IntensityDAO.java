@@ -40,9 +40,8 @@ public class IntensityDAO {
 
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_INTENSITY_DATE, intensity.getDate());              //was coping - amended Steve 16/4
-        values.put(MySQLiteHelper.COLUMN_INTENSITY_INTENSITY, intensity.getIntensity());
         values.put(MySQLiteHelper.COLUMN_INTENSITY_SYNCFLAG, intensity.getSyncFlag());      //was coping - amended Steve 16/4
-
+        values.put(MySQLiteHelper.COLUMN_INTENSITY_INTENSITY, intensity.getIntensity());
 
         //Inserting row
         db.insert(MySQLiteHelper.TABLE_INTENSITY, null, values);
@@ -100,51 +99,25 @@ public class IntensityDAO {
         }
         //if no records found:
         intensity = new Intensity[0];
+        System.err.println("No records");
         return intensity;
     }
 
     //amended by Steve 16/4/15 to match INTENSITY_COLUMNS
     protected Intensity cursorToIntensity(Cursor cursor) {
         Intensity intensity  = new Intensity();
-        intensity.setId(Long.parseLong(cursor.getString(0)));
-        intensity.setDate(Long.parseLong(cursor.getString(1)));
-        intensity.setSyncFlag(Integer.parseInt(cursor.getString(2)));
-        intensity.setIntensity(cursor.getString(3));
+        if(cursor.moveToFirst()) {
+            intensity.setId(Long.parseLong(cursor.getString(cursor.getColumnIndex("_id"))));
+            intensity.setDate(Long.parseLong(cursor.getString(cursor.getColumnIndex("date"))));
+            intensity.setSyncFlag(Integer.parseInt(cursor.getString(cursor.getColumnIndex("syncFlag"))));
+            intensity.setIntensity(cursor.getString(cursor.getColumnIndex("intensity")));
 
-        //log
-        Log.d("When Record extracted from cursor("+intensity.getId()+")", intensity.toString());
+            //log
+            Log.d("When Record extracted from cursor(" + intensity.getId() + ")", intensity.toString());
+            return intensity;
+        }
         return intensity;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public Intensity[] getAllIntensityRecords(){
 

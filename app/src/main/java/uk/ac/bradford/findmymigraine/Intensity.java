@@ -29,6 +29,7 @@ public class Intensity {
     public Intensity(String nIntensity, long nDate) {
         intensity = nIntensity;
         date = nDate;
+        syncFlag = 0;
     }
 
     public long getId() {

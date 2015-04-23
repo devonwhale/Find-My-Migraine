@@ -16,7 +16,7 @@ import android.util.Log;
 
 //This class creates the database for the application
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 13;
     private static final String DATABASE_NAME = "migraine.db";
 
     //Sleep Table Details

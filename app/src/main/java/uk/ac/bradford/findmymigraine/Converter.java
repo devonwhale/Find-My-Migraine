@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 /**
  * Class to convert dates and times from milliseconds to a printable format
+ * (Methods are static similar to Java's Math class.)
  * Created by Steve on 16/04/2015.
  */
 

@@ -73,26 +73,31 @@ public class MenstrualCycleActivity extends ActionBarActivity {
                     intArray[i] = 0;
                 }
 
-                // get selected radio button from radioGroup
-                int selectedId = 0;
-                selectedId = menstrualCycleRadioGroup.getCheckedRadioButtonId();
+                try {
+                    // get selected radio button from radioGroup
+                    int selectedId = 0;
+                    selectedId = menstrualCycleRadioGroup.getCheckedRadioButtonId();
 
-                // find the radiobutton by returned id
-                menstrualCycleRadioButton = (RadioButton) findViewById(selectedId);
+                    // find the radiobutton by returned id
+                    menstrualCycleRadioButton = (RadioButton) findViewById(selectedId);
 
-                //Check if id of selected radiobutton matches id of yesRB, and if so, turn corresponding array value to 1
-                if (menstrualCycleRadioButton.getId()== yesRB.getId()){
-                    intArray[0]=1;
+                    //Check if id of selected radiobutton matches id of yesRB, and if so, turn corresponding array value to 1
+                    if (menstrualCycleRadioButton.getId() == yesRB.getId()) {
+                        intArray[0] = 1;
+                    }
+                    //Check if id of selected radiobutton matches id of noRB, and if so, turn corresponding array value to 1
+                    else if (menstrualCycleRadioButton.getId() == noRB.getId()) {    //was yesRB 13/4 - changed to noRB by Steve
+                        intArray[1] = 1;
+                    }
+                    //Check if id of selected radiobutton matches id of comingSoonRB, and if so, turn corresponding array value to 1
+                    else {
+                        intArray[2] = 1;
+                    }
                 }
-                //Check if id of selected radiobutton matches id of noRB, and if so, turn corresponding array value to 1
-                else if (menstrualCycleRadioButton.getId()== noRB.getId()){    //was yesRB 13/4 - changed to noRB by Steve
-                    intArray[1]=1;
-                }
-                //Check if id of selected radiobutton matches id of comingSoonRB, and if so, turn corresponding array value to 1
-                else{
-                    intArray[2]=1;
-                }
+                //no radio button was chosen
+                catch(NullPointerException e){
 
+                }
                 //Create MenstrualCycle instance
                 MenstrualCycle mc = new MenstrualCycle(c2,intArray[0],intArray[1],intArray[2]);
                 //TEST

@@ -15,6 +15,8 @@ import java.util.List;
  * This class is the Data Access Object for the 'When' table.
  * The 'When' table records details of when a migraine occurs.
  */
+
+//The When Table's Data Access Object
 public class WhenDAO {
     public final static String TAG = "WhenDAO"; //tag is written to identify any exceptions
 

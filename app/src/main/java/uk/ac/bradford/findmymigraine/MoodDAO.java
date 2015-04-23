@@ -11,6 +11,8 @@ import android.util.Log;
  * Created by George on 05/03/2015.
  * Additional methods added by Steve 12/3/15.
  */
+
+//The Mood Table's Data Access Object
 public class MoodDAO {
 
     public static final String TAG = "MoodDAO";

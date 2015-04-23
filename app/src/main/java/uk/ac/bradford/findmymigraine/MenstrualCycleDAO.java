@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  * Created by Sumaia on 02/04/2015.
  */
+
+//The MenstrualCycle Table's Data Access Object
 public class MenstrualCycleDAO {
     public static final String TAG = "MenstrualCycleDAO";
 

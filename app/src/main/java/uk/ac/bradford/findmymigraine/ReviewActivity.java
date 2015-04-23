@@ -21,6 +21,8 @@ Class for Displaying Information on Screen for a given date (chosen by the user)
  returned from the SQLite database.
  Written by Steve 4/3/15
  */
+
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class ReviewActivity extends ActionBarActivity {
 
     //Variables for fields being displayed on screen

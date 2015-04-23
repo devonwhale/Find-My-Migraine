@@ -2,6 +2,9 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 12/03/2015.
+ * This class allows creation of a 'Drink' object
+ * The object can be used by the DrinkDAO class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class Drink {
     private long id, date;

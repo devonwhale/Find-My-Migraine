@@ -4,6 +4,8 @@ package uk.ac.bradford.findmymigraine;
  * Created by George on 05/03/2015.
  * Date field added by Steve on 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
  */
+
+//This class is creating the attributes for the Travel.java
 public class Travel {
 
     private long id, syncFlag, date;

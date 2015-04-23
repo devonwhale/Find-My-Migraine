@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class DailyActivity extends ActionBarActivity {
     Button but_Sleep, but_Exercise, but_Travel, but_Mood, but_FoodDrink;
 

@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  * Created by Sumaia on 15/03/2015.
  */
+
+//The Food Table's Data Access Object
 public class FoodDAO {
     public static final String TAG = "FoodDAO";
 

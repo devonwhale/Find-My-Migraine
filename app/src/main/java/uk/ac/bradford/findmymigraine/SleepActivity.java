@@ -28,6 +28,7 @@ Although called "SleepActivity", this class is really now the "Daily Diary"
  Sleep still appears as the main activity on this screen.
  */
 
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class SleepActivity extends ActionBarActivity {
 
     TextView dateWaking;                //added 4/3/15

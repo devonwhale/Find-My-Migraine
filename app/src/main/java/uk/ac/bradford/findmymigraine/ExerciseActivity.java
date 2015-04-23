@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
-
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class ExerciseActivity extends ActionBarActivity {
     EditText hoursEditText;
     RatingBar intensityRatingBar;

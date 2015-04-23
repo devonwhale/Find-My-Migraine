@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  * Created by Sumaia on 17/04/2015.
  */
+
+//The Work Table's Data Access Object
 public class WorkDAO {
     public static final String TAG = "WorkDAO";
 

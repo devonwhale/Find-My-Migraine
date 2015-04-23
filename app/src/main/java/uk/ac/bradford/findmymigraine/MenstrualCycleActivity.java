@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class MenstrualCycleActivity extends ActionBarActivity {
     RadioGroup menstrualCycleRadioGroup;
     RadioButton menstrualCycleRadioButton;

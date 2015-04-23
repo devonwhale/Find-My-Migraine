@@ -11,6 +11,7 @@ import android.util.Log;
  * Created by George on 12/03/2015.
  * Additional methods added by Steve 12/3/15.
  */
+//The Travel Table's Data Access Object
 public class TravelDAO {
 
     public static final String TAG = "TravelDAO";

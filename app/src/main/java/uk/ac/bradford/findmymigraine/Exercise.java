@@ -3,6 +3,9 @@ package uk.ac.bradford.findmymigraine;
 /**
  * Created by Sumaia on 23/02/2015.
  * Date field and related methods added by Steve on 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
+ * This class allows creation of a 'Exercise' object
+ * The object can be used by the ExerciseDAO class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class Exercise {
     private long id;

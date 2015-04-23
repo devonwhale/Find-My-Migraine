@@ -3,6 +3,9 @@ package uk.ac.bradford.findmymigraine;
 /**
  * Created by George on 05/03/2015.
  * Date field and related methods added by Steve 12/3/15. PARAMETER ADDED TO CONSTRUCTOR!
+ * This class allows creation of a 'Mood' object
+ * The object can be used by the MoodDAO class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class Mood {
 

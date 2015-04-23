@@ -2,7 +2,12 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by George on 16/04/2015.
+ * This class allows creation of a 'Intensity' object
+ * The object can be used by the IntensityDAO class to write details to the SQLite database.
+ * It is also used by the ReviewAttacks to get information from the database.
  */
+
+//This class is creating the attributes for the Intensity.java
 public class Intensity {
     private long id;
     private String intensity;

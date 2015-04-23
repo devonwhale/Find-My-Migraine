@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by Imtanan on 05/03/2015.
  */
+//The Causes Table's Data Access Object
 public class CausesDAO {
 
     public final static String TAG = "CausesDAO"; //tag is written to identify any exceptions

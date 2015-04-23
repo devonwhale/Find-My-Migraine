@@ -6,6 +6,10 @@ import java.security.PublicKey;
  * Created by Imtanan on 02/03/2015.
  *
  * Needs Checking
+ *
+ * This class allows creation of a 'Coping' object
+ * The object can be used by the CopingDAO class to write details to the SQLite database.
+ * It is also used by the ReviewAttacks to get information from the database.
  */
 public class Coping {
     private long id, date, startTime;

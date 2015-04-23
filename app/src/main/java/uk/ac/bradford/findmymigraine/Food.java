@@ -2,6 +2,10 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 15/03/2015.
+ *
+ * This class allows creation of a 'Food' object
+ * The object can be used by the FoodDAO class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class Food {
    private long id, date;

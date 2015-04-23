@@ -2,6 +2,9 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 02/04/2015.
+ * This class allows creation of a 'MenstrualCycle' object
+ * The object can be used by the MenstrualCycleDAO class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
 public class MenstrualCycle {
     private long id, date;

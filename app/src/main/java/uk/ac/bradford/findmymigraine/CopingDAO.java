@@ -15,6 +15,8 @@ import java.util.List;
  * This class is the Data Access Object for the 'Coping' table.
  * The 'Coping' table records details of when a migraine occurs.
  */
+
+//The Coping Table's Data Access Object
 public class CopingDAO {
 
     public static final String TAG = "CopingDAO"; //This TAG is written

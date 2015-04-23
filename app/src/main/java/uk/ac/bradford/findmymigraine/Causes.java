@@ -2,6 +2,9 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Imtanan on 03/03/2015.
+ * This class allows creation of a 'Causes' object
+ * The object can be used by the CausesDAO class to write details to the SQLite database.
+ * It is also used by the ReviewAttacks to get information from the database.
  */
 public class Causes {
     private long id, date, startTime;

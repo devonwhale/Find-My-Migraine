@@ -2,7 +2,11 @@ package uk.ac.bradford.findmymigraine;
 
 /**
  * Created by Sumaia on 17/04/2015.
+ * This class allows creation of a 'Work' object
+ * The object can be used by the WorkDOA class to write details to the SQLite database.
+ * It is also used by the ReviewActivity to get information from the database.
  */
+
 public class Work {
     private long id, date;
     private int syncFlag, stress;

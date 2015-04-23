@@ -3,6 +3,8 @@ package uk.ac.bradford.findmymigraine;
 /**
  * Created by Sumaia on 28/01/2015.
  */
+
+//This class is creating the attributes for the sleep.java
 public class Sleep {
     private long id, time_to_bed, time_up;
     private double hours;

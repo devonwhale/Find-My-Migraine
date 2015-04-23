@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  * Created by Sumaia on 12/03/2015.
  */
+
+//The Drink Table's Data Access Object
 public class DrinkDAO {
     public static final String TAG = "DrinkDAO";
 

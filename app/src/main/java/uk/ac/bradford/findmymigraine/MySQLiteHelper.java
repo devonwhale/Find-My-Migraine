@@ -13,6 +13,8 @@ import android.util.Log;
  *  - DATE for the date of the details being recorded - used for searching and graphing comparable events
  *  - SYNCFLAG for synchronisation status with external database
  */
+
+//This class creates the database for the application
 public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 11;
     private static final String DATABASE_NAME = "migraine.db";

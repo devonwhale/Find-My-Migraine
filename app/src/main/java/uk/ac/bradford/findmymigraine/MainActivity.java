@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 //Comment by Steve to test change/version control
 public class MainActivity extends ActionBarActivity implements LoginPopup.LoginPopupListener {
     //

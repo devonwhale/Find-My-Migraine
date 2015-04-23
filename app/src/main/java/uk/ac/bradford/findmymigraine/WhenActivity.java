@@ -22,7 +22,7 @@ import java.util.Date;
 This Class creates the 'When did it happen?' record entry screen,
 to record date, start time and end time. Then create a new database record.
  */
-
+//This class connects this information with its counterpart in the XML and deals with information when a button is pressed
 public class WhenActivity extends ActionBarActivity {
 
     TextView attackDate, attackStart, attackEnd;

@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  * Created by George on 16/04/2015.
  */
+
+//The Intensity Table's Data Access Object
 public class IntensityDAO {
 
     public static final String TAG = "IntensityDAO";

@@ -57,7 +57,7 @@ public class UserInfoDAO {
                 null, null, null, null);
 
         cursor.moveToFirst();
-        if(cursor.isAfterLast()){
+        if(cursor.isAfterLast() || cursor == null){
             createEmptyUserRecord();
         }
         else{

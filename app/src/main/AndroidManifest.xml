@@ -49,7 +49,7 @@
         <activity
             android:name=".SleepActivity"
             android:label="Daily Diary"
-            android:parentActivityName=".MainActivity" >
+             >
 
         </activity>
 
@@ -74,20 +74,20 @@
         </activity>
         <activity
             android:name=".FoodDrinkActivity"
-            android:parentActivityName=".SleepActivity"
+
             android:label="Food and Drink">
 
         </activity>
         <activity
             android:name=".TravelActivity"
             android:label="Add travel record"
-            android:parentActivityName=".SleepActivity" >
+             >
 
         </activity>
         <activity
             android:name=".MoodActivity"
             android:label="Mood Record"
-            android:parentActivityName=".SleepActivity" >
+             >
 
         </activity>
         <activity
@@ -101,19 +101,19 @@
         <activity
             android:name=".IntensityActivity"
             android:label="Location of Pain"
-            android:parentActivityName=".AttackActivity" >
+             >
 
         </activity>
         <activity
             android:name=".ActivityCoping"
             android:label="@string/title_activity_coping"
-            android:parentActivityName=".AttackActivity" >
+             >
 
         </activity>
         <activity
             android:name=".CausesActivity"
             android:label="What might have caused it?"
-            android:parentActivityName=".AttackActivity" >
+             >
 
         </activity>
         <activity

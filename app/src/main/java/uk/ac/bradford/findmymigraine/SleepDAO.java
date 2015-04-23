@@ -107,7 +107,7 @@ public class SleepDAO {
                 // DO NOT DELETE !!!
                 //The following code is used by the setWakeDate method in the Main Activity
                 // returns dummy sleep record if no record found
-                Sleep sleepTest = new Sleep(946598400000L,0, 946598460000L, 946684740000L, 9);        // (31/12/1999, 00:01, 23:59, 9)
+                Sleep sleepTest = new Sleep(946598400000L,0, 946598460000L, 946684740000L, 0);        // (31/12/1999, 00:01, 23:59, 9)
                 return sleepTest;
 
             }
